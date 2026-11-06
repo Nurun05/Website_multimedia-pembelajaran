@@ -1,0 +1,66 @@
+<!-- HALAMAN 11: HASIL EVALUASI & REKOMENDASI -->
+<div class="result-hero">
+  <div id="score-gauge-circle" class="score-circle-gauge">
+    <span id="result-score-val" class="score-value-text">0</span>
+  </div>
+  <div id="result-status-pill" class="status-pill pass">TUNTAS</div>
+  <div id="result-status-desc" style="font-size:12px; color:#475569; max-width:320px; margin:0 auto;">
+    Menghitung hasil evaluasi...
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header-styled">
+    <span style="font-size:18px;">📊</span>
+    <div class="card-title">Capaian per Tujuan Pembelajaran</div>
+  </div>
+
+  <div class="tp-progress-bar-group">
+    <div class="tp-bar-label">
+      <span><strong>TP 1:</strong> Konsep &amp; Istilah Kunci</span>
+      <span id="tp-1-text">0%</span>
+    </div>
+    <div class="tp-track">
+      <div id="tp-1-fill" class="tp-fill" style="width:0%;"></div>
+    </div>
+  </div>
+
+  <div class="tp-progress-bar-group">
+    <div class="tp-bar-label">
+      <span><strong>TP 2:</strong> Tiga Tingkat Kehati</span>
+      <span id="tp-2-text">0%</span>
+    </div>
+    <div class="tp-track">
+      <div id="tp-2-fill" class="tp-fill" style="width:0%;"></div>
+    </div>
+  </div>
+
+  <div class="tp-progress-bar-group">
+    <div class="tp-bar-label">
+      <span><strong>TP 3:</strong> Pengamatan &amp; Pelestarian</span>
+      <span id="tp-3-text">0%</span>
+    </div>
+    <div class="tp-track">
+      <div id="tp-3-fill" class="tp-fill" style="width:0%;"></div>
+    </div>
+  </div>
+</div>
+
+<div id="result-recommendation-box" class="recommendation-box">
+  Memuat saran pembelajaran...
+</div>
+
+<div style="display:flex; flex-direction:column; gap:8px;">
+  <div style="display:flex; gap:8px;">
+    <button type="button" class="btn btn-outline" style="flex:1;" onclick="ViewHasil.retakeQuiz()">
+      🔄 Ulangi Kuis
+    </button>
+    <button type="button" class="btn btn-secondary" style="flex:1;" onclick="ViewHasil.reviewMaterial()">
+      📚 Belajar Lagi
+    </button>
+  </div>
+  <button type="button" class="btn btn-primary btn-full" onclick="AppRouter.goToPage(12)">
+    📑 Buka Rangkuman &amp; PDF Catatan
+  </button>
+</div>
+

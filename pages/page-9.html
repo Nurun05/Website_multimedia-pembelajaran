@@ -1,0 +1,25 @@
+<!-- HALAMAN 9: KEGIATAN 3 (LATIHAN INTERAKTIF 3) -->
+<div style="margin-bottom:12px;">
+  <h2 style="font-size:16px; font-weight:700; color:var(--primary-sky-deep);">Latihan Interaktif 3</h2>
+  <div style="font-size:12px; color:var(--text-muted);">
+    Susun 5 kartu langkah pengamatan dan identifikasi di bawah ini secara runtut dari langkah ke-1 sampai ke-5 menggunakan tombol panah:
+  </div>
+</div>
+
+<div class="card">
+  <div id="sortable-cards-list" class="sortable-list">
+    <!-- Diisi secara dinamis oleh ViewKegiatan3 -->
+  </div>
+
+  <div style="display:flex; gap:8px; margin-top:14px;">
+    <button type="button" class="btn btn-primary" style="flex:1;" onclick="ViewKegiatan3.checkSort()">
+      🔍 Periksa Urutan
+    </button>
+    <button type="button" class="btn btn-outline" onclick="ViewKegiatan3.resetSort()">
+      🔄 Acak Ulang
+    </button>
+  </div>
+
+  <div id="sort-feedback" class="feedback-box"></div>
+</div>
+

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="60%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Background -->
+  <rect width="600" height="240" fill="url(#skyGrad)"/>
+
+  <!-- Sun -->
+  <circle cx="480" cy="80" r="45" fill="#fde047" opacity="0.85"/>
+  <circle cx="480" cy="80" r="35" fill="#facc15"/>
+
+  <!-- Clouds -->
+  <path d="M70,90 Q85,70 110,75 Q135,65 155,80 Q175,75 185,95 Q195,110 170,115 L80,115 Q60,110 70,90 Z" fill="#ffffff" opacity="0.85"/>
+  <path d="M280,60 Q295,45 315,50 Q335,40 350,55 Q365,50 375,65 L275,65 Z" fill="#ffffff" opacity="0.75"/>
+
+  <!-- Mountains -->
+  <polygon points="120,240 240,110 360,240" fill="url(#mountainGrad)" opacity="0.7"/>
+  <polygon points="260,240 370,130 480,240" fill="url(#mountainGrad)" opacity="0.5"/>
+  <polygon points="0,240 100,140 220,240" fill="#475569" opacity="0.8"/>
+
+  <!-- Tropical Forest Canopy -->
+  <path d="M-10,240 Q30,180 80,210 Q140,170 200,205 Q260,165 320,200 Q380,170 440,205 Q500,165 560,195 Q610,180 620,240 Z" fill="#15803d"/>
+  <path d="M0,240 Q40,195 90,225 Q150,185 220,220 Q290,180 350,215 Q410,185 470,220 Q530,185 600,225 L600,245 L0,245 Z" fill="#166534"/>
+
+  <!-- Marine Water / Coral Reef Area -->
+  <rect y="240" width="600" height="120" fill="url(#seaGrad)"/>
+
+  <!-- Waves -->
+  <path d="M0,242 C40,238 80,246 120,242 C160,238 200,246 240,242 C280,238 320,246 360,242 C400,238 440,246 480,242 C520,238 560,246 600,242 L600,250 L0,250 Z" fill="#e0f2fe" opacity="0.6"/>
+
+  <!-- Sea Bed / Coral -->
+  <path d="M40,360 Q70,300 110,340 Q150,290 190,360 Z" fill="#ea580c" opacity="0.85"/>
+  <path d="M160,360 Q180,315 210,345 Q240,305 270,360 Z" fill="#db2777" opacity="0.85"/>
+  <path d="M430,360 Q460,310 490,345 Q520,295 560,360 Z" fill="#059669" opacity="0.8"/>
+
+  <!-- Clownfish / Marine Fish -->
+  <g transform="translate(290, 290) scale(0.7)">
+    <ellipse cx="40" cy="20" rx="35" ry="18" fill="#f97316"/>
+    <polygon points="5,20 -15,5 -15,35" fill="#ea580c"/>
+    <path d="M25,5 Q30,20 25,35" stroke="#ffffff" stroke-width="6" fill="none"/>
+    <path d="M45,3 Q50,20 45,37" stroke="#ffffff" stroke-width="5" fill="none"/>
+    <circle cx="60" cy="16" r="3" fill="#000000"/>
+  </g>
+
+  <!-- Sea Turtle -->
+  <g transform="translate(130, 275) scale(0.55)">
+    <ellipse cx="50" cy="35" rx="30" ry="22" fill="#047857"/>
+    <ellipse cx="50" cy="35" rx="25" ry="18" fill="#10b981"/>
+    <circle cx="85" cy="35" r="9" fill="#047857"/>
+    <path d="M60,15 Q80,-10 95,5" stroke="#047857" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <path d="M60,55 Q80,80 95,65" stroke="#047857" stroke-width="8" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Hornbill / Burung Rangkong / Cenderawasih Siluet -->
+  <g transform="translate(80, 140) scale(0.65)">
+    <path d="M20,40 Q40,25 60,35 Q75,30 90,20 Q80,45 60,55 Q50,65 30,70 Q10,75 -10,60 Q5,50 20,40 Z" fill="#0f172a"/>
+    <path d="M90,20 Q115,25 125,40 Q95,45 80,45 Z" fill="#f59e0b"/>
+    <path d="M20,60 Q-20,90 -40,130 Q-20,100 0,75 Z" fill="#e11d48"/>
+  </g>
+
+  <!-- Badak / Anoa Siluet -->
+  <g transform="translate(420, 190) scale(0.65)">
+    <ellipse cx="60" cy="40" rx="45" ry="26" fill="#1e293b"/>
+    <circle cx="15" cy="28" r="16" fill="#1e293b"/>
+    <!-- Horns -->
+    <path d="M8,18 Q-5,0 -2,-8 Q6,-3 14,14" fill="#64748b"/>
+    <rect x="25" y="55" width="12" height="28" rx="4" fill="#1e293b"/>
+    <rect x="75" y="55" width="12" height="28" rx="4" fill="#1e293b"/>
+    <rect x="40" y="55" width="10" height="25" rx="3" fill="#0f172a"/>
+    <rect x="90" y="55" width="10" height="25" rx="3" fill="#0f172a"/>
+  </g>
+
+  <!-- Overlay Header Banner badge -->
+  <g transform="translate(180, 20)">
+    <rect width="240" height="34" rx="17" fill="#0f172a" opacity="0.85"/>
+    <text x="120" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">
+      KEANEKARAGAMAN HAYATI NUSANTARA
+    </text>
+  </g>
+</svg>
+

@@ -1,0 +1,90 @@
+/* ====================================================================
+   BUTTONS.CSS - DESAIN TOMBOL SESUAI PALET #dae9f7 & CALIBRI LIGHT
+   ==================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  text-decoration: none;
+  letter-spacing: 0.25px;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Tombol Utama (Primary Action) */
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: #ffffff;
+  box-shadow: var(--btn-primary-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--btn-primary-hover);
+  box-shadow: 0 6px 16px rgba(47, 115, 174, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Tombol Sekunder (Secondary): Menggunakan Warna #dae9f7 */
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-color);
+  border: 1.5px solid var(--btn-secondary-border);
+  box-shadow: 0 2px 5px rgba(30, 62, 99, 0.05);
+}
+
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover);
+  color: var(--sky-primary-dark);
+  border-color: #9ec3ea;
+  transform: translateY(-1px);
+}
+
+/* Tombol Outline */
+.btn-outline {
+  background-color: transparent;
+  border: 1.5px solid var(--btn-outline-border);
+  color: var(--btn-outline-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--pastel-sky);
+  border-color: var(--sky-primary);
+  color: var(--sky-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Tombol Sukses */
+.btn-success {
+  background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.28);
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  transform: translateY(-1px);
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

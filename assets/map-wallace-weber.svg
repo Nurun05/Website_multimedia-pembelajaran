@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="100%" height="100%">
+  <defs>
+    <style>
+      .zone-text { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; }
+      .sub-text { font-family: system-ui, sans-serif; font-size: 10px; fill: #334155; }
+      .line-label { font-family: system-ui, sans-serif; font-size: 11px; font-weight: 700; fill: #dc2626; }
+    </style>
+  </defs>
+
+  <!-- Ocean Background -->
+  <rect width="700" height="380" rx="16" fill="#e0f2fe"/>
+
+  <!-- Zone Regions Background Shading -->
+  <!-- Zone 1: Asiatis (Green tint) -->
+  <rect x="0" y="0" width="260" height="380" fill="#dcfce7" opacity="0.6"/>
+  <!-- Zone 2: Wallacea (Yellow/Orange tint) -->
+  <rect x="260" y="0" width="220" height="380" fill="#fef3c7" opacity="0.6"/>
+  <!-- Zone 3: Australis (Cyan/Purple tint) -->
+  <rect x="480" y="0" width="220" height="380" fill="#e0e7ff" opacity="0.6"/>
+
+  <!-- Wallace Line (Dashed Red Line) -->
+  <line x1="260" y1="20" x2="260" y2="360" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,4"/>
+  <!-- Weber Line (Dashed Red Line) -->
+  <line x1="480" y1="20" x2="480" y2="360" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,4"/>
+
+  <!-- Island Shapes (Stylized Vector) -->
+  <!-- Sumatera -->
+  <path d="M40,110 L110,210 L85,235 L30,140 Z" fill="#15803d" stroke="#166534" stroke-width="2"/>
+  <text x="55" y="180" class="sub-text" fill="#ffffff" font-weight="bold">Sumatera</text>
+
+  <!-- Kalimantan -->
+  <path d="M140,100 Q190,90 220,120 Q240,160 210,195 Q160,205 135,165 Z" fill="#15803d" stroke="#166534" stroke-width="2"/>
+  <text x="160" y="150" class="sub-text" fill="#ffffff" font-weight="bold">Kalimantan</text>
+
+  <!-- Jawa -->
+  <path d="M95,255 L225,265 L220,280 L90,270 Z" fill="#15803d" stroke="#166534" stroke-width="2"/>
+  <text x="140" y="272" class="sub-text" fill="#ffffff" font-weight="bold">Jawa</text>
+
+  <!-- Bali & Nusa Tenggara -->
+  <ellipse cx="240" cy="275" rx="8" ry="5" fill="#ca8a04"/>
+  <ellipse cx="265" cy="278" rx="14" ry="6" fill="#ca8a04"/>
+  <ellipse cx="305" cy="280" rx="20" ry="7" fill="#ca8a04"/>
+  <ellipse cx="355" cy="285" rx="26" ry="8" fill="#ca8a04"/>
+  <text x="270" y="300" class="sub-text" font-weight="bold">Nusa Tenggara &amp; Komodo</text>
+
+  <!-- Sulawesi (Distinctive K shape) -->
+  <path d="M290,110 Q310,125 315,145 Q335,140 355,145 L325,160 Q345,185 350,210 L330,205 Q320,175 305,175 Q305,200 300,230 L285,225 Q295,170 280,140 Z" fill="#ca8a04" stroke="#a16207" stroke-width="2"/>
+  <text x="310" y="170" class="sub-text" fill="#ffffff" font-weight="bold">Sulawesi</text>
+
+  <!-- Maluku -->
+  <ellipse cx="420" cy="150" rx="12" ry="18" fill="#ca8a04"/>
+  <ellipse cx="440" cy="190" rx="15" ry="20" fill="#ca8a04"/>
+  <ellipse cx="430" cy="240" rx="18" ry="10" fill="#ca8a04"/>
+  <text x="420" y="130" class="sub-text" font-weight="bold">Maluku</text>
+
+  <!-- Papua -->
+  <path d="M500,165 Q550,150 610,160 Q660,190 660,250 L600,255 Q560,240 540,210 Q500,210 490,195 Z" fill="#4338ca" stroke="#3730a3" stroke-width="2"/>
+  <text x="560" y="205" class="sub-text" fill="#ffffff" font-weight="bold">Papua</text>
+
+  <!-- Line Labels -->
+  <rect x="200" y="25" width="120" height="24" rx="12" fill="#ffffff" stroke="#dc2626"/>
+  <text x="260" y="41" class="line-label" text-anchor="middle">Garis Wallace</text>
+
+  <rect x="420" y="25" width="120" height="24" rx="12" fill="#ffffff" stroke="#dc2626"/>
+  <text x="480" y="41" class="line-label" text-anchor="middle">Garis Weber</text>
+
+  <!-- Zone Headers at Top -->
+  <!-- Asiatis -->
+  <g transform="translate(20, 20)">
+    <rect width="180" height="42" rx="8" fill="#15803d"/>
+    <text x="90" y="20" class="zone-text" fill="#ffffff" text-anchor="middle">ZONA ASIATIS</text>
+    <text x="90" y="34" class="sub-text" fill="#bbf7d0" text-anchor="middle">Gajah, Badak, Harimau</text>
+  </g>
+
+  <!-- Wallacea -->
+  <g transform="translate(275, 55)">
+    <rect width="170" height="42" rx="8" fill="#d97706"/>
+    <text x="85" y="20" class="zone-text" fill="#ffffff" text-anchor="middle">ZONA WALLACEA</text>
+    <text x="85" y="34" class="sub-text" fill="#fef08a" text-anchor="middle">Anoa, Babirusa, Komodo</text>
+  </g>
+
+  <!-- Australis -->
+  <g transform="translate(495, 20)">
+    <rect width="185" height="42" rx="8" fill="#4338ca"/>
+    <text x="92" y="20" class="zone-text" fill="#ffffff" text-anchor="middle">ZONA AUSTRALIS</text>
+    <text x="92" y="34" class="sub-text" fill="#c7d2fe" text-anchor="middle">Cenderawasih, Kasuari</text>
+  </g>
+
+  <!-- Tandukkalua Pin Marker (Sulawesi Barat) -->
+  <g transform="translate(290, 185)">
+    <circle cx="0" cy="0" r="7" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
+    <rect x="8" y="-12" width="130" height="20" rx="4" fill="#0f172a" opacity="0.9"/>
+    <text x="14" y="2" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#38bdf8">SMPN 1 Tandukkalua</text>
+  </g>
+</svg>
+

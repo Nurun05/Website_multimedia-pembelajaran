@@ -1,0 +1,41 @@
+<!-- HALAMAN 10: KUIS AKHIR EVALUASI (10 SOAL PG) -->
+<div class="quiz-header-status">
+  <span id="quiz-num-indicator" style="font-weight:700; font-size:13px; color:var(--primary-sky-deep);">Soal 1 dari 10</span>
+  <span id="quiz-tp-badge" class="quiz-tp-badge">TP 1: Konsep &amp; Istilah</span>
+</div>
+
+<div class="card">
+  <div id="quiz-question-text" class="quiz-q-text">
+    Memuat pertanyaan kuis...
+  </div>
+
+  <div id="quiz-options-container">
+    <!-- Pilihan Opsi A, B, C, D diinjeksi dinamis oleh ViewKuis -->
+  </div>
+
+  <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+    <button type="button" id="btn-quiz-lock" class="btn btn-primary btn-full" onclick="ViewKuis.lockAnswer()">
+      🔒 Kunci Jawaban &amp; Buka Pembahasan
+    </button>
+  </div>
+
+  <div id="quiz-explanation-box" class="quiz-explanation-box">
+    <!-- Pembahasan Ilmiah -->
+  </div>
+</div>
+
+<!-- Navigasi Soal Prev / Next -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+  <button type="button" id="btn-quiz-prev" class="btn btn-outline" style="padding:8px 14px;" onclick="ViewKuis.prevQuestion()">
+    ◀ Sebelumnya
+  </button>
+  <button type="button" id="btn-quiz-next" class="btn btn-outline" style="padding:8px 14px;" onclick="ViewKuis.nextQuestion()">
+    Berikutnya ▶
+  </button>
+</div>
+
+<!-- Tombol Selesai & Lihat Hasil -->
+<button type="button" id="btn-quiz-submit" class="btn btn-success btn-full" style="display:none; font-size:14px; padding:12px;" onclick="ViewKuis.submitQuiz()">
+  🏆 Lihat Hasil Evaluasi &amp; Rekomendasi
+</button>
+

@@ -1,0 +1,82 @@
+/* ====================================================================
+   VARIABLES.CSS - PALET WARNA #dae9f7 & TYPOGRAPHY CALIBRI LIGHT
+   Sesuai Contoh Warna Pengguna: #dae9f7 (Soft Pastel Sky Blue)
+   Multimedia Pembelajaran Interaktif SMP Negeri 1 Tandukkalua
+   ==================================================================== */
+
+:root {
+  /* ====================================================================
+     WARNA UTAMA PERSIS DARI GAMBAR PENGGUNA: #dae9f7
+     ==================================================================== */
+  --pastel-sky:               #dae9f7; /* Warna persis dari gambar */
+  --pastel-sky-subtle:        #f3f8fd; /* Latar kartu sangat lembut */
+  --pastel-sky-light:         #eaf3fb; /* Latar seleksi */
+  --pastel-sky-border:        #bad5ee; /* Border harmonis */
+  --pastel-sky-border-subtle: #cde1f4;
+  --pastel-sky-hover:         #c4ddf3;
+
+  /* Gradasi Biru untuk Elemen Utama & Teks */
+  --sky-primary:         #367bb7; /* Biru sejuk untuk tombol utama */
+  --sky-primary-hover:   #27679f;
+  --sky-primary-dark:    #1e3e63; /* Navy sejuk untuk teks heading */
+  --sky-primary-deep:    #142b47;
+
+  /* Aliases Kompatibilitas */
+  --primary-sky:         #367bb7;
+  --primary-sky-light:   #4d93d4;
+  --primary-sky-dark:    #27679f;
+  --primary-sky-deep:    #1e3e63;
+  --primary-navy:        #367bb7;
+  --primary-navy-dark:   #1e3e63;
+  --primary-navy-light:  #4d93d4;
+
+  /* Tombol Utama (Primary): Biru Langit Lembut Bersinar */
+  --btn-primary-bg:      linear-gradient(135deg, #4a91d2 0%, #2f73ae 100%);
+  --btn-primary-hover:   linear-gradient(135deg, #367bb7 0%, #245f94 100%);
+  --btn-primary-shadow:  0 4px 12px rgba(47, 115, 174, 0.28);
+
+  /* Tombol Sekunder (Secondary): Menggunakan Warna #dae9f7 */
+  --btn-secondary-bg:    #dae9f7;
+  --btn-secondary-color: #1e3e63;
+  --btn-secondary-border:#bad5ee;
+  --btn-secondary-hover: #cbe0f4;
+
+  /* Tombol Outline */
+  --btn-outline-border:  #4a91d2;
+  --btn-outline-color:   #27679f;
+
+  /* Umpan Balik Jawaban */
+  --feedback-correct:        #0d9488;
+  --feedback-correct-bg:     #f0fdfa;
+  --feedback-correct-border: #99f6e4;
+  --feedback-wrong:          #e11d48;
+  --feedback-wrong-bg:       #fff1f2;
+  --feedback-wrong-border:   #fecdd3;
+
+  /* Penanda Tiga Tingkat */
+  --color-gen:       #367bb7; /* Biru Langit */
+  --color-jenis:     #0d9488; /* Biru Pirus / Teal */
+  --color-ekosistem: #4f46e5; /* Biru Indigo Samudra */
+
+  /* Permukaan & Teks */
+  --bg-page:        #f3f8fd;
+  --bg-card:        #ffffff;
+  --text-main:      #1a2a3a;
+  --text-muted:     #5e7388;
+  --border-color:   #dae9f7;
+  --border-strong:  #bad5ee;
+
+  /* Bayangan */
+  --shadow-sm: 0 2px 4px rgba(30, 62, 99, 0.06);
+  --shadow-md: 0 6px 14px -2px rgba(30, 62, 99, 0.1), 0 3px 6px -2px rgba(30, 62, 99, 0.05);
+  --shadow-lg: 0 16px 24px -4px rgba(30, 62, 99, 0.14), 0 6px 8px -4px rgba(30, 62, 99, 0.06);
+
+  /* Font: Calibri Light */
+  --font-family: "Calibri Light", Calibri, "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+}

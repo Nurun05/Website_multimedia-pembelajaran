@@ -1,0 +1,353 @@
+/* ====================================================================
+   ACTIVITIES.CSS - KEGIATAN 1, 2, 3 (ACCORDION, TABS, MATCHING, SORTING)
+   Warna Utama: #dae9f7 & Calibri Light
+   ==================================================================== */
+
+/* Kotak Pemantik Pertanyaan */
+.spark-box {
+  background: var(--pastel-sky-subtle);
+  border-left: 4px solid var(--sky-primary);
+  border-top: 1px solid var(--pastel-sky);
+  border-right: 1px solid var(--pastel-sky);
+  border-bottom: 1px solid var(--pastel-sky);
+  padding: 12px 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--sky-primary-dark);
+}
+
+/* Accordion Istilah Kunci */
+.accordion-item {
+  border: 1.5px solid var(--pastel-sky);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+.accordion-item:hover {
+  border-color: var(--pastel-sky-border);
+}
+.accordion-header {
+  padding: 12px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  transition: background 0.2s;
+  color: var(--text-main);
+}
+.accordion-header:hover {
+  background-color: var(--pastel-sky-subtle);
+}
+.accordion-header::after {
+  content: '▼';
+  font-size: 10px;
+  color: var(--sky-primary);
+  transition: transform 0.2s;
+}
+.accordion-item.open .accordion-header::after {
+  transform: rotate(180deg);
+}
+.accordion-body {
+  display: none;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  color: #334155;
+  background-color: var(--pastel-sky-subtle);
+  border-top: 1px solid var(--pastel-sky);
+}
+.accordion-item.open .accordion-body {
+  display: block;
+}
+
+/* Latihan 1 (Pilihan Jawaban) */
+.exercise-container {
+  margin-bottom: 14px;
+}
+.option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  border: 1.5px solid var(--pastel-sky);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-main);
+}
+.option-btn:hover {
+  border-color: var(--pastel-sky-border);
+  background-color: var(--pastel-sky-subtle);
+}
+.option-btn.selected {
+  border-color: var(--sky-primary);
+  background-color: var(--pastel-sky);
+  color: var(--sky-primary-dark);
+  font-weight: 600;
+}
+.feedback-box {
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  margin-top: 12px;
+  font-size: 12.5px;
+  display: none;
+}
+.feedback-box.show {
+  display: block;
+  animation: fadeIn 0.2s ease;
+}
+.feedback-box.correct {
+  background-color: var(--feedback-correct-bg);
+  border: 1px solid var(--feedback-correct-border);
+  color: #065f46;
+}
+.feedback-box.wrong {
+  background-color: var(--feedback-wrong-bg);
+  border: 1px solid var(--feedback-wrong-border);
+  color: #9f1239;
+}
+
+/* Peringatan Miskonsepsi Kritis */
+.misconception-callout {
+  background-color: var(--pastel-sky-subtle);
+  border: 1.5px solid var(--pastel-sky-border);
+  border-left: 5px solid var(--sky-primary);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  font-size: 12.5px;
+  color: var(--sky-primary-dark);
+}
+
+/* Tab 3 Tingkat Kehati */
+.level-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.level-tab-btn {
+  flex: 1;
+  padding: 9px 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-align: center;
+  border: 1.5px solid var(--pastel-sky);
+  background-color: #ffffff;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.level-tab-btn:hover {
+  border-color: var(--pastel-sky-border);
+  color: var(--sky-primary-dark);
+}
+.level-tab-btn.active.tab-gen {
+  background: linear-gradient(135deg, #4a91d2, #2f73ae);
+  color: #ffffff;
+  border-color: var(--color-gen);
+  box-shadow: 0 2px 6px rgba(47, 115, 174, 0.25);
+}
+.level-tab-btn.active.tab-jenis {
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #ffffff;
+  border-color: var(--color-jenis);
+  box-shadow: 0 2px 6px rgba(13, 148, 136, 0.25);
+}
+.level-tab-btn.active.tab-ekosistem {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  border-color: var(--color-ekosistem);
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+}
+.level-content-pane {
+  display: none;
+}
+.level-content-pane.active {
+  display: block;
+}
+
+/* Tabel Perbandingan (Header Menggunakan Nuansa #dae9f7 Sesuai Gambar Pengguna) */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 12px;
+}
+.comparison-table th, .comparison-table td {
+  border: 1px solid var(--pastel-sky-border);
+  padding: 9px 11px;
+  text-align: left;
+}
+.comparison-table th {
+  background-color: var(--pastel-sky);
+  color: var(--sky-primary-dark);
+  font-weight: 700;
+}
+
+/* Latihan 2: Mencocokkan Pasangan Responsif */
+.matching-board {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .matching-board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.match-item-card {
+  background-color: #ffffff;
+  border: 1.5px solid var(--pastel-sky);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.match-text {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  flex: 1;
+}
+.match-select {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--pastel-sky-border);
+  font-size: 12px;
+  background-color: var(--pastel-sky);
+  color: var(--sky-primary-dark);
+  font-weight: 600;
+  cursor: pointer;
+}
+.match-item-card.is-correct {
+  border-color: var(--feedback-correct);
+  background-color: var(--feedback-correct-bg);
+}
+.match-item-card.is-wrong {
+  border-color: var(--feedback-wrong);
+  background-color: var(--feedback-wrong-bg);
+}
+
+/* Animasi Langkah Pengamatan (Kegiatan 3) */
+.anim-step-stage {
+  background: var(--pastel-sky-subtle);
+  border: 1.5px solid var(--pastel-sky);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  margin-bottom: 12px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.anim-step-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sky-primary);
+  margin-bottom: 6px;
+}
+.anim-step-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--sky-primary-dark);
+  margin-bottom: 6px;
+}
+.anim-step-desc {
+  font-size: 12.5px;
+  color: #334155;
+  max-width: 440px;
+}
+.anim-controls-bar {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* Latihan 3: Mengurutkan Kartu (Sorting Cards) */
+.sortable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.sort-card {
+  background-color: #ffffff;
+  border: 1.5px solid var(--pastel-sky);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: grab;
+  transition: all 0.2s;
+  user-select: none;
+}
+.sort-num-badge {
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(135deg, #4a91d2, #2f73ae);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(47, 115, 174, 0.25);
+}
+.sort-text {
+  font-size: 12.5px;
+  flex: 1;
+  color: #1e293b;
+}
+.sort-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sort-arrow-btn {
+  background: var(--pastel-sky);
+  border: 1px solid var(--pastel-sky-border);
+  color: var(--sky-primary-dark);
+  border-radius: 4px;
+  width: 26px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sort-arrow-btn:hover {
+  background: var(--pastel-sky-hover);
+  color: var(--sky-primary);
+}
+.sort-card.correct-pos {
+  border-color: var(--feedback-correct);
+  background-color: var(--feedback-correct-bg);
+}
+.sort-card.wrong-pos {
+  border-color: var(--feedback-wrong);
+  background-color: var(--feedback-wrong-bg);
+}

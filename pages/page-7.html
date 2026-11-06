@@ -1,0 +1,83 @@
+<!-- HALAMAN 7: KEGIATAN 2 (LATIHAN INTERAKTIF 2) -->
+<div style="margin-bottom:12px;">
+  <h2 style="font-size:16px; font-weight:700; color:var(--primary-sky-deep);">Latihan Interaktif 2</h2>
+  <div style="font-size:12px; color:var(--text-muted);">
+    Pasangkan 6 contoh makhluk hidup di bawah ini dengan tingkat keanekaragamannya yang tepat:
+  </div>
+</div>
+
+<div class="card">
+  <div id="matching-items-container" class="matching-board">
+    <div class="match-item-card" id="match-card-m1">
+      <span class="match-text">1. Mangga Arumanis &amp; Mangga Manalagi</span>
+      <select class="match-select" data-item-id="m1" id="select-m1">
+        <option value="">-- Pilih Tingkat --</option>
+        <option value="gen">Tingkat Gen</option>
+        <option value="jenis">Tingkat Jenis</option>
+        <option value="ekosistem">Tingkat Ekosistem</option>
+      </select>
+    </div>
+
+    <div class="match-item-card" id="match-card-m2">
+      <span class="match-text">2. Harimau Sumatera &amp; Kucing Rumah</span>
+      <select class="match-select" data-item-id="m2" id="select-m2">
+        <option value="">-- Pilih Tingkat --</option>
+        <option value="gen">Tingkat Gen</option>
+        <option value="jenis">Tingkat Jenis</option>
+        <option value="ekosistem">Tingkat Ekosistem</option>
+      </select>
+    </div>
+
+    <div class="match-item-card" id="match-card-m3">
+      <span class="match-text">3. Ekosistem Terumbu Karang Bunaken</span>
+      <select class="match-select" data-item-id="m3" id="select-m3">
+        <option value="">-- Pilih Tingkat --</option>
+        <option value="gen">Tingkat Gen</option>
+        <option value="jenis">Tingkat Jenis</option>
+        <option value="ekosistem">Tingkat Ekosistem</option>
+      </select>
+    </div>
+
+    <div class="match-item-card" id="match-card-m4">
+      <span class="match-text">4. Padi Varietas Rojolele &amp; Ciherang</span>
+      <select class="match-select" data-item-id="m4" id="select-m4">
+        <option value="">-- Pilih Tingkat --</option>
+        <option value="gen">Tingkat Gen</option>
+        <option value="jenis">Tingkat Jenis</option>
+        <option value="ekosistem">Tingkat Ekosistem</option>
+      </select>
+    </div>
+
+    <div class="match-item-card" id="match-card-m5">
+      <span class="match-text">5. Pohon Kelapa, Pinang, dan Aren</span>
+      <select class="match-select" data-item-id="m5" id="select-m5">
+        <option value="">-- Pilih Tingkat --</option>
+        <option value="gen">Tingkat Gen</option>
+        <option value="jenis">Tingkat Jenis</option>
+        <option value="ekosistem">Tingkat Ekosistem</option>
+      </select>
+    </div>
+
+    <div class="match-item-card" id="match-card-m6">
+      <span class="match-text">6. Hutan Mangrove Muara Sungai</span>
+      <select class="match-select" data-item-id="m6" id="select-m6">
+        <option value="">-- Pilih Tingkat --</option>
+        <option value="gen">Tingkat Gen</option>
+        <option value="jenis">Tingkat Jenis</option>
+        <option value="ekosistem">Tingkat Ekosistem</option>
+      </select>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:8px; margin-top:14px;">
+    <button type="button" class="btn btn-primary" style="flex:1;" onclick="ViewKegiatan2.checkMatching()">
+      🔍 Periksa Pasangan
+    </button>
+    <button type="button" class="btn btn-outline" onclick="ViewKegiatan2.resetMatching()">
+      🔄 Ulangi
+    </button>
+  </div>
+
+  <div id="matching-feedback" class="feedback-box"></div>
+</div>
+

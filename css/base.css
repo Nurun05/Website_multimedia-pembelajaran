@@ -1,0 +1,136 @@
+/* ====================================================================
+   BASE.CSS - TATA LETAK OTOMATIS RESPONSIF (MOBILE & DESKTOP)
+   ==================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  font-family: var(--font-family);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* Latar Belakang & Layout Otomatis */
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.55;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+/* Tipografi Calibri Light */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--sky-primary-dark);
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+/* ====================================================================
+   CONTAINER APLIKASI RESPONSIF OTOMATIS
+   ==================================================================== */
+
+/* 1. Tampilan Default: Mobile Phone (Lebar Layar < 768px) */
+.device-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* 2. Tampilan Otomatis Desktop / Tablet (Lebar Layar >= 768px) */
+@media (min-width: 768px) {
+  body {
+    background: linear-gradient(135deg, #e4eff8 0%, #f3f8fd 50%, #eaf3f9 100%);
+    padding: 24px 16px;
+    align-items: center;
+  }
+
+  .device-wrapper {
+    max-width: 860px;
+    height: 94vh;
+    max-height: 920px;
+    min-height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px -10px rgba(30, 58, 95, 0.16), 0 0 0 1px var(--pastel-sky-border);
+    overflow: hidden;
+  }
+}
+
+/* 3. Tampilan Layar Lebar Desktop (Lebar Layar >= 1200px) */
+@media (min-width: 1200px) {
+  .device-wrapper {
+    max-width: 940px;
+  }
+}
+
+/* Area Gulir Konten Aplikasi */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: var(--bg-page);
+  position: relative;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .app-content {
+    padding: 22px 28px;
+  }
+}
+
+/* Halaman-halaman */
+.page {
+  display: none;
+  animation: fadeInPage 0.25s ease-in-out forwards;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elemen Notifikasi / Bilah Ponsel Tiruan Dihilangkan untuk Kenyamanan Responsif Alami */
+.device-notch-bar,
+.desktop-switch-bar {
+  display: none !important;
+}

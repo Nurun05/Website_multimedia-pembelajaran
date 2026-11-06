@@ -1,0 +1,14 @@
+/* ====================================================================
+   STYLE.CSS - MODULAR MASTER STYLESHEET
+   Tema: Biru Langit (Sky Blue Harmony) & Typography Calibri Light
+   Multimedia Pembelajaran Interaktif SMP Negeri 1 Tandukkalua
+   Pengembang: Nurun Nisa Ahmad (NIM: 240209501049) - PTIK E 2024
+   ==================================================================== */
+
+@import url("variables.css");
+@import url("base.css");
+@import url("buttons.css");
+@import url("components.css");
+@import url("activities.css");
+@import url("quiz.css");
+@import url("print.css");
