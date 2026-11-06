@@ -53,4 +53,6 @@ if %errorlevel% equ 0 (
 
 echo.
 pause
+echo.
+pause
 
