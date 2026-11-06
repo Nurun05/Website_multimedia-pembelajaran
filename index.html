@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keanekaragaman Hayati Indonesia - Modul Interaktif Web-Mobile</title>
+  
+  <!-- Master Stylesheet (Modular Import) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Container Utama Responsif Otomatis (Mobile & Desktop) -->
+  <main class="device-wrapper">
+
+    <!-- Bilah Judul Atas (Soft Sky Blue) -->
+    <section class="app-header">
+      <div class="header-left">
+        <div>
+          <span class="header-badge">IPA FASE D</span>
+          <h1 class="header-title-text">Keanekaragaman Hayati</h1>
+          <div class="header-subtitle-text">SMP Negeri 1 Tandukkalua</div>
+        </div>
+      </div>
+      <div id="page-tracker-badge" class="page-tracker">Halaman 1 / 12</div>
+    </section>
+
+    <!-- Area Konten Utama (Wadah 12 Halaman Modular) -->
+    <div class="app-content">
+      <section id="page-1" class="page active"></section>
+      <section id="page-2" class="page"></section>
+      <section id="page-3" class="page"></section>
+      <section id="page-4" class="page"></section>
+      <section id="page-5" class="page"></section>
+      <section id="page-6" class="page"></section>
+      <section id="page-7" class="page"></section>
+      <section id="page-8" class="page"></section>
+      <section id="page-9" class="page"></section>
+      <section id="page-10" class="page"></section>
+      <section id="page-11" class="page"></section>
+      <section id="page-12" class="page"></section>
+    </div>
+
+    <!-- Bilah Bawah Navigasi Konsisten (Menu Kiri, Berikutnya Kanan) -->
+    <nav class="app-bottom-nav">
+      <button type="button" id="btn-bottom-left" class="btn btn-secondary">
+        Menu Utama
+      </button>
+      <button type="button" id="btn-bottom-right" class="btn btn-primary">
+        Berikutnya
+      </button>
+    </nav>
+
+  </main>
+
+  <!-- Skrip Data & Manajemen Status -->
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/router.js"></script>
+
+  <!-- Skrip Tampilan Modular (Views) -->
+  <script src="js/views/view-beranda.js"></script>
+  <script src="js/views/view-petunjuk.js"></script>
+  <script src="js/views/view-menu.js"></script>
+  <script src="js/views/view-kegiatan1.js"></script>
+  <script src="js/views/view-kegiatan2.js"></script>
+  <script src="js/views/view-kegiatan3.js"></script>
+  <script src="js/views/view-kuis.js"></script>
+  <script src="js/views/view-hasil.js"></script>
+  <script src="js/views/view-rangkuman.js"></script>
+
+  <!-- Inisialisasi Aplikasi Utama -->
+  <script src="js/app.js"></script>
+</body>
+</html>
