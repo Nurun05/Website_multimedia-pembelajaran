@@ -5,7 +5,14 @@
 
 const ViewHasil = {
   render(container) {
+    const verifierHTML = window.StudentVerifier ? StudentVerifier.getResultBadgeHTML() : '';
+
     container.innerHTML = `
+      <!-- Profil & Foto Wajah Siswa Terverifikasi (Anti-Joki) -->
+      <div id="verifier-container-hasil">
+        ${verifierHTML}
+      </div>
+
       <!-- Hero Lingkaran Skor & Status Tuntas Sesuai Proposal -->
       <div class="result-hero">
         <div id="score-gauge-circle" class="score-circle-gauge">
@@ -83,6 +90,11 @@ const ViewHasil = {
   },
 
   renderResult() {
+    const vContainer = document.querySelector('#verifier-container-hasil');
+    if (vContainer && window.StudentVerifier) {
+      vContainer.innerHTML = StudentVerifier.getResultBadgeHTML();
+    }
+
     const scores = AppState.quiz.calculatedScores;
     const passThreshold = APP_DATA.info.passingScore; // 70
 

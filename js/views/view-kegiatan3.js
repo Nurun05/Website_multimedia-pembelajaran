@@ -161,12 +161,19 @@ const ViewKegiatan3 = {
       AppState.exercise3.items = [...APP_DATA.activity3.scrambledSteps];
     }
 
+    const verifierHTML = window.StudentVerifier ? StudentVerifier.getCardHTML('latihan3') : '';
+
     container.innerHTML = `
       <div style="margin-bottom:12px;">
         <h2 style="font-size:16px; font-weight:700; color:var(--primary-sky-deep);">Latihan Interaktif 3</h2>
         <div style="font-size:12px; color:var(--text-muted);">
           Susun 5 kartu langkah pengamatan dan identifikasi di bawah ini secara runtut dari langkah ke-1 sampai ke-5 menggunakan tombol panah:
         </div>
+      </div>
+
+      <!-- Wadah Verifikasi Identitas & Foto Siswa (Anti-Joki) -->
+      <div id="verifier-container-latihan3">
+        ${verifierHTML}
       </div>
 
       <div class="card">
@@ -222,6 +229,11 @@ const ViewKegiatan3 = {
   },
 
   checkSort() {
+    // Validasi Anti-Joki: Wajib verifikasi nama dan foto wajah terlebih dahulu
+    if (window.StudentVerifier && !StudentVerifier.ensureVerified('latihan3')) {
+      return;
+    }
+
     let isAllCorrect = true;
 
     AppState.exercise3.items.forEach((item, currentPosition) => {

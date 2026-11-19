@@ -7,6 +7,15 @@ const AppState = {
   currentPage: 1,
   totalPages: 12,
 
+  // Data Identitas & Verifikasi Wajah Siswa (Cegah Joki)
+  student: {
+    name: '',
+    customName: '',
+    photo: '', // base64 data url
+    verifiedAt: '',
+    isVerified: false
+  },
+
   progress: {
     kegiatan1Done: false,
     kegiatan2Done: false,
@@ -51,7 +60,8 @@ const AppState = {
     try {
       localStorage.setItem('kehati_media_state', JSON.stringify({
         progress: this.progress,
-        quizScores: this.quiz.calculatedScores
+        quizScores: this.quiz.calculatedScores,
+        student: this.student
       }));
     } catch (e) {
       console.warn('LocalStorage tidak tersedia', e);
@@ -65,6 +75,7 @@ const AppState = {
         const parsed = JSON.parse(saved);
         if (parsed.progress) this.progress = { ...this.progress, ...parsed.progress };
         if (parsed.quizScores) this.quiz.calculatedScores = parsed.quizScores;
+        if (parsed.student) this.student = { ...this.student, ...parsed.student };
       }
     } catch (e) {
       console.warn('Gagal memuat state lokal', e);

@@ -5,7 +5,14 @@
 
 const ViewKuis = {
   render(container) {
+    const verifierHTML = window.StudentVerifier ? StudentVerifier.getCardHTML('kuis') : '';
+
     container.innerHTML = `
+      <!-- Wadah Verifikasi Identitas & Foto Siswa (Anti-Joki) -->
+      <div id="verifier-container-kuis">
+        ${verifierHTML}
+      </div>
+
       <div class="quiz-header-status">
         <span id="quiz-num-indicator" style="font-weight:700; font-size:13px; color:var(--primary-sky-deep);">Soal 1 dari 10</span>
         <span id="quiz-tp-badge" class="quiz-tp-badge">TP 1: Konsep &amp; Istilah</span>
@@ -120,6 +127,9 @@ const ViewKuis = {
   },
 
   selectOption(key) {
+    if (window.StudentVerifier && !StudentVerifier.ensureVerified('kuis')) {
+      return;
+    }
     const idx = AppState.quiz.currentQuestionIndex;
     if (AppState.quiz.isLocked[idx]) return;
     AppState.quiz.userAnswers[idx] = key;
@@ -127,6 +137,9 @@ const ViewKuis = {
   },
 
   lockAnswer() {
+    if (window.StudentVerifier && !StudentVerifier.ensureVerified('kuis')) {
+      return;
+    }
     const idx = AppState.quiz.currentQuestionIndex;
     const selected = AppState.quiz.userAnswers[idx];
 
@@ -163,6 +176,9 @@ const ViewKuis = {
   },
 
   submitQuiz() {
+    if (window.StudentVerifier && !StudentVerifier.ensureVerified('kuis')) {
+      return;
+    }
     let totalCorrect = 0;
     let tp1Correct = 0, tp1Total = 0;
     let tp2Correct = 0, tp2Total = 0;

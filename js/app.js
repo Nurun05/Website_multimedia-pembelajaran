@@ -54,6 +54,7 @@ function initViews() {
             if (cfg.num === 9) ViewKegiatan3.initSortableDOM();
             if (cfg.num === 10) ViewKuis.renderQuestion(AppState.quiz.currentQuestionIndex);
             if (cfg.num === 11) ViewHasil.renderResult();
+            if (window.StudentVerifier) StudentVerifier.syncPage(cfg.num);
           }
         })
         .catch(() => {

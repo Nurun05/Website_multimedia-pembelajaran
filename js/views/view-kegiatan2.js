@@ -144,12 +144,19 @@ const ViewKegiatan2 = {
 
   renderLatihan(container) {
     const pairs = APP_DATA.activity2.matchingPairs;
+    const verifierHTML = window.StudentVerifier ? StudentVerifier.getCardHTML('latihan2') : '';
+
     container.innerHTML = `
       <div style="margin-bottom:12px;">
         <h2 style="font-size:16px; font-weight:700; color:var(--primary-sky-deep);">Latihan Interaktif 2</h2>
         <div style="font-size:12px; color:var(--text-muted);">
           Pasangkan 6 contoh makhluk hidup di bawah ini dengan tingkat keanekaragamannya yang tepat:
         </div>
+      </div>
+
+      <!-- Wadah Verifikasi Identitas & Foto Siswa (Anti-Joki) -->
+      <div id="verifier-container-latihan2">
+        ${verifierHTML}
       </div>
 
       <div class="card">
@@ -182,6 +189,11 @@ const ViewKegiatan2 = {
   },
 
   checkMatching() {
+    // Validasi Anti-Joki: Wajib verifikasi nama dan foto wajah terlebih dahulu
+    if (window.StudentVerifier && !StudentVerifier.ensureVerified('latihan2')) {
+      return;
+    }
+
     let allCorrect = true;
     let unanswered = false;
 

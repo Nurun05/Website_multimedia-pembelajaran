@@ -10,7 +10,8 @@ const ViewRangkuman = {
       <div class="print-only-header">
         <h2 style="font-size:18px; margin-bottom:2px;">SMP NEGERI 1 TANDUKKALUA</h2>
         <div style="font-size:14px; font-weight:bold;">LEMBAR CATATAN TERPANDU &amp; RANGKUMAN IPA FASE D</div>
-        <div style="font-size:12px;">Topik: Keanekaragaman Hayati Indonesia | Pengembang: Nurun Nisa Ahmad (PTIK E)</div>
+        <div style="font-size:12px; margin-bottom:8px;">Topik: Keanekaragaman Hayati Indonesia | Pengembang: Nurun Nisa Ahmad (PTIK E)</div>
+        <div class="print-student-verified-slot"></div>
       </div>
 
       <div style="margin-bottom:12px;">
@@ -69,6 +70,10 @@ const ViewRangkuman = {
           <span style="font-size:18px;">📝</span>
           <div class="card-title">Lembar Catatan Terpandu Siswa Mandiri</div>
         </div>
+
+        <!-- Slot Identitas Siswa Terverifikasi (Tercetak & Terlihat di Layar) -->
+        <div class="print-student-verified-slot"></div>
+
         <div style="font-size:11.5px; color:#475569; margin-bottom:12px;">
           Lengkapilah bagian rumpang (titik-titik) di bawah ini sebagai rangkuman belajarmu:
         </div>
@@ -93,6 +98,10 @@ const ViewRangkuman = {
         </button>
       </div>
     `;
+
+    if (window.StudentVerifier) {
+      StudentVerifier.updatePrintableHeader();
+    }
   }
 };
 

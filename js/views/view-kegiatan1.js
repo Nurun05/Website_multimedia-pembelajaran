@@ -55,12 +55,19 @@ const ViewKegiatan1 = {
 
   renderLatihan(container) {
     const quizItems = APP_DATA.activity1.quiz;
+    const verifierHTML = window.StudentVerifier ? StudentVerifier.getCardHTML('latihan1') : '';
+
     container.innerHTML = `
       <div style="margin-bottom:12px;">
         <h2 style="font-size:16px; font-weight:700; color:var(--primary-sky-deep);">Latihan Interaktif 1</h2>
         <div style="font-size:12px; color:var(--text-muted);">
           Pilih jawaban yang paling tepat. Umpan balik langsung akan memandumu jika masih ada konsep yang keliru!
         </div>
+      </div>
+
+      <!-- Wadah Verifikasi Identitas & Foto Siswa (Anti-Joki) -->
+      <div id="verifier-container-latihan1">
+        ${verifierHTML}
       </div>
 
       <div id="exercise-1-list">
@@ -85,6 +92,11 @@ const ViewKegiatan1 = {
   },
 
   checkAnswer(qIdx, optIdx, btnElement) {
+    // Validasi Anti-Joki: Wajib verifikasi nama dan foto wajah terlebih dahulu
+    if (window.StudentVerifier && !StudentVerifier.ensureVerified('latihan1')) {
+      return;
+    }
+
     const question = APP_DATA.activity1.quiz[qIdx];
     const selectedOpt = question.options[optIdx];
     const parentCard = document.querySelector(`#ex1-card-${qIdx}`);

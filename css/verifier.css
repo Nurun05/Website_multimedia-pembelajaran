@@ -1,0 +1,405 @@
+/* ====================================================================
+   VERIFIER.CSS - MODUL VERIFIKASI WAJAH & IDENTITAS SISWA (ANTI-JOKI)
+   Tema: Soft Sky Blue #dae9f7 & Calibri Light
+   Multimedia Pembelajaran IPA Kelas VII SMP Negeri 1 Tandukkalua
+   ==================================================================== */
+
+.verifier-card {
+  background: #ffffff;
+  border: 1.5px solid var(--pastel-sky-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.verifier-card.highlight-required {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+  animation: verifierShake 0.45s ease-in-out;
+}
+
+@keyframes verifierShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.verifier-title-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.verifier-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--primary-sky-deep);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.verifier-badge-anti-joki {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  border: 1px solid #bae6fd;
+}
+
+.verifier-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+/* Form Pemilihan Nama Siswa */
+.verifier-field-group {
+  margin-bottom: 12px;
+}
+
+.verifier-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-sky-deep);
+  margin-bottom: 5px;
+}
+
+.verifier-select {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1.5px solid var(--pastel-sky-border);
+  border-radius: var(--radius-sm);
+  background-color: #ffffff;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.verifier-select:focus {
+  border-color: var(--primary-sky);
+  box-shadow: 0 0 0 3px rgba(54, 123, 183, 0.2);
+}
+
+.verifier-input-text {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1.5px solid var(--pastel-sky-border);
+  border-radius: var(--radius-sm);
+  background-color: #ffffff;
+  color: var(--text-main);
+  outline: none;
+  margin-top: 6px;
+  box-sizing: border-box;
+}
+
+.verifier-input-text:focus {
+  border-color: var(--primary-sky);
+  box-shadow: 0 0 0 3px rgba(54, 123, 183, 0.2);
+}
+
+/* Wadah Kamera & Pratinjau Foto */
+.camera-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--pastel-sky-subtle);
+  border: 1.5px dashed var(--pastel-sky-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  margin-bottom: 12px;
+  min-height: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+.camera-viewport {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-sky);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Cermin alami untuk selfie */
+}
+
+.camera-face-guide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 140px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.2);
+}
+
+.photo-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.camera-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  color: var(--text-muted);
+}
+
+.camera-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-camera {
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-camera-capture {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);
+}
+
+.btn-camera-capture:hover {
+  background: #b91c1c;
+}
+
+.btn-camera-open {
+  background: var(--sky-primary);
+  color: #ffffff;
+}
+
+.btn-camera-open:hover {
+  background: var(--sky-primary-hover);
+}
+
+.btn-camera-upload {
+  background: #ffffff;
+  color: var(--primary-sky-deep);
+  border: 1.5px solid var(--pastel-sky-border);
+}
+
+.btn-camera-upload:hover {
+  background: var(--pastel-sky);
+}
+
+/* Banner Identitas yang Sudah Terverifikasi */
+.verifier-verified-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+}
+
+.verified-avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.verified-avatar-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #22c55e;
+  box-shadow: var(--shadow-sm);
+}
+
+.verified-avatar-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+}
+
+.verified-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.verified-student-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #166534;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.verified-student-meta {
+  font-size: 11px;
+  color: #15803d;
+  margin-top: 1px;
+}
+
+.verified-timestamp {
+  font-size: 10px;
+  color: #4b5563;
+  margin-top: 2px;
+}
+
+.btn-reverify {
+  background: #ffffff;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  font-size: 11px;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.btn-reverify:hover {
+  background: #dcfce7;
+}
+
+/* Pesan Peringatan Belum Terverifikasi */
+.verifier-alert-banner {
+  display: none;
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+  font-size: 11.5px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.verifier-alert-banner.show {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Tampilan Siswa Terverifikasi pada Halaman Hasil & Cetak */
+.result-student-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1.5px solid var(--pastel-sky-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.result-student-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-sky);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.result-student-details {
+  flex: 1;
+}
+
+.result-student-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary-sky-deep);
+}
+
+.result-student-school {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.result-student-badge {
+  display: inline-block;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-top: 3px;
+  border: 1px solid #86efac;
+}
+
+/* Tampilan Cetak Khusus */
+@media print {
+  .verifier-card {
+    display: none !important;
+  }
+  .print-student-verified {
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    border: 1.5px solid #000000;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+  }
+  .print-student-photo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1.5px solid #000000;
+  }
+}

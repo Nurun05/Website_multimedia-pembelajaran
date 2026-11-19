@@ -24,6 +24,7 @@ const AppRouter = {
     if (pageNumber === 3 && window.ViewMenu) ViewMenu.updateProgress();
     if (pageNumber === 10 && window.ViewKuis) ViewKuis.renderQuestion(AppState.quiz.currentQuestionIndex);
     if (pageNumber === 11 && window.ViewHasil) ViewHasil.renderResult();
+    if (window.StudentVerifier) StudentVerifier.syncPage(pageNumber);
 
     // Simpan status
     AppState.save();
