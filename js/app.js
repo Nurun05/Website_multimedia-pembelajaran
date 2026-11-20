@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Mulai router pada halaman aktif
   AppRouter.goToPage(AppState.currentPage || 1);
+
+  // 5. Munculkan Menu Login Otomatis saat pertama kali membuka aplikasi
+  if (window.TeacherPanel && !sessionStorage.getItem('role_selected')) {
+    setTimeout(() => {
+      TeacherPanel.openLoginModal();
+    }, 300);
+  }
 });
 
 function initViews() {

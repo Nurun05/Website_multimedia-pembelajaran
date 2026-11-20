@@ -310,6 +310,7 @@ const TeacherPanel = {
   },
 
   selectRole(role) {
+    sessionStorage.setItem('role_selected', 'true');
     if (role === 'siswa') {
       AppState.userRole = 'siswa';
       AppState.save();
@@ -342,6 +343,7 @@ const TeacherPanel = {
 
     const validPin = AppState.teacherPin || 'guru123';
     if (val === validPin) {
+      sessionStorage.setItem('role_selected', 'true');
       AppState.userRole = 'guru';
       AppState.save();
       this.closeLoginModal();
