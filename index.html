@@ -52,6 +52,25 @@
       <button type="button" id="btn-bottom-left" class="btn btn-secondary">
         Menu Utama
       </button>
+
+      <!-- Tombol Login Peran di Tengah-Tengah (Khusus Halaman 1 Beranda) Sesuai Permintaan Pengguna -->
+      <div id="nav-role-center" class="nav-role-center" style="display:none;">
+        <button type="button" id="nav-role-siswa" class="nav-role-card role-siswa" onclick="TeacherPanel.selectRole('siswa')" title="Masuk sebagai Siswa">
+          <span class="nav-role-icon">👨‍🎓</span>
+          <span class="nav-role-text">
+            <strong>Kamu siswa?</strong>
+            <small>login disini</small>
+          </span>
+        </button>
+        <button type="button" id="nav-role-guru" class="nav-role-card role-guru" onclick="TeacherPanel.showGuruPinBox(); TeacherPanel.openLoginModal();" title="Masuk sebagai Guru">
+          <span class="nav-role-icon">👨‍🏫</span>
+          <span class="nav-role-text">
+            <strong>Anda guru?</strong>
+            <small>login disini</small>
+          </span>
+        </button>
+      </div>
+
       <button type="button" id="btn-bottom-right" class="btn btn-primary">
         Berikutnya
       </button>

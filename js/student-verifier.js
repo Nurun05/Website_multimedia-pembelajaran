@@ -126,7 +126,7 @@ const StudentVerifier = {
         <!-- 1. Pemilihan Nama Siswa -->
         <div class="verifier-field-group">
           <label class="verifier-label" for="${contextId}-select-name">
-            👤 Pilih Nama Lengkap Siswa (Dari Daftar Guru):
+            👤 1. Pilih Nama Lengkap Siswa (Dari Daftar Guru):
           </label>
           <select id="${contextId}-select-name" class="verifier-select" onchange="StudentVerifier.handleNameChange('${contextId}', this.value)">
             <option value="">-- Pilih Nama Anda (Kelas VII SMPN 1 Tandukkalua) --</option>
@@ -134,7 +134,7 @@ const StudentVerifier = {
               const isDone = AppState.isStudentCompleted(name);
               const sub = isDone ? AppState.getStudentSubmission(name) : null;
               const disabledAttr = isDone ? 'disabled style="color:#94a3b8; background:#f8fafc;"' : '';
-              const label = isDone ? `${name} (✓ Sudah Mengerjakan - Nilai: ${sub ? sub.score : '-'})` : name;
+              const label = isDone ? `${name} (🔒 Sudah Selesai - Terkunci)` : name;
               return `<option value="${name}" ${savedName === name ? 'selected' : ''} ${disabledAttr}>${label}</option>`;
             }).join('')}
             <option value="__custom__" ${savedName && !roster.includes(savedName) ? 'selected' : ''}>➕ [Ketik Nama Sendiri / Siswa Baru]</option>
@@ -147,16 +147,20 @@ const StudentVerifier = {
                  oninput="StudentVerifier.handleCustomNameInput('${contextId}', this.value)">
         </div>
 
-        <!-- 2. Kamera & Foto Dokumentasi Wajah -->
-        <div class="verifier-field-group">
-          <label class="verifier-label">
-            📸 Foto Selfie Dokumentasi Wajah:
+        <!-- 2. Kamera & Foto Dokumentasi Wajah (Muncul Setelah Nama Dipilih) -->
+        <div class="verifier-field-group" id="${contextId}-photo-section" style="display:${savedName ? 'block' : 'none'};">
+          <label class="verifier-label" style="display:flex; justify-content:space-between; align-items:center;">
+            <span>📸 2. Ambil Foto Dokumentasi Wajah:</span>
+            <span style="font-size:11px; color:${tempPhoto ? '#15803d' : '#92400e'}; font-weight:600;" id="${contextId}-photo-status-badge">
+              ${tempPhoto ? '✓ Foto Siap' : '⚠️ Wajib selfie sebelum mulai'}
+            </span>
           </label>
           <div class="camera-view-container" id="${contextId}-cam-container">
             <div class="camera-viewport">
               <div id="${contextId}-placeholder" class="camera-placeholder" style="display:${tempPhoto ? 'none' : 'flex'};">
-                <span style="font-size:28px; margin-bottom:4px;">👤</span>
-                <span style="font-size:11px;">Kamera belum aktif.<br>Klik tombol kamera di bawah.</span>
+                <span style="font-size:30px; margin-bottom:4px;">👤</span>
+                <span style="font-size:11.5px; font-weight:700; color:#334155;">Kamera Belum Aktif</span>
+                <span style="font-size:10.5px; color:#64748b;">Klik tombol <strong>"📷 Ambil Foto"</strong> di bawah.</span>
               </div>
               <video id="${contextId}-video" class="camera-video" autoplay playsinline muted style="display:none;"></video>
               <canvas id="${contextId}-canvas" style="display:none;"></canvas>
@@ -166,11 +170,11 @@ const StudentVerifier = {
 
             <!-- Tombol Aksi Kamera -->
             <div class="camera-btn-group">
-              <button type="button" id="${contextId}-btn-open" class="btn-camera btn-camera-open" onclick="StudentVerifier.openCamera('${contextId}')">
-                📷 Buka Kamera
+              <button type="button" id="${contextId}-btn-open" class="btn-camera btn-camera-open" style="font-weight:700;" onclick="StudentVerifier.openCamera('${contextId}')">
+                📷 Ambil Foto
               </button>
-              <button type="button" id="${contextId}-btn-snap" class="btn-camera btn-camera-capture" style="display:none;" onclick="StudentVerifier.snapPhoto('${contextId}')">
-                🔴 Ambil Foto
+              <button type="button" id="${contextId}-btn-snap" class="btn-camera btn-camera-capture" style="display:none; background:#dc2626; color:#fff; font-weight:700;" onclick="StudentVerifier.snapPhoto('${contextId}')">
+                🔴 Jepret / Ambil Foto
               </button>
               <button type="button" id="${contextId}-btn-close" class="btn-camera" style="display:none; background:#64748b; color:#fff;" onclick="StudentVerifier.stopCamera('${contextId}')">
                 ✖ Tutup
@@ -184,12 +188,14 @@ const StudentVerifier = {
               </label>
             </div>
           </div>
-        </div>
 
-        <!-- Tombol Konfirmasi -->
-        <button type="button" class="btn btn-primary btn-full" style="font-size:13.5px; padding:10px;" onclick="StudentVerifier.confirmVerification('${contextId}')">
-          ✅ Konfirmasi Nama &amp; Ambil Soal Kuis
-        </button>
+          <!-- Tombol Mulai Kerjakan Soal Kuis -->
+          <div style="margin-top:12px;">
+            <button type="button" id="${contextId}-btn-confirm" class="btn btn-primary btn-full" style="font-size:13.5px; padding:11px; font-weight:700;" onclick="StudentVerifier.confirmVerification('${contextId}')">
+              🚀 Mulai Kerjakan Soal Kuis
+            </button>
+          </div>
+        </div>
 
         <!-- Pesan Peringatan Validasi -->
         <div id="${contextId}-alert" class="verifier-alert-banner"></div>
@@ -200,10 +206,12 @@ const StudentVerifier = {
   handleNameChange(contextId, value) {
     if (value && value !== '__custom__' && AppState.isStudentCompleted(value)) {
       const sub = AppState.getStudentSubmission(value);
-      this.showAlert(contextId, `⛔ Nama "${value}" SUDAH MENGERJAKAN Kuis Akhir dengan nilai ${sub ? sub.score : '-'}. Nama yang sudah diisi tidak bisa mengerjakan lagi!`);
+      this.showAlert(contextId, `⛔ Nama "${value}" SUDAH MENGERJAKAN Kuis Akhir (Nilai: ${sub ? sub.score : '-'}). Kuis tidak boleh diulang oleh nama yang sama!`);
       const select = document.querySelector(`#${contextId}-select-name`);
       if (select) select.value = '';
       this.tempNames[contextId] = '';
+      const photoSection = document.querySelector(`#${contextId}-photo-section`);
+      if (photoSection) photoSection.style.display = 'none';
       return;
     }
 
@@ -218,6 +226,13 @@ const StudentVerifier = {
       if (customInput) customInput.style.display = 'none';
       this.tempNames[contextId] = value;
     }
+
+    const photoSection = document.querySelector(`#${contextId}-photo-section`);
+    if (photoSection) {
+      photoSection.style.display = (value ? 'block' : 'none');
+    }
+    this.hideAlert(contextId);
+  },
     this.hideAlert(contextId);
   },
 
@@ -449,7 +464,18 @@ const StudentVerifier = {
     this.stopCamera(contextId);
     this.syncAllCards();
 
-    alert(`Dokumentasi Berhasil Disimpan!\n\nNama Siswa: ${name}\nStatus: Terverifikasi Foto Wajah\n\nSilakan mulai mengerjakan soal Kuis Akhir!`);
+    // Buka dan fokuskan ke workspace soal kuis
+    if (contextId === 'kuis' && window.ViewKuis) {
+      const page10 = document.querySelector('#page-10');
+      if (page10) ViewKuis.render(page10);
+      setTimeout(() => {
+        const ws = document.querySelector('#quiz-workspace');
+        if (ws) {
+          ws.style.display = 'block';
+          ws.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
     return true;
   },
 
@@ -464,19 +490,14 @@ const StudentVerifier = {
   },
 
   resetActiveStudent() {
-    AppState.student = {
-      name: '',
-      customName: '',
-      photo: '',
-      verifiedAt: '',
-      isVerified: false
-    };
-    AppState.progress.quizCompleted = false;
-    AppState.quiz.userAnswers = {};
-    AppState.quiz.isLocked = {};
-    AppState.save();
+    AppState.resetActiveStudent();
+    this.tempPhotos = {};
+    this.tempNames = {};
+    const page10 = document.querySelector('#page-10');
+    if (page10 && window.ViewKuis) {
+      ViewKuis.render(page10);
+    }
     this.syncAllCards();
-    if (window.ViewKuis) ViewKuis.renderQuestion(0);
   },
 
   ensureVerified(contextId) {

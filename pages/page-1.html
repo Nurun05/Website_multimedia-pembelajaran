@@ -1,26 +1,4 @@
 <!-- HALAMAN 1: BERANDA & INFORMASI PENGEMBANG -->
-<!-- KARTU PILIHAN LOGIN PERAN (SESUAI PERMINTAAN PENGGUNA) -->
-<div class="card" style="background:#f0f7fe; border:1.5px solid var(--pastel-sky-border); margin-bottom:14px; padding:14px 16px;">
-  <div style="font-weight:700; font-size:13px; color:var(--primary-sky-deep); margin-bottom:10px; text-align:center;">
-    🔐 Pintu Masuk Pengguna Modul:
-  </div>
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-    <!-- Tombol Kamu siswa? login disini -->
-    <button type="button" class="btn btn-primary" style="padding:12px 10px; font-size:12.5px; display:flex; flex-direction:column; align-items:center; gap:3px; text-align:center; border-radius:var(--radius-md);" onclick="TeacherPanel.selectRole('siswa')">
-      <span style="font-size:22px;">👨‍🎓</span>
-      <span style="font-size:12px; font-weight:700;">Kamu siswa?</span>
-      <span style="font-size:11px; opacity:0.95; text-decoration:underline;">login disini</span>
-    </button>
-
-    <!-- Tombol Anda guru? login disini -->
-    <button type="button" class="btn btn-secondary" style="padding:12px 10px; font-size:12.5px; display:flex; flex-direction:column; align-items:center; gap:3px; text-align:center; border:1.5px solid var(--pastel-sky-border); border-radius:var(--radius-md);" onclick="TeacherPanel.showGuruPinBox(); TeacherPanel.openLoginModal();">
-      <span style="font-size:22px;">👨‍🏫</span>
-      <span style="font-size:12px; font-weight:700; color:var(--primary-sky-deep);">Anda guru?</span>
-      <span style="font-size:11px; color:var(--primary-sky-dark); text-decoration:underline;">login disini</span>
-    </button>
-  </div>
-</div>
-
 <div class="hero-visual-card">
   <div class="hero-img-box">
     <img src="assets/hero-biodiversity.svg" alt="Ilustrasi Keanekaragaman Hayati Nusantara" loading="eager">

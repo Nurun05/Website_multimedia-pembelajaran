@@ -1,49 +1,50 @@
 /* ====================================================================
-   VARIABLES.CSS - PALET WARNA #dae9f7 & TYPOGRAPHY CALIBRI LIGHT
-   Sesuai Contoh Warna Pengguna: #dae9f7 (Soft Pastel Sky Blue)
+   VARIABLES.CSS - PALET WARNA #a3c1e1 & TYPOGRAPHY CALIBRI LIGHT
+   Sesuai Contoh Warna Pengguna: #a3c1e1 (Soft Periwinkle Sky Blue)
    Multimedia Pembelajaran Interaktif SMP Negeri 1 Tandukkalua
    ==================================================================== */
 
 :root {
   /* ====================================================================
-     WARNA UTAMA PERSIS DARI GAMBAR PENGGUNA: #dae9f7
+     WARNA UTAMA PERSIS DARI GAMBAR PENGGUNA: #a3c1e1
+     RGB: (163, 193, 225) - Soft Pastel Periwinkle Sky Blue
      ==================================================================== */
-  --pastel-sky:               #dae9f7; /* Warna persis dari gambar */
-  --pastel-sky-subtle:        #f3f8fd; /* Latar kartu sangat lembut */
-  --pastel-sky-light:         #eaf3fb; /* Latar seleksi */
-  --pastel-sky-border:        #bad5ee; /* Border harmonis */
-  --pastel-sky-border-subtle: #cde1f4;
-  --pastel-sky-hover:         #c4ddf3;
+  --pastel-sky:               #a3c1e1; /* Warna persis dari gambar pengguna #a3c1e1 */
+  --pastel-sky-subtle:        #f0f5fb; /* Latar kartu sangat lembut */
+  --pastel-sky-light:         #e2edfa; /* Latar seleksi */
+  --pastel-sky-border:        #8fb3da; /* Border harmonis */
+  --pastel-sky-border-subtle: #b6cfee;
+  --pastel-sky-hover:         #91b5dc;
 
   /* Gradasi Biru untuk Elemen Utama & Teks */
-  --sky-primary:         #367bb7; /* Biru sejuk untuk tombol utama */
-  --sky-primary-hover:   #27679f;
-  --sky-primary-dark:    #1e3e63; /* Navy sejuk untuk teks heading */
-  --sky-primary-deep:    #142b47;
+  --sky-primary:         #3b7cb5; /* Biru sejuk untuk tombol utama */
+  --sky-primary-hover:   #2b6a9f;
+  --sky-primary-dark:    #163252; /* Navy sejuk untuk teks heading */
+  --sky-primary-deep:    #0f243d;
 
   /* Aliases Kompatibilitas */
-  --primary-sky:         #367bb7;
-  --primary-sky-light:   #4d93d4;
-  --primary-sky-dark:    #27679f;
-  --primary-sky-deep:    #1e3e63;
-  --primary-navy:        #367bb7;
-  --primary-navy-dark:   #1e3e63;
-  --primary-navy-light:  #4d93d4;
+  --primary-sky:         #3b7cb5;
+  --primary-sky-light:   #5b9ad1;
+  --primary-sky-dark:    #2b6a9f;
+  --primary-sky-deep:    #163252;
+  --primary-navy:        #3b7cb5;
+  --primary-navy-dark:   #163252;
+  --primary-navy-light:  #5b9ad1;
 
   /* Tombol Utama (Primary): Biru Langit Lembut Bersinar */
-  --btn-primary-bg:      linear-gradient(135deg, #4a91d2 0%, #2f73ae 100%);
-  --btn-primary-hover:   linear-gradient(135deg, #367bb7 0%, #245f94 100%);
-  --btn-primary-shadow:  0 4px 12px rgba(47, 115, 174, 0.28);
+  --btn-primary-bg:      linear-gradient(135deg, #4b8ec8 0%, #3074ad 100%);
+  --btn-primary-hover:   linear-gradient(135deg, #3b7cb5 0%, #246092 100%);
+  --btn-primary-shadow:  0 4px 12px rgba(48, 116, 173, 0.28);
 
-  /* Tombol Sekunder (Secondary): Menggunakan Warna #dae9f7 */
-  --btn-secondary-bg:    #dae9f7;
-  --btn-secondary-color: #1e3e63;
-  --btn-secondary-border:#bad5ee;
-  --btn-secondary-hover: #cbe0f4;
+  /* Tombol Sekunder (Secondary): Menggunakan Warna #a3c1e1 */
+  --btn-secondary-bg:    #a3c1e1;
+  --btn-secondary-color: #0f243d;
+  --btn-secondary-border:#8fb3da;
+  --btn-secondary-hover: #91b5dc;
 
   /* Tombol Outline */
-  --btn-outline-border:  #4a91d2;
-  --btn-outline-color:   #27679f;
+  --btn-outline-border:  #4b8ec8;
+  --btn-outline-color:   #2b6a9f;
 
   /* Umpan Balik Jawaban */
   --feedback-correct:        #0d9488;
@@ -63,8 +64,8 @@
   --bg-card:        #ffffff;
   --text-main:      #1a2a3a;
   --text-muted:     #5e7388;
-  --border-color:   #dae9f7;
-  --border-strong:  #bad5ee;
+  --border-color:   #a3c1e1;
+  --border-strong:  #8fb3da;
 
   /* Bayangan */
   --shadow-sm: 0 2px 4px rgba(30, 62, 99, 0.06);

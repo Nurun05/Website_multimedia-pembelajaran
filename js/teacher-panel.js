@@ -32,21 +32,21 @@ const TeacherPanel = {
 
             <div class="role-options-grid">
               <!-- Pilihan Siswa -->
-              <div class="role-choice-card" onclick="TeacherPanel.selectRole('siswa')">
+              <div class="role-choice-card" onclick="TeacherPanel.selectRole('siswa')" style="cursor:pointer;">
                 <div class="role-icon-circle">👨‍🎓</div>
                 <div class="role-name">Kamu Siswa?</div>
                 <div class="role-desc">Login di sini untuk mulai belajar dan mengerjakan latihan.</div>
-                <button type="button" class="btn btn-primary" style="font-size:11.5px; padding:6px 12px; margin-top:4px;">
+                <button type="button" class="btn btn-primary" style="font-size:11.5px; padding:6px 12px; margin-top:4px;" onclick="event.stopPropagation(); TeacherPanel.selectRole('siswa');">
                   Masuk Siswa
                 </button>
               </div>
 
               <!-- Pilihan Guru -->
-              <div class="role-choice-card" onclick="TeacherPanel.showGuruPinBox()">
+              <div class="role-choice-card" onclick="TeacherPanel.showGuruPinBox()" style="cursor:pointer;">
                 <div class="role-icon-circle">👨‍🏫</div>
                 <div class="role-name">Anda Guru?</div>
                 <div class="role-desc">Login di sini untuk kelola nama siswa &amp; cek folder hasil kuis.</div>
-                <button type="button" class="btn btn-secondary" style="font-size:11.5px; padding:6px 12px; margin-top:4px;">
+                <button type="button" class="btn btn-secondary" style="font-size:11.5px; padding:6px 12px; margin-top:4px;" onclick="event.stopPropagation(); TeacherPanel.showGuruPinBox();">
                   Masuk Guru
                 </button>
               </div>
@@ -301,12 +301,18 @@ const TeacherPanel = {
     if (pinError) pinError.style.display = 'none';
     if (pinInput) pinInput.value = '';
 
-    if (modal) modal.classList.add('active');
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.classList.add('active');
+    }
   },
 
   closeLoginModal() {
     const modal = document.querySelector('#login-role-modal');
-    if (modal) modal.classList.remove('active');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+    }
   },
 
   selectRole(role) {
@@ -316,8 +322,8 @@ const TeacherPanel = {
       AppState.save();
       this.closeLoginModal();
       this.updateHeaderRoleBadge();
-      // Arahkan ke Halaman 2 (Petunjuk & Materi) jika di beranda
-      if (AppState.currentPage === 1 && window.AppRouter) {
+      // Langsung masuk ke modul pembelajaran (Halaman 2: Petunjuk Pembelajaran)
+      if (window.AppRouter) {
         AppRouter.goToPage(2);
       }
     } else if (role === 'guru') {
@@ -363,6 +369,7 @@ const TeacherPanel = {
 
   openDashboard() {
     this.ensureModalsInDOM();
+    AppState.load(); // Pastikan data terbaru dari pengerjaan siswa termuat
     const modal = document.querySelector('#teacher-dashboard-modal');
     if (modal) {
       modal.classList.add('active');

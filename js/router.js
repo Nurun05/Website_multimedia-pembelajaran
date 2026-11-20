@@ -45,6 +45,16 @@ const AppRouter = {
     rightBtn.style.display = 'inline-flex';
     bottomNav.style.display = 'flex';
 
+    // Kelola Wadah Login Peran di Tengah Navigasi Bawah (Khusus Halaman 1 Beranda)
+    const roleCenter = document.querySelector('#nav-role-center');
+    if (pageNum === 1) {
+      if (roleCenter) roleCenter.style.display = 'flex';
+      bottomNav.classList.add('nav-page-1');
+    } else {
+      if (roleCenter) roleCenter.style.display = 'none';
+      bottomNav.classList.remove('nav-page-1');
+    }
+
     switch (pageNum) {
       case 1: // Beranda
         leftBtn.textContent = 'Langsung ke Menu';

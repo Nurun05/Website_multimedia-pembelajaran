@@ -626,3 +626,106 @@
     display: none !important;
   }
 }
+
+/* ====================================================================
+ * TOMBOL LOGIN PERAN DI TENGAH NAVIGASI BAWAH (HALAMAN 1 BERANDA)
+ * Posisinya tepat di antara tombol "Langsung ke Menu" & "Mulai Belajar"
+ * ==================================================================== */
+.nav-role-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 520px;
+  margin: 0 10px;
+}
+
+.nav-role-card {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--pastel-sky-border);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  box-shadow: 0 2px 5px rgba(30, 58, 95, 0.05);
+}
+
+.nav-role-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(54, 123, 183, 0.16);
+}
+
+.nav-role-card.role-siswa {
+  border-color: #93c5fd;
+  background: linear-gradient(135deg, #f0f7fe 0%, #e0f2fe 100%);
+}
+
+.nav-role-card.role-siswa:hover {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  border-color: var(--primary-sky);
+}
+
+.nav-role-card.role-guru {
+  border-color: #cbd5e1;
+  background: #ffffff;
+}
+
+.nav-role-card.role-guru:hover {
+  background: #f8fafc;
+  border-color: var(--primary-sky-deep);
+}
+
+.nav-role-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.nav-role-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.nav-role-text strong {
+  font-size: 11.5px;
+  color: var(--primary-sky-deep);
+  font-weight: 700;
+}
+
+.nav-role-text small {
+  font-size: 10.5px;
+  color: var(--primary-sky-dark);
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+/* Responsif Mobile & Layar Sentuh */
+@media (max-width: 680px) {
+  .app-bottom-nav.nav-page-1 {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .app-bottom-nav.nav-page-1 .nav-role-center {
+    order: 1;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 6px 0;
+  }
+  .app-bottom-nav.nav-page-1 #btn-bottom-left {
+    order: 2;
+    flex: 1;
+  }
+  .app-bottom-nav.nav-page-1 #btn-bottom-right {
+    order: 3;
+    flex: 1;
+  }
+}

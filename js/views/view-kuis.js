@@ -5,6 +5,10 @@
 
 const ViewKuis = {
   render(container) {
+    const student = AppState.student || {};
+    const isCompleted = student.name && AppState.isStudentCompleted(student.name);
+    const isVerified = student.isVerified && student.name && student.photo;
+
     const verifierHTML = window.StudentVerifier ? StudentVerifier.getCardHTML('kuis') : '';
 
     container.innerHTML = `
@@ -13,48 +17,62 @@ const ViewKuis = {
         ${verifierHTML}
       </div>
 
-      <div class="quiz-header-status">
-        <span id="quiz-num-indicator" style="font-weight:700; font-size:13px; color:var(--primary-sky-deep);">Soal 1 dari 10</span>
-        <span id="quiz-tp-badge" class="quiz-tp-badge">TP 1: Konsep &amp; Istilah</span>
-      </div>
-
-      <div class="card">
-        <div id="quiz-question-text" class="quiz-q-text">
-          Memuat pertanyaan kuis...
+      <!-- Area Soal Kuis (Aktif hanya jika siswa sudah pilih nama & ambil foto, serta belum selesai) -->
+      <div id="quiz-workspace" style="display:${(isVerified && !isCompleted) ? 'block' : 'none'};">
+        <div class="quiz-header-status">
+          <span id="quiz-num-indicator" style="font-weight:700; font-size:13px; color:var(--primary-sky-deep);">Soal 1 dari 10</span>
+          <span id="quiz-tp-badge" class="quiz-tp-badge">TP 1: Konsep &amp; Istilah</span>
         </div>
 
-        <div id="quiz-options-container">
-          <!-- Pilihan Opsi A, B, C, D -->
+        <div class="card">
+          <div id="quiz-question-text" class="quiz-q-text">
+            Memuat pertanyaan kuis...
+          </div>
+
+          <div id="quiz-options-container">
+            <!-- Pilihan Opsi A, B, C, D -->
+          </div>
+
+          <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+            <button type="button" id="btn-quiz-lock" class="btn btn-primary btn-full" onclick="ViewKuis.lockAnswer()">
+              🔒 Kunci Jawaban &amp; Buka Pembahasan
+            </button>
+          </div>
+
+          <div id="quiz-explanation-box" class="quiz-explanation-box">
+            <!-- Pembahasan Ilmiah -->
+          </div>
         </div>
 
-        <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
-          <button type="button" id="btn-quiz-lock" class="btn btn-primary btn-full" onclick="ViewKuis.lockAnswer()">
-            🔒 Kunci Jawaban &amp; Buka Pembahasan
+        <!-- Navigasi Soal Prev / Next -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <button type="button" id="btn-quiz-prev" class="btn btn-outline" style="padding:8px 14px;" onclick="ViewKuis.prevQuestion()">
+            ◀ Sebelumnya
+          </button>
+          <button type="button" id="btn-quiz-next" class="btn btn-outline" style="padding:8px 14px;" onclick="ViewKuis.nextQuestion()">
+            Berikutnya ▶
           </button>
         </div>
 
-        <div id="quiz-explanation-box" class="quiz-explanation-box">
-          <!-- Pembahasan Ilmiah -->
-        </div>
-      </div>
-
-      <!-- Navigasi Soal Prev / Next -->
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <button type="button" id="btn-quiz-prev" class="btn btn-outline" style="padding:8px 14px;" onclick="ViewKuis.prevQuestion()">
-          ◀ Sebelumnya
-        </button>
-        <button type="button" id="btn-quiz-next" class="btn btn-outline" style="padding:8px 14px;" onclick="ViewKuis.nextQuestion()">
-          Berikutnya ▶
+        <!-- Tombol Selesai & Kirim Hasil ke Guru -->
+        <button type="button" id="btn-quiz-submit" class="btn btn-success btn-full" style="display:none; font-size:14px; padding:12px;" onclick="ViewKuis.submitQuiz()">
+          🏆 Selesai &amp; Kirim Hasil ke Guru
         </button>
       </div>
 
-      <!-- Tombol Selesai & Lihat Hasil -->
-      <button type="button" id="btn-quiz-submit" class="btn btn-success btn-full" style="display:none; font-size:14px; padding:12px;" onclick="ViewKuis.submitQuiz()">
-        🏆 Lihat Hasil Evaluasi &amp; Rekomendasi
-      </button>
+      <!-- Kotak Petunjuk Terkunci Jika Belum Ambil Foto -->
+      <div id="quiz-locked-notice" class="card" style="display:${(!isVerified && !isCompleted) ? 'block' : 'none'}; text-align:center; padding:22px 16px; background:#f8fafc; border:1.5px dashed #cbd5e1; margin-top:12px;">
+        <span style="font-size:32px; display:block; margin-bottom:6px;">🔒</span>
+        <strong style="color:var(--primary-sky-deep); font-size:13.5px;">Soal Kuis Masih Terkunci</strong>
+        <p style="font-size:12px; color:#64748b; margin:6px auto 0; max-width:340px; line-height:1.5;">
+          Sesuai panduan penilaian resmi, silakan <strong>pilih nama Anda</strong> pada daftar di atas lalu klik tombol <strong>"📷 Ambil Foto"</strong> untuk membuka soal kuis.
+        </p>
+      </div>
     `;
 
-    this.renderQuestion(AppState.quiz.currentQuestionIndex);
+    if (isVerified && !isCompleted) {
+      this.renderQuestion(AppState.quiz.currentQuestionIndex || 0);
+    }
   },
 
   renderQuestion(idx) {

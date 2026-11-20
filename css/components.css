@@ -3,18 +3,19 @@
    Warna Utama: #dae9f7 & Calibri Light
    ==================================================================== */
 
-/* Header Bilah Judul Atas */
+/* Header Bilah Judul Atas (Menggunakan Palet Warna #a3c1e1 Sesuai Contoh Gambar Pengguna) */
 .app-header {
-  background: linear-gradient(135deg, #2a6ca7 0%, #397ebd 60%, #458ac5 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #93b7dd 0%, #a3c1e1 55%, #b6d2ed 100%);
+  color: #0f243d;
   padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 3px 8px rgba(30, 58, 95, 0.15);
+  box-shadow: 0 2px 10px rgba(15, 36, 61, 0.08);
   position: relative;
   z-index: 90;
   flex-shrink: 0;
+  border-bottom: 1.5px solid var(--pastel-sky-border);
 }
 .header-left {
   display: flex;
@@ -22,32 +23,34 @@
   gap: 12px;
 }
 .header-badge {
-  background: rgba(255, 255, 255, 0.22);
-  color: #ffffff;
+  background: rgba(15, 36, 61, 0.12);
+  color: #0f243d;
   font-size: 10px;
   font-weight: 700;
   padding: 2px 9px;
   border-radius: var(--radius-full);
   letter-spacing: 0.5px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(15, 36, 61, 0.2);
 }
 .header-title-text {
   font-size: 15px;
   font-weight: 700;
   line-height: 1.25;
+  color: #0f243d;
 }
 .header-subtitle-text {
   font-size: 11px;
-  color: #dae9f7; /* Menggunakan warna pastel sky */
+  color: #1a416b;
+  font-weight: 600;
 }
 .page-tracker {
-  background-color: rgba(255, 255, 255, 0.22);
+  background-color: rgba(15, 36, 61, 0.1);
   font-size: 11px;
   font-weight: 700;
   padding: 4px 11px;
   border-radius: var(--radius-full);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #0f243d;
+  border: 1px solid rgba(15, 36, 61, 0.18);
 }
 
 /* Bilah Bawah Navigasi */

@@ -168,6 +168,26 @@ const AppState = {
     this.save();
   },
 
+  resetActiveStudent() {
+    this.student = {
+      name: '',
+      customName: '',
+      photo: '',
+      verifiedAt: '',
+      isVerified: false
+    };
+    this.progress.quizCompleted = false;
+    this.quiz.userAnswers = {};
+    this.quiz.isLocked = {};
+    this.quiz.currentQuestionIndex = 0;
+    this.save();
+    if (window.StudentVerifier) {
+      StudentVerifier.tempPhotos = {};
+      StudentVerifier.tempNames = {};
+      StudentVerifier.syncAllCards();
+    }
+  },
+
   save() {
     try {
       localStorage.setItem('kehati_media_state', JSON.stringify({

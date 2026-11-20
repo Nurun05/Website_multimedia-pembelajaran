@@ -70,14 +70,22 @@ const ViewHasil = {
         Memuat saran pembelajaran...
       </div>
 
-      <!-- 4 Tombol Tindakan Hasil -->
+      <!-- Informasi Kuis Resmi Hanya 1 Kali -->
+      <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:var(--radius-sm); padding:10px 14px; text-align:center;">
+        <div style="color:#166534; font-weight:700; font-size:12.5px;">✓ Hasil Kuis Resmi Telah Tersimpan di Folder Guru</div>
+        <div style="color:#15803d; font-size:11px; margin-top:2px;">
+          Kuis akhir hanya dapat dikerjakan 1 kali per siswa dan tidak dapat diulang oleh nama yang sama.
+        </div>
+      </div>
+
+      <!-- Tombol Tindakan Hasil -->
       <div style="display:flex; flex-direction:column; gap:8px;">
         <div style="display:flex; gap:8px;">
-          <button type="button" class="btn btn-outline" style="flex:1;" onclick="ViewHasil.retakeQuiz()">
-            🔄 Ulangi Kuis
+          <button type="button" class="btn btn-outline" style="flex:1; font-size:12px;" onclick="ViewHasil.nextStudent()">
+            👤 Siswa Berikutnya (Ganti Nama)
           </button>
-          <button type="button" class="btn btn-secondary" style="flex:1;" onclick="ViewHasil.reviewMaterial()">
-            📚 Belajar Lagi
+          <button type="button" class="btn btn-secondary" style="flex:1; font-size:12px;" onclick="ViewHasil.reviewMaterial()">
+            📚 Pelajari Ulang Materi
           </button>
         </div>
         <button type="button" class="btn btn-primary btn-full" onclick="AppRouter.goToPage(12)">
@@ -156,10 +164,8 @@ const ViewHasil = {
     if (text) text.textContent = label;
   },
 
-  retakeQuiz() {
-    AppState.quiz.userAnswers = {};
-    AppState.quiz.isLocked = {};
-    AppState.quiz.currentQuestionIndex = 0;
+  nextStudent() {
+    AppState.resetActiveStudent();
     AppRouter.goToPage(10);
   },
 
