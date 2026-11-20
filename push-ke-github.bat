@@ -10,6 +10,7 @@ echo ====================================================================
 echo.
 
 set "GIT_CMD=%~dp0.tools\git\cmd\git.exe"
+set "PATH=%~dp0.tools\git\cmd;%~dp0.tools\git\mingw64\bin;%PATH%"
 
 if not exist "%GIT_CMD%" (
     echo [ERROR] Git portable tidak ditemukan di .tools\git\cmd\git.exe
