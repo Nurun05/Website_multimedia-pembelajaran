@@ -216,7 +216,44 @@ const ViewKuis = {
 
     AppState.progress.quizCompleted = true;
     AppState.progress.quizScore = finalScore;
+
+    // Catat secara otomatis ke Folder Guru lengkap dengan foto dokumentasi & status KKM
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('id-ID', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+    const formattedTime = now.toLocaleTimeString('id-ID', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    const passThreshold = (window.APP_DATA && APP_DATA.info && APP_DATA.info.passingScore) || 70;
+    const isPass = finalScore >= passThreshold;
+
+    const submission = {
+      id: 'sub-' + Date.now(),
+      studentName: AppState.student.name,
+      studentPhoto: AppState.student.photo,
+      score: finalScore,
+      isPass: isPass,
+      tpScores: {
+        tp1: { correct: tp1Correct, total: tp1Total, pct: tp1Pct },
+        tp2: { correct: tp2Correct, total: tp2Total, pct: tp2Pct },
+        tp3: { correct: tp3Correct, total: tp3Total, pct: tp3Pct }
+      },
+      userAnswers: { ...AppState.quiz.userAnswers },
+      submittedAt: `${formattedDate}, ${formattedTime} WITA`
+    };
+
+    AppState.addStudentSubmission(submission);
     AppState.save();
+
+    if (window.StudentVerifier) StudentVerifier.syncAllCards();
+    if (window.TeacherPanel) TeacherPanel.renderDashboard();
+
+    alert(`🎉 Kuis Akhir Selesai!\n\nNama Siswa: ${AppState.student.name}\nNilai Kuis: ${finalScore} / 100 (${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'})\n\nHasil dan foto dokumentasi wajah Anda telah otomatis tersimpan ke Folder Guru SMP Negeri 1 Tandukkalua.`);
 
     AppRouter.goToPage(11);
   }

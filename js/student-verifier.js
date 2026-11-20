@@ -1,6 +1,6 @@
 /**
- * STUDENT-VERIFIER.JS - MODUL VERIFIKASI WAJAH & IDENTITAS SISWA (ANTI-JOKI)
- * Menjamin pengisian latihan & kuis sesuai dengan siswa bersangkutan.
+ * STUDENT-VERIFIER.JS - MODUL VERIFIKASI WAJAH & DOKUMENTASI SISWA
+ * Mengelola pilihan nama siswa dari guru & foto selfie dokumentasi resmi Kuis Akhir.
  * SMP Negeri 1 Tandukkalua - Mata Pelajaran IPA Fase D
  * Pengembang: Nurun Nisa Ahmad (NIM: 240209501049) - PTIK E 2024
  */
@@ -15,10 +15,81 @@ const StudentVerifier = {
   },
 
   getCardHTML(contextId) {
-    const student = AppState.student || {};
-    const isVerified = student.isVerified && student.name && student.photo;
+    // 1. Tampilan untuk Latihan Formatif (Kegiatan 1, 2, 3)
+    // Sesuai permintaan pengguna: Latihan bisa digunakan berkali-kali & tidak diambil nilainya.
+    if (contextId === 'latihan1' || contextId === 'latihan2' || contextId === 'latihan3') {
+      const actTitle = contextId === 'latihan1' ? 'Latihan 1: Konsep & Istilah' 
+                     : contextId === 'latihan2' ? 'Latihan 2: Tiga Tingkat Kehati' 
+                     : 'Latihan 3: Pengamatan & Biogeografi';
+      return `
+        <div class="card" style="background:#f0f9ff; border:1.5px solid var(--pastel-sky-border); padding:10px 14px; margin-bottom:14px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:22px;">💡</span>
+            <div>
+              <strong style="font-size:12.5px; color:var(--primary-sky-deep);">${actTitle} (Latihan Mandiri)</strong>
+              <div style="font-size:11.5px; color:#475569; line-height:1.45;">
+                Latihan ini dapat kamu kerjakan <strong>berkali-kali tanpa batas</strong> untuk mengasah pemahaman konsep. 
+                Nilai latihan ini <em>tidak diambil ke buku nilai guru</em> (nilai resmi kuis diambil pada Halaman 10).
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
 
-    if (isVerified) {
+    // 2. Tampilan Khusus KUIS AKHIR (Evaluasi Penilaian Resmi Guru)
+    const student = AppState.student || {};
+    const roster = AppState.getRoster();
+    const savedName = this.tempNames[contextId] || student.name || '';
+    const tempPhoto = this.tempPhotos[contextId] || student.photo || '';
+
+    // Periksa apakah siswa aktif SUDAH MENGERJAKAN kuis akhir sebelumnya
+    if (savedName && AppState.isStudentCompleted(savedName)) {
+      const sub = AppState.getStudentSubmission(savedName);
+      const isPass = sub && sub.score >= (window.APP_DATA && APP_DATA.info ? APP_DATA.info.passingScore : 70);
+
+      return `
+        <div class="verifier-card" id="card-${contextId}" style="border:2px solid #16a34a; background:#f0fdf4;">
+          <div style="display:flex; align-items:flex-start; gap:12px;">
+            <img src="${sub ? sub.studentPhoto : 'assets/hero-biodiversity.svg'}" 
+                 alt="Foto Dokumentasi Siswa" 
+                 class="verified-avatar-img" 
+                 style="width:58px; height:58px; border:2.5px solid #16a34a; cursor:pointer;"
+                 onclick="TeacherPanel.viewPhoto('${sub ? sub.studentName.replace(/'/g, "\\'") : ''}', '${sub ? sub.studentPhoto : ''}', ${sub ? sub.score : 0}, ${isPass}, '${sub ? sub.submittedAt : '-'}')">
+            
+            <div style="flex:1;">
+              <div style="font-size:14px; font-weight:700; color:#166534;">
+                ${sub ? sub.studentName : savedName}
+              </div>
+              <div style="font-size:12px; color:#15803d; margin-top:2px;">
+                Nilai Kuis: <strong>${sub ? sub.score : '-'} / 100</strong> — 
+                <span style="font-weight:700; color:${isPass ? '#16a34a' : '#dc2626'};">
+                  ${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'}
+                </span>
+              </div>
+              <div style="font-size:11px; color:#475569; margin-top:2px;">
+                🕒 Dokumentasi &amp; Nilai tercatat di Folder Guru: ${sub ? sub.submittedAt : '-'}
+              </div>
+              <div style="background:#fef3c7; border:1px solid #fde68a; color:#92400e; padding:6px 10px; border-radius:6px; font-size:11.5px; margin-top:6px; font-weight:600;">
+                🔒 Nama ini <strong>sudah mengisi Kuis Akhir</strong> dan tidak bisa mengerjakan lagi (hanya siswa yang belum mengisi yang dapat mengerjakan).
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:8px; margin-top:12px;">
+            <button type="button" class="btn btn-outline" style="font-size:12px; flex:1;" onclick="StudentVerifier.resetActiveStudent()">
+              👤 Pilih Siswa Lain (Belum Mengisi)
+            </button>
+            <button type="button" class="btn btn-primary" style="font-size:12px; flex:1;" onclick="AppRouter.goToPage(11)">
+              🏆 Buka Lembar Hasil Kuis
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Jika siswa sudah terverifikasi dan belum menyelesaikan kuis
+    if (student.isVerified && student.name && student.photo && !AppState.isStudentCompleted(student.name)) {
       return `
         <div class="verifier-card" id="card-${contextId}">
           <div class="verifier-verified-box">
@@ -28,8 +99,8 @@ const StudentVerifier = {
             </div>
             <div class="verified-info">
               <div class="verified-student-name">${student.name}</div>
-              <div class="verified-student-meta">Kelas VII - SMP Negeri 1 Tandukkalua</div>
-              <div class="verified-timestamp">🛡️ Bebas Joki | Terverifikasi: ${student.verifiedAt || 'Aktif'}</div>
+              <div class="verified-student-meta">Kelas VII • SMP Negeri 1 Tandukkalua</div>
+              <div class="verified-timestamp">📸 Foto Dokumentasi Siap | Status: Siap Mengerjakan Kuis</div>
             </div>
             <button type="button" class="btn-reverify" onclick="StudentVerifier.resetVerification('${contextId}')" title="Ganti nama atau foto">
               🔄 Ganti / Foto Ulang
@@ -39,46 +110,47 @@ const StudentVerifier = {
       `;
     }
 
-    const roster = APP_DATA.studentRoster || [];
-    const savedName = this.tempNames[contextId] || student.name || '';
-    const tempPhoto = this.tempPhotos[contextId] || student.photo || '';
-
+    // Form Pemilihan Nama Siswa & Pengambilan Foto Dokumentasi
     return `
       <div class="verifier-card" id="card-${contextId}">
         <div class="verifier-title-bar">
           <span style="font-size:18px;">🛡️</span>
-          <span class="verifier-title">Verifikasi Identitas &amp; Wajah Siswa</span>
-          <span class="verifier-badge-anti-joki">ANTI-JOKI</span>
+          <span class="verifier-title">Identitas Peserta &amp; Dokumentasi Foto Wajah</span>
+          <span class="verifier-badge-anti-joki">DOKUMENTASI GURU</span>
         </div>
         
         <div class="verifier-desc">
-          Pilihlah nama Anda dari daftar siswa di bawah ini dan ambil foto selfie langsung melalui kamera HP/laptop untuk menjamin pengerjaan dilakukan sendiri secara jujur.
+          Sebelum mengerjakan Kuis Akhir, silakan <strong>pilih nama Anda dari daftar</strong> yang telah dimasukkan oleh Guru, kemudian <strong>ambil foto selfie wajah</strong> sebagai bukti dokumentasi pengerjaan resmi.
         </div>
 
         <!-- 1. Pemilihan Nama Siswa -->
         <div class="verifier-field-group">
           <label class="verifier-label" for="${contextId}-select-name">
-            👤 Nama Lengkap Siswa:
+            👤 Pilih Nama Lengkap Siswa (Dari Daftar Guru):
           </label>
           <select id="${contextId}-select-name" class="verifier-select" onchange="StudentVerifier.handleNameChange('${contextId}', this.value)">
-            <option value="">-- Pilih Nama Siswa (Kelas VII SMPN 1 Tandukkalua) --</option>
-            ${roster.map(name => `
-              <option value="${name}" ${savedName === name ? 'selected' : ''}>${name}</option>
-            `).join('')}
-            <option value="__custom__" ${savedName && !roster.includes(savedName) ? 'selected' : ''}>➕ [Ketik Nama Lain / Siswa Baru]</option>
+            <option value="">-- Pilih Nama Anda (Kelas VII SMPN 1 Tandukkalua) --</option>
+            ${roster.map(name => {
+              const isDone = AppState.isStudentCompleted(name);
+              const sub = isDone ? AppState.getStudentSubmission(name) : null;
+              const disabledAttr = isDone ? 'disabled style="color:#94a3b8; background:#f8fafc;"' : '';
+              const label = isDone ? `${name} (✓ Sudah Mengerjakan - Nilai: ${sub ? sub.score : '-'})` : name;
+              return `<option value="${name}" ${savedName === name ? 'selected' : ''} ${disabledAttr}>${label}</option>`;
+            }).join('')}
+            <option value="__custom__" ${savedName && !roster.includes(savedName) ? 'selected' : ''}>➕ [Ketik Nama Sendiri / Siswa Baru]</option>
           </select>
 
           <input type="text" id="${contextId}-custom-name" class="verifier-input-text" 
-                 placeholder="Ketik nama lengkap Anda di sini..." 
+                 placeholder="Ketik nama lengkap Anda di sini jika belum ada di daftar..." 
                  value="${savedName && !roster.includes(savedName) ? savedName : ''}"
                  style="display:${savedName && !roster.includes(savedName) ? 'block' : 'none'};"
                  oninput="StudentVerifier.handleCustomNameInput('${contextId}', this.value)">
         </div>
 
-        <!-- 2. Kamera & Foto Wajah -->
+        <!-- 2. Kamera & Foto Dokumentasi Wajah -->
         <div class="verifier-field-group">
           <label class="verifier-label">
-            📸 Verifikasi Wajah Siswa:
+            📸 Foto Selfie Dokumentasi Wajah:
           </label>
           <div class="camera-view-container" id="${contextId}-cam-container">
             <div class="camera-viewport">
@@ -106,7 +178,7 @@ const StudentVerifier = {
               <button type="button" id="${contextId}-btn-retake" class="btn-camera btn-camera-open" style="display:${tempPhoto ? 'inline-flex' : 'none'};" onclick="StudentVerifier.retakePhoto('${contextId}')">
                 🔄 Foto Ulang
               </button>
-              <label class="btn-camera btn-camera-upload" title="Pilih dari galeri foto atau kamera ponsel">
+              <label class="btn-camera btn-camera-upload" title="Pilih dari kamera ponsel atau galeri">
                 📁 Kamera HP / Galeri
                 <input type="file" id="${contextId}-file-input" accept="image/*" capture="user" style="display:none;" onchange="StudentVerifier.handleFileUpload('${contextId}', this)">
               </label>
@@ -116,7 +188,7 @@ const StudentVerifier = {
 
         <!-- Tombol Konfirmasi -->
         <button type="button" class="btn btn-primary btn-full" style="font-size:13.5px; padding:10px;" onclick="StudentVerifier.confirmVerification('${contextId}')">
-          ✅ Simpan &amp; Verifikasi Identitas
+          ✅ Konfirmasi Nama &amp; Ambil Soal Kuis
         </button>
 
         <!-- Pesan Peringatan Validasi -->
@@ -126,6 +198,15 @@ const StudentVerifier = {
   },
 
   handleNameChange(contextId, value) {
+    if (value && value !== '__custom__' && AppState.isStudentCompleted(value)) {
+      const sub = AppState.getStudentSubmission(value);
+      this.showAlert(contextId, `⛔ Nama "${value}" SUDAH MENGERJAKAN Kuis Akhir dengan nilai ${sub ? sub.score : '-'}. Nama yang sudah diisi tidak bisa mengerjakan lagi!`);
+      const select = document.querySelector(`#${contextId}-select-name`);
+      if (select) select.value = '';
+      this.tempNames[contextId] = '';
+      return;
+    }
+
     const customInput = document.querySelector(`#${contextId}-custom-name`);
     if (value === '__custom__') {
       if (customInput) {
@@ -141,7 +222,12 @@ const StudentVerifier = {
   },
 
   handleCustomNameInput(contextId, value) {
-    this.tempNames[contextId] = value.trim();
+    const trimmed = value.trim();
+    if (trimmed && AppState.isStudentCompleted(trimmed)) {
+      this.showAlert(contextId, `⛔ Nama "${trimmed}" sudah menyelesaikan Kuis Akhir sebelumnya!`);
+      return;
+    }
+    this.tempNames[contextId] = trimmed;
     this.hideAlert(contextId);
   },
 
@@ -188,7 +274,7 @@ const StudentVerifier = {
       if (btnRetake) btnRetake.style.display = 'none';
     } catch (err) {
       console.warn('Gagal membuka kamera:', err);
-      this.showAlert(contextId, 'Izin kamera ditolak atau kamera sedang dipakai aplikasi lain. Anda dapat menggunakan tombol "Kamera HP / Galeri".');
+      this.showAlert(contextId, 'Izin kamera ditolak atau sedang digunakan aplikasi lain. Anda dapat menggunakan tombol "Kamera HP / Galeri".');
     }
   },
 
@@ -208,11 +294,10 @@ const StudentVerifier = {
     canvas.height = size;
     const ctx = canvas.getContext('2d');
 
-    // Buat efek mirror pada canvas sesuai video selfie
+    // Efek cermin mirror untuk selfie natural
     ctx.translate(size, 0);
     ctx.scale(-1, 1);
 
-    // Ambil crop tengah dari video agar tidak terdistorsi
     const vWidth = video.videoWidth || size;
     const vHeight = video.videoHeight || size;
     const minDim = Math.min(vWidth, vHeight);
@@ -224,7 +309,6 @@ const StudentVerifier = {
     const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
     this.tempPhotos[contextId] = dataUrl;
 
-    // Tampilkan pratinjau foto
     preview.src = dataUrl;
     preview.style.display = 'block';
     video.style.display = 'none';
@@ -326,19 +410,23 @@ const StudentVerifier = {
       }
     }
 
-    const photo = this.tempPhotos[contextId] || (AppState.student && AppState.student.photo);
-
     if (!name) {
       this.showAlert(contextId, '⚠️ Silakan pilih nama Anda terlebih dahulu dari daftar nama siswa!');
       return false;
     }
 
-    if (!photo) {
-      this.showAlert(contextId, '⚠️ Silakan ambil foto selfie wajah Anda terlebih dahulu menggunakan kamera atau tombol upload!');
+    // Periksa apakah nama ini sudah mengerjakan sebelumnya
+    if (contextId === 'kuis' && AppState.isStudentCompleted(name)) {
+      this.showAlert(contextId, `⛔ Nama "${name}" sudah pernah mengerjakan Kuis Akhir. Siswa yang sudah mengisi tidak bisa mengerjakan lagi!`);
       return false;
     }
 
-    // Format tanggal & jam
+    const photo = this.tempPhotos[contextId] || (AppState.student && AppState.student.photo);
+    if (!photo) {
+      this.showAlert(contextId, '⚠️ Silakan ambil foto selfie dokumentasi wajah Anda terlebih dahulu menggunakan kamera atau tombol upload!');
+      return false;
+    }
+
     const now = new Date();
     const formattedDate = now.toLocaleDateString('id-ID', {
       day: 'numeric',
@@ -361,13 +449,12 @@ const StudentVerifier = {
     this.stopCamera(contextId);
     this.syncAllCards();
 
-    // Tampilkan notifikasi konfirmasi
-    alert(`Identitas & Foto Berhasil Diverifikasi!\n\nNama: ${name}\nStatus: Bebas Joki (Wajah Asli Siswa Cocok)\n\nSilakan lanjutkan pengerjaan latihan & kuis secara jujur!`);
+    alert(`Dokumentasi Berhasil Disimpan!\n\nNama Siswa: ${name}\nStatus: Terverifikasi Foto Wajah\n\nSilakan mulai mengerjakan soal Kuis Akhir!`);
     return true;
   },
 
   resetVerification(contextId) {
-    if (confirm('Apakah Anda ingin mengganti nama siswa atau mengambil ulang foto verifikasi?')) {
+    if (confirm('Apakah Anda ingin mengganti nama siswa atau mengambil ulang foto dokumentasi?')) {
       AppState.student.isVerified = false;
       this.tempPhotos[contextId] = '';
       this.tempNames[contextId] = '';
@@ -376,13 +463,40 @@ const StudentVerifier = {
     }
   },
 
+  resetActiveStudent() {
+    AppState.student = {
+      name: '',
+      customName: '',
+      photo: '',
+      verifiedAt: '',
+      isVerified: false
+    };
+    AppState.progress.quizCompleted = false;
+    AppState.quiz.userAnswers = {};
+    AppState.quiz.isLocked = {};
+    AppState.save();
+    this.syncAllCards();
+    if (window.ViewKuis) ViewKuis.renderQuestion(0);
+  },
+
   ensureVerified(contextId) {
+    // Latihan formatif (1, 2, 3) tidak wajib diblokir
+    if (contextId !== 'kuis') {
+      return true;
+    }
+
     const student = AppState.student || {};
+    if (student.name && AppState.isStudentCompleted(student.name)) {
+      alert(`⛔ Nama "${student.name}" sudah menyelesaikan Kuis Akhir. Nama yang sudah diisi tidak bisa mengerjakan kuis lagi!`);
+      this.highlightCard(contextId, `⛔ Nama "${student.name}" sudah menyelesaikan Kuis Akhir. Silakan ganti siswa.`);
+      return false;
+    }
+
     if (student.isVerified && student.name && student.photo) {
       return true;
     }
 
-    this.highlightCard(contextId, '⚠️ PERHATIAN ANTI-JOKI: Harap pilih nama Anda dan ambil foto selfie verifikasi wajah di atas sebelum mengisi jawaban latihan / kuis!');
+    this.highlightCard(contextId, '⚠️ PERHATIAN: Harap pilih nama Anda dari daftar dan ambil foto selfie dokumentasi di atas sebelum mengerjakan Kuis Akhir!');
     return false;
   },
 
@@ -390,7 +504,7 @@ const StudentVerifier = {
     const card = document.querySelector(`#card-${contextId}`) || document.querySelector(`#verifier-container-${contextId}`);
     if (card) {
       card.classList.remove('highlight-required');
-      void card.offsetWidth; // trigger reflow
+      void card.offsetWidth;
       card.classList.add('highlight-required');
       card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
@@ -460,7 +574,13 @@ const StudentVerifier = {
 
   getResultBadgeHTML() {
     const student = AppState.student || {};
-    if (!student.isVerified || !student.photo) {
+    const sub = student.name ? AppState.getStudentSubmission(student.name) : null;
+    const photo = (sub && sub.studentPhoto) || student.photo;
+    const name = (sub && sub.studentName) || student.name;
+    const passScore = (window.APP_DATA && APP_DATA.info && APP_DATA.info.passingScore) || 70;
+    const isPass = sub ? sub.score >= passScore : (AppState.quiz.calculatedScores.total >= passScore);
+
+    if (!name || !photo) {
       return `
         <div class="card" style="background:#fffbeb; border:1.5px solid #fde68a; padding:10px 14px; margin-bottom:12px; font-size:12px; color:#92400e;">
           ⚠️ <strong>Identitas Siswa Belum Terverifikasi:</strong> Belum ada foto selfie siswa yang terekam pada sesi pengerjaan ini.
@@ -470,13 +590,13 @@ const StudentVerifier = {
 
     return `
       <div class="result-student-card">
-        <img src="${student.photo}" alt="Foto Siswa Terverifikasi" class="result-student-photo">
+        <img src="${photo}" alt="Foto Siswa Terverifikasi" class="result-student-photo" onclick="TeacherPanel.viewPhoto('${name.replace(/'/g, "\\'")}', '${photo}', ${sub ? sub.score : AppState.quiz.calculatedScores.total}, ${isPass}, '${sub ? sub.submittedAt : '-'}')">
         <div class="result-student-details">
-          <div class="result-student-name">${student.name}</div>
+          <div class="result-student-name">${name}</div>
           <div class="result-student-school">Peserta Didik Kelas VII • SMP Negeri 1 Tandukkalua</div>
-          <span class="result-student-badge">✓ Terverifikasi Bebas Joki (Foto Wajah Cocok)</span>
+          <span class="result-student-badge">✓ Tercatat di Folder Guru (${isPass ? 'Lolos KKM' : 'Belum Lolos'})</span>
           <div style="font-size:10.5px; color:#64748b; margin-top:3px;">
-            🕒 Waktu Verifikasi: ${student.verifiedAt || '-'}
+            🕒 Waktu Penyelesaian: ${sub ? sub.submittedAt : (student.verifiedAt || '-')}
           </div>
         </div>
       </div>
@@ -485,16 +605,21 @@ const StudentVerifier = {
 
   updatePrintableHeader() {
     const student = AppState.student || {};
+    const sub = student.name ? AppState.getStudentSubmission(student.name) : null;
+    const photo = (sub && sub.studentPhoto) || student.photo;
+    const name = (sub && sub.studentName) || student.name;
+    const score = sub ? sub.score : AppState.quiz.calculatedScores.total;
+
     const printVerifiedContainers = document.querySelectorAll('.print-student-verified-slot');
     printVerifiedContainers.forEach(el => {
-      if (student.isVerified && student.name && student.photo) {
+      if (name && photo) {
         el.innerHTML = `
           <div style="display:flex; align-items:center; gap:12px; border:1.5px solid #1e3e63; background:#f0fdf4; padding:8px 12px; border-radius:8px; margin-bottom:12px;">
-            <img src="${student.photo}" alt="Foto Wajah" style="width:55px; height:55px; border-radius:50%; object-fit:cover; border:2px solid #15803d;">
+            <img src="${photo}" alt="Foto Wajah" style="width:55px; height:55px; border-radius:50%; object-fit:cover; border:2px solid #15803d;">
             <div>
-              <div style="font-size:13px; font-weight:bold; color:#166534;">Nama Siswa: ${student.name}</div>
-              <div style="font-size:11px; color:#334155;">Kelas VII - SMP Negeri 1 Tandukkalua</div>
-              <div style="font-size:10px; color:#15803d; font-weight:600;">Status: Terverifikasi Wajah Asli Siswa (Bebas Joki) - ${student.verifiedAt || ''}</div>
+              <div style="font-size:13px; font-weight:bold; color:#166534;">Nama Siswa: ${name}</div>
+              <div style="font-size:11px; color:#334155;">Kelas VII - SMP Negeri 1 Tandukkalua • Nilai Kuis: ${score} / 100</div>
+              <div style="font-size:10px; color:#15803d; font-weight:600;">Status: Foto Dokumentasi Terverifikasi Resmi di Folder Guru</div>
             </div>
           </div>
         `;

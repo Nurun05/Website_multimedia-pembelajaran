@@ -189,11 +189,6 @@ const ViewKegiatan2 = {
   },
 
   checkMatching() {
-    // Validasi Anti-Joki: Wajib verifikasi nama dan foto wajah terlebih dahulu
-    if (window.StudentVerifier && !StudentVerifier.ensureVerified('latihan2')) {
-      return;
-    }
-
     let allCorrect = true;
     let unanswered = false;
 

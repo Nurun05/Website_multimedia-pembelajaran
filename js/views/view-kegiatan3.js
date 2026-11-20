@@ -229,11 +229,6 @@ const ViewKegiatan3 = {
   },
 
   checkSort() {
-    // Validasi Anti-Joki: Wajib verifikasi nama dan foto wajah terlebih dahulu
-    if (window.StudentVerifier && !StudentVerifier.ensureVerified('latihan3')) {
-      return;
-    }
-
     let isAllCorrect = true;
 
     AppState.exercise3.items.forEach((item, currentPosition) => {

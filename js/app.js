@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Muat status tersimpan dari LocalStorage
   AppState.load();
 
+  // 1b. Inisialisasi Panel Guru & Login
+  if (window.TeacherPanel) {
+    TeacherPanel.init();
+    TeacherPanel.updateHeaderRoleBadge();
+  }
+
   // 2. Render seluruh modul tampilan (Views)
   initViews();
 

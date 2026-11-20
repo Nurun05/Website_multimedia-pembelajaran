@@ -92,11 +92,6 @@ const ViewKegiatan1 = {
   },
 
   checkAnswer(qIdx, optIdx, btnElement) {
-    // Validasi Anti-Joki: Wajib verifikasi nama dan foto wajah terlebih dahulu
-    if (window.StudentVerifier && !StudentVerifier.ensureVerified('latihan1')) {
-      return;
-    }
-
     const question = APP_DATA.activity1.quiz[qIdx];
     const selectedOpt = question.options[optIdx];
     const parentCard = document.querySelector(`#ex1-card-${qIdx}`);
