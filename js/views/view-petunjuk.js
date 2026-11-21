@@ -50,3 +50,5 @@ const ViewPetunjuk = {
   }
 };
 
+
+if (typeof window !== "undefined") window.ViewPetunjuk = ViewPetunjuk;

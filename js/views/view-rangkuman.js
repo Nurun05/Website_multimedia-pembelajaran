@@ -105,3 +105,5 @@ const ViewRangkuman = {
   }
 };
 
+
+if (typeof window !== "undefined") window.ViewRangkuman = ViewRangkuman;

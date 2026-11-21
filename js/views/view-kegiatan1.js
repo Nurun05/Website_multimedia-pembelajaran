@@ -119,3 +119,5 @@ const ViewKegiatan1 = {
   }
 };
 
+
+if (typeof window !== "undefined") window.ViewKegiatan1 = ViewKegiatan1;

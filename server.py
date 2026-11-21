@@ -18,8 +18,9 @@ def get_local_ip():
     except Exception:
         return "127.0.0.1"
 
-class ReusableTCPServer(socketserver.TCPServer):
+class ReusableThreadingServer(http.server.ThreadingHTTPServer):
     allow_reuse_address = True
+    daemon_threads = True
 
 class CustomHTTPHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
@@ -33,7 +34,7 @@ def run_server():
     
     for port in ports_to_try:
         try:
-            httpd = ReusableTCPServer(("", port), CustomHTTPHandler)
+            httpd = ReusableThreadingServer(("", port), CustomHTTPHandler)
             print("=" * 65, flush=True)
             print("  SERVER LOKAL MEDIA PEMBELAJARAN INTERAKTIF BERJALAN!", flush=True)
             print("  Materi: Keanekaragaman Hayati Indonesia (IPA SMP Kelas VII)", flush=True)

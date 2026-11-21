@@ -539,3 +539,5 @@ const APP_DATA = {
   ]
 };
 
+
+if (typeof window !== "undefined") window.APP_DATA = APP_DATA;

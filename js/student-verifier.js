@@ -233,8 +233,6 @@ const StudentVerifier = {
     }
     this.hideAlert(contextId);
   },
-    this.hideAlert(contextId);
-  },
 
   handleCustomNameInput(contextId, value) {
     const trimmed = value.trim();
@@ -656,3 +654,5 @@ const StudentVerifier = {
     });
   }
 };
+
+if (typeof window !== "undefined") window.StudentVerifier = StudentVerifier;

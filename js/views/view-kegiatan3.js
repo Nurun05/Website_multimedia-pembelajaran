@@ -266,3 +266,5 @@ const ViewKegiatan3 = {
     fb.textContent = '';
   }
 };
+
+if (typeof window !== "undefined") window.ViewKegiatan3 = ViewKegiatan3;

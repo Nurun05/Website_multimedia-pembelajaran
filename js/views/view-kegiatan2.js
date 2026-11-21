@@ -237,3 +237,5 @@ const ViewKegiatan2 = {
   }
 };
 
+
+if (typeof window !== "undefined") window.ViewKegiatan2 = ViewKegiatan2;

@@ -293,9 +293,18 @@ const TeacherPanel = {
   openLoginModal() {
     this.ensureModalsInDOM();
     const modal = document.querySelector('#login-role-modal');
+    const optionsGrid = document.querySelector('.role-options-grid');
+    const titleEl = document.querySelector('.role-modal-title');
+    const subtitleEl = document.querySelector('.role-modal-subtitle');
+    const iconEl = document.querySelector('.role-modal-header span');
     const pinBox = document.querySelector('#guru-pin-box');
     const pinError = document.querySelector('#pin-error-msg');
     const pinInput = document.querySelector('#input-teacher-pin');
+
+    if (optionsGrid) optionsGrid.style.display = 'grid';
+    if (titleEl) titleEl.textContent = 'Pilih Akses Pengguna';
+    if (subtitleEl) subtitleEl.textContent = 'Multimedia Pembelajaran IPA Fase D • SMP Negeri 1 Tandukkalua';
+    if (iconEl) iconEl.textContent = '🔐';
 
     if (pinBox) pinBox.className = 'guru-pin-box';
     if (pinError) pinError.style.display = 'none';
@@ -307,8 +316,47 @@ const TeacherPanel = {
     }
   },
 
+  openGuruDirectLogin() {
+    this.ensureModalsInDOM();
+    const modal = document.querySelector('#login-role-modal');
+    const optionsGrid = document.querySelector('.role-options-grid');
+    const titleEl = document.querySelector('.role-modal-title');
+    const subtitleEl = document.querySelector('.role-modal-subtitle');
+    const iconEl = document.querySelector('.role-modal-header span');
+    const pinBox = document.querySelector('#guru-pin-box');
+    const pinError = document.querySelector('#pin-error-msg');
+    const pinInput = document.querySelector('#input-teacher-pin');
+
+    if (optionsGrid) optionsGrid.style.display = 'none';
+    if (titleEl) titleEl.textContent = 'Masuk Portal Guru';
+    if (subtitleEl) subtitleEl.textContent = 'Masukkan PIN Guru untuk mengelola daftar nama siswa & rekap nilai kuis.';
+    if (iconEl) iconEl.textContent = '👨‍🏫';
+
+    if (pinBox) pinBox.className = 'guru-pin-box active';
+    if (pinError) pinError.style.display = 'none';
+    if (pinInput) {
+      pinInput.value = '';
+      setTimeout(() => pinInput.focus(), 80);
+    }
+
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.classList.add('active');
+    }
+  },
+
   closeLoginModal() {
     const modal = document.querySelector('#login-role-modal');
+    const optionsGrid = document.querySelector('.role-options-grid');
+    const titleEl = document.querySelector('.role-modal-title');
+    const subtitleEl = document.querySelector('.role-modal-subtitle');
+    const iconEl = document.querySelector('.role-modal-header span');
+
+    if (optionsGrid) optionsGrid.style.display = 'grid';
+    if (titleEl) titleEl.textContent = 'Pilih Akses Pengguna';
+    if (subtitleEl) subtitleEl.textContent = 'Multimedia Pembelajaran IPA Fase D • SMP Negeri 1 Tandukkalua';
+    if (iconEl) iconEl.textContent = '🔐';
+
     if (modal) {
       modal.classList.remove('active');
       modal.style.display = 'none';
@@ -322,9 +370,10 @@ const TeacherPanel = {
       AppState.save();
       this.closeLoginModal();
       this.updateHeaderRoleBadge();
-      // Langsung masuk ke modul pembelajaran (Halaman 2: Petunjuk Pembelajaran)
-      if (window.AppRouter) {
-        AppRouter.goToPage(2);
+      if (AppState.currentPage === 1 && window.ViewBeranda) {
+        ViewBeranda.selectStudentRole();
+      } else if (window.AppRouter) {
+        AppRouter.goToPage(AppState.currentPage || 2);
       }
     } else if (role === 'guru') {
       this.showGuruPinBox();
@@ -872,3 +921,5 @@ const TeacherPanel = {
     }
   }
 };
+
+if (typeof window !== "undefined") window.TeacherPanel = TeacherPanel;

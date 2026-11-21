@@ -178,3 +178,5 @@ const ViewHasil = {
   }
 };
 
+
+if (typeof window !== "undefined") window.ViewHasil = ViewHasil;

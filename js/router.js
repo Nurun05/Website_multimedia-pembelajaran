@@ -21,8 +21,15 @@ const AppRouter = {
     this.updateBottomNav(pageNumber);
 
     // Panggil hook pembaruan dinamis
+    if (pageNumber === 1 && window.ViewBeranda) {
+      const p1 = document.querySelector('#page-1');
+      if (p1) ViewBeranda.render(p1);
+    }
     if (pageNumber === 3 && window.ViewMenu) ViewMenu.updateProgress();
-    if (pageNumber === 10 && window.ViewKuis) ViewKuis.renderQuestion(AppState.quiz.currentQuestionIndex);
+    if (pageNumber === 10 && window.ViewKuis) {
+      const p10 = document.querySelector('#page-10');
+      if (p10) ViewKuis.render(p10);
+    }
     if (pageNumber === 11 && window.ViewHasil) ViewHasil.renderResult();
     if (window.StudentVerifier) StudentVerifier.syncPage(pageNumber);
 
@@ -41,31 +48,23 @@ const AppRouter = {
 
     if (!leftBtn || !rightBtn || !bottomNav) return;
 
+    // Pada Halaman 1 (Beranda), navigasi dilakukan melalui tombol peran ("Anda Siswa" / "Anda Guru") di kartu visual
+    if (pageNum === 1) {
+      bottomNav.style.display = 'none';
+      return;
+    }
+
     leftBtn.style.display = 'inline-flex';
     rightBtn.style.display = 'inline-flex';
     bottomNav.style.display = 'flex';
 
-    // Kelola Wadah Login Peran di Tengah Navigasi Bawah (Khusus Halaman 1 Beranda)
-    const roleCenter = document.querySelector('#nav-role-center');
-    if (pageNum === 1) {
-      if (roleCenter) roleCenter.style.display = 'flex';
-      bottomNav.classList.add('nav-page-1');
-    } else {
-      if (roleCenter) roleCenter.style.display = 'none';
-      bottomNav.classList.remove('nav-page-1');
-    }
-
     switch (pageNum) {
-      case 1: // Beranda
-        leftBtn.textContent = 'Langsung ke Menu';
+      case 2: // Petunjuk dan Tujuan
+        leftBtn.textContent = 'Kembali ke Beranda';
         leftBtn.className = 'btn btn-outline';
-        rightBtn.textContent = 'Mulai Belajar';
+        rightBtn.textContent = 'Lanjut ke Menu';
         rightBtn.className = 'btn btn-primary';
         break;
-
-      case 2: // Petunjuk dan Tujuan
-        leftBtn.textContent = 'Kembali';
-        leftBtn.className = 'btn btn-outline';
         rightBtn.textContent = 'Lanjut ke Menu';
         rightBtn.className = 'btn btn-primary';
         break;
@@ -166,3 +165,5 @@ const AppRouter = {
   }
 };
 
+
+if (typeof window !== "undefined") window.AppRouter = AppRouter;

@@ -8,12 +8,41 @@
   <p style="font-size:12.5px; color:#475569; margin-bottom:14px;">
     Media pendamping mandiri untuk mempelajari konsep biodiversitas, perbedaan tingkat gen, jenis, ekosistem, fauna Indonesia, serta upaya pelestariannya.
   </p>
-  <div style="display:flex; flex-direction:column; gap:8px;">
-    <button type="button" class="btn btn-primary btn-full" onclick="AppRouter.goToPage(2)">
-      🚀 Mulai Belajar Sekarang
+
+  <!-- PILIHAN PERAN AWAL: "Anda Siswa" & "Anda Guru" -->
+  <div id="beranda-role-choice" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:8px;">
+    <!-- Tombol 1: Anda Siswa -->
+    <button type="button" id="btn-landing-siswa" class="btn btn-primary" style="padding:14px 10px; font-size:13.5px; display:flex; flex-direction:column; align-items:center; gap:5px; border-radius:var(--radius-md); box-shadow:0 2px 8px rgba(163,193,225,0.4);" onclick="ViewBeranda.selectStudentRole()">
+      <span style="font-size:26px;">👨‍🎓</span>
+      <span style="font-weight:700;">Anda Siswa</span>
+      <small style="font-size:11px; opacity:0.95;">Akses Belajar &amp; Latihan</small>
     </button>
-    <button type="button" class="btn btn-outline btn-full" onclick="AppRouter.goToPage(3)">
-      📑 Langsung ke Menu Utama
+
+    <!-- Tombol 2: Anda Guru -->
+    <button type="button" id="btn-landing-guru" class="btn btn-secondary" style="padding:14px 10px; font-size:13.5px; display:flex; flex-direction:column; align-items:center; gap:5px; border:1.5px solid var(--pastel-sky-border); border-radius:var(--radius-md); background:#ffffff;" onclick="ViewBeranda.selectTeacherRole()">
+      <span style="font-size:26px;">👨‍🏫</span>
+      <span style="font-weight:700; color:var(--primary-sky-deep);">Anda Guru</span>
+      <small style="font-size:11px; color:var(--primary-sky-dark);">Portal &amp; Folder Guru</small>
+    </button>
+  </div>
+
+  <!-- ALUR LANJUTAN SISWA (MUNCUL DINAMIS SAAT "Anda Siswa" DIKLIK) -->
+  <div id="beranda-student-actions" style="display:none; flex-direction:column; gap:10px; margin-top:8px; animation: fadeInModal 0.25s ease;">
+    <div style="font-size:12.5px; font-weight:700; color:var(--primary-sky-deep); text-align:center; padding:2px 0;">
+      🎓 Selamat Datang Siswa! Silakan pilih:
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+      <button type="button" class="btn btn-primary" style="padding:12px 8px; font-size:13.5px; font-weight:700; display:flex; align-items:center; justify-content:center; gap:6px;" onclick="AppRouter.goToPage(2)">
+        <span>🚀</span>
+        <span>Mulai Belajar</span>
+      </button>
+      <button type="button" class="btn btn-outline" style="padding:12px 8px; font-size:13.5px; font-weight:700; display:flex; align-items:center; justify-content:center; gap:6px;" onclick="AppRouter.goToPage(3)">
+        <span>📑</span>
+        <span>Langsung ke Menu</span>
+      </button>
+    </div>
+    <button type="button" class="btn" style="background:transparent; color:#64748b; font-size:11.5px; padding:4px; margin-top:2px;" onclick="ViewBeranda.resetRoleChoice()">
+      ↩ Ganti Peran (Kembali ke Pilihan Awal)
     </button>
   </div>
 </div>
@@ -37,4 +66,3 @@
     <div>Pendidikan Teknik Informatika &amp; Komputer</div>
   </div>
 </div>
-

@@ -93,3 +93,5 @@ const ViewMenu = {
     }
   }
 };
+
+if (typeof window !== "undefined") window.ViewMenu = ViewMenu;

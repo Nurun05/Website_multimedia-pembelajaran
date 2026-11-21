@@ -277,3 +277,5 @@ const ViewKuis = {
   }
 };
 
+
+if (typeof window !== "undefined") window.ViewKuis = ViewKuis;
