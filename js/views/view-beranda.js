@@ -8,7 +8,7 @@ const ViewBeranda = {
     container.innerHTML = `
       <div class="hero-visual-card">
         <div class="hero-img-box">
-          <img src="assets/hero-biodiversity.svg" alt="Ilustrasi Keanekaragaman Hayati Nusantara" loading="eager">
+          <img src="assets/hero-biodiversity.jpg" alt="Pemandangan Alam & Keanekaragaman Hayati Indonesia" loading="eager">
         </div>
         <h2 class="hero-title">${APP_DATA.info.title}</h2>
         <div class="hero-subtitle">${APP_DATA.info.subtitle}</div>

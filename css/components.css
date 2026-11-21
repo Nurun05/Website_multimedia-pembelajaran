@@ -44,13 +44,7 @@
   font-weight: 600;
 }
 .page-tracker {
-  background-color: rgba(15, 36, 61, 0.1);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 11px;
-  border-radius: var(--radius-full);
-  color: #0f243d;
-  border: 1px solid rgba(15, 36, 61, 0.18);
+  display: none !important; /* Disembunyikan di seluruh halaman sesuai instruksi */
 }
 
 /* Bilah Bawah Navigasi */

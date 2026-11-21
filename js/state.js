@@ -17,6 +17,9 @@ const AppState = {
   // Folder Guru: Menyimpan Rekapan Hasil Kuis & Foto Wajah Siswa
   teacherFolder: [],
 
+  // Daftar Siswa yang Diperintahkan Ujian Ulang oleh Guru
+  retakeRequests: {},
+
   // Data Identitas & Verifikasi Wajah Siswa (Cegah Joki)
   student: {
     name: '',
@@ -128,6 +131,8 @@ const AppState = {
     } else {
       this.teacherFolder.push(submission);
     }
+    // Jika siswa telah selesai mengerjakan kuis (termasuk kuis ulang), hapus perintah ujian ulang aktif
+    this.clearRetakeInstruction(submission.studentName);
     this.save();
   },
 
@@ -145,26 +150,80 @@ const AppState = {
     return this.teacherFolder.find(s => s.studentName.toLowerCase() === studentName.trim().toLowerCase()) || null;
   },
 
-  allowStudentRetake(studentName) {
-    this.deleteStudentSubmission(studentName);
-    if (this.student && this.student.name && this.student.name.toLowerCase() === studentName.toLowerCase()) {
+  // Fitur Pelacakan & Perintah Ujian Ulang dari Guru
+  instructStudentRetake(studentName) {
+    if (!studentName) return;
+    const nameLower = studentName.trim().toLowerCase();
+    if (!this.retakeRequests) this.retakeRequests = {};
+    const now = new Date();
+    const timeStr = `${now.toLocaleDateString('id-ID')} ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}`;
+
+    this.retakeRequests[nameLower] = {
+      name: studentName.trim(),
+      instructedAt: timeStr,
+      active: true
+    };
+
+    // Tandai juga pada rekap folder guru
+    if (Array.isArray(this.teacherFolder)) {
+      const sub = this.teacherFolder.find(s => s.studentName.toLowerCase() === nameLower);
+      if (sub) {
+        sub.retakeInstructed = true;
+        sub.retakeInstructedAt = timeStr;
+      }
+    }
+
+    // Jika siswa yang sedang aktif adalah siswa yang diminta ujian ulang, buka kuncian kuisnya
+    if (this.student && this.student.name && this.student.name.toLowerCase() === nameLower) {
       this.student.isVerified = false;
       this.progress.quizCompleted = false;
       this.quiz.userAnswers = {};
       this.quiz.isLocked = {};
+      this.quiz.currentQuestionIndex = 0;
     }
+
     this.save();
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
+  },
+
+  isRetakeInstructed(studentName) {
+    if (!studentName || !this.retakeRequests) return false;
+    return Boolean(this.retakeRequests[studentName.trim().toLowerCase()]);
+  },
+
+  getRetakeInfo(studentName) {
+    if (!studentName || !this.retakeRequests) return null;
+    return this.retakeRequests[studentName.trim().toLowerCase()] || null;
+  },
+
+  clearRetakeInstruction(studentName) {
+    if (!studentName || !this.retakeRequests) return;
+    const nameLower = studentName.trim().toLowerCase();
+    delete this.retakeRequests[nameLower];
+    if (Array.isArray(this.teacherFolder)) {
+      const sub = this.teacherFolder.find(s => s.studentName.toLowerCase() === nameLower);
+      if (sub) {
+        sub.retakeInstructed = false;
+        sub.completedRetake = true;
+      }
+    }
+    this.save();
+  },
+
+  allowStudentRetake(studentName) {
+    this.instructStudentRetake(studentName);
   },
 
   deleteStudentSubmission(studentName) {
     if (!this.teacherFolder) return;
     this.teacherFolder = this.teacherFolder.filter(s => s.studentName.toLowerCase() !== studentName.toLowerCase());
+    this.clearRetakeInstruction(studentName);
     this.save();
   },
 
   clearAllSubmissions() {
     this.teacherFolder = [];
+    this.retakeRequests = {};
     this.save();
   },
 
@@ -197,7 +256,8 @@ const AppState = {
         userRole: this.userRole,
         teacherPin: this.teacherPin,
         teacherRoster: this.teacherRoster,
-        teacherFolder: this.teacherFolder
+        teacherFolder: this.teacherFolder,
+        retakeRequests: this.retakeRequests
       }));
     } catch (e) {
       console.warn('LocalStorage tidak tersedia', e);
@@ -216,6 +276,7 @@ const AppState = {
         if (parsed.teacherPin) this.teacherPin = parsed.teacherPin;
         if (parsed.teacherRoster) this.teacherRoster = parsed.teacherRoster;
         if (parsed.teacherFolder) this.teacherFolder = parsed.teacherFolder;
+        if (parsed.retakeRequests) this.retakeRequests = parsed.retakeRequests;
       }
     } catch (e) {
       console.warn('Gagal memuat state lokal', e);

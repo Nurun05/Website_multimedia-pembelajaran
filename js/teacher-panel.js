@@ -503,11 +503,12 @@ const TeacherPanel = {
         const tp1Pct = sub.tpScores && sub.tpScores.tp1 ? sub.tpScores.tp1.pct : '-';
         const tp2Pct = sub.tpScores && sub.tpScores.tp2 ? sub.tpScores.tp2.pct : '-';
         const tp3Pct = sub.tpScores && sub.tpScores.tp3 ? sub.tpScores.tp3.pct : '-';
+        const isRetakeActive = AppState.isRetakeInstructed(sub.studentName);
 
         return `
           <div class="submission-card-item">
             <!-- Foto Dokumentasi Siswa -->
-            <img src="${sub.studentPhoto || 'assets/hero-biodiversity.svg'}" 
+            <img src="${sub.studentPhoto || 'assets/hero-biodiversity.jpg'}" 
                  alt="${sub.studentName}" 
                  class="sub-photo-thumb"
                  title="Klik untuk memperbesar foto dokumentasi"
@@ -515,7 +516,7 @@ const TeacherPanel = {
 
             <!-- Detail Siswa & Status KKM -->
             <div class="sub-info-col">
-              <div style="display:flex; align-items:center; gap:8px;">
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                 <div class="sub-student-name">${idx + 1}. ${sub.studentName}</div>
                 <!-- Tombol Lihat Foto (Sesuai Permintaan Guru) -->
                 <button type="button" class="btn btn-outline" 
@@ -523,6 +524,11 @@ const TeacherPanel = {
                         onclick="TeacherPanel.viewPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}', ${sub.score}, ${isPass}, '${sub.submittedAt}')">
                   📷 Lihat Foto
                 </button>
+                ${isRetakeActive ? `
+                  <span style="background:#fffbeb; color:#b45309; border:1px solid #fcd34d; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700;">
+                    🔄 Diperintahkan Ujian Ulang
+                  </span>
+                ` : ''}
               </div>
 
               <div class="sub-meta-text">
@@ -548,8 +554,11 @@ const TeacherPanel = {
                 <button type="button" class="btn-sub-action" title="Unduh foto dokumentasi ini" onclick="TeacherPanel.downloadStudentPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}')">
                   ⬇️ Unduh Foto
                 </button>
-                <button type="button" class="btn-sub-action" style="color:#d97706;" title="Izinkan siswa ini mengulang kuis" onclick="TeacherPanel.allowRetake('${sub.studentName.replace(/'/g, "\\'")}')">
-                  🔄 Ujian Ulang
+                <button type="button" class="btn-sub-action" 
+                        style="${isRetakeActive ? 'color:#b45309; background:#fef3c7; border:1px solid #fde68a;' : 'color:#d97706;'}" 
+                        title="${isRetakeActive ? 'Instruksi ujian ulang aktif untuk siswa ini. Klik untuk memperbarui.' : 'Perintahkan siswa ini untuk mengerjakan ulang Kuis Akhir'}" 
+                        onclick="TeacherPanel.instructRetake('${sub.studentName.replace(/'/g, "\\'")}')">
+                  ${isRetakeActive ? '🔄 Ujian Ulang (Aktif)' : '🔄 Ujian Ulang'}
                 </button>
                 <button type="button" class="btn-sub-action" style="color:#dc2626;" title="Hapus riwayat siswa ini" onclick="TeacherPanel.deleteSubmission('${sub.studentName.replace(/'/g, "\\'")}')">
                   🗑️
@@ -749,12 +758,21 @@ const TeacherPanel = {
     document.body.removeChild(a);
   },
 
-  allowRetake(studentName) {
-    if (confirm(`Izinkan siswa "${studentName}" untuk mengerjakan ulang Kuis Akhir?\n\nRiwayat kuis sebelumnya akan dihapus sehingga siswa dapat memilih namanya kembali.`)) {
-      AppState.allowStudentRetake(studentName);
-      alert(`Akses pengerjaan kuis untuk "${studentName}" telah dibuka kembali.`);
+  instructRetake(studentName) {
+    const isAlready = AppState.isRetakeInstructed(studentName);
+    const msg = isAlready
+      ? `Siswa "${studentName}" saat ini sudah berstatus "Diperintahkan Ujian Ulang".\n\nKirim ulang instruksi ujian ulang untuk siswa ini?`
+      : `Berikan instruksi UJIAN ULANG kepada siswa "${studentName}"?\n\nSiswa bersangkutan akan langsung mendapatkan notifikasi perintah resmi dari guru saat membuka Kuis Akhir dan diizinkan mengambil foto dokumentasi baru serta mengisi kuis kembali.`;
+
+    if (confirm(msg)) {
+      AppState.instructStudentRetake(studentName);
+      alert(`✓ Perintah Ujian Ulang BERHASIL diaktifkan untuk "${studentName}".\n\nSiswa akan melihat notifikasi resmi guru dan kuncian pengerjaan kuis telah dibuka.`);
       this.renderDashboard();
     }
+  },
+
+  allowRetake(studentName) {
+    this.instructRetake(studentName);
   },
 
   deleteSubmission(studentName) {
@@ -908,6 +926,12 @@ const TeacherPanel = {
     const roleText = document.querySelector('#header-role-text');
 
     if (!btn) return;
+    // Sembunyikan tombol peran di Halaman 1 Beranda sesuai instruksi
+    if (AppState.currentPage === 1) {
+      btn.style.display = 'none';
+      return;
+    }
+    btn.style.display = 'inline-flex';
     if (AppState.userRole === 'guru') {
       if (roleIcon) roleIcon.textContent = '👨‍🏫';
       if (roleText) roleText.textContent = 'Portal Guru';

@@ -13,9 +13,15 @@ const AppRouter = {
     const activePage = document.querySelector(`#page-${pageNumber}`);
     if (activePage) activePage.classList.add('active');
 
-    // Perbarui tracker halaman atas
+    // Penanda nomor halaman disembunyikan di seluruh halaman sesuai instruksi
     const tracker = document.querySelector('#page-tracker-badge');
-    if (tracker) tracker.textContent = `Halaman ${pageNumber} / ${AppState.totalPages}`;
+    if (tracker) tracker.style.display = 'none';
+
+    // Kelola tombol peran di header (sembunyikan di Halaman 1 Beranda)
+    const headerRoleBtn = document.querySelector('#btn-header-role');
+    if (headerRoleBtn) {
+      headerRoleBtn.style.display = (pageNumber === 1) ? 'none' : 'inline-flex';
+    }
 
     // Perbarui navigasi bilah bawah
     this.updateBottomNav(pageNumber);

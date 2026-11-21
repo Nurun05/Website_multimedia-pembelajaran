@@ -6,7 +6,8 @@
 const ViewKuis = {
   render(container) {
     const student = AppState.student || {};
-    const isCompleted = student.name && AppState.isStudentCompleted(student.name);
+    const isRetake = student.name && AppState.isRetakeInstructed(student.name);
+    const isCompleted = student.name && AppState.isStudentCompleted(student.name) && !isRetake;
     const isVerified = student.isVerified && student.name && student.photo;
 
     const verifierHTML = window.StudentVerifier ? StudentVerifier.getCardHTML('kuis') : '';

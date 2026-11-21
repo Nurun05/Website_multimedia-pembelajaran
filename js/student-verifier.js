@@ -42,16 +42,18 @@ const StudentVerifier = {
     const roster = AppState.getRoster();
     const savedName = this.tempNames[contextId] || student.name || '';
     const tempPhoto = this.tempPhotos[contextId] || student.photo || '';
+    const isRetakeActive = Boolean(savedName && AppState.isRetakeInstructed(savedName));
+    const retakeInfo = isRetakeActive ? AppState.getRetakeInfo(savedName) : null;
 
-    // Periksa apakah siswa aktif SUDAH MENGERJAKAN kuis akhir sebelumnya
-    if (savedName && AppState.isStudentCompleted(savedName)) {
+    // Periksa apakah siswa aktif SUDAH MENGERJAKAN kuis akhir sebelumnya dan TIDAK sedang diperintahkan ujian ulang
+    if (savedName && AppState.isStudentCompleted(savedName) && !isRetakeActive) {
       const sub = AppState.getStudentSubmission(savedName);
       const isPass = sub && sub.score >= (window.APP_DATA && APP_DATA.info ? APP_DATA.info.passingScore : 70);
 
       return `
         <div class="verifier-card" id="card-${contextId}" style="border:2px solid #16a34a; background:#f0fdf4;">
           <div style="display:flex; align-items:flex-start; gap:12px;">
-            <img src="${sub ? sub.studentPhoto : 'assets/hero-biodiversity.svg'}" 
+            <img src="${sub ? sub.studentPhoto : 'assets/hero-biodiversity.jpg'}" 
                  alt="Foto Dokumentasi Siswa" 
                  class="verified-avatar-img" 
                  style="width:58px; height:58px; border:2.5px solid #16a34a; cursor:pointer;"
@@ -71,7 +73,7 @@ const StudentVerifier = {
                 🕒 Dokumentasi &amp; Nilai tercatat di Folder Guru: ${sub ? sub.submittedAt : '-'}
               </div>
               <div style="background:#fef3c7; border:1px solid #fde68a; color:#92400e; padding:6px 10px; border-radius:6px; font-size:11.5px; margin-top:6px; font-weight:600;">
-                🔒 Nama ini <strong>sudah mengisi Kuis Akhir</strong> dan tidak bisa mengerjakan lagi (hanya siswa yang belum mengisi yang dapat mengerjakan).
+                🔒 Nama ini <strong>sudah mengisi Kuis Akhir</strong> dan tidak bisa mengerjakan lagi (hanya siswa yang belum mengisi atau yang diperintahkan ujian ulang oleh guru yang dapat mengerjakan).
               </div>
             </div>
           </div>
@@ -88,10 +90,18 @@ const StudentVerifier = {
       `;
     }
 
-    // Jika siswa sudah terverifikasi dan belum menyelesaikan kuis
-    if (student.isVerified && student.name && student.photo && !AppState.isStudentCompleted(student.name)) {
+    // Jika siswa sudah terverifikasi dan belum menyelesaikan kuis (atau sedang ujian ulang)
+    if (student.isVerified && student.name && student.photo && (!AppState.isStudentCompleted(student.name) || isRetakeActive)) {
       return `
         <div class="verifier-card" id="card-${contextId}">
+          ${isRetakeActive ? `
+            <div class="retake-notification-banner" style="background:#fffbeb; border:2px solid #f59e0b; border-radius:8px; padding:10px 12px; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+              <span style="font-size:22px;">📢</span>
+              <div style="font-size:12px; color:#92400e; font-weight:700;">
+                Status: Ujian Ulang Kuis Akhir Aktif atas Perintah Guru
+              </div>
+            </div>
+          ` : ''}
           <div class="verifier-verified-box">
             <div class="verified-avatar-wrapper">
               <img src="${student.photo}" alt="Foto Wajah Siswa" class="verified-avatar-img">
@@ -110,6 +120,19 @@ const StudentVerifier = {
       `;
     }
 
+    const retakeBannerHTML = isRetakeActive ? `
+      <div class="retake-notification-banner" style="background:#fffbeb; border:2px solid #f59e0b; border-radius:10px; padding:12px 14px; margin-bottom:14px; box-shadow:0 3px 10px rgba(245,158,11,0.2); animation:fadeInModal 0.3s ease;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span style="font-size:24px;">📢</span>
+          <strong style="font-size:13.5px; color:#92400e;">PEMBERITAHUAN RESMI DARI GURU: UJIAN ULANG KUIS AKHIR</strong>
+        </div>
+        <div style="font-size:12px; color:#78350f; line-height:1.5;">
+          Halo <strong>${savedName}</strong>! Guru telah memberikan instruksi agar Anda melakukan <strong>UJIAN ULANG Kuis Akhir</strong> (${retakeInfo ? retakeInfo.instructedAt : 'Status Aktif'}).
+          <br>Akses pengerjaan kuis Anda telah <strong>dibuka kembali</strong>. Silakan ambil foto dokumentasi wajah terbaru di bawah ini (foto dapat dihapus/diulang jika kurang bagus), lalu klik tombol <strong>"🚀 Mulai Kerjakan Soal Kuis"</strong>.
+        </div>
+      </div>
+    ` : '';
+
     // Form Pemilihan Nama Siswa & Pengambilan Foto Dokumentasi
     return `
       <div class="verifier-card" id="card-${contextId}">
@@ -119,6 +142,8 @@ const StudentVerifier = {
           <span class="verifier-badge-anti-joki">DOKUMENTASI GURU</span>
         </div>
         
+        ${retakeBannerHTML}
+
         <div class="verifier-desc">
           Sebelum mengerjakan Kuis Akhir, silakan <strong>pilih nama Anda dari daftar</strong> yang telah dimasukkan oleh Guru, kemudian <strong>ambil foto selfie wajah</strong> sebagai bukti dokumentasi pengerjaan resmi.
         </div>
@@ -131,11 +156,15 @@ const StudentVerifier = {
           <select id="${contextId}-select-name" class="verifier-select" onchange="StudentVerifier.handleNameChange('${contextId}', this.value)">
             <option value="">-- Pilih Nama Anda (Kelas VII SMPN 1 Tandukkalua) --</option>
             ${roster.map(name => {
+              const isRetake = AppState.isRetakeInstructed(name);
               const isDone = AppState.isStudentCompleted(name);
-              const sub = isDone ? AppState.getStudentSubmission(name) : null;
-              const disabledAttr = isDone ? 'disabled style="color:#94a3b8; background:#f8fafc;"' : '';
-              const label = isDone ? `${name} (🔒 Sudah Selesai - Terkunci)` : name;
-              return `<option value="${name}" ${savedName === name ? 'selected' : ''} ${disabledAttr}>${label}</option>`;
+              if (isRetake) {
+                return `<option value="${name}" ${savedName === name ? 'selected' : ''} style="color:#b45309; font-weight:700; background:#fef3c7;">🔄 ${name} (⚠️ Diperintahkan Ujian Ulang oleh Guru)</option>`;
+              } else if (isDone) {
+                return `<option value="${name}" disabled style="color:#94a3b8; background:#f8fafc;">${name} (🔒 Sudah Selesai - Terkunci)</option>`;
+              } else {
+                return `<option value="${name}" ${savedName === name ? 'selected' : ''}>${name}</option>`;
+              }
             }).join('')}
             <option value="__custom__" ${savedName && !roster.includes(savedName) ? 'selected' : ''}>➕ [Ketik Nama Sendiri / Siswa Baru]</option>
           </select>
@@ -168,7 +197,7 @@ const StudentVerifier = {
               <div id="${contextId}-face-guide" class="camera-face-guide" style="display:none;"></div>
             </div>
 
-            <!-- Tombol Aksi Kamera -->
+            <!-- Tombol Aksi Kamera & Manajemen Foto Siswa -->
             <div class="camera-btn-group">
               <button type="button" id="${contextId}-btn-open" class="btn-camera btn-camera-open" style="font-weight:700;" onclick="StudentVerifier.openCamera('${contextId}')">
                 📷 Ambil Foto
@@ -179,8 +208,11 @@ const StudentVerifier = {
               <button type="button" id="${contextId}-btn-close" class="btn-camera" style="display:none; background:#64748b; color:#fff;" onclick="StudentVerifier.stopCamera('${contextId}')">
                 ✖ Tutup
               </button>
-              <button type="button" id="${contextId}-btn-retake" class="btn-camera btn-camera-open" style="display:${tempPhoto ? 'inline-flex' : 'none'};" onclick="StudentVerifier.retakePhoto('${contextId}')">
+              <button type="button" id="${contextId}-btn-retake" class="btn-camera btn-camera-open" style="display:${tempPhoto ? 'inline-flex' : 'none'}; font-weight:700;" onclick="StudentVerifier.retakePhoto('${contextId}')" title="Ambil ulang foto selfie">
                 🔄 Foto Ulang
+              </button>
+              <button type="button" id="${contextId}-btn-delete" class="btn-camera" style="display:${tempPhoto ? 'inline-flex' : 'none'}; background:#fee2e2; color:#dc2626; border:1px solid #fca5a5; font-weight:700;" onclick="StudentVerifier.deletePhoto('${contextId}')" title="Hapus foto wajah ini jika kurang bagus">
+                🗑️ Hapus Foto
               </button>
               <label class="btn-camera btn-camera-upload" title="Pilih dari kamera ponsel atau galeri">
                 📁 Kamera HP / Galeri
@@ -204,9 +236,9 @@ const StudentVerifier = {
   },
 
   handleNameChange(contextId, value) {
-    if (value && value !== '__custom__' && AppState.isStudentCompleted(value)) {
+    if (value && value !== '__custom__' && AppState.isStudentCompleted(value) && !AppState.isRetakeInstructed(value)) {
       const sub = AppState.getStudentSubmission(value);
-      this.showAlert(contextId, `⛔ Nama "${value}" SUDAH MENGERJAKAN Kuis Akhir (Nilai: ${sub ? sub.score : '-'}). Kuis tidak boleh diulang oleh nama yang sama!`);
+      this.showAlert(contextId, `⛔ Nama "${value}" SUDAH MENGERJAKAN Kuis Akhir (Nilai: ${sub ? sub.score : '-'}). Kuis tidak boleh diulang oleh nama yang sama kecuali ada instruksi ujian ulang dari Guru!`);
       const select = document.querySelector(`#${contextId}-select-name`);
       if (select) select.value = '';
       this.tempNames[contextId] = '';
@@ -227,6 +259,12 @@ const StudentVerifier = {
       this.tempNames[contextId] = value;
     }
 
+    // Jika siswa ini berstatus ujian ulang, sinkronkan card agar banner pemberitahuan resmi muncul
+    if (value && AppState.isRetakeInstructed(value)) {
+      this.syncAllCards();
+      return;
+    }
+
     const photoSection = document.querySelector(`#${contextId}-photo-section`);
     if (photoSection) {
       photoSection.style.display = (value ? 'block' : 'none');
@@ -236,7 +274,7 @@ const StudentVerifier = {
 
   handleCustomNameInput(contextId, value) {
     const trimmed = value.trim();
-    if (trimmed && AppState.isStudentCompleted(trimmed)) {
+    if (trimmed && AppState.isStudentCompleted(trimmed) && !AppState.isRetakeInstructed(trimmed)) {
       this.showAlert(contextId, `⛔ Nama "${trimmed}" sudah menyelesaikan Kuis Akhir sebelumnya!`);
       return;
     }
@@ -254,6 +292,7 @@ const StudentVerifier = {
     const btnSnap = document.querySelector(`#${contextId}-btn-snap`);
     const btnClose = document.querySelector(`#${contextId}-btn-close`);
     const btnRetake = document.querySelector(`#${contextId}-btn-retake`);
+    const btnDelete = document.querySelector(`#${contextId}-btn-delete`);
 
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       this.showAlert(contextId, 'Peramban ini tidak mendukung akses kamera langsung. Silakan gunakan tombol "Kamera HP / Galeri".');
@@ -285,6 +324,7 @@ const StudentVerifier = {
       if (btnSnap) btnSnap.style.display = 'inline-flex';
       if (btnClose) btnClose.style.display = 'inline-flex';
       if (btnRetake) btnRetake.style.display = 'none';
+      if (btnDelete) btnDelete.style.display = 'none';
     } catch (err) {
       console.warn('Gagal membuka kamera:', err);
       this.showAlert(contextId, 'Izin kamera ditolak atau sedang digunakan aplikasi lain. Anda dapat menggunakan tombol "Kamera HP / Galeri".');
@@ -299,6 +339,7 @@ const StudentVerifier = {
     const btnSnap = document.querySelector(`#${contextId}-btn-snap`);
     const btnClose = document.querySelector(`#${contextId}-btn-close`);
     const btnRetake = document.querySelector(`#${contextId}-btn-retake`);
+    const btnDelete = document.querySelector(`#${contextId}-btn-delete`);
 
     if (!video || !canvas || !preview) return;
 
@@ -330,6 +371,13 @@ const StudentVerifier = {
     if (btnSnap) btnSnap.style.display = 'none';
     if (btnClose) btnClose.style.display = 'none';
     if (btnRetake) btnRetake.style.display = 'inline-flex';
+    if (btnDelete) btnDelete.style.display = 'inline-flex';
+
+    const statusBadge = document.querySelector(`#${contextId}-photo-status-badge`);
+    if (statusBadge) {
+      statusBadge.textContent = '✓ Foto Siap';
+      statusBadge.style.color = '#15803d';
+    }
 
     this.stopCamera(contextId);
     this.hideAlert(contextId);
@@ -342,7 +390,48 @@ const StudentVerifier = {
       preview.src = '';
       preview.style.display = 'none';
     }
+    const btnDelete = document.querySelector(`#${contextId}-btn-delete`);
+    if (btnDelete) btnDelete.style.display = 'none';
     this.openCamera(contextId);
+  },
+
+  deletePhoto(contextId) {
+    this.tempPhotos[contextId] = '';
+    if (AppState.student && AppState.student.name === this.tempNames[contextId]) {
+      AppState.student.photo = '';
+      AppState.student.isVerified = false;
+    }
+    const preview = document.querySelector(`#${contextId}-preview`);
+    const placeholder = document.querySelector(`#${contextId}-placeholder`);
+    const statusBadge = document.querySelector(`#${contextId}-photo-status-badge`);
+    const btnOpen = document.querySelector(`#${contextId}-btn-open`);
+    const btnSnap = document.querySelector(`#${contextId}-btn-snap`);
+    const btnClose = document.querySelector(`#${contextId}-btn-close`);
+    const btnRetake = document.querySelector(`#${contextId}-btn-retake`);
+    const btnDelete = document.querySelector(`#${contextId}-btn-delete`);
+    const fileInput = document.querySelector(`#${contextId}-file-input`);
+
+    this.stopCamera(contextId);
+
+    if (preview) {
+      preview.src = '';
+      preview.style.display = 'none';
+    }
+    if (placeholder) {
+      placeholder.style.display = 'flex';
+    }
+    if (statusBadge) {
+      statusBadge.textContent = '⚠️ Wajib selfie sebelum mulai';
+      statusBadge.style.color = '#92400e';
+    }
+    if (btnOpen) btnOpen.style.display = 'inline-flex';
+    if (btnSnap) btnSnap.style.display = 'none';
+    if (btnClose) btnClose.style.display = 'none';
+    if (btnRetake) btnRetake.style.display = 'none';
+    if (btnDelete) btnDelete.style.display = 'none';
+    if (fileInput) fileInput.value = '';
+
+    this.showAlert(contextId, '🗑️ Foto wajah berhasil dihapus. Silakan klik "📷 Ambil Foto" untuk mengambil ulang foto terbaik Anda.');
   },
 
   stopCamera(contextId) {
@@ -402,6 +491,14 @@ const StudentVerifier = {
         if (placeholder) placeholder.style.display = 'none';
         if (video) video.style.display = 'none';
         if (btnRetake) btnRetake.style.display = 'inline-flex';
+        const btnDelete = document.querySelector(`#${contextId}-btn-delete`);
+        if (btnDelete) btnDelete.style.display = 'inline-flex';
+
+        const statusBadge = document.querySelector(`#${contextId}-photo-status-badge`);
+        if (statusBadge) {
+          statusBadge.textContent = '✓ Foto Siap';
+          statusBadge.style.color = '#15803d';
+        }
 
         StudentVerifier.stopCamera(contextId);
         StudentVerifier.hideAlert(contextId);
@@ -428,8 +525,8 @@ const StudentVerifier = {
       return false;
     }
 
-    // Periksa apakah nama ini sudah mengerjakan sebelumnya
-    if (contextId === 'kuis' && AppState.isStudentCompleted(name)) {
+    // Periksa apakah nama ini sudah mengerjakan sebelumnya dan tidak berstatus ujian ulang
+    if (contextId === 'kuis' && AppState.isStudentCompleted(name) && !AppState.isRetakeInstructed(name)) {
       this.showAlert(contextId, `⛔ Nama "${name}" sudah pernah mengerjakan Kuis Akhir. Siswa yang sudah mengisi tidak bisa mengerjakan lagi!`);
       return false;
     }
@@ -438,6 +535,14 @@ const StudentVerifier = {
     if (!photo) {
       this.showAlert(contextId, '⚠️ Silakan ambil foto selfie dokumentasi wajah Anda terlebih dahulu menggunakan kamera atau tombol upload!');
       return false;
+    }
+
+    // Jika siswa berstatus ujian ulang, setel ulang jawaban kuis agar dimulai dari awal
+    if (contextId === 'kuis' && AppState.isRetakeInstructed(name)) {
+      AppState.quiz.userAnswers = {};
+      AppState.quiz.isLocked = {};
+      AppState.quiz.currentQuestionIndex = 0;
+      AppState.progress.quizCompleted = false;
     }
 
     const now = new Date();
@@ -505,7 +610,7 @@ const StudentVerifier = {
     }
 
     const student = AppState.student || {};
-    if (student.name && AppState.isStudentCompleted(student.name)) {
+    if (student.name && AppState.isStudentCompleted(student.name) && !AppState.isRetakeInstructed(student.name)) {
       alert(`⛔ Nama "${student.name}" sudah menyelesaikan Kuis Akhir. Nama yang sudah diisi tidak bisa mengerjakan kuis lagi!`);
       this.highlightCard(contextId, `⛔ Nama "${student.name}" sudah menyelesaikan Kuis Akhir. Silakan ganti siswa.`);
       return false;
