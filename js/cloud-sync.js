@@ -320,19 +320,8 @@ const CloudSync = {
     const isReady = this.isFirebaseActive && this.isOnline;
     
     badges.forEach(b => {
-      if (isReady) {
-        b.className = 'cloud-sync-status-badge connected';
-        b.innerHTML = '☁️ Cloud Real-Time: Terhubung';
-        b.title = 'Data otomatis tersinkronisasi langsung antar laptop guru dan HP siswa.';
-      } else if (!this.isOnline) {
-        b.className = 'cloud-sync-status-badge offline';
-        b.innerHTML = '⚠️ Offline (Penyimpanan Lokal Aktif)';
-        b.title = 'Perangkat tidak terhubung ke internet. Data disimpan di penyimpanan lokal browser.';
-      } else {
-        b.className = 'cloud-sync-status-badge local';
-        b.innerHTML = '💾 Mode Lokal (Belum Diisi API Key Cloud)';
-        b.title = 'Aplikasi menggunakan LocalStorage. Masukkan firebaseConfig di js/cloud-sync.js untuk sinkronisasi cloud live.';
-      }
+      // Sembunyikan badge status agar tampilan bersih dan profesional
+      b.style.display = 'none';
     });
   }
 };

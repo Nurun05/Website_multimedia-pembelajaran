@@ -5,17 +5,9 @@
    Pengembang: Nurun Nisa Ahmad (NIM: 240209501049) - PTIK E 2024
    ==================================================================== */
 
-/* Status Badge Cloud Synchronization */
+/* Status Badge Cloud Synchronization (Disembunyikan agar tampilan bersih dan profesional) */
 .cloud-sync-status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 10.5px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: var(--radius-full, 9999px);
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  display: none !important;
 }
 
 .cloud-sync-status-badge.connected {

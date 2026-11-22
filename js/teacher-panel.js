@@ -82,7 +82,6 @@ const TeacherPanel = {
               <div class="teacher-modal-title" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                 <span>👨‍🏫 Portal &amp; Folder Guru</span>
                 <span style="font-size:12px; font-weight:normal; opacity:0.85;">| SMP Negeri 1 Tandukkalua</span>
-                <span class="cloud-sync-status-badge local">💾 Mode Lokal</span>
               </div>
               <div style="display:flex; gap:6px;">
                 <button type="button" class="header-role-btn" onclick="TeacherPanel.handleLogout()" title="Keluar dan kembali ke pemilihan akses">
