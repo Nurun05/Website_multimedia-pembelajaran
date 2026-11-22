@@ -12,9 +12,9 @@ const ViewKegiatan2 = {
         <strong>⚠️ ${act.misconceptionAlert}</strong>
       </div>
 
-      <!-- Diagram Visual 3 Tingkat -->
+      <!-- Diagram Visual 3 Tingkat (Dinamis Sesuai Tombol Tab) -->
       <div class="card" style="padding:10px; text-align:center;">
-        <img src="assets/diagram-tingkat.svg" alt="Diagram 3 Tingkat Keanekaragaman Hayati" style="width:100%; max-height:220px; border-radius:var(--radius-sm);">
+        <img id="img-tingkat-kehati" src="assets/tingkat-gen-mangga.jpg" alt="Ilustrasi Keanekaragaman Tingkat Gen - Variasi Buah Mangga" style="width:100%; max-height:260px; object-fit:contain; border-radius:var(--radius-sm); transition:all 0.3s ease;">
         <div style="font-size:11.5px; color:#64748b; margin-top:6px;">
           Diagram 3 Tingkat: Gen (Individu Sejenis) → Jenis (Beda Spesies) → Ekosistem (Bentang Alam)
         </div>
@@ -140,6 +140,21 @@ const ViewKegiatan2 = {
     const activePane = document.querySelector(`#pane-${tabKey}`);
     if (activeBtn) activeBtn.classList.add('active');
     if (activePane) activePane.classList.add('active');
+
+    // 1. Pembaruan gambar dinamis saat tombol tingkat diklik
+    const imgElement = document.querySelector('#img-tingkat-kehati');
+    if (imgElement) {
+      if (tabKey === 'gen') {
+        imgElement.src = 'assets/tingkat-gen-mangga.jpg';
+        imgElement.alt = 'Ilustrasi Keanekaragaman Tingkat Gen - Variasi Buah Mangga';
+      } else if (tabKey === 'jenis') {
+        imgElement.src = 'assets/tingkat-jenis-harimau-kucing.jpg';
+        imgElement.alt = 'Ilustrasi Keanekaragaman Tingkat Jenis - Harimau dan Kucing';
+      } else if (tabKey === 'ekosistem') {
+        imgElement.src = 'assets/tingkat-ekosistem-hutan.jpg';
+        imgElement.alt = 'Ilustrasi Keanekaragaman Tingkat Ekosistem - Hutan Hujan Tropis';
+      }
+    }
   },
 
   renderLatihan(container) {
