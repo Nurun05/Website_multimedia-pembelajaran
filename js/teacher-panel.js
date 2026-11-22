@@ -504,26 +504,42 @@ const TeacherPanel = {
         const tp2Pct = sub.tpScores && sub.tpScores.tp2 ? sub.tpScores.tp2.pct : '-';
         const tp3Pct = sub.tpScores && sub.tpScores.tp3 ? sub.tpScores.tp3.pct : '-';
         const isRetakeActive = AppState.isRetakeInstructed(sub.studentName);
+        const hasPhoto = Boolean(sub.studentPhoto && sub.studentPhoto.trim().length > 0);
 
         return `
           <div class="submission-card-item">
-            <!-- Foto Dokumentasi Siswa -->
-            <img src="${sub.studentPhoto || 'assets/hero-biodiversity.jpg'}" 
-                 alt="${sub.studentName}" 
-                 class="sub-photo-thumb"
-                 title="Klik untuk memperbesar foto dokumentasi"
-                 onclick="TeacherPanel.viewPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}', ${sub.score}, ${isPass}, '${sub.submittedAt}')">
+            <!-- Foto Dokumentasi Siswa (atau Indikator Foto Kosong/Dihapus) -->
+            ${hasPhoto ? `
+              <img src="${sub.studentPhoto}" 
+                   alt="${sub.studentName}" 
+                   class="sub-photo-thumb"
+                   title="Klik untuk memperbesar foto dokumentasi"
+                   onclick="TeacherPanel.viewPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}', ${sub.score}, ${isPass}, '${sub.submittedAt}')">
+            ` : `
+              <div class="sub-photo-thumb photo-thumb-empty" 
+                   title="Foto dokumentasi telah dihapus oleh siswa atau kosong"
+                   style="display:flex; flex-direction:column; align-items:center; justify-content:center; background:#fef2f2; border:1.5px dashed #ef4444; color:#dc2626; border-radius:50%; width:44px; height:44px; cursor:pointer; flex-shrink:0;"
+                   onclick="TeacherPanel.viewPhoto('${sub.studentName.replace(/'/g, "\\'")}', '', ${sub.score}, ${isPass}, '${sub.submittedAt}')">
+                <span style="font-size:16px; line-height:1;">📷❌</span>
+              </div>
+            `}
 
             <!-- Detail Siswa & Status KKM -->
             <div class="sub-info-col">
               <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                 <div class="sub-student-name">${idx + 1}. ${sub.studentName}</div>
-                <!-- Tombol Lihat Foto (Sesuai Permintaan Guru) -->
-                <button type="button" class="btn btn-outline" 
-                        style="font-size:10px; padding:2px 8px; border-radius:var(--radius-full); background:#f0f9ff;"
-                        onclick="TeacherPanel.viewPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}', ${sub.score}, ${isPass}, '${sub.submittedAt}')">
-                  📷 Lihat Foto
-                </button>
+                <!-- Tombol / Indikator Foto -->
+                ${hasPhoto ? `
+                  <button type="button" class="btn btn-outline" 
+                          style="font-size:10px; padding:2px 8px; border-radius:var(--radius-full); background:#f0f9ff;"
+                          onclick="TeacherPanel.viewPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}', ${sub.score}, ${isPass}, '${sub.submittedAt}')">
+                    📷 Lihat Foto
+                  </button>
+                ` : `
+                  <span style="background:#fee2e2; color:#dc2626; border:1px solid #fca5a5; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700;">
+                    ⚠️ Foto Kosong / Dihapus Siswa
+                  </span>
+                `}
                 ${isRetakeActive ? `
                   <span style="background:#fffbeb; color:#b45309; border:1px solid #fcd34d; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700;">
                     🔄 Diperintahkan Ujian Ulang
@@ -551,9 +567,15 @@ const TeacherPanel = {
                 ${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos'}
               </div>
               <div class="sub-actions-row">
-                <button type="button" class="btn-sub-action" title="Unduh foto dokumentasi ini" onclick="TeacherPanel.downloadStudentPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}')">
-                  ⬇️ Unduh Foto
-                </button>
+                ${hasPhoto ? `
+                  <button type="button" class="btn-sub-action" title="Unduh foto dokumentasi ini" onclick="TeacherPanel.downloadStudentPhoto('${sub.studentName.replace(/'/g, "\\'")}', '${sub.studentPhoto}')">
+                    ⬇️ Unduh Foto
+                  </button>
+                ` : `
+                  <button type="button" class="btn-sub-action" style="opacity:0.5; cursor:not-allowed;" title="Foto tidak tersedia karena telah dihapus oleh siswa" disabled>
+                    🚫 Tanpa Foto
+                  </button>
+                `}
                 <button type="button" class="btn-sub-action" 
                         style="${isRetakeActive ? 'color:#b45309; background:#fef3c7; border:1px solid #fde68a;' : 'color:#d97706;'}" 
                         title="${isRetakeActive ? 'Instruksi ujian ulang aktif untuk siswa ini. Klik untuk memperbarui.' : 'Perintahkan siswa ini untuk mengerjakan ulang Kuis Akhir'}" 
@@ -718,6 +740,10 @@ const TeacherPanel = {
   },
 
   viewPhoto(studentName, photoUrl, score, isPass, submittedAt) {
+    if (!photoUrl || !photoUrl.startsWith('data:image')) {
+      alert(`⚠️ Foto Dokumentasi Wajah Kosong / Dihapus\n\nNama Siswa: ${studentName}\nStatus: Siswa telah menghapus foto dokumentasi wajah atau belum melakukan pengambilan selfie resmi.`);
+      return;
+    }
     this.ensureModalsInDOM();
     const modal = document.querySelector('#photo-zoom-modal');
     const img = document.querySelector('#photo-zoom-img');
@@ -896,7 +922,7 @@ const TeacherPanel = {
             ${submissions.length === 0 ? '<tr><td colspan="9" style="text-align:center;">Belum ada data pengerjaan siswa.</td></tr>' : submissions.map((s, idx) => `
               <tr>
                 <td style="text-align:center;">${idx + 1}</td>
-                <td style="text-align:center;"><img src="${s.studentPhoto}" class="photo-cell" alt=""></td>
+                <td style="text-align:center;">${s.studentPhoto ? `<img src="${s.studentPhoto}" class="photo-cell" alt="">` : '<span style="color:#dc2626; font-size:9.5px; font-weight:bold;">[Foto Dihapus/Kosong]</span>'}</td>
                 <td><strong>${s.studentName}</strong></td>
                 <td style="text-align:center; font-weight:bold;">${s.score}</td>
                 <td style="text-align:center;" class="${s.score >= passScore ? 'pass' : 'fail'}">${s.score >= passScore ? 'Lolos KKM' : 'Belum Lolos'}</td>

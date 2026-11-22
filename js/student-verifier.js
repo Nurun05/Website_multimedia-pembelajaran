@@ -49,15 +49,23 @@ const StudentVerifier = {
     if (savedName && AppState.isStudentCompleted(savedName) && !isRetakeActive) {
       const sub = AppState.getStudentSubmission(savedName);
       const isPass = sub && sub.score >= (window.APP_DATA && APP_DATA.info ? APP_DATA.info.passingScore : 70);
+      const subPhoto = sub && sub.studentPhoto;
 
       return `
         <div class="verifier-card" id="card-${contextId}" style="border:2px solid #16a34a; background:#f0fdf4;">
           <div style="display:flex; align-items:flex-start; gap:12px;">
-            <img src="${sub ? sub.studentPhoto : 'assets/hero-biodiversity.jpg'}" 
-                 alt="Foto Dokumentasi Siswa" 
-                 class="verified-avatar-img" 
-                 style="width:58px; height:58px; border:2.5px solid #16a34a; cursor:pointer;"
-                 onclick="TeacherPanel.viewPhoto('${sub ? sub.studentName.replace(/'/g, "\\'") : ''}', '${sub ? sub.studentPhoto : ''}', ${sub ? sub.score : 0}, ${isPass}, '${sub ? sub.submittedAt : '-'}')">
+            ${subPhoto ? `
+              <img src="${subPhoto}" 
+                   alt="Foto Dokumentasi Siswa" 
+                   class="verified-avatar-img" 
+                   style="width:58px; height:58px; border:2.5px solid #16a34a; cursor:pointer;"
+                   onclick="TeacherPanel.viewPhoto('${sub ? sub.studentName.replace(/'/g, "\\'") : ''}', '${subPhoto}', ${sub ? sub.score : 0}, ${isPass}, '${sub ? sub.submittedAt : '-'}')">
+            ` : `
+              <div style="width:58px; height:58px; border-radius:50%; border:2px dashed #ef4444; background:#fef2f2; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#dc2626; flex-shrink:0;" title="Foto dokumentasi telah dihapus oleh siswa">
+                <span style="font-size:18px; line-height:1;">📷❌</span>
+                <span style="font-size:8px; font-weight:700; margin-top:2px;">Dihapus</span>
+              </div>
+            `}
             
             <div style="flex:1;">
               <div style="font-size:14px; font-weight:700; color:#166534;">
@@ -72,6 +80,11 @@ const StudentVerifier = {
               <div style="font-size:11px; color:#475569; margin-top:2px;">
                 🕒 Dokumentasi &amp; Nilai tercatat di Folder Guru: ${sub ? sub.submittedAt : '-'}
               </div>
+              ${!subPhoto ? `
+                <div style="font-size:11px; color:#dc2626; font-weight:700; margin-top:3px;">
+                  ⚠️ Status Foto: Foto dokumentasi wajah telah dihapus oleh siswa / kosong di Folder Guru.
+                </div>
+              ` : ''}
               <div style="background:#fef3c7; border:1px solid #fde68a; color:#92400e; padding:6px 10px; border-radius:6px; font-size:11.5px; margin-top:6px; font-weight:600;">
                 🔒 Nama ini <strong>sudah mengisi Kuis Akhir</strong> dan tidak bisa mengerjakan lagi (hanya siswa yang belum mengisi atau yang diperintahkan ujian ulang oleh guru yang dapat mengerjakan).
               </div>
@@ -384,6 +397,11 @@ const StudentVerifier = {
   },
 
   retakePhoto(contextId) {
+    const studentName = this.tempNames[contextId] || (AppState.student && AppState.student.name) || '';
+
+    // Hapus foto secara permanen dari localStorage & sinkronkan seketika ke portal guru
+    AppState.clearStudentPhotoPermanently(studentName);
+
     this.tempPhotos[contextId] = '';
     const preview = document.querySelector(`#${contextId}-preview`);
     if (preview) {
@@ -392,15 +410,24 @@ const StudentVerifier = {
     }
     const btnDelete = document.querySelector(`#${contextId}-btn-delete`);
     if (btnDelete) btnDelete.style.display = 'none';
+    const btnRetake = document.querySelector(`#${contextId}-btn-retake`);
+    if (btnRetake) btnRetake.style.display = 'none';
+    const statusBadge = document.querySelector(`#${contextId}-photo-status-badge`);
+    if (statusBadge) {
+      statusBadge.textContent = '⚠️ Wajib selfie sebelum mulai';
+      statusBadge.style.color = '#92400e';
+    }
+
     this.openCamera(contextId);
   },
 
   deletePhoto(contextId) {
+    const studentName = this.tempNames[contextId] || (AppState.student && AppState.student.name) || '';
+
+    // Hapus foto secara permanen dari localStorage & sinkronkan seketika ke portal guru
+    AppState.clearStudentPhotoPermanently(studentName);
+
     this.tempPhotos[contextId] = '';
-    if (AppState.student && AppState.student.name === this.tempNames[contextId]) {
-      AppState.student.photo = '';
-      AppState.student.isVerified = false;
-    }
     const preview = document.querySelector(`#${contextId}-preview`);
     const placeholder = document.querySelector(`#${contextId}-placeholder`);
     const statusBadge = document.querySelector(`#${contextId}-photo-status-badge`);
@@ -431,7 +458,7 @@ const StudentVerifier = {
     if (btnDelete) btnDelete.style.display = 'none';
     if (fileInput) fileInput.value = '';
 
-    this.showAlert(contextId, '🗑️ Foto wajah berhasil dihapus. Silakan klik "📷 Ambil Foto" untuk mengambil ulang foto terbaik Anda.');
+    this.showAlert(contextId, '🗑️ Foto wajah berhasil dihapus permanen dari memori & portal guru. Silakan klik "📷 Ambil Foto" untuk mengambil ulang.');
   },
 
   stopCamera(contextId) {
@@ -563,6 +590,7 @@ const StudentVerifier = {
       isVerified: true
     };
 
+    AppState.updateStudentPhotoPermanently(name, photo);
     AppState.save();
     this.stopCamera(contextId);
     this.syncAllCards();
@@ -584,6 +612,8 @@ const StudentVerifier = {
 
   resetVerification(contextId) {
     if (confirm('Apakah Anda ingin mengganti nama siswa atau mengambil ulang foto dokumentasi?')) {
+      const studentName = this.tempNames[contextId] || (AppState.student && AppState.student.name) || '';
+      AppState.clearStudentPhotoPermanently(studentName);
       AppState.student.isVerified = false;
       this.tempPhotos[contextId] = '';
       this.tempNames[contextId] = '';

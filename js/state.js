@@ -136,6 +136,71 @@ const AppState = {
     this.save();
   },
 
+  // Fitur Penghapusan Permanen Foto Siswa & Sinkronisasi Real-Time ke Portal Guru
+  clearStudentPhotoPermanently(studentName) {
+    const targetName = (studentName || (this.student && this.student.name) || '').trim();
+    const targetLower = targetName.toLowerCase();
+
+    // 1. Kosongkan data foto pada objek siswa aktif di state
+    if (this.student) {
+      if (!targetName || (this.student.name && this.student.name.toLowerCase() === targetLower)) {
+        this.student.photo = '';
+        this.student.isVerified = false;
+        this.student.verifiedAt = '';
+      }
+    }
+
+    // 2. Kosongkan & perbarui status di folder rekapan guru (teacherFolder)
+    if (Array.isArray(this.teacherFolder)) {
+      this.teacherFolder.forEach(s => {
+        if (!targetName || (s.studentName && s.studentName.toLowerCase() === targetLower)) {
+          s.studentPhoto = '';
+          s.photoDeleted = true;
+          s.photoDeletedAt = new Date().toLocaleString('id-ID');
+        }
+      });
+    }
+
+    // 3. Simpan permanen ke localStorage seketika agar saat refresh tidak pulih
+    this.save();
+
+    // 4. Sinkronisasi tampilan real-time di portal guru & kartu verifikasi siswa
+    if (window.TeacherPanel && typeof TeacherPanel.renderSubmissionsTab === 'function') {
+      TeacherPanel.renderSubmissionsTab();
+    }
+    if (window.StudentVerifier && typeof StudentVerifier.syncAllCards === 'function') {
+      StudentVerifier.syncAllCards();
+    }
+  },
+
+  // Pembaruan Foto Siswa Baru ke Penyimpanan Lokal & Folder Guru
+  updateStudentPhotoPermanently(studentName, photoDataUrl) {
+    const targetName = (studentName || (this.student && this.student.name) || '').trim();
+    if (!targetName || !photoDataUrl) return;
+    const targetLower = targetName.toLowerCase();
+
+    if (this.student) {
+      this.student.name = targetName;
+      this.student.photo = photoDataUrl;
+    }
+
+    if (Array.isArray(this.teacherFolder)) {
+      this.teacherFolder.forEach(s => {
+        if (s.studentName && s.studentName.toLowerCase() === targetLower) {
+          s.studentPhoto = photoDataUrl;
+          s.photoDeleted = false;
+          delete s.photoDeletedAt;
+        }
+      });
+    }
+
+    this.save();
+
+    if (window.TeacherPanel && typeof TeacherPanel.renderSubmissionsTab === 'function') {
+      TeacherPanel.renderSubmissionsTab();
+    }
+  },
+
   getStudentSubmissions() {
     return Array.isArray(this.teacherFolder) ? this.teacherFolder : [];
   },
