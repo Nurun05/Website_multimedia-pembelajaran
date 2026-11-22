@@ -54,14 +54,11 @@ const TeacherPanel = {
 
             <!-- Box Input PIN Guru -->
             <div id="guru-pin-box" class="guru-pin-box">
-              <div style="font-weight:700; font-size:12.5px; color:var(--primary-sky-deep); margin-bottom:4px;">
+              <div style="font-weight:700; font-size:12.5px; color:var(--primary-sky-deep); margin-bottom:6px;">
                 🔑 Masukkan PIN Guru:
               </div>
-              <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">
-                PIN Default: <code>guru123</code>
-              </div>
               <div class="input-row-group">
-                <input type="password" id="input-teacher-pin" class="teacher-input-text" placeholder="Masukkan PIN guru..." onkeyup="if(event.key==='Enter') TeacherPanel.submitGuruLogin()">
+                <input type="password" id="input-teacher-pin" class="teacher-input-text" placeholder="Masukkan PIN rahasia guru..." onkeyup="if(event.key==='Enter') TeacherPanel.submitGuruLogin()">
                 <button type="button" class="btn btn-primary" style="padding:6px 14px; font-size:12px;" onclick="TeacherPanel.submitGuruLogin()">
                   Buka Portal
                 </button>
@@ -86,9 +83,11 @@ const TeacherPanel = {
                 <span>👨‍🏫 Portal &amp; Folder Guru</span>
                 <span style="font-size:12px; font-weight:normal; opacity:0.9;">| SMP Negeri 1 Tandukkalua</span>
               </div>
-              <button type="button" class="teacher-modal-close-btn" onclick="TeacherPanel.closeDashboard()">
-                ✕ Beralih ke Mode Siswa
-              </button>
+              <div style="display:flex; gap:6px;">
+                <button type="button" class="teacher-modal-close-btn" style="background:#dc2626; border:1px solid #ef4444; color:#fff;" onclick="TeacherPanel.handleLogout()" title="Keluar dan kembali ke pemilihan akses">
+                  🚪 Logout
+                </button>
+              </div>
             </div>
 
             <!-- Tabs Navigasi Portal Guru -->
@@ -406,7 +405,7 @@ const TeacherPanel = {
       this.openDashboard();
     } else {
       if (pinError) {
-        pinError.textContent = 'PIN Guru salah! Silakan coba lagi (Default: guru123).';
+        pinError.textContent = 'PIN Guru tidak valid! Silakan coba lagi.';
         pinError.style.display = 'block';
       }
       if (pinInput) {
@@ -998,22 +997,32 @@ const TeacherPanel = {
     const roleText = document.querySelector('#header-role-text');
 
     if (!btn) return;
-    // Sembunyikan tombol peran di Halaman 1 Beranda sesuai instruksi
-    if (AppState.currentPage === 1) {
+    const isRoleActive = sessionStorage.getItem('role_selected') === 'true';
+    if (!isRoleActive && AppState.currentPage === 1) {
       btn.style.display = 'none';
       return;
     }
     btn.style.display = 'inline-flex';
-    if (AppState.userRole === 'guru') {
-      if (roleIcon) roleIcon.textContent = '👨‍🏫';
-      if (roleText) roleText.textContent = 'Portal Guru';
-      btn.style.background = 'rgba(255, 255, 255, 0.35)';
-      btn.title = 'Anda login sebagai Guru. Klik untuk membuka portal.';
-    } else {
-      if (roleIcon) roleIcon.textContent = '👨‍🎓';
-      if (roleText) roleText.textContent = 'Mode Siswa';
-      btn.style.background = 'rgba(255, 255, 255, 0.22)';
-      btn.title = 'Klik untuk ganti peran atau login sebagai Guru.';
+    if (roleIcon) roleIcon.textContent = '🚪';
+    if (roleText) roleText.textContent = 'Logout';
+    btn.title = 'Keluar dan kembali ke halaman awal pemilihan akses';
+    btn.onclick = () => TeacherPanel.handleLogout();
+  },
+
+  handleLogout() {
+    if (confirm('Apakah Anda yakin ingin keluar (Logout) dan kembali ke halaman awal pemilihan akses?')) {
+      AppState.userRole = 'siswa';
+      AppState.resetActiveStudent();
+      sessionStorage.removeItem('role_selected');
+      this.closeDashboard();
+      this.closeLoginModal();
+      if (window.ViewBeranda) {
+        ViewBeranda.resetRoleChoice();
+      }
+      if (window.AppRouter) {
+        AppRouter.goToPage(1);
+      }
+      this.updateHeaderRoleBadge();
     }
   }
 };

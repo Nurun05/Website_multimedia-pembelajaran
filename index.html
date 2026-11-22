@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keanekaragaman Hayati Indonesia - Modul Interaktif Web-Mobile</title>
 
+  <!-- Google Fonts: Poppins (Clean & Modern Typography) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
   <!-- Master Stylesheet (Modular Import) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -26,9 +31,9 @@
       </div>
       <div class="header-right-group">
         <button type="button" id="btn-header-role" class="header-role-btn" style="display:none;"
-          onclick="TeacherPanel.openLoginModal()" title="Pilih peran atau login sebagai Guru">
-          <span id="header-role-icon">👨‍🎓</span>
-          <span id="header-role-text">Pilih Peran</span>
+          onclick="TeacherPanel.handleLogout()" title="Keluar dan kembali ke halaman awal pemilihan akses">
+          <span id="header-role-icon">🚪</span>
+          <span id="header-role-text">Logout</span>
         </button>
         <div id="page-tracker-badge" class="page-tracker" style="display:none;"></div>
       </div>

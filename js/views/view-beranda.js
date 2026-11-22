@@ -48,9 +48,6 @@ const ViewBeranda = {
               <span>Langsung ke Menu</span>
             </button>
           </div>
-          <button type="button" class="btn" style="background:transparent; color:#64748b; font-size:11.5px; padding:4px; margin-top:2px;" onclick="ViewBeranda.resetRoleChoice()">
-            ↩ Ganti Peran (Kembali ke Pilihan Awal)
-          </button>
         </div>
       </div>
 
@@ -64,7 +61,7 @@ const ViewBeranda = {
           <div><strong>Sasaran:</strong> ${APP_DATA.info.grade}</div>
           <div><strong>Sekolah Mitra:</strong> ${APP_DATA.info.school}</div>
           <div><strong>Model Pengembangan:</strong> ${APP_DATA.info.model}</div>
-          <div><strong>Aksesibilitas:</strong> Ringan, Responsif &amp; Tersedia Versi Offline</div>
+          <div><strong>Aksesibilitas:</strong> Ringan, Cepat &amp; Responsif Web-Mobile</div>
         </div>
 
         <div class="metadata-author-box">
@@ -79,6 +76,7 @@ const ViewBeranda = {
   selectStudentRole() {
     AppState.userRole = 'siswa';
     AppState.save();
+    sessionStorage.setItem('role_selected', 'true');
     if (window.TeacherPanel) TeacherPanel.updateHeaderRoleBadge();
 
     const roleBox = document.querySelector('#beranda-role-choice');
@@ -97,10 +95,12 @@ const ViewBeranda = {
   },
 
   resetRoleChoice() {
+    sessionStorage.removeItem('role_selected');
     const roleBox = document.querySelector('#beranda-role-choice');
     const studentBox = document.querySelector('#beranda-student-actions');
     if (roleBox) roleBox.style.display = 'grid';
     if (studentBox) studentBox.style.display = 'none';
+    if (window.TeacherPanel) TeacherPanel.updateHeaderRoleBadge();
   }
 };
 

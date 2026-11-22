@@ -17,10 +17,11 @@ const AppRouter = {
     const tracker = document.querySelector('#page-tracker-badge');
     if (tracker) tracker.style.display = 'none';
 
-    // Kelola tombol peran di header (sembunyikan di Halaman 1 Beranda)
+    // Kelola tombol Logout di header (sembunyikan jika belum login peran)
     const headerRoleBtn = document.querySelector('#btn-header-role');
+    const isRoleActive = sessionStorage.getItem('role_selected') === 'true';
     if (headerRoleBtn) {
-      headerRoleBtn.style.display = (pageNumber === 1) ? 'none' : 'inline-flex';
+      headerRoleBtn.style.display = (!isRoleActive && pageNumber === 1) ? 'none' : 'inline-flex';
     }
 
     // Perbarui navigasi bilah bawah
@@ -30,14 +31,19 @@ const AppRouter = {
     if (pageNumber === 1 && window.ViewBeranda) {
       const p1 = document.querySelector('#page-1');
       if (p1) ViewBeranda.render(p1);
+      if (isRoleActive && AppState.userRole === 'siswa') {
+        ViewBeranda.selectStudentRole();
+      }
     }
     if (pageNumber === 3 && window.ViewMenu) ViewMenu.updateProgress();
+    if (pageNumber === 8 && window.ViewKegiatan3) ViewKegiatan3.initInteractiveSimulation();
     if (pageNumber === 10 && window.ViewKuis) {
       const p10 = document.querySelector('#page-10');
       if (p10) ViewKuis.render(p10);
     }
     if (pageNumber === 11 && window.ViewHasil) ViewHasil.renderResult();
     if (window.StudentVerifier) StudentVerifier.syncPage(pageNumber);
+    if (window.TeacherPanel) TeacherPanel.updateHeaderRoleBadge();
 
     // Simpan status
     AppState.save();
@@ -150,6 +156,7 @@ const AppRouter = {
     switch (pageNum) {
       case 1: this.goToPage(3); break;
       case 2: this.goToPage(1); break;
+      case 3: this.goToPage(1); break;
       default: this.goToPage(3); break;
     }
   },

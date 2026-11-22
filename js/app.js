@@ -57,7 +57,11 @@ function initViews() {
         .then(html => {
           if (html && html.trim().length > 0) {
             el.innerHTML = html;
+            if (cfg.num === 1 && sessionStorage.getItem('role_selected') === 'true' && AppState.userRole === 'siswa' && window.ViewBeranda) {
+              ViewBeranda.selectStudentRole();
+            }
             if (cfg.num === 3 && window.ViewMenu) ViewMenu.updateProgress();
+            if (cfg.num === 8 && window.ViewKegiatan3) ViewKegiatan3.initInteractiveSimulation();
             if (cfg.num === 9) ViewKegiatan3.initSortableDOM();
             if (cfg.num === 10 && window.ViewKuis) ViewKuis.render(el);
             if (cfg.num === 11 && window.ViewHasil) ViewHasil.render(el);

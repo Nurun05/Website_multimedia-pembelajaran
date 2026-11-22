@@ -1,28 +1,20 @@
-/* ====================================================================
-   VARIABLES.CSS - PALET WARNA #a3c1e1 & TYPOGRAPHY CALIBRI LIGHT
-   Sesuai Contoh Warna Pengguna: #a3c1e1 (Soft Periwinkle Sky Blue)
-   Multimedia Pembelajaran Interaktif SMP Negeri 1 Tandukkalua
-   ==================================================================== */
+/* Variables: Design System & Tokens */
 
 :root {
-  /* ====================================================================
-     WARNA UTAMA PERSIS DARI GAMBAR PENGGUNA: #a3c1e1
-     RGB: (163, 193, 225) - Soft Pastel Periwinkle Sky Blue
-     ==================================================================== */
-  --pastel-sky:               #a3c1e1; /* Warna persis dari gambar pengguna #a3c1e1 */
-  --pastel-sky-subtle:        #f0f5fb; /* Latar kartu sangat lembut */
-  --pastel-sky-light:         #e2edfa; /* Latar seleksi */
-  --pastel-sky-border:        #8fb3da; /* Border harmonis */
+  --pastel-sky:               #a3c1e1;
+  --pastel-sky-subtle:        #f0f5fb;
+  --pastel-sky-light:         #e2edfa;
+  --pastel-sky-border:        #8fb3da;
   --pastel-sky-border-subtle: #b6cfee;
   --pastel-sky-hover:         #91b5dc;
 
-  /* Gradasi Biru untuk Elemen Utama & Teks */
-  --sky-primary:         #3b7cb5; /* Biru sejuk untuk tombol utama */
+  /* Primary Blue Accents */
+  --sky-primary:         #3b7cb5;
   --sky-primary-hover:   #2b6a9f;
-  --sky-primary-dark:    #163252; /* Navy sejuk untuk teks heading */
+  --sky-primary-dark:    #163252;
   --sky-primary-deep:    #0f243d;
 
-  /* Aliases Kompatibilitas */
+  /* Aliases */
   --primary-sky:         #3b7cb5;
   --primary-sky-light:   #5b9ad1;
   --primary-sky-dark:    #2b6a9f;
@@ -31,22 +23,22 @@
   --primary-navy-dark:   #163252;
   --primary-navy-light:  #5b9ad1;
 
-  /* Tombol Utama (Primary): Biru Langit Lembut Bersinar */
-  --btn-primary-bg:      linear-gradient(135deg, #4b8ec8 0%, #3074ad 100%);
-  --btn-primary-hover:   linear-gradient(135deg, #3b7cb5 0%, #246092 100%);
-  --btn-primary-shadow:  0 4px 12px rgba(48, 116, 173, 0.28);
+  /* Primary Buttons */
+  --btn-primary-bg:      linear-gradient(135deg, #3b7cb5 0%, #255d8f 100%);
+  --btn-primary-hover:   linear-gradient(135deg, #316d9f 0%, #1c4b75 100%);
+  --btn-primary-shadow:  0 4px 12px rgba(37, 93, 143, 0.25);
 
-  /* Tombol Sekunder (Secondary): Menggunakan Warna #a3c1e1 */
-  --btn-secondary-bg:    #a3c1e1;
-  --btn-secondary-color: #0f243d;
-  --btn-secondary-border:#8fb3da;
-  --btn-secondary-hover: #91b5dc;
+  /* Secondary Buttons */
+  --btn-secondary-bg:    #eaf2fa;
+  --btn-secondary-color: #163252;
+  --btn-secondary-border:#b6cfee;
+  --btn-secondary-hover: #dceaf7;
 
-  /* Tombol Outline */
-  --btn-outline-border:  #4b8ec8;
+  /* Outline Buttons */
+  --btn-outline-border:  #8fb3da;
   --btn-outline-color:   #2b6a9f;
 
-  /* Umpan Balik Jawaban */
+  /* Feedback Colors */
   --feedback-correct:        #0d9488;
   --feedback-correct-bg:     #f0fdfa;
   --feedback-correct-border: #99f6e4;
@@ -54,12 +46,12 @@
   --feedback-wrong-bg:       #fff1f2;
   --feedback-wrong-border:   #fecdd3;
 
-  /* Penanda Tiga Tingkat */
-  --color-gen:       #367bb7; /* Biru Langit */
-  --color-jenis:     #0d9488; /* Biru Pirus / Teal */
-  --color-ekosistem: #4f46e5; /* Biru Indigo Samudra */
+  /* Biodiversity Levels */
+  --color-gen:       #367bb7;
+  --color-jenis:     #0d9488;
+  --color-ekosistem: #4f46e5;
 
-  /* Permukaan & Teks */
+  /* Backgrounds & Text */
   --bg-page:        #f3f8fd;
   --bg-card:        #ffffff;
   --text-main:      #1a2a3a;
@@ -67,17 +59,17 @@
   --border-color:   #a3c1e1;
   --border-strong:  #8fb3da;
 
-  /* Bayangan */
+  /* Shadows */
   --shadow-sm: 0 2px 4px rgba(30, 62, 99, 0.06);
   --shadow-md: 0 6px 14px -2px rgba(30, 62, 99, 0.1), 0 3px 6px -2px rgba(30, 62, 99, 0.05);
   --shadow-lg: 0 16px 24px -4px rgba(30, 62, 99, 0.14), 0 6px 8px -4px rgba(30, 62, 99, 0.06);
 
-  /* Font: Calibri Light */
-  --font-family: "Calibri Light", Calibri, "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  /* Modern Uniform Font: Poppins */
+  --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-  /* Border Radius */
+  /* Radius */
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 }

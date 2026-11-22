@@ -351,3 +351,121 @@
   border-color: var(--feedback-wrong);
   background-color: var(--feedback-wrong-bg);
 }
+
+/* ====================================================================
+   SIMULASI PENGAMATAN ILMIAH INTERAKTIF (KEGIATAN 3)
+   ==================================================================== */
+.sim-specimen-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+.sim-specimen-chip {
+  background: #ffffff;
+  border: 1.5px solid var(--pastel-sky-border);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--sky-primary-dark);
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.sim-specimen-chip:hover {
+  background: var(--pastel-sky-subtle);
+  border-color: var(--sky-primary);
+  transform: translateY(-1px);
+}
+.sim-specimen-chip.active {
+  background: var(--primary-sky);
+  color: #ffffff;
+  border-color: var(--primary-sky-deep);
+  box-shadow: 0 2px 6px rgba(47, 115, 174, 0.3);
+}
+
+.sim-steps-header {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.sim-step-tab {
+  flex: 1;
+  min-width: 65px;
+  padding: 6px 4px;
+  text-align: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sim-step-tab.active {
+  background: var(--pastel-sky);
+  border-color: var(--sky-primary);
+  color: var(--sky-primary-dark);
+}
+.sim-step-tab.completed {
+  background: #ecfdf5;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.sim-stage-card {
+  background: #ffffff;
+  border: 1.5px solid var(--pastel-sky);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeInModal 0.25s ease;
+}
+.sim-choice-btn {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sim-choice-btn:hover {
+  background: #f1f5f9;
+  border-color: var(--sky-primary);
+}
+.sim-choice-btn.selected-correct {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  color: #166534;
+  font-weight: 700;
+}
+.sim-choice-btn.selected-wrong {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.sim-report-badge {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border: 2px solid #22c55e;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 10px;
+}

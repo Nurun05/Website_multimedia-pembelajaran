@@ -84,11 +84,12 @@ MULPED/
 │       ├── view-hasil.js        # Kalkulasi skor & saran adaptif remedial
 │       └── view-rangkuman.js    # Rangkuman & pemicu cetak lembar kerja PDF
 │
-└── assets/                      # Aset Vektor SVG Lokal (100% Offline)
-    ├── hero-biodiversity.svg    # Ilustrasi keanekaragaman hayati nusantara
-    ├── diagram-tingkat.svg      # Diagram hierarki gen, jenis, dan ekosistem
-    ├── map-wallace-weber.svg    # Peta biogeografi Garis Wallace & Weber
-    └── nature-icons.svg         # Ikon flora & fauna endemik Indonesia
+└── assets/                      # Aset Gambar & Media Pembelajaran Lokal
+    ├── hero-biodiversity.jpg    # Panorama alam & biodiversitas Indonesia
+    ├── tingkat-gen-mangga.jpg   # Foto keanekaragaman gen varietas mangga
+    ├── tingkat-jenis-harimau-kucing.jpg # Perbandingan famili kucing
+    ├── tingkat-ekosistem-hutan.jpg # Panorama hutan hujan tropis
+    └── peta-persebaran-fauna-indonesia.jpg # Peta Garis Wallace & Weber
 ```
 
 ---
@@ -99,7 +100,7 @@ MULPED/
 Buka peramban (browser) dan akses alamat:  
 👉 **[https://nurun05.github.io/Website_multimedia-pembelajaran/](https://nurun05.github.io/Website_multimedia-pembelajaran/)**
 
-### 2. Menjalankan di Komputer Lokal (Offline Server)
+### 2. Menjalankan di Komputer Lokal (Local Server)
 - Cukup **klik dua kali berkas `start-server.bat`**.
 - Aplikasi otomatis terbuka di `http://localhost:8000`.
 - Tautan jaringan lokal (LAN/Wi-Fi) juga ditampilkan di konsol agar siswa dapat mengakses materi dari ponsel tanpa kuota internet.
