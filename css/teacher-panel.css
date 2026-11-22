@@ -185,18 +185,20 @@
 }
 
 .teacher-modal-topbar {
-  background: linear-gradient(135deg, #235889 0%, #3476b1 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, #93b7dd 0%, #a3c1e1 55%, #b6d2ed 100%);
+  color: #0f243d;
   padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
+  border-bottom: 1.5px solid var(--pastel-sky-border);
 }
 
 .teacher-modal-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
+  color: #0f243d;
   display: flex;
   align-items: center;
   gap: 8px;

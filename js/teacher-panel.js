@@ -81,11 +81,12 @@ const TeacherPanel = {
             <div class="teacher-modal-topbar">
               <div class="teacher-modal-title">
                 <span>👨‍🏫 Portal &amp; Folder Guru</span>
-                <span style="font-size:12px; font-weight:normal; opacity:0.9;">| SMP Negeri 1 Tandukkalua</span>
+                <span style="font-size:12px; font-weight:normal; opacity:0.85;">| SMP Negeri 1 Tandukkalua</span>
               </div>
               <div style="display:flex; gap:6px;">
-                <button type="button" class="teacher-modal-close-btn" style="background:#dc2626; border:1px solid #ef4444; color:#fff;" onclick="TeacherPanel.handleLogout()" title="Keluar dan kembali ke pemilihan akses">
-                  🚪 Logout
+                <button type="button" class="header-role-btn" onclick="TeacherPanel.handleLogout()" title="Keluar dan kembali ke pemilihan akses">
+                  <span>🚪</span>
+                  <span>Logout</span>
                 </button>
               </div>
             </div>
@@ -186,7 +187,7 @@ const TeacherPanel = {
                   <div style="font-size:11.5px; color:var(--text-muted); margin-bottom:6px;">
                     Salin (copy) daftar nama siswa dari Microsoft Word, Excel, atau buku absen lalu tempel (paste) di bawah ini (satu nama per baris):
                   </div>
-                  <textarea id="textarea-bulk-roster" class="teacher-textarea" placeholder="Contoh:&#10;Adrian Pongtiku&#10;Alfrida Mangallo&#10;Christian Tanduk"></textarea>
+                  <textarea id="textarea-bulk-roster" class="teacher-textarea" placeholder="Contoh:&#10;Shakira Maitsa Salsabila Nasrupi&#10;Elsa Listiani&#10;Vergiawan Listianto&#10;Nurunnisa"></textarea>
                   <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
                     <button type="button" class="btn btn-outline" style="font-size:11.5px; padding:6px 12px;" onclick="TeacherPanel.appendBulkStudents()">
                       ➕ Gabungkan ke Daftar
@@ -202,7 +203,7 @@ const TeacherPanel = {
                     <span>📋 Daftar Siswa Aktif (<span id="roster-active-count">0</span> Siswa)</span>
                     <div style="display:flex; gap:6px;">
                       <button type="button" class="btn btn-outline" style="font-size:10.5px; padding:4px 8px;" onclick="TeacherPanel.resetRosterToDefault()">
-                        🔄 Muat Ulang Default (32 Siswa)
+                        🔄 Muat Ulang Default (4 Siswa)
                       </button>
                       <button type="button" class="btn btn-outline" style="font-size:10.5px; padding:4px 8px; color:#dc2626;" onclick="TeacherPanel.clearAllRoster()">
                         🗑️ Kosongkan
@@ -486,23 +487,8 @@ const TeacherPanel = {
     const listContainer = document.querySelector('#submissions-list-container');
     if (!listContainer) return;
 
-    const isLocked = typeof AppState.isDeviceQuizLocked === 'function' && AppState.isDeviceQuizLocked();
-    const lockBannerHTML = isLocked ? `
-      <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:8px; padding:10px 14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
-        <div>
-          <strong style="color:#92400e; font-size:12.5px;">🔒 Perangkat Kuis Sedang Terkunci Otomatis (Submissions Lock)</strong>
-          <div style="font-size:11.5px; color:#78350f;">
-            Siswa: <strong>${AppState.deviceLock ? AppState.deviceLock.studentName : 'Siswa'}</strong> • Sisa waktu kunci: <strong>${Math.ceil(AppState.getDeviceLockRemainingSeconds() / 60)} menit</strong>
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" style="font-size:11px; padding:6px 14px; font-weight:700;" onclick="TeacherPanel.unlockDeviceFromDashboard()">
-          🔓 Buka Kunci Perangkat Sekarang
-        </button>
-      </div>
-    ` : '';
-
     if (submissions.length === 0) {
-      listContainer.innerHTML = lockBannerHTML + `
+      listContainer.innerHTML = `
         <div class="card" style="text-align:center; padding:24px; color:var(--text-muted);">
           <span style="font-size:36px; display:block; margin-bottom:6px;">📭</span>
           <strong>Folder Kuis Masih Kosong</strong>
@@ -512,7 +498,7 @@ const TeacherPanel = {
         </div>
       `;
     } else {
-      listContainer.innerHTML = lockBannerHTML + submissions.map((sub, idx) => {
+      listContainer.innerHTML = submissions.map((sub, idx) => {
         const isPass = sub.score >= passScore;
         const tp1Pct = sub.tpScores && sub.tpScores.tp1 ? sub.tpScores.tp1.pct : '-';
         const tp2Pct = sub.tpScores && sub.tpScores.tp2 ? sub.tpScores.tp2.pct : '-';

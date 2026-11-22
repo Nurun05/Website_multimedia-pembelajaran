@@ -266,11 +266,13 @@ const ViewKuis = {
 
     const passThreshold = (window.APP_DATA && APP_DATA.info && APP_DATA.info.passingScore) || 70;
     const isPass = finalScore >= passThreshold;
+    const studentName = (AppState.student && AppState.student.name) || 'Siswa';
+    const studentPhoto = (AppState.student && AppState.student.photo) || '';
 
     const submission = {
       id: 'sub-' + Date.now(),
-      studentName: AppState.student.name,
-      studentPhoto: AppState.student.photo,
+      studentName: studentName,
+      studentPhoto: studentPhoto,
       score: finalScore,
       isPass: isPass,
       tpScores: {
@@ -283,21 +285,72 @@ const ViewKuis = {
     };
 
     AppState.addStudentSubmission(submission);
-
-    // KUNCI OTOMATIS SETELAH PENGIRIMAN (Submissions Lock):
-    // Kunci kuis pada perangkat ini selama 5 menit
-    if (typeof AppState.setDeviceQuizLock === 'function') {
-      AppState.setDeviceQuizLock(AppState.student.name, 5);
-    }
     AppState.save();
 
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
     if (window.TeacherPanel) TeacherPanel.renderDashboard();
     if (window.ViewMenu) ViewMenu.updateProgress();
 
-    alert(`🎉 Kuis Akhir Selesai!\n\nNama Siswa: ${AppState.student.name}\nNilai Kuis: ${finalScore} / 100 (${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'})\n\nHasil dan foto dokumentasi wajah Anda telah otomatis tersimpan ke Folder Guru SMP Negeri 1 Tandukkalua.\n\n🔒 Akses kuis pada perangkat ini kini otomatis terkunci selama 5 menit untuk menjaga integritas data.`);
+    // Jeda waktu (cooldown) 3 detik lalu reset otomatis ke tampilan awal
+    this.showQuizSuccessCooldown(studentName);
+  },
 
-    AppRouter.goToPage(11);
+  showQuizSuccessCooldown(studentName) {
+    let overlay = document.querySelector('#quiz-cooldown-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'quiz-cooldown-overlay';
+      overlay.className = 'modal-overlay';
+      document.body.appendChild(overlay);
+    }
+
+    let remainingSeconds = 3;
+    overlay.innerHTML = `
+      <div class="card" style="max-width:440px; width:92%; text-align:center; padding:28px 22px; border:2px solid var(--primary-sky); border-radius:var(--radius-lg); box-shadow:0 14px 35px rgba(15,36,61,0.22); background:#ffffff; animation:fadeInModal 0.25s ease;">
+        <div style="font-size:46px; margin-bottom:10px;">🎉</div>
+        <h3 style="font-size:17px; font-weight:700; color:var(--primary-sky-deep); margin-bottom:6px;">
+          Kuis Akhir Berhasil Dikirim!
+        </h3>
+        <p style="font-size:13px; color:#334155; line-height:1.55; margin-bottom:14px;">
+          Terima kasih, <strong>${studentName}</strong>! Jawaban serta foto dokumentasi Anda telah tersimpan resmi ke Folder Guru.
+        </p>
+        <div style="background:var(--pastel-sky-subtle); border:1.5px solid var(--pastel-sky-border); border-radius:var(--radius-md); padding:12px 14px; margin-bottom:8px;">
+          <div style="font-size:12px; color:#64748b; margin-bottom:4px;">Memproses jeda waktu pergantian peserta:</div>
+          <div style="font-size:13.5px; font-weight:700; color:var(--primary-sky-deep);">
+            Halaman akan di-reset dalam <span id="cooldown-counter" style="display:inline-block; min-width:24px; padding:2px 8px; background:var(--primary-sky); color:#fff; border-radius:6px; font-size:15px;">${remainingSeconds}</span> detik...
+          </div>
+          <div style="font-size:11px; color:#94a3b8; margin-top:5px;">
+            Perangkat siap digunakan kembali oleh siswa berikutnya.
+          </div>
+        </div>
+      </div>
+    `;
+
+    overlay.style.display = 'flex';
+    overlay.classList.add('active');
+
+    const counterEl = overlay.querySelector('#cooldown-counter');
+    const intervalId = setInterval(() => {
+      remainingSeconds--;
+      if (counterEl) counterEl.textContent = remainingSeconds;
+      if (remainingSeconds <= 0) {
+        clearInterval(intervalId);
+        overlay.classList.remove('active');
+        overlay.style.display = 'none';
+
+        // Reset sesi kuis dan identitas siswa aktif sehingga bersih untuk siswa selanjutnya
+        if (window.StudentVerifier) {
+          StudentVerifier.resetActiveStudent();
+        } else {
+          AppState.resetActiveStudent();
+        }
+
+        // Muat ulang tampilan halaman kuis dalam mode awal yang bersih
+        if (window.AppRouter) {
+          AppRouter.goToPage(10);
+        }
+      }
+    }, 1000);
   },
 
   renderDeviceLockScreen(container) {

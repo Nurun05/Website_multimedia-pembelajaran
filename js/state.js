@@ -74,13 +74,16 @@ const AppState = {
 
   // Metode Pengelolaan Roster Guru (Daftar Nama Siswa)
   getRoster() {
-    if (Array.isArray(this.teacherRoster) && this.teacherRoster.length > 0) {
+    const defaultRoster = (window.APP_DATA && APP_DATA.studentRoster) || [
+      "Shakira Maitsa Salsabila Nasrupi",
+      "Elsa Listiani",
+      "Vergiawan Listianto",
+      "Nurunnisa"
+    ];
+    if (Array.isArray(this.teacherRoster) && this.teacherRoster.length === 4 && this.teacherRoster.includes("Shakira Maitsa Salsabila Nasrupi")) {
       return this.teacherRoster;
     }
-    if (window.APP_DATA && Array.isArray(APP_DATA.studentRoster)) {
-      return [...APP_DATA.studentRoster];
-    }
-    return [];
+    return [...defaultRoster];
   },
 
   setRoster(namesList) {
@@ -116,11 +119,12 @@ const AppState = {
   },
 
   resetRosterToDefault() {
-    if (window.APP_DATA && Array.isArray(APP_DATA.studentRoster)) {
-      this.teacherRoster = [...APP_DATA.studentRoster];
-    } else {
-      this.teacherRoster = [];
-    }
+    this.teacherRoster = [
+      "Shakira Maitsa Salsabila Nasrupi",
+      "Elsa Listiani",
+      "Vergiawan Listianto",
+      "Nurunnisa"
+    ];
     this.save();
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
   },
@@ -308,18 +312,11 @@ const AppState = {
   },
 
   isDeviceQuizLocked() {
-    if (!this.deviceLock || !this.deviceLock.lockedUntil) return false;
-    if (Date.now() >= this.deviceLock.lockedUntil) {
-      this.deviceLock = null;
-      this.save();
-      return false;
-    }
-    return true;
+    return false;
   },
 
   getDeviceLockRemainingSeconds() {
-    if (!this.isDeviceQuizLocked()) return 0;
-    return Math.max(0, Math.ceil((this.deviceLock.lockedUntil - Date.now()) / 1000));
+    return 0;
   },
 
   unlockDeviceQuiz() {
@@ -389,6 +386,16 @@ const AppState = {
         if (parsed.retakeRequests) this.retakeRequests = parsed.retakeRequests;
         if (parsed.deviceLock) this.deviceLock = parsed.deviceLock;
         if (parsed.userRole) this.userRole = parsed.userRole;
+
+        const officialRoster = [
+          "Shakira Maitsa Salsabila Nasrupi",
+          "Elsa Listiani",
+          "Vergiawan Listianto",
+          "Nurunnisa"
+        ];
+        if (!this.teacherRoster || this.teacherRoster.length !== 4 || !this.teacherRoster.includes("Shakira Maitsa Salsabila Nasrupi")) {
+          this.teacherRoster = [...officialRoster];
+        }
 
         // Pembersihan Sesi & Isolasi Privasi Perangkat:
         // Jika kuis telah selesai pada data tersimpan atau siswa belum terverifikasi resmi,

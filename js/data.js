@@ -21,40 +21,12 @@ const APP_DATA = {
     passingScore: 70
   },
 
-  // Daftar Nama Siswa Kelas VII SMP Negeri 1 Tandukkalua (Tinggal dipilih siswa)
+  // Daftar Nama Siswa Kelas VII SMP Negeri 1 Tandukkalua (4 Nama Sesuai Roster Resmi)
   studentRoster: [
-    "Adrian Pongtiku",
-    "Alfrida Mangallo",
-    "Andi Pratama",
-    "Angelina Rantetampang",
-    "Christian Tanduk",
-    "Daniel Pasang",
-    "Debora Sapan",
-    "Dwi Ananda Putri",
-    "Ester Limbong",
-    "Febrianto Salu",
-    "Gabriel Somba",
-    "Grace Toding",
-    "Hendra Banne",
-    "Indah Puspita Sari",
-    "Joshua Randan",
-    "Kezia Patasik",
-    "Kristian Datu",
-    "Maria Ulfa",
-    "Marselino Allo",
-    "Michael Rante",
-    "Novita Sari",
-    "Nurul Fadillah",
-    "Putri Ramadhani",
-    "Rendy Saputra",
-    "Revalina Bua",
-    "Samuel Tandi",
-    "Sarah Melisa",
-    "Tirza Bua",
-    "Victor Palulun",
-    "Wahyu Hidayat",
-    "Yohanes Rombe",
-    "Yuliana Paerong"
+    "Shakira Maitsa Salsabila Nasrupi",
+    "Elsa Listiani",
+    "Vergiawan Listianto",
+    "Nurunnisa"
   ],
 
   learningObjectives: [

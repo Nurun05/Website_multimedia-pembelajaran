@@ -169,26 +169,19 @@ const StudentVerifier = {
             👤 1. Pilih Nama Lengkap Siswa (Dari Daftar Guru):
           </label>
           <select id="${contextId}-select-name" class="verifier-select" onchange="StudentVerifier.handleNameChange('${contextId}', this.value)">
-            <option value="">-- Pilih Nama Anda (Kelas VII SMPN 1 Tandukkalua) --</option>
+            <option value="">-- Pilih Nama Siswa (4 Siswa Resmi) --</option>
             ${roster.map(name => {
               const isRetake = AppState.isRetakeInstructed(name);
               const isDone = AppState.isStudentCompleted(name);
               if (isRetake) {
                 return `<option value="${name}" ${savedName === name ? 'selected' : ''} style="color:#b45309; font-weight:700; background:#fef3c7;">🔄 ${name} (⚠️ Diperintahkan Ujian Ulang oleh Guru)</option>`;
               } else if (isDone) {
-                return `<option value="${name}" disabled style="color:#94a3b8; background:#f8fafc;">${name} (🔒 Sudah Selesai - Terkunci)</option>`;
+                return `<option value="${name}" disabled style="color:#94a3b8; background:#f8fafc;">${name} (Sudah Selesai)</option>`;
               } else {
                 return `<option value="${name}" ${savedName === name ? 'selected' : ''}>${name}</option>`;
               }
             }).join('')}
-            <option value="__custom__" ${savedName && !roster.includes(savedName) ? 'selected' : ''}>➕ [Ketik Nama Sendiri / Siswa Baru]</option>
           </select>
-
-          <input type="text" id="${contextId}-custom-name" class="verifier-input-text" 
-                 placeholder="Ketik nama lengkap Anda di sini jika belum ada di daftar..." 
-                 value="${savedName && !roster.includes(savedName) ? savedName : ''}"
-                 style="display:${savedName && !roster.includes(savedName) ? 'block' : 'none'};"
-                 oninput="StudentVerifier.handleCustomNameInput('${contextId}', this.value)">
         </div>
 
         <!-- 2. Kamera & Foto Dokumentasi Wajah (Muncul Setelah Nama Dipilih) -->
