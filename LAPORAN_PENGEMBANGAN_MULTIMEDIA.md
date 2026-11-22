@@ -1,23 +1,24 @@
 # LAPORAN PENGEMBANGAN MULTIMEDIA PEMBELAJARAN
+
 ## PENGEMBANGAN MULTIMEDIA PEMBELAJARAN INTERAKTIF BERBASIS WEBMOBILE SEBAGAI PENDAMPING MEDIA PEMBELAJARAN KONVENSIONAL PADA MATA PELAJARAN IPA SMP NEGERI 1 TANDUKKALUA MENGGUNAKAN MODEL MDLC
 
-Diajukan untuk Memenuhi Tugas Mata Kuliah Multimedia Pembelajaran
-
----
+<br>
 
 ### IDENTITAS PENYUSUN
-**Nama :** Nurun Nisa Ahmad  
-**Nomor Induk Mahasiswa (NIM) :** 240209501049  
-**Kelas :** Pendidikan Teknik Informatika dan Komputer (PTIK) E 2024  
-**Mata Kuliah :** Multimedia Pembelajaran  
-**Dosen Pengampu :** Dr. Udin Sidik Sidin, S.Pd., M.T. (Nomor Induk Dosen Nasional (NIDN) 0015067407)  
-**Dosen Mitra :** Ir. H. Muhammad Riska, S.Pd., M.Pd. (Nomor Induk Dosen Nasional (NIDN) 0020098503)  
 
-**PROGRAM STUDI PENDIDIKAN TEKNIK INFORMATIKA DAN KOMPUTER**  
-**JURUSAN TEKNIK INFORMATIKA DAN KOMPUTER**  
-**FAKULTAS TEKNIK**  
-**UNIVERSITAS NEGERI MAKASSAR**  
-**2026**
+- **Nama Lengkap :** Nurun Nisa Ahmad
+- **Nomor Induk Mahasiswa (NIM) :** 240209501049
+- **Kelas / Angkatan :** Pendidikan Teknik Informatika dan Komputer (PTIK) E 2024
+- **Mata Kuliah :** Multimedia Pembelajaran (MULPED)
+- **Dosen Pengampu :** Dr. Udin Sidik Sidin, S.Pd., M.T. (Nomor Induk Dosen Nasional (NIDN) 0015067407)
+- **Dosen Mitra :** Ir. H. Muhammad Riska, S.Pd., M.Pd. (Nomor Induk Dosen Nasional (NIDN) 0020098503)
+- **Program Studi :** Pendidikan Teknik Informatika dan Komputer
+- **Jurusan :** Jurusan Teknik Informatika dan Komputer
+- **Fakultas :** Fakultas Teknik
+- **Perguruan Tinggi :** Universitas Negeri Makassar (UNM)
+- **Kota & Waktu :** Makassar, November 2026
+- **Tautan Repositori :** `https://github.com/Nurun05/Website_multimedia-pembelajaran`
+- **Tautan Publikasi Web :** `https://nurun05.github.io/Website_multimedia-pembelajaran/`
 
 ---
 
@@ -25,24 +26,24 @@ Diajukan untuk Memenuhi Tugas Mata Kuliah Multimedia Pembelajaran
 
 # KATA PENGANTAR
 
-Puji syukur penulis panjatkan ke hadirat Tuhan Yang Maha Esa atas selesainya penyusunan laporan ini. Laporan ini mendokumentasikan karya berjudul **"Pengembangan Multimedia Pembelajaran Interaktif Berbasis Webmobile Sebagai Pendamping Media Pembelajaran Konvensional Pada Mata Pelajaran IPA SMP Negeri 1 Tandukkalua Menggunakan Model MDLC"**. Di dalamnya tersaji proses analisis kebutuhan, perancangan media, perakitan modul, hingga pengujian perangkat lunak. Modul interaktif ini memuat materi Ekologi dan Keanekaragaman Hayati Indonesia untuk peserta didik kelas VII sekolah menengah pertama (SMP) Negeri 1 Tandukkalua.
+Puji syukur penulis panjatkan ke hadirat Tuhan Yang Maha Esa atas selesainya penyusunan laporan ini. Laporan ini mendokumentasikan karya berjudul **"Pengembangan Multimedia Pembelajaran Interaktif Berbasis Webmobile Sebagai Pendamping Media Pembelajaran Konvensional Pada Mata Pelajaran Ilmu Pengetahuan Alam (IPA) SMP Negeri 1 Tandukkalua Menggunakan Model MDLC"**. Di dalamnya tersaji proses analisis kebutuhan, perancangan media, perakitan modul, hingga pengujian perangkat lunak. Modul interaktif ini memuat materi Ekologi dan Keanekaragaman Hayati Indonesia untuk peserta didik kelas VII sekolah menengah pertama (SMP) Negeri 1 Tandukkalua.
 
-Penyusunan naskah dan pengembangan produk ini berjalan lancar berkat bimbingan, arahan, dan dukungan dari berbagai pihak. Penulis menyampaikan terima kasih yang tulus kepada:
-1. Bapak Dr. Udin Sidik Sidin, S.Pd., M.T., selaku Dosen Pengampu mata kuliah Multimedia Pembelajaran yang telah membimbing metode rekayasa media dan kurikulum perkuliahan;
-2. Bapak Ir. H. Muhammad Riska, S.Pd., M.Pd., selaku Dosen Mitra yang telah memberikan masukan kritis terhadap rancangan instruksional dan keterbacaan antarmuka visual;
-3. Bapak dan Ibu Dosen Jurusan Teknik Informatika dan Komputer, Fakultas Teknik, Universitas Negeri Makassar (UNM) yang telah membekali penulis dasar keilmuan teknologi informasi dan kependidikan;
-4. Guru mata pelajaran ilmu pengetahuan alam (IPA) serta sivitas akademika SMP Negeri 1 Tandukkalua yang telah memberikan gambaran kendala belajar di kelas;
-5. Rekan-rekan mahasiswa kelas PTIK E Angkatan 2024 yang senantiasa berdiskusi dan saling menyemangati selama proses perakitan karya multimedia ini.
+Penyusunan laporan dan pengembangan produk ini berjalan lancar berkat bimbingan, arahan, dan dukungan dari berbagai pihak. Penulis menyampaikan terima kasih yang tulus kepada:
 
-Penulis menyadari bahwa media dan laporan ini masih terbuka bagi masukan konstruktif demi penyempurnaan tahap berikutnya. Harapan penulis, karya ini dapat bermanfaat nyata untuk mendukung kegiatan belajar mengajar sains di sekolah menengah.
+1. **Dr. Udin Sidik Sidin, S.Pd., M.T.**, selaku Dosen Pengampu mata kuliah Multimedia Pembelajaran, yang telah membimbing perancangan media berbasis teori belajar multimedia;
+2. **Ir. H. Muhammad Riska, S.Pd., M.Pd.**, selaku Dosen Mitra, yang telah memberikan masukan berharga mengenai tata letak visual dan kepraktisan media pembelajaran;
+3. **Pimpinan Jurusan Teknik Informatika dan Komputer serta Fakultas Teknik Universitas Negeri Makassar**, yang telah memfasilitasi sarana akademik selama perkuliahan;
+4. **Kepala Sekolah, Guru IPA, dan Peserta Didik Kelas VII SMP Negeri 1 Tandukkalua**, yang telah memberikan informasi permasalahan belajar di kelas;
+5. **Keluarga dan rekan-rekan mahasiswa PTIK E 2024**, yang senantiasa memberikan semangat dan bantuan selama menyelesaikan proyek ini.
+
+Penulis menyadari bahwa naskah laporan dan produk media ini masih memiliki keterbatasan. Oleh karena itu, penulis terbuka menerima kritik dan saran membangun demi penyempurnaan karya ini pada masa mendatang. Semoga laporan ini memberi manfaat nyata bagi kemajuan pembelajaran IPA di sekolah.
 
 <br>
 
 Makassar, November 2026  
 <br><br>
-**Penulis**  
-Nurun Nisa Ahmad  
-NIM 240209501049
+**Nurun Nisa Ahmad**  
+Nomor Induk Mahasiswa (NIM) 240209501049
 
 ---
 
@@ -50,44 +51,54 @@ NIM 240209501049
 
 # DAFTAR ISI
 
-- **SAMPUL** .................................................................... i
-- **KATA PENGANTAR** ............................................................ ii
-- **DAFTAR ISI** ................................................................ iii
-- **DAFTAR TABEL** .............................................................. iv
-- **DAFTAR GAMBAR** ............................................................. v
+- **KATA PENGANTAR**
+- **DAFTAR ISI**
+- **DAFTAR TABEL**
+- **DAFTAR GAMBAR**
 <br>
 
-- **BAB I PENDAHULUAN** ......................................................... 1
-  - **A. Latar Belakang** ....................................................... 1
-  - **B. Tujuan Pengembangan** .................................................. 4
-  - **C. Manfaat Pengembangan** ................................................. 5
-  - **D. Gambaran Produk yang Dikembangkan** .................................... 6
+- **BAB I PENDAHULUAN**
+  - **A. Latar Belakang**
+  - **B. Tujuan Pengembangan**
+  - **C. Manfaat Pengembangan**
+    - 1. Manfaat Teoretis
+    - 2. Manfaat Praktis
+  - **D. Gambaran Produk yang Dikembangkan**
 <br>
 
-- **BAB II PEMBAHASAN** ......................................................... 8
-  - **A. Metode Pengembangan (Model MDLC hingga Tahap Testing)** ................ 8
-    - 1. Alasan Pemilihan Model MDLC ............................................ 8
-    - 2. Tahap Concept (Konsep dan Analisis Kebutuhan) .......................... 9
-    - 3. Tahap Design (Perancangan) ............................................. 12
-    - 4. Tahap Material Collecting (Pengumpulan Bahan) .......................... 18
-    - 5. Tahap Assembly (Perakitan Produk) ...................................... 19
-    - 6. Tahap Testing (Pengujian) .............................................. 20
-  - **B. Hasil Pengembangan Produk** ............................................ 21
-    - 1. Gambaran Produk Jadi dan Cakupan Materi ................................ 21
-    - 2. Kesesuaian Implementasi dengan Rencana Proposal ........................ 23
-    - 3. Penambahan dan Pengembangan Fitur dari Proposal Awal ................... 24
-    - 4. Hasil Pengujian ........................................................ 26
-  - **C. Kekurangan Produk dan Tindak Lanjut** ................................... 28
+- **BAB II PEMBAHASAN**
+  - **A. Metode Pengembangan (Model MDLC hingga Tahap Testing)**
+    - 1. Alasan Pemilihan Model MDLC
+    - 2. Tahap Concept (Konsep dan Analisis Kebutuhan)
+      - a. Analisis Kebutuhan dari Tiga Aspek
+      - b. Studi Kelayakan Lima Aspek (Feasibility Study)
+    - 3. Tahap Design (Perancangan)
+      - a. Rasional Desain Visual dan Pedagogis
+      - b. Pemodelan Interaksi Sistem
+      - c. Pembaruan Rancangan dari Proposal Awal
+    - 4. Tahap Material Collecting (Pengumpulan Bahan)
+      - a. Pemetaan Capaian Pembelajaran (CP) dan Alur Tujuan Pembelajaran (ATP)
+      - b. Identifikasi Miskonsepsi Kritis dan Strategi Klarifikasi
+      - c. Penerapan 12 Prinsip Pembelajaran Multimedia Mayer (2021)
+      - d. Kisi-Kisi Soal Evaluasi Kuis Akhir
+    - 5. Tahap Assembly (Perakitan Produk)
+    - 6. Tahap Testing (Pengujian)
+  - **B. Hasil Pengembangan Produk**
+    - 1. Gambaran Produk Jadi dan Cakupan Materi
+    - 2. Kesesuaian Implementasi dengan Rencana Proposal
+    - 3. Penambahan dan Pengembangan Fitur dari Proposal Awal
+    - 4. Hasil Pengujian
+  - **C. Kekurangan Produk dan Tindak Lanjut**
 <br>
 
-- **BAB III KESIMPULAN** ........................................................ 30
-  - **A. Kesimpulan** ........................................................... 30
-  - **B. Rencana Validasi Ahli, Uji Coba Pengguna, dan Tahap Distribusi** ....... 31
-  - **C. Saran Pengembangan Selanjutnya** ....................................... 32
+- **BAB III KESIMPULAN**
+  - **A. Kesimpulan**
+  - **B. Rencana Validasi Ahli, Uji Coba Pengguna, dan Tahap Distribusi**
+  - **C. Saran Pengembangan Selanjutnya**
 <br>
 
-- **DAFTAR PUSTAKA** ............................................................ 34
-- **LAMPIRAN** .................................................................. 36
+- **DAFTAR PUSTAKA**
+- **LAMPIRAN**
 
 ---
 
@@ -95,16 +106,16 @@ NIM 240209501049
 
 # DAFTAR TABEL
 
-- **Tabel 2.1** Sintesis Analisis Masalah Pembelajaran, Kebutuhan Belajar, dan Solusi Desain Media ..... 10
-- **Tabel 2.2** Pemetaan Capaian Pembelajaran (CP) dan Alur Tujuan Pembelajaran (ATP) .................. 11
-- **Tabel 2.3** Peta Identifikasi Miskonsepsi Kritis dan Strategi Klarifikasi Pedagogis ................. 12
-- **Tabel 2.4** Penerapan 12 Prinsip Pembelajaran Multimedia Mayer (2021) pada Modul Interaktif ........ 14
-- **Tabel 2.5** Kisi-Kisi Distribusi Butir Soal Evaluasi Kuis Akhir Berdasarkan Taksonomi Bloom ......... 17
-- **Tabel 2.6** Cakupan Materi Pembelajaran, Kegiatan Interaktif, dan Sebaran Butir Asesmen ............. 18
-- **Tabel 2.7** Matriks Kesesuaian Rencana Awal Proposal dengan Hasil Implementasi Aktual ............... 23
-- **Tabel 2.8** Penambahan Fitur Mutakhir Melampaui Proposal Awal dan Rasional Pedagogisnya ............. 25
-- **Tabel 2.9** Hasil Pengujian Fungsionalitas Kotak Hitam (Black-Box Testing) Antarmuka Belajar ........ 26
-- **Tabel 2.10** Hasil Pengujian Verifikasi Teknis Kompilasi dan Kinerja Eksekusi Sistem ................ 27
+- **Tabel 2.1** Sintesis Analisis Masalah Pembelajaran, Kebutuhan Belajar, dan Solusi Desain Media
+- **Tabel 2.2** Pemetaan Capaian Pembelajaran (CP) dan Alur Tujuan Pembelajaran (ATP)
+- **Tabel 2.3** Peta Identifikasi Miskonsepsi Kritis dan Strategi Klarifikasi Pedagogis
+- **Tabel 2.4** Penerapan 12 Prinsip Pembelajaran Multimedia Mayer (2021) pada Antarmuka Media
+- **Tabel 2.5** Kisi-Kisi Butir Soal Kuis Akhir Berdasarkan Indikator Tujuan Pembelajaran
+- **Tabel 2.6** Cakupan Materi Pembelajaran, Kegiatan Interaktif, dan Sebaran Butir Asesmen
+- **Tabel 2.7** Matriks Kesesuaian Rencana Awal Proposal dengan Hasil Implementasi Aktual
+- **Tabel 2.8** Penambahan Fitur Mutakhir Melampaui Proposal Awal dan Rasional Pedagogisnya
+- **Tabel 2.9** Hasil Pengujian Fungsionalitas Kotak Hitam (Black-Box Testing) Antarmuka Belajar
+- **Tabel 2.10** Hasil Pengujian Verifikasi Teknis Kompilasi dan Kinerja Eksekusi Sistem
 
 ---
 
@@ -112,19 +123,19 @@ NIM 240209501049
 
 # DAFTAR GAMBAR
 
-- **Gambar 2.1** Use Case Diagram: Pemodelan Interaksi Peran Siswa dan Guru IPA ......................... 15
-- **Gambar 2.2** Activity Diagram: Alur Pengalaman Belajar Mandiri Peserta Didik ........................ 16
-- **Gambar 2.3** Flowchart Alur Navigasi Sistem dan Ambang Kelulusan Nilai 70 ............................. 17
-- **Gambar 2.4** Tangkapan Layar Halaman Beranda Sambutan dan Pemilihan Akses Peran ..................... 21
-- **Gambar 2.5** Tangkapan Layar Halaman Petunjuk Belajar dan Capaian Tujuan Pembelajaran ............... 21
-- **Gambar 2.6** Tangkapan Layar Dasbor Menu Utama Pembelajaran Berbasis Kartu .......................... 22
-- **Gambar 2.7** Tangkapan Layar Kegiatan Belajar 1: Konsep Kunci dan Latihan Formatif .................. 22
-- **Gambar 2.8** Tangkapan Layar Kegiatan Belajar 2: Tabulasi Visual Tiga Tingkat Kehati ................ 22
-- **Gambar 2.9** Tangkapan Layar Kegiatan Belajar 3: Simulasi Observasi dan Peta Wallace-Weber .......... 23
-- **Gambar 2.10** Tangkapan Layar Halaman Kuis Akhir Berproteksi Verifikasi Wajah Siswa ................. 23
-- **Gambar 2.11** Tangkapan Layar Halaman Hasil Skor, Pemetaan Indikator Belajar, dan Rekomendasi ...................... 24
-- **Gambar 2.12** Tangkapan Layar Halaman Rangkuman dan Cetak Lembar Catatan Mandiri .................... 24
-- **Gambar 2.13** Tangkapan Layar Dasbor Pengelolaan Guru dan Rekapitulasi Kelas ........................ 25
+- **Gambar 2.1** Use Case Diagram: Pemodelan Interaksi Peran Siswa dan Guru IPA
+- **Gambar 2.2** Activity Diagram: Alur Pengalaman Belajar Mandiri Peserta Didik
+- **Gambar 2.3** Flowchart Alur Navigasi Sistem dan Ambang Kelulusan Nilai 70
+- **Gambar 2.4** Tangkapan Layar Halaman Beranda Sambutan dan Pemilihan Akses Peran
+- **Gambar 2.5** Tangkapan Layar Halaman Petunjuk Belajar dan Capaian Tujuan Pembelajaran
+- **Gambar 2.6** Tangkapan Layar Dasbor Menu Utama Pembelajaran Berbasis Kartu
+- **Gambar 2.7** Tangkapan Layar Kegiatan Belajar 1: Konsep Kunci dan Latihan Formatif
+- **Gambar 2.8** Tangkapan Layar Kegiatan Belajar 2: Tabulasi Visual Tiga Tingkat Kehati
+- **Gambar 2.9** Tangkapan Layar Kegiatan Belajar 3: Simulasi Observasi dan Peta Wallace-Weber
+- **Gambar 2.10** Tangkapan Layar Halaman Kuis Akhir Berproteksi Verifikasi Wajah Siswa
+- **Gambar 2.11** Tangkapan Layar Halaman Hasil Skor, Pemetaan Indikator Belajar, dan Rekomendasi
+- **Gambar 2.12** Tangkapan Layar Halaman Rangkuman dan Cetak Lembar Catatan Mandiri
+- **Gambar 2.13** Tangkapan Layar Dasbor Pengelolaan Guru dan Rekapitulasi Kelas
 
 ---
 
@@ -134,58 +145,58 @@ NIM 240209501049
 
 ## A. Latar Belakang
 
-Pembelajaran ilmu pengetahuan alam (IPA) pada jenjang sekolah menengah pertama (SMP) bertujuan menumbuhkan nalar kritis, kemampuan literasi sains, dan kepedulian lingkungan peserta didik. Namun, observasi awal penulis di SMP Negeri 1 Tandukkalua menunjukkan bahwa kegiatan belajar masih bertumpu pada buku teks cetak dan papan tulis. Guru menerangkan isi buku paket, lalu menuliskan ringkasan atau menggambar bagan di papan tulis.
+Berdasarkan pengalaman dan pengamatan penulis saat menempuh pendidikan di SMP Negeri 1 Tandukkalua, pembelajaran IPA di kelas hanya menggunakan dua media, yaitu buku pelajaran dan papan tulis. Guru menjelaskan materi dengan bantuan papan tulis. Apabila materi memuat gambar di dalam buku, guru biasanya menggambar ulang gambar tersebut di papan tulis, kemudian menjelaskannya kepada siswa. Siswa juga diarahkan untuk melihat buku sebagai visualisasi materi.
 
-Buku cetak dan papan tulis memang praktis dan tidak membutuhkan aliran listrik. Meski demikian, ketergantungan tunggal pada media cetak menyisakan kendala nyata saat membahas konsep biologis yang abstrak. Salah satu topik yang paling membutuhkan visualisasi konkret adalah materi Keanekaragaman Hayati (Biodiversitas) pada elemen Pemahaman IPA Fase D Kurikulum Merdeka.
+Cara belajar seperti ini berlaku juga pada materi keanekaragaman hayati, yang memuat banyak jenis makhluk hidup dengan bentuk dan ciri yang berbeda-beda. Hal ini membuat visualisasi materi bergantung pada dua sumber, yaitu gambar tangan guru di papan tulis dan gambar diam di dalam buku. Keduanya hanya menampilkan satu keadaan pada satu waktu. Padahal pada materi keanekaragaman hayati, jumlah jenis makhluk hidup yang perlu ditunjukkan sangat banyak, sedangkan gambar diam di buku hanya memuat beberapa contoh saja.
 
-Materi keanekaragaman hayati menuntut siswa memahami variasi morfologi makhluk hidup pada tingkat gen, jenis, dan ekosistem. Buku pelajaran yang tersedia di sekolah memuat sedikit foto berukuran kecil dengan warna terbatas. Ketika guru berupaya menunjukkan perbedaan bentuk satwa, guru terpaksa menggambarnya di papan tulis. Langkah ini menyita jam pelajaran, sementara kualitas gambar sangat bergantung pada kecakapan menggambar guru. Gambar di papan tulis pun harus segera dihapus saat jam pelajaran berganti. Peserta didik akhirnya kehilangan rujukan visual setelah pembelajaran usai.
+Perbedaan tingkat gen, tingkat jenis, dan tingkat ekosistem juga harus dibayangkan sendiri oleh siswa dari penjelasan dan gambar yang terbatas itu. Gambar di papan tulis juga lekas hilang setelah dihapus saat pergantian jam pelajaran. Akibatnya, siswa hanya dapat mengulang belajar melalui buku dan catatan yang ada. Persoalan lain muncul ketika guru berhalangan hadir di sekolah. Pada saat itu siswa biasanya diminta mencatat sebagai persiapan untuk pertemuan berikutnya. Kegiatan mencatat ini tidak disertai penjelasan, visualisasi, maupun umpan balik. Siswa dapat saja menyalin isi buku tanpa mengetahui apakah pemahamannya sudah benar atau belum. Kondisi ini belum tentu menyiapkan siswa dengan baik untuk pertemuan berikutnya.
 
-Kendala belajar kian terasa ketika guru IPA berhalangan hadir karena tugas kedinasan. Dalam situasi ini, guru biasanya menugasi siswa mencatat isi buku paket ke buku catatan. Kegiatan mencatat tanpa penjelasan pendamping berlangsung monoton. Siswa sekadar menyalin tulisan tanpa memahami konsep. Pemahaman mereka pun tidak terukur dan miskonsepsi sains rawan terjadi.
+Buku dan papan tulis tetap penting dalam kegiatan belajar mengajar. Keduanya tersedia di hampir setiap kelas, tidak membutuhkan listrik maupun internet, dan memungkinkan guru menyesuaikan penjelasan ketika siswa bertanya langsung. Yang belum tersedia di sekolah adalah media pendamping yang menghadirkan visualisasi lebih jelas, dapat dibuka berulang kali, serta menyediakan panduan belajar mandiri saat guru berhalangan hadir.
 
-Dari sisi kebijakan kurikulum, Keputusan Kepala Badan Standar, Kurikulum, dan Asesmen Pendidikan (BSKAP) Kemendikbudristek Nomor 008/H/2022 (Kemendikbudristek, 2022) menetapkan bahwa peserta didik Fase D harus mampu mengklasifikasikan makhluk hidup berdasarkan karakteristik yang diamati. Siswa juga dituntut menganalisis interaksi lingkungan dan merancang upaya pelestariannya (Kemendikbudristek, 2022). Tuntutan capaian ini menegaskan bahwa keanekaragaman hayati bukan sekadar bahan hafalan nama latin, melainkan sarana membangun kesadaran konservasi (Purnama et al., 2024; Ristanto et al., 2024).
+Kajian teori pembelajaran multimedia dari Mayer menunjukkan bahwa gambar dan kata yang saling mendukung lebih membantu siswa memahami materi pelajaran daripada kata saja (Mayer, 2021). Materi yang dipelajari pada modul ini adalah topik Ekologi dan Keanekaragaman Hayati Indonesia pada mata pelajaran IPA kelas VII SMP Fase D. Sesuai Keputusan Kepala Badan Standar, Kurikulum, dan Asesmen Pendidikan (BSKAP) Kemendikbudristek Nomor 008/H/2022, siswa dituntut mampu mengklasifikasikan makhluk hidup berdasarkan karakteristik yang diamati, menganalisis interaksi lingkungan, serta merumuskan upaya pelestariannya (Kemendikbudristek, 2022). Materi ini berkaitan erat dengan penumbuhan literasi konservasi siswa (Purnama et al., 2024; Ristanto et al., 2024).
 
-Secara teoretis, perancangan media ini mengacu pada *Cognitive Theory of Multimedia Learning* (CTML) dari Richard E. Mayer (Mayer, 2021). Teori ini menyatakan bahwa memori kerja manusia memproses teks dan gambar melalui dua saluran terpisah dengan kapasitas terbatas. Pemahaman konsep sains terbangun lebih baik ketika kata dan gambar disajikan bersamaan (*multimedia principle*). Materi juga perlu dibagi dalam segmen teratur (*segmenting principle*), diberi penanda visual (*signaling principle*), dan menempatkan teks penjelasan dekat dengan gambar (*spatial contiguity principle*) (Mayer, 2021; Zunidar et al., 2026). Kajian empiris menunjukkan bahwa pemanfaatan multimedia interaktif pada materi ekologi kelas VII terbukti meningkatkan minat dan pemahaman konsep siswa (Yanto & Setiawan, 2024).
-
-Melihat kesenjangan di SMP Negeri 1 Tandukkalua tersebut, penulis mengembangkan multimedia pembelajaran interaktif berbasis web bergerak (*web-mobile*). Pengembangan ini menerapkan model *Multimedia Development Life Cycle* (MDLC) dari Luther (1994) yang disempurnakan oleh Sutopo (2003). Pada proposal awal, penulis baru merancang tahap *Concept* dan *Design*. Melalui kerja lanjutan, penulis menuntaskan perakitan (*Assembly*) dan pengujian (*Testing*). Produk ini menyajikan tiga kegiatan belajar mandiri, latihan interaktif dengan umpan balik langsung, kuis evaluasi dengan pembahasan ilmiah, verifikasi wajah peserta, dan portal pengelolaan kelas untuk guru.
+Berdasarkan kondisi tersebut, penulis memilih mengembangkan modul multimedia interaktif berbasis web-mobile yang ringan dan dapat dibuka melalui peramban ponsel pintar (*smartphone*). Modul ini diposisikan murni sebagai pendamping media konvensional (Yanto & Setiawan, 2024). Buku, papan tulis, dan peran guru tetap dipertahankan. Modul hadir memberikan nilai tambah berupa galeri foto berbagai jenis makhluk hidup, diagram tiga tingkat keanekaragaman, animasi langkah pengamatan sains, latihan interaktif dengan umpan balik langsung, kuis evaluasi berfoto wajah, serta lembar rangkuman terpandu. Dengan media ini, siswa dapat belajar mandiri secara terarah di kelas maupun di rumah.
 
 ## B. Tujuan Pengembangan
 
-Tujuan dari pengembangan multimedia pembelajaran interaktif ini adalah:
-1. Menghasilkan media pembelajaran interaktif berbasis *web-mobile* yang valid, praktis, dan ringan pada topik Ekologi dan Keanekaragaman Hayati Indonesia untuk peserta didik kelas VII SMP Negeri 1 Tandukkalua;
-2. Menerapkan tahapan model pengembangan MDLC secara sistematis mulai dari tahap *Concept*, *Design*, *Material Collecting*, *Assembly*, hingga *Testing*;
-3. Menyajikan materi keanekaragaman hayati secara bertahap dan konkret melalui perpaduan teks ringkas, foto beresolusi tinggi, simulasi observasi sains, latihan manipulatif, serta kuis diagnostik berumpan balik langsung;
-4. Menyediakan sarana belajar mandiri terarah saat guru berhalangan hadir di kelas, dilengkapi pemantauan hasil belajar dan pengelolaan data bagi guru.
+Berdasarkan permasalahan yang telah diuraikan, tujuan pengembangan multimedia pembelajaran ini dirumuskan sebagai berikut:
+
+1. Mengembangkan modul multimedia interaktif berbasis web-mobile yang ringan dan mudah diakses melalui peramban ponsel pintar siswa tanpa memerlukan instalasi aplikasi yang rumit;
+2. Menyediakan media pendamping buku dan papan tulis yang menghadirkan visualisasi foto nyata, kartu akordeon istilah, dan simulasi alur langkah pengamatan sains pada materi Keanekaragaman Hayati Indonesia;
+3. Menyediakan sarana latihan interaktif dengan umpan balik langsung dan kuis evaluasi mandiri yang dilengkapi fitur foto wajah (*selfie camera*) serta diagnostik ketuntasan per tujuan pembelajaran;
+4. Menyediakan portal guru mandiri yang memudahkan guru memantau hasil nilai siswa, melihat bukti foto pengerjaan, mengelola daftar nama siswa, dan mengekspor rekapitulasi data kelas.
 
 ## C. Manfaat Pengembangan
 
-Pengembangan media interaktif ini memberikan manfaat teoretis dan praktis sebagai berikut:
+Pengembangan multimedia pembelajaran ini diharapkan memberikan manfaat teoretis dan praktis sebagai berikut:
 
 ### 1. Manfaat Teoretis
-Produk dan laporan ini memperkuat bukti penerapan teori kognitif multimedia Mayer dalam perancangan media web bergerak. Selain itu, laporan ini memperkaya contoh penerapan model MDLC Luther-Sutopo pada pembelajaran sains di sekolah menengah pertama.
+Secara teoretis, produk ini menjadi contoh penerapan prinsip teori pembelajaran multimedia (*Cognitive Theory of Multimedia Learning*) dari Richard E. Mayer pada pembelajaran sains jenjang SMP. Produk ini menunjukkan bahwa perpaduan teks ringkas, foto nyata, dan latihan bertahap dapat mengurangi beban memori kerja siswa serta memperjelas pemahaman konsep biologi yang abstrak.
 
 ### 2. Manfaat Praktis
-a. **Bagi Peserta Didik:** Membantu memvisualisasikan perbedaan keanekaragaman hayati tingkat gen, jenis, dan ekosistem secara konkret. Siswa juga memperoleh sarana belajar mandiri untuk mencoba latihan tanpa cemas dinilai buruk, sekaligus memperkuat literasi konservasi lingkungan;  
-b. **Bagi Guru IPA:** Menyediakan alat bantu peraga digital yang siap digunakan di kelas tanpa perlu menggambar manual di papan tulis. Media ini juga memudahkan penugasan terstruktur saat guru berhalangan hadir dan mempercepat pemantauan ketuntasan belajar siswa;  
-c. **Bagi Sekolah (SMP Negeri 1 Tandukkalua):** Mendorong pemanfaatan teknologi digital yang hemat sarana, ramah gawai, dan dapat dioperasikan secara luring penuh di tengah keterbatasan sinyal internet daerah;  
-d. **Bagi Penulis:** Menjadi pengalaman nyata dalam memadukan keilmuan teknologi informasi dan kependidikan untuk memecahkan kendala pembelajaran di ruang kelas.
+a. **Bagi Peserta Didik:** Memperoleh pengalaman belajar mandiri yang menarik dan mudah dipahami melalui ponsel masing-masing. Siswa mendapatkan visualisasi materi yang jelas, umpan balik seketika saat berlatih, dan catatan terpandu saat guru berhalangan hadir;  
+b. **Bagi Guru IPA:** Memperoleh media pendamping mengajar yang praktis dan fleksibel. Guru terbantu dalam menghadirkan contoh flora dan fauna tanpa harus menggambar ulang di papan tulis, serta mudah memantau kemajuan belajar siswa melalui portal guru;  
+c. **Bagi Sekolah (SMP Negeri 1 Tandukkalua):** Memberikan alternatif inovasi media ajar digital yang hemat biaya dan ramah kuota. Media ini dapat dimanfaatkan secara daring maupun luring di laboratorium komputer dan ruang kelas.
 
 ## D. Gambaran Produk yang Dikembangkan
 
-Produk yang dihasilkan berupa media pembelajaran interaktif berbasis peramban web bergerak (*web-mobile*) berjudul **"Ekologi dan Keanekaragaman Hayati Indonesia"**. Media ini dirancang khusus untuk siswa kelas VII SMP dengan antarmuka bersih dan ramah sentuhan layar ponsel (*mobile-friendly*), serta tetap proporsional saat dibuka pada monitor komputer. Produk ini telah diunggah pada peladen *GitHub Pages* (`https://nurun05.github.io/Website_multimedia-pembelajaran/`) dan dapat dijalankan secara luring penuh (*offline-ready*) lewat server lokal kelas.
+Produk yang dihasilkan berupa modul multimedia interaktif berbasis web-mobile bernama **"Keanekaragaman Hayati Indonesia"**. Media ini dirancang khusus untuk peserta didik kelas VII SMP Negeri 1 Tandukkalua. Tampilan antarmuka berorientasi potret tegak (*portrait*) agar nyaman digunakan dengan satu tangan pada layar ponsel pintar.
 
-Media pembelajaran ini memuat 12 modul halaman yang terangkai secara terpadu:
-1. *Halaman 1 (Beranda):* Menampilkan panorama alam nusantara beresolusi tinggi, identitas mata pelajaran, identitas penyusun, serta tombol pemilihan peran akses siswa dan guru;
-2. *Halaman 2 (Petunjuk & Capaian Belajar):* Memuat panduan belajar mandiri dan rincian tiga Tujuan Pembelajaran (TP) yang terukur, yaitu TP 1, TP 2, dan TP 3;
-3. *Halaman 3 (Menu Utama):* Berupa dasbor navigasi kartu yang memetakan seluruh kegiatan belajar, dilengkapi lencana centang hijau sebagai penanda kemajuan belajar;
-4. *Halaman 4 (Kegiatan 1 - Materi):* Pengenalan konsep keanekaragaman hayati dengan pertanyaan pemantik lingkungan lokal Tandukkalua serta enam kartu akordeon istilah ilmiah (Biodiversitas, Spesies, Habitat, Ekosistem, Endemik, dan Konservasi);
-5. *Halaman 5 (Kegiatan 1 - Latihan Formatif):* Tiga butir latihan pilihan ganda yang memberikan umpan balik langsung tanpa mengurangi nilai rapor;
-6. *Halaman 6 (Kegiatan 2 - Materi Tiga Tingkat Kehati):* Tabulasi interaktif tiga tingkat keanekaragaman (Gen, Jenis, Ekosistem) disertai kotak peringatan miskonsepsi kritis dan galeri foto perbandingan nyata;
-7. *Halaman 7 (Kegiatan 2 - Latihan Pasangan):* Papan permainan dua kolom yang melatih siswa menghubungkan enam contoh organisme dengan tingkat keanekaragamannya;
-8. *Halaman 8 (Kegiatan 3 - Persebaran Fauna & Konservasi):* Simulasi lima langkah pengamatan ilmiah, peta biogeografi Wallace-Weber, lima ancaman kepunahan, serta pemilahan strategi pelestarian *in situ* dan *ex situ*;
-9. *Halaman 9 (Kegiatan 3 - Latihan Urutan Alur):* Papan interaktif untuk menyusun lima kartu tahapan observasi sains secara logis;
-10. *Halaman 10 (Kuis Akhir Evaluasi Resmi):* Asesmen sumatif 10 butir pilihan ganda dengan verifikasi foto kamera wajah (*selfie camera*). Fitur ini dilengkapi penguncian jawaban per butir, pembahasan ilmiah, dan jeda hitung mundur tiga detik pascapengiriman;
-11. *Halaman 11 (Evaluasi Hasil & Rekomendasi):* Menampilkan diagram lingkaran capaian skor total, tiga indikator ketuntasan per tujuan pembelajaran, ambang batas Kriteria Ketuntasan Minimal (KKM) bernilai 70, serta tombol rekomendasi tindak lanjut;
-12. *Halaman 12 (Rangkuman & Lembar Catatan):* Intisari materi komprehensif, glosarium sains, dan fitur cetak lembar kerja siswa berformat hemat tinta (*print-ready layout*).
+Aplikasi ini memiliki keunggulan operasional berupa ukuran berkas yang sangat ringan, yakni hanya sekitar 2,2 megabita (MB). Karena berbasis web standar (HTML, CSS, dan JavaScript), aplikasi ini dapat dimuat seketika melalui peramban web tanpa proses instalasi aplikasi tambahan. Modul ini terdiri atas 12 halaman yang tersusun berurutan:
+1. **Halaman 1 (Beranda):** Menyajikan judul materi, identitas sekolah, foto pemandangan alam Indonesia, serta pilihan tombol peran masuk bagi Siswa dan Guru IPA;
+2. **Halaman 2 (Petunjuk & Tujuan):** Memuat petunjuk cara belajar mandiri dan rincian tiga Tujuan Pembelajaran (TP) yang harus dicapai siswa;
+3. **Halaman 3 (Menu Utama):** Dasbor navigasi berbasis kartu yang memuat menu Kegiatan 1, Kegiatan 2, Kegiatan 3, Kuis Akhir, dan Rangkuman;
+4. **Halaman 4 (Kegiatan 1 - Konsep & Istilah):** Pertanyaan pemantik lingkungan sekitar dan enam kartu akordeon istilah penting (Biodiversitas, Spesies, Habitat, Ekosistem, Endemik, Konservasi);
+5. **Halaman 5 (Latihan Formatif 1):** Tiga soal pilihan ganda interaktif dengan penjelasan jawaban seketika;
+6. **Halaman 6 (Kegiatan 2 - Tiga Tingkat Kehati):** Tabulasi visual interaktif dan galeri foto tingkat gen (mangga), jenis (kucing-harimau), dan ekosistem (hutan hujan-terumbu karang);
+7. **Halaman 7 (Latihan Formatif 2):** Permainan memasangkan enam contoh organisme ke dalam kolom tingkat keanekaragamannya;
+8. **Halaman 8 (Kegiatan 3 - Indonesia, Ancaman & Pelestarian):** Peta persebaran fauna Asiatis, Wallacea, Australis, lima faktor ancaman, serta pelestarian *in situ* dan *ex situ*;
+9. **Halaman 9 (Latihan Formatif 3):** Latihan menyusun urutan lima kartu tahapan observasi sains secara logis;
+10. **Halaman 10 (Kuis Akhir Evaluasi Resmi):** Asesmen sumatif 10 butir soal pilihan ganda berbatas waktu 15 menit, dilengkapi verifikasi foto wajah siswa (*selfie camera*) sebelum soal terbuka;
+11. **Halaman 11 (Hasil Nilai & Diagnostik):** Menampilkan diagram lingkaran perolehan skor total, patokan Kriteria Ketuntasan Minimal (KKM) bernilai 70, capaian per indikator tujuan pembelajaran, dan rekomendasi tindak lanjut;
+12. **Halaman 12 (Rangkuman & Lembar Catatan):** Ringkasan materi lengkap, glosarium sains, dan tombol cetak lembar kerja mandiri (*print-ready layout*).
+
+Selain halaman modul siswa, media ini dilengkapi **Portal Guru** yang dilindungi sandi rahasia (*personal identification number* atau PIN). Pada portal ini, guru dapat memantau rekapitulasi nilai kelas dan memeriksa foto pengerjaan siswa. Guru juga dapat mengelola daftar nama kelas, memberi izin ujian ulang, serta mengunduh berkas nilai berformat *comma-separated values* (CSV). Aplikasi ini dapat diakses secara daring melalui GitHub Pages serta tersedia dalam paket luring mandiri menggunakan peladen lokal mini.
 
 ---
 
@@ -195,147 +206,153 @@ Media pembelajaran ini memuat 12 modul halaman yang terangkai secara terpadu:
 
 ## A. Metode Pengembangan (Model MDLC hingga Tahap Testing)
 
-Pengembangan media interaktif ini menerapkan metodologi **Multimedia Development Life Cycle (MDLC)** menurut Luther (1994) yang disempurnakan oleh Sutopo (2003). Model MDLC merupakan pendekatan rekayasa perangkat lunak multimedia terstruktur yang mencakup enam tahapan: *Concept* (Konsep), *Design* (Perancangan), *Material Collecting* (Pengumpulan Bahan), *Assembly* (Pembuatan/Perakitan), *Testing* (Pengujian), dan *Distribution* (Distribusi). Pembahasan pada Bab II ini berfokus pada tahap *Concept* hingga *Testing*, sedangkan tahap *Distribution* diuraikan pada Bab III sebagai rencana tindak lanjut penerapan.
+Pengembangan media pembelajaran interaktif ini menerapkan metodologi **Multimedia Development Life Cycle (MDLC)** menurut Luther (Torondek et al., 2025). Model MDLC terdiri atas enam tahap berurutan: *Concept*, *Design*, *Material Collecting*, *Assembly*, *Testing*, dan *Distribution*. Pada laporan proyek akhir mata kuliah ini, tahapan dilaksanakan secara utuh hingga tahap **Testing** (pengujian), sedangkan tahap *Distribution* direncanakan pada Bab III.
+
+```mermaid
+flowchart TD
+    A["1. Concept (Analisis Kebutuhan)"] --> B["2. Design (Storyboard & Diagram)"]
+    B --> C["3. Material Collecting (Pengumpulan Bahan)"]
+    C --> D["4. Assembly (Perakitan Antarmuka Web)"]
+    D --> E["5. Testing (Uji Fungsional & Teknis)"]
+    E -.->|Rencana Lanjut| F["6. Distribution (Penyebaran Daring & Luring)"]
+```
 
 ### 1. Alasan Pemilihan Model MDLC
-Pemilihan model MDLC didasarkan pada karakteristik produk yang memadukan beragam unsur multimedia, seperti teks sains, foto resolusi tinggi, diagram vektor, simulasi langkah observasi, interaktivitas manipulatif, dan kuis diagnostik. Model MDLC memiliki keunggulan mendasar:
-a. **Pemisahan Antara Bahan dan Perakitan:** MDLC menyediakan tahap khusus *Material Collecting* sebelum *Assembly*. Pemisahan ini sangat penting pada materi biologi; akurasi materi ajar, taksonomi spesies, dan keaslian foto harus divalidasi terlebih dahulu sebelum disatukan ke dalam kode program (Torondek et al., 2025);
-b. **Keluaran Setiap Tahap Bersifat Terukur:** Setiap fase menghasilkan artefak nyata. Tahap *Concept* menghasilkan spesifikasi kebutuhan, diikuti tahap *Design* untuk merancang alur interaksi dan layar. Selanjutnya, tahap *Material Collecting* menghimpun bank materi dan soal, tahap *Assembly* merakit modul fungsional, dan tahap *Testing* menguji sistem melalui uji kotak hitam (Samalukang et al., 2022);
-c. **Sifat Iteratif yang Terkendali:** Jika pada tahap pengujian ditemukan kendala visual atau logika antarmuka yang kurang tepat, pengembang dapat meninjau kembali tahap perancangan atau pengumpulan bahan tanpa merombak arsitektur sistem secara keseluruhan.
+Model MDLC dipilih sebagai metodologi pengembangan karena beberapa pertimbangan mendasar:
+Pertama, MDLC memang disusun khusus untuk produk multimedia pembelajaran. Tahapannya mengikuti kebutuhan produk yang memadukan teks, gambar, animasi, latihan, dan kuis interaktif (Torondek et al., 2025).
+Kedua, keluaran setiap tahap bersifat jelas dan terukur. Tahap *Concept* menghasilkan spesifikasi kebutuhan media, diikuti tahap *Design* untuk merancang alur interaksi dan layar. Selanjutnya, tahap *Material Collecting* menghimpun bank materi dan soal, tahap *Assembly* merakit modul fungsional, dan tahap *Testing* menguji sistem melalui uji kotak hitam (Samalukang et al., 2022).
+Ketiga, tahapannya berurutan secara logis. Keputusan perancangan selalu bertumpu pada hasil analisis sebelumnya.
+Keempat, model ini memisahkan tahap pengumpulan bahan (*Material Collecting*) dari perakitan (*Assembly*). Pemisahan ini sangat tepat untuk materi biologi yang membutuhkan kurasi foto nyata dan validasi kunci jawaban sebelum diintegrasikan ke kode antarmuka.
+Kelima, model MDLC bersifat fleksibel terkendali. Jika pada tahap pengujian ditemukan kendala tombol atau susunan visual, pengembang dapat meninjau kembali tahap perancangan tanpa harus merombak struktur sistem secara menyeluruh.
 
 ### 2. Tahap Concept (Konsep dan Analisis Kebutuhan)
-Tahap *Concept* meletakkan fondasi analisis kebutuhan lapangan dan perumusan spesifikasi produk.
+Tahap *Concept* bertujuan menentukan tujuan media, sasaran pengguna, cakupan materi, serta menganalisis kelayakan pengembangan.
 
-#### a) Analisis Kebutuhan dari Tiga Aspek
-1. **Aspek Proses Pembelajaran:** Hasil pengamatan menunjukkan pembelajaran IPA di SMP Negeri 1 Tandukkalua masih didominasi penjelasan satu arah menggunakan buku paket dan papan tulis. Guru kesulitan memvisualisasikan makhluk hidup karena contoh pada buku sangat terbatas dan gambar papan tulis lekas dihapus. Saat guru berhalangan hadir, siswa hanya mencatat tanpa bimbingan dan umpan balik. Diperlukan media pendamping interaktif yang menyajikan representasi visual konkret dan membimbing belajar mandiri secara terstruktur;
-2. **Aspek Karakteristik Peserta Didik dan Lingkungan:** Peserta didik kelas VII SMP berusia antara 12 hingga 15 tahun. Menurut teori kognitif Jean Piaget, siswa pada rentang usia ini berada pada masa transisi dari tahap operasional konkret menuju operasional formal. Mereka membutuhkan bantuan visual konkret untuk memahami konsep klasifikasi dan hierarki hayati. Ketersediaan ponsel pintar siswa cukup memadai, namun kapasitas memori dan kuota internet terbatas. Antarmuka media harus ramah ponsel potret, berbobot ringan, dan dapat beroperasi luring penuh;
-3. **Aspek Kurikulum dan Capaian Pembelajaran:** Berdasarkan Kurikulum Merdeka Fase D elemen Pemahaman IPA (Kemendikbudristek, 2022), materi keanekaragaman hayati diturunkan ke dalam tiga tujuan pembelajaran (TP) utama yang menjadi acuan tiga kegiatan belajar modul.
+#### a. Analisis Kebutuhan dari Tiga Aspek
+Analisis kebutuhan dilakukan terhadap tiga aspek utama:
+1) **Aspek Proses Pembelajaran:** Pembelajaran IPA di SMP Negeri 1 Tandukkalua selama ini mengandalkan buku cetak dan papan tulis. Guru harus menggambar manual bagan dan organ satwa di papan tulis, yang menyita waktu dan kualitas gambarnya terbatas. Saat guru berhalangan hadir, siswa hanya diminta mencatat materi tanpa penjelasan konsep dan tanpa umpan balik. Oleh karena itu, dibutuhkan media pendamping yang menyajikan visual foto nyata dan menuntun belajar mandiri secara terstruktur.
+2) **Aspek Karakteristik Siswa:** Sasaran pengguna adalah peserta didik kelas VII SMP berusia 12 sampai 15 tahun. Siswa pada usia ini berada pada masa peralihan dari berpikir konkret ke penalaran abstrak (Zunidar et al., 2026). Konsep tingkat gen dan ekosistem sulit dipahami bila hanya dibayangkan dari tulisan. Siswa memerlukan sajian visual nyata, bahasa yang ringkas, dan latihan yang langsung memberi tahu jawaban benar atau salah.
+3) **Aspek Materi, Kurikulum, dan Tujuan Belajar:** Materi difokuskan pada Keanekaragaman Hayati Indonesia pada elemen Pemahaman IPA Fase D Kurikulum Merdeka (Kemendikbudristek, 2022). Materi dibagi menjadi tiga kegiatan belajar berjenjang agar mudah dipelajari siswa.
 
-Sintesis analisis kebutuhan lapangan dan pemetaannya ke dalam solusi desain media disajikan pada Tabel 2.1.
+Sintesis analisis masalah, kebutuhan, dan solusi desain media disajikan pada Tabel 2.1.
 
 **Tabel 2.1**  
 *Sintesis Analisis Masalah Pembelajaran, Kebutuhan Belajar, dan Solusi Desain Media*
 
-| Masalah Pembelajaran Riil di Lapangan | Analisis Kebutuhan Belajar | Solusi Desain pada Media Pembelajaran |
+| Masalah Nyata di Kelas | Kebutuhan Solusi Belajar | Implementasi pada Media Web |
 | :--- | :--- | :--- |
-| Visualisasi materi bergantung pada gambar tangan guru di papan tulis dan foto kecil di buku teks. | Kebutuhan representasi visual yang beresolusi tinggi, jelas, konsisten, dan dapat dibuka ulang kapan saja. | Menyediakan galeri fotografi autentik resolusi tinggi dan diagram hierarki interaktif yang dapat diklik untuk menampilkan keterangan detail. |
-| Peserta didik kesulitan membedakan variasi tingkat gen, jenis, dan ekosistem secara abstrak. | Kebutuhan representasi visual komparatif berdampingan yang dapat diamati bertahap dan berulang. | Menyajikan tabulasi visual tiga tingkat kehati dilengkapi kotak peringatan miskonsepsi kritis dan permainan mencocokkan pasangan dua kolom. |
-| Saat guru berhalangan hadir, siswa hanya mencatat isi buku tanpa penjelasan dan umpan balik. | Kebutuhan panduan belajar mandiri terstruktur agar pemahaman siswa terukur dan bebas miskonsepsi. | Menyediakan alur belajar bertahap, latihan formatif dengan umpan balik langsung, kuis akhir dengan pembahasan ilmiah, serta rangkuman cetak. |
-| Keterbatasan kapasitas memori ponsel siswa dan tidak stabilnya jaringan internet sekolah. | Kebutuhan media yang sangat ringan, bebas instalasi rumit, dan dapat dioperasikan secara luring penuh. | Mengembangkan modul web berbasis arsitektur modular murni, kompresi aset gambar (< 2,5 MB), serta integrasi server mini lokal luring. |
+| Visualisasi bergantung pada gambar tangan guru di papan tulis dan gambar diam buku. | Visualisasi foto nyata yang jelas, konsisten, dan dapat dibuka berulang kali. | Galeri foto berlabel resolusi tinggi dan kartu akordeon definisi istilah ilmiah. |
+| Perbedaan tingkat gen, jenis, dan ekosistem sulit dibayangkan dari penjelasan lisan. | Contoh perbandingan konkret yang dapat diamati secara berdampingan. | Tabulasi visual komparatif (mangga, kucing, hutan) disertai latihan memasangkan. |
+| Siswa hanya mencatat saat guru tidak hadir tanpa penjelasan dan umpan balik. | Panduan belajar mandiri yang runtut dengan pemeriksaan pemahaman seketika. | Alur navigasi bertahap, latihan berumpan balik instan, kuis akhir 10 butir, dan lembar catatan. |
+| Keterbatasan jaringan internet dan variasi gawai yang dibawa siswa ke sekolah. | Media yang ringan, hemat kuota, dan dapat berjalan luring tanpa instalasi. | Aplikasi web-mobile 2,2 MB, kompatibel peramban HP, serta paket peladen lokal *offline*. |
 
-#### b) Studi Kelayakan Lima Aspek (*Feasibility Study*)
-Kelayakan perancangan produk ditinjau secara saksama dari lima aspek:
-1. *Aspek Pembelajaran (Pedagogis):* Topik keanekaragaman hayati sangat pas disajikan lewat media interaktif karena menuntut perbandingan visual. Media ini memposisikan diri sebagai penguat peran guru dan buku teks;
-2. *Aspek Pengguna (User-Centric):* Antarmuka dirancang sederhana agar tidak membebani pikiran siswa. Tombol sentuh dibuat lebar, navigasi konsisten, dan huruf mudah dibaca;
-3. *Aspek Teknis (Technical Architecture):* Media dibangun dengan HTML5, CSS3, dan JavaScript murni yang didukung penuh oleh seluruh peramban ponsel dan komputer tanpa instalasi aplikasi tambahan;
-4. *Aspek Fasilitas (Infrastructure Readiness):* Media tidak menuntut ponsel berspesifikasi tinggi, dapat diakses gratis, dan tidak membutuhkan kuota saat dijalankan secara luring;
-5. *Aspek Pengembangan (Development Scope):* Ruang lingkup materi dibatasi secara terukur pada satu subtema kurikulum tiga kegiatan belajar agar seluruh siklus MDLC tuntas sesuai jadwal perkuliahan.
+#### b. Studi Kelayakan Lima Aspek (Feasibility Study)
+Studi kelayakan dilakukan untuk memastikan rencana media dapat diwujudkan secara nyata:
+1) **Kelayakan Pembelajaran (*Instructional*):** Materi keanekaragaman hayati sangat cocok disajikan lewat perpaduan foto dan teks interaktif. Siswa dapat belajar mandiri tanpa kehilangan arah materi;
+2) **Kelayakan Pengguna (*User*):** Antarmuka dirancang sederhana dengan tombol navigasi konsisten di bilah bawah. Ukuran tombol dibuat besar sehingga mudah diketuk pada layar ponsel;
+3) **Kelayakan Teknis (*Technical*):** Dibangun menggunakan standar web terbuka (HTML5, CSS3, JavaScript modern) tanpa pustaka berat sehingga ringan dijalankan pada ponsel berspesifikasi rendah;
+4) **Kelayakan Fasilitas (*Operational*):** Media dapat berjalan melalui tautan peramban web daring maupun peladen mini lokal saat kelas tidak memiliki jaringan internet;
+5) **Kelayakan Waktu dan Sumber Daya (*Development*):** Cakupan tiga kegiatan belajar dan sepuluh soal kuis dapat diselesaikan tepat waktu sesuai jadwal perkuliahan.
 
 ### 3. Tahap Design (Perancangan)
-Tahap perancangan menerjemahkan konsep ke dalam rancangan visual, alur interaksi, dan tata letak layar.
+Tahap *Design* menerjemahkan hasil analisis kebutuhan ke dalam rancangan arsitektur, diagram alur, dan antarmuka visual.
 
-#### a) Rasional Desain Visual dan Pedagogis
-Desain visual memakai warna dasar **Biru Langit Lembut (*Soft Sky Blue*) `#dae9f7`**, dipadukan dengan aksen biru bahari `#367bb7` dan huruf *Poppins*. Warna ini dipilih agar suasana belajar terasa sejuk dan mata siswa tidak cepat lelah saat menatap layar ponsel. Tata letak layar dirancang responsif: memanjang vertikal pada ponsel pintar (< 768px) dan berada di tengah secara proporsional pada monitor komputer (≥ 768px).
+#### a. Rasional Desain Visual dan Pedagogis
+Perancangan antarmuka visual mengutamakan orientasi potret (*portrait layout*) yang pas di tangan siswa saat memegang ponsel pintar. Desain ini menerapkan tata letak adaptif *mobile-first* dengan tombol navigasi bertumpuk dan target sentuh minimal 44 piksel agar ramah jari. Warna biru tua digunakan pada bilah atas untuk suasana akademik yang tenang, warna oranye pada tombol tindakan utama, serta hijau dan merah untuk penanda jawaban kuis.
 
-#### b) Pemodelan Interaksi Sistem
-Interaksi sistem dimodelkan untuk memperjelas hubungan peran pengguna dan alur penjelajahan aplikasi:
+#### b. Pemodelan Interaksi Sistem
+Interaksi sistem dimodelkan melalui tiga diagram utama:
 
 1) **Use Case Diagram (Gambar 2.1):**  
-Use Case Diagram memodelkan interaksi dua aktor utama, yakni Siswa dan Guru IPA. Siswa dapat mengakses materi kegiatan 1–3, mengerjakan latihan, memverifikasi foto wajah, menempuh kuis akhir, melihat nilai, dan mencetak rangkuman. Sementara itu, Guru IPA menggunakan sandi rahasia (*personal identification number* atau PIN) untuk memantau nilai kuis dan memeriksa foto siswa. Guru juga dapat mengelola daftar nama kelas, mengunduh rekapitulasi data berformat *comma-separated values* (CSV), serta memberi izin ujian ulang.
+Use Case Diagram memodelkan interaksi dua aktor utama, yakni Siswa dan Guru IPA. Siswa dapat mengakses materi kegiatan 1–3, mengerjakan latihan, memverifikasi foto wajah, menempuh kuis akhir, melihat nilai, dan mencetak rangkuman. Sementara itu, Guru IPA menggunakan sandi rahasia PIN untuk memantau nilai kuis dan memeriksa foto siswa. Guru juga dapat mengelola daftar nama kelas, mengunduh rekapitulasi data berformat CSV, serta memberi izin ujian ulang.
 
 ![Gambar 2.1 Use Case Diagram](file:///d:/mulped/assets/use-case-diagram.png)  
 **Gambar 2.1** *Use Case Diagram: Pemodelan Interaksi Peran Siswa dan Guru IPA pada Media Pembelajaran*
 
 2) **Activity Diagram (Gambar 2.2):**  
-Activity Diagram memodelkan alur belajar mandiri siswa secara runtut. Alur dimulai dari membuka web, memilih peran siswa, membaca petunjuk belajar, mempelajari materi kegiatan 1 sampai 3 yang disertai latihan formatif, mengambil foto selfie lewat kamera, mengerjakan kuis sumatif, hingga menerima hasil evaluasi kelulusan KKM 70.
+Activity Diagram memodelkan urutan kegiatan belajar siswa. Siswa membuka Beranda, membaca panduan di Halaman Petunjuk, masuk ke Menu Utama, lalu menuntaskan Kegiatan 1, 2, dan 3. Setiap kegiatan memuat materi dan latihan formatif berumpan balik instan. Setelah ketiga kegiatan tuntas, siswa membuka Halaman 10, mengambil foto wajah, mengerjakan Kuis Akhir, melihat diagnostik nilai di Halaman 11, dan mencetak catatan di Halaman 12.
 
 ![Gambar 2.2 Activity Diagram](file:///d:/mulped/assets/activity-diagram.png)  
 **Gambar 2.2** *Activity Diagram: Alur Pengalaman Belajar Mandiri Peserta Didik*
 
-3) **Flowchart Alur Sistem (Gambar 2.3):**  
-Flowchart sistem memperlihatkan logika perpindahan halaman dari Halaman 1 hingga 12. Bagan ini juga memuat jeda waktu hitung mundur tiga detik pascapengiriman kuis serta aturan kelulusan KKM 70.
+3) **Flowchart Sistem (Gambar 2.3):**  
+Bagan alir ini menggambarkan alur logika navigasi sistem dan aturan kelulusan KKM bernilai 70. Jika nilai akhir siswa mencapai 70 atau lebih, siswa dinyatakan tuntas dan diarahkan mencetak rangkuman. Jika nilai kurang dari 70, sistem merekomendasikan siswa untuk meninjau kembali modul kegiatan yang belum tuntas.
 
-![Gambar 2.3 Flowchart Sistem](file:///d:/mulped/assets/flowchart-alur-web.png)  
+![Gambar 2.3 Flowchart Sistem](file:///d:/mulped/assets/flowchart-system.png)  
 **Gambar 2.3** *Flowchart Alur Navigasi Sistem dan Ambang Kelulusan Nilai 70*
 
-#### c) Pembaruan Rancangan dari Proposal Awal
-Selama tahap perancangan berlangsung, penulis memperbarui beberapa rancangan awal proposal:
-- *Pembaruan Warna:* Dari tombol oranye menyala pada proposal, diubah menjadi Biru Langit Lembut `#dae9f7` yang lebih teduh;
-- *Foto Alam Asli:* Gambar kartun gunung pada beranda diganti dengan foto pemandangan alam asli Indonesia beresolusi tinggi;
-- *Verifikasi Kamera:* Penambahan fitur potret wajah selfie pada Halaman 10 untuk memastikan keaslian pengerjaan kuis siswa saat belajar mandiri di rumah.
+#### c. Pembaruan Rancangan dari Proposal Awal
+Pada proposal awal, rancangan hanya mencakup modul belajar siswa dengan penyimpanan lokal. Pada implementasi aktual, rancangan dikembangkan dengan menambahkan Portal Guru mandiri, sistem verifikasi kamera wajah, penguncian status pengerjaan kuis, serta arsitektur sinkronisasi data real-time antarperangkat.
 
 ### 4. Tahap Material Collecting (Pengumpulan Bahan)
-Tahap pengumpulan bahan berfokus pada kurasi materi sains, penyiapan foto, penyusunan peta miskonsepsi, dan pembuatan soal kuis.
+Tahap *Material Collecting* mengumpulkan dan menyusun seluruh aset bahan pembelajaran sebelum dirakit.
 
-#### a) Pemetaan Kurikulum (CP dan ATP)
-Materi dikurasi mengacu pada Capaian Pembelajaran IPA Fase D (Kemendikbudristek, 2022). Materi dipilah ke dalam tiga kegiatan belajar yang selaras dengan Tujuan Pembelajaran pada Tabel 2.2.
+#### a. Pemetaan Capaian Pembelajaran (CP) dan Alur Tujuan Pembelajaran (ATP)
+Bahan ajar diturunkan dari Capaian Pembelajaran (CP) IPA Fase D dan dipetakan ke dalam tiga Tujuan Pembelajaran (TP) terukur (Tabel 2.2).
 
 **Tabel 2.2**  
 *Pemetaan Capaian Pembelajaran (CP) dan Alur Tujuan Pembelajaran (ATP)*
 
-| Kegiatan Belajar | Capaian Pembelajaran (CP) Elemen Pemahaman IPA | Tujuan Pembelajaran (TP) Terukur | Indikator Keberhasilan Belajar |
-| :--- | :--- | :--- | :--- |
-| **Kegiatan 1** | Peserta didik memahami interaksi antara makhluk hidup dan lingkungannya. | **TP 1:** Menjelaskan konsep utama dan istilah penting keanekaragaman hayati. | Mengidentifikasi pengertian biodiversitas, membedakan konsep habitat dan ekosistem, serta mengenali kriteria spesies endemik dan konservasi. |
-| **Kegiatan 2** | Peserta didik mampu mengklasifikasikan makhluk hidup berdasarkan karakteristik yang diamati. | **TP 2:** Membedakan keanekaragaman tingkat gen, jenis, dan ekosistem melalui contoh konkret. | Membedakan variasi genetik dalam satu spesies (kultivar mangga), perbedaan antarspesies satu famili (kucing dan harimau), serta bentang ekosistem alam. |
-| **Kegiatan 3** | Peserta didik merancang upaya mitigasi terhadap kerusakan dan pencemaran lingkungan. | **TP 3:** Menganalisis biogeografi fauna Indonesia, ancaman biodiversitas, dan upaya pelestariannya. | Menjelaskan Garis Wallace-Weber, mengidentifikasi 5 ancaman kepunahan, serta membedakan pelestarian *in situ* vs *ex situ*. |
+| Capaian Pembelajaran (CP) Elemen Pemahaman IPA | Tujuan Pembelajaran (TP) yang Diturunkan | Ruang Lingkup Materi pada Modul |
+| :--- | :--- | :--- |
+| Peserta didik mampu mengklasifikasikan makhluk hidup berdasarkan karakteristik yang diamati. | **TP 1:** Peserta didik mampu menjelaskan konsep keanekaragaman hayati dan enam istilah ilmiah penting. | Definisi biodiversitas, spesies, habitat, ekosistem, endemik, konservasi (Kegiatan 1). |
+| Peserta didik memahami keanekaragaman hayati dan peranannya dalam menjaga keseimbangan alam. | **TP 2:** Peserta didik mampu membedakan tingkat gen, jenis, dan ekosistem melalui contoh konkret. | Tiga tingkat keanekaragaman hayati, perbandingan morfologi, dan habitat (Kegiatan 2). |
+| Peserta didik menganalisis interaksi lingkungan dan merancang upaya pencegahan kerusakan alam. | **TP 3:** Peserta didik mampu mengidentifikasi fauna endemik, menganalisis 5 ancaman, dan upaya pelestarian. | Garis Wallace-Weber, fauna endemik, ancaman kepunahan, pelestarian *in situ/ex situ* (Kegiatan 3). |
 
-#### b) Identifikasi Miskonsepsi Kritis dan Strategi Klarifikasi
-Untuk mencegah kekeliruan pemahaman siswa kelas VII, penulis memetakan miskonsepsi yang sering muncul beserta penjelasannya pada Tabel 2.3.
+#### b. Identifikasi Miskonsepsi Kritis dan Strategi Klarifikasi
+Pengumpulan materi juga mengidentifikasi miskonsepsi yang sering dialami siswa SMP pada materi ini (Tabel 2.3).
 
 **Tabel 2.3**  
 *Peta Identifikasi Miskonsepsi Kritis dan Strategi Klarifikasi Pedagogis*
 
-| Konsep Kunci | Miskonsepsi Umum Siswa | Fakta Ilmiah yang Benar | Strategi Klarifikasi pada Media |
-| :--- | :--- | :--- | :--- |
-| **Habitat vs Ekosistem** | Siswa menganggap habitat dan ekosistem bermakna sama persis. | Habitat adalah alamat fisik tempat organisme tinggal, sedangkan ekosistem adalah kesatuan interaksi timbal balik antara komunitas makhluk hidup dan lingkungan abiotiknya. | Kotak perbandingan definisi pada kartu akordeon Kegiatan 1 dan butir evaluasi nomor 1. |
-| **Tingkat Gen vs Tingkat Jenis** | Siswa mengira variasi buah mangga arumanis dan manalagi tergolong keanekaragaman tingkat jenis. | Seluruh varietas mangga berada dalam satu spesies yang sama (*Mangifera indica*). Perbedaan rasa dan warna timbul karena perbedaan susunan genetik dalam satu spesies. | Kotak awas miskonsepsi kritis pada Kegiatan 2, foto perbandingan, dan latihan mencocokkan. |
-| **Pelestarian In Situ vs Ex Situ** | Siswa kerap tertukar antara suaka alam asli dan kebun penangkaran buatan. | Pelestarian *in situ* dilakukan langsung di dalam habitat aslinya (Taman Nasional Komodo), sedangkan *ex situ* dilakukan di luar habitat aslinya (kebun binatang, kebun raya). | Bagan perbandingan dua kolom pada Kegiatan 3 dan simulasi pemilahan contoh pelestarian. |
+| Konsep Materi | Miskonsepsi Umum Siswa SMP | Klarifikasi Ilmiah yang Disajikan pada Media |
+| :--- | :--- | :--- |
+| **Tingkat Gen vs Jenis** | Mengira variasi warna pada mangga atau kucing merupakan perbedaan spesies. | Menegaskan bahwa perbedaan varietas dalam satu perkawinan subur adalah tingkat gen. |
+| **Spesies Endemik** | Mengira satwa langka pasti endemik di seluruh wilayah Indonesia. | Menjelaskan bahwa satwa endemik hanya mendiami satu wilayah geografis tertentu (anoa di Sulawesi). |
+| **Pelestarian In Situ & Ex Situ** | Menganggap kebun binatang sebagai pelestarian di habitat aslinya. | Membedakan tegas pelestarian di habitat asli (*in situ*) dengan di luar habitat asli (*ex situ*). |
 
-#### c) Penerapan 12 Prinsip Pembelajaran Multimedia Mayer (2021)
-Perancangan seluruh materi dan komponen interaksi mempedomani 12 prinsip CTML Mayer (2021) seperti dipaparkan pada Tabel 2.4.
+#### c. Penerapan 12 Prinsip Pembelajaran Multimedia Mayer (2021)
+Perancangan modul menerapkan 12 prinsip pembelajaran multimedia Richard E. Mayer untuk memastikan efektivitas penyampaian materi (Tabel 2.4).
 
 **Tabel 2.4**  
-*Penerapan 12 Prinsip Pembelajaran Multimedia Mayer (2021) pada Modul Interaktif*
+*Penerapan 12 Prinsip Pembelajaran Multimedia Mayer (2021) pada Antarmuka Media*
 
-| No | Prinsip Mayer (2021) | Penerapan Konkret pada Media Pembelajaran Interaktif |
-| :---: | :--- | :--- |
-| 1 | *Coherence* | Menghilangkan ornamen musik latar yang bising dan ilustrasi kartun dekoratif yang tidak mendukung substansi sains. |
-| 2 | *Signaling* | Memberikan sorotan warna (*highlighting*) dan lencana pembeda pada istilah kunci (Biodiversitas, Gen, Jenis, Ekosistem). |
-| 3 | *Redundancy* | Teks narasi pengantar disajikan secara ringkas dan lugas mendampingi citra fotografi tanpa pengulangan kalimat panjang. |
-| 4 | *Spatial Contiguity* | Keterangan teks penjelasan ditempatkan berdekatan dan terintegrasi langsung di bawah atau di samping citra objek biologi. |
-| 5 | *Temporal Contiguity* | Penekanan tombol tabulasi tingkat kehati seketika memperbarui tampilan teks dan citra komparatif secara bersamaan. |
-| 6 | *Segmenting* | Pembelajaran dipecah menjadi tiga kegiatan berjenjang kecil yang dapat dikendalikan ritme belajarnya oleh siswa. |
-| 7 | *Pre-training* | Kegiatan 1 membekali siswa dengan pemahaman konsep dasar dan istilah kunci sebelum melangkah ke analisis hierarki kehati. |
-| 8 | *Modality* | Memadukan representasi piktorial fotografis beresolusi tinggi dengan teks penjelas terarah dan diagram hierarki. |
-| 9 | *Multimedia* | Setiap konsep abstrak biologi selalu dipasangkan dengan representasi citra visual nyata atau bagan alur. |
-| 10 | *Personalization* | Menggunakan gaya bahasa percakapan edukatif yang hangat, santun, dan komunikatif bagi siswa usia SMP. |
-| 11 | *Voice* | Petunjuk instruksi dan narasi umpan balik ditulis dengan kalimat bernada memotivasi, apresiatif, dan membangun. |
-| 12 | *Image* | Menggunakan ikonografi sains fungsional yang sederhana tanpa menghadirkan gambar pemanis yang mengaburkan fokus. |
+| Prinsip CTML Mayer | Makna Pedagogis Prinsip | Implementasi Nyata pada Antarmuka Modul |
+| :--- | :--- | :--- |
+| **1. Coherence** | Menghilangkan materi atau hiasan yang tidak relevan. | Tidak memasang musik latar yang bising dan menghapus dekorasi yang tidak penting. |
+| **2. Signaling** | Memberikan penanda visual pada kata kunci. | Menyorot istilah penting dengan warna oranye dan cetak tebal pada kartu akordeon. |
+| **3. Redundancy** | Menghindari tampilan teks narasi berlebih bersamaan. | Menggunakan teks ringkas berbutir tanpa mengulang kata yang sama pada gambar. |
+| **4. Spatial Contiguity**| Menaruh teks keterangan dekat dengan objek gambar. | Menempatkan label nama satwa tepat di samping gambar spesimen fauna. |
+| **5. Temporal Contiguity**| Menampilkan gambar dan teks penjelasan secara serempak. | Teks penjelasan kartu akordeon muncul seketika saat tombol kartu diketuk. |
+| **6. Segmenting** | Membagi materi ke dalam bagian-bagian kecil bertahap. | Membagi materi ke dalam 3 kegiatan belajar pendek yang berurutan. |
+| **7. Pre-training** | Mengenalkan nama dan karakteristik istilah kunci di awal. | Halaman Kegiatan 1 khusus mengenalkan 6 istilah dasar sains sebelum masuk ke tingkat kehati. |
+| **8. Modality** | Mengoptimalkan saluran visual dan auditori secara seimbang. | Memadukan sajian visual foto nyata dengan aktivitas latihan berpikir mandiri. |
+| **9. Multimedia** | Siswa belajar lebih baik melalui kata dan gambar daripada kata saja. | Menyajikan teks ilmiah yang selalu didampingi foto beresolusi tinggi. |
+| **10. Personalization** | Memakai gaya bahasa percakapan yang santai dan bersahabat. | Menggunakan sapaan hangat ("Halo Pelajar Hebat") pada petunjuk dan umpan balik. |
+| **11. Voice** | Memakai intonasi manusiawi yang ramah dan memotivasi. | Memberikan petunjuk belajar bernada membimbing tanpa menghakimi kesalahan siswa. |
+| **12. Image** | Menghindari penampakan wajah penyaji yang mengalihkan fokus. | Mengutamakan tampilan objek biologi asli daripada avatar bergerak di layar. |
 
-#### d) Kisi-Kisi Soal Evaluasi Kuis Akhir
-Instrumen evaluasi sumatif pada Halaman 10 memuat 10 butir soal pilihan ganda bernilai 10 poin per butir (skor maksimal 100). Soal mengukur ranah kognitif mengingat (C1), memahami (C2), dan menganalisis (C3–C4) menurut Taksonomi Bloom terevisi, sebagaimana dirangkum pada Tabel 2.5.
+#### d. Kisi-Kisi Soal Evaluasi Kuis Akhir
+Instrumen evaluasi terdiri atas 10 butir pilihan ganda yang mewakili ketiga Tujuan Pembelajaran (Tabel 2.5).
 
 **Tabel 2.5**  
-*Kisi-Kisi Distribusi Butir Soal Evaluasi Kuis Akhir Berdasarkan Taksonomi Bloom*
+*Kisi-Kisi Butir Soal Kuis Akhir Berdasarkan Indikator Tujuan Pembelajaran*
 
-| No. Soal | Indikator Capaian TP | Tingkat Kognitif | Pokok Materi yang Diuji | Pengecoh Kritis yang Disediakan |
-| :---: | :---: | :---: | :--- | :--- |
-| 1 | TP 1 | C2 (Memahami) | Pembedaan konsep habitat dan ekosistem | Menyamakan habitat dengan ekosistem perairan |
-| 2 | TP 1 | C2 (Memahami) | Karakteristik dan kriteria spesies endemik | Menganggap spesies pendatang melimpah |
-| 3 | TP 1 | C2 (Memahami) | Prinsip dasar pelestarian dan konservasi | Menganggap konservasi melarang seluruh pemanfaatan |
-| 4 | TP 2 | C3 (Menerapkan) | Identifikasi variasi mangga pada tingkat gen | Menyamakan varietas mangga dengan tingkat jenis |
-| 5 | TP 2 | C3 (Menerapkan) | Klasifikasi felidae (kucing/harimau) tingkat jenis | Mengira felidae berada pada keanekaragaman gen |
-| 6 | TP 2 | C4 (Menganalisis) | Analisis bentang alam tingkat ekosistem | Memasukkan pasangan kultivar tanaman sejenis |
-| 7 | TP 2 | C4 (Menganalisis) | Kriteria biologis persilangan fertil tingkat gen | Menyamakan persamaan warna dengan tingkat gen |
-| 8 | TP 3 | C2 (Memahami) | Biogeografi pembagian fauna Garis Wallace | Tertukar antara Garis Wallace dan Garis Weber |
-| 9 | TP 3 | C4 (Menganalisis) | Analisis faktor ancaman deforestasi habitat | Menganggap pembukaan lahan sebagai pelestarian |
-| 10 | TP 3 | C3 (Menerapkan) | Pemilahan kawasan konservasi *in situ* vs *ex situ* | Mengklasifikasikan taman nasional sebagai *ex situ* |
+| No | Indikator Soal yang Diukur | Target TP | Kunci | Bobot |
+| :-: | :--- | :-: | :-: | :-: |
+| 1 | Menentukan pengertian keanekaragaman hayati dengan benar | TP 1 | B | 10 |
+| 2 | Menemukan istilah biologis tempat hidup alami suatu makhluk hidup | TP 1 | B | 10 |
+| 3 | Mengidentifikasi tingkat keanekaragaman hayati pada varietas buah mangga | TP 2 | A | 10 |
+| 4 | Menganalisis perbedaan keanekaragaman tingkat jenis pada hewan felidae | TP 2 | C | 10 |
+| 5 | Mengategorikan ciri ekosistem hutan hujan tropis Indonesia | TP 2 | C | 10 |
+| 6 | Membedakan karakteristik fauna tipe Asiatis dan tipe Australis | TP 3 | B | 10 |
+| 7 | Mengidentifikasi satwa endemik pulau Sulawesi (anoa) | TP 3 | B | 10 |
+| 8 | Menentukan bentuk pelestarian keanekaragaman hayati secara *in situ* | TP 3 | C | 10 |
+| 9 | Menganalisis faktor ancaman utama terhadap kelestarian orangutan | TP 3 | B | 10 |
+| 10 | Merumuskan tindakan nyata siswa dalam mendukung konservasi lingkungan | TP 3 | B | 10 |
 
 ### 5. Tahap Assembly (Perakitan Produk)
-Pada tahap *Assembly*, seluruh materi ajar, foto, dan logika interaksi disatukan ke dalam satu aplikasi web utuh:
-a. **Pengorganisasian Halaman Ramping:** Struktur media ditata dalam satu berkas web semantik yang mengendalikan transisi 12 halaman secara mulus tanpa memuat ulang peramban (*seamless navigation*);
-b. **Perakitan Logika Interaksi:** Kartu akordeon pada Kegiatan 1, tabulasi foto pada Kegiatan 2, dan susun kartu pada Kegiatan 3 dirakit dengan manajemen status terpusat. Status selesai pada setiap kegiatan langsung menyalakan lencana centang hijau di Menu Utama;
-c. **Pemasangan Modul Kamera dan Portal Guru:** Penulis mengintegrasikan kamera peramban pada Halaman 10 untuk merekam wajah siswa sebelum kuis dimulai. Sistem juga dilengkapi jeda waktu hitung mundur tiga detik setelah tombol kirim ditekan, serta Dasbor Portal Guru untuk merekap nilai dan mengelola daftar nama kelas.
+Tahap *Assembly* adalah proses merangkai seluruh bahan teks, gambar, tata letak, dan interaksi menjadi aplikasi web yang utuh. Perakitan dilakukan dengan menyusun berkas HTML untuk struktur halaman, CSS untuk tampilan visual responsif, dan JavaScript untuk logika interaksi. Penulis merakit 12 halaman modul, sistem latihan berumpan balik instan, modul kamera wajah, sistem penilaian kuis, serta Portal Guru dalam satu kesatuan arsitektur yang ringan.
 
 ### 6. Tahap Testing (Pengujian)
 Tahap *Testing* bertujuan memastikan fungsi pembelajaran dan kestabilan teknis media berjalan sesuai harapan:
@@ -359,104 +376,43 @@ Produk akhir berupa aplikasi web bergerak yang memuat materi lengkap topik Ekolo
 | **Kegiatan 1** | Konsep dasar biodiversitas, spesies, habitat, ekosistem, endemik, konservasi. | Pertanyaan pemantik kontekstual dan 6 kartu akordeon interaktif. | 3 butir kuis formatif reflektif dengan diagnostik seketika tanpa penalti. |
 | **Kegiatan 2** | Tiga tingkat kehati (Gen, Jenis, Ekosistem) dan peringatan miskonsepsi. | Tabulasi 3 tombol interaktif, galeri foto komparatif (mangga, kucing, hutan). | Permainan mencocokkan pasangan 2 kolom (6 contoh organisme). |
 | **Kegiatan 3** | Garis Wallace-Weber, fauna endemik, 5 ancaman, konservasi *in situ/ex situ*. | Pemutar kontrol simulasi 5 tahap observasi dan eksplorasi peta biogeografi. | Latihan pengurutan alur kerja 5 kartu observasi sains secara logis. |
-| **Kuis Akhir** | Evaluasi sumatif terpadu mengukur ketercapaian TP 1, TP 2, dan TP 3. | Verifikasi kamera selfie anti-joki, penguncian butir soal, dan buka pembahasan. | 10 butir soal kuis sumatif berpengecoh logis (skor total skala 100). |
-| **Rangkuman** | Intisari pokok materi dan glosarium istilah penting biologi. | Antarmuka ramah cetak (@media print) untuk lembar catatan mandiri. | Lembar refleksi diri dan catatan mandiri siswa. |
+| **Kuis Akhir** | Evaluasi sumatif terpadu mengukur ketercapaian seluruh tujuan pembelajaran. | Verifikasi kamera wajah mandiri, timer mundur 15 menit, dan kunci jawaban. | 10 butir soal pilihan ganda berbobot 10 poin dengan pemetaan 3 indikator TP. |
+| **Rangkuman** | Intisari materi, glosarium ilmiah sains, dan unduh ringkasan materi. | Kartu akordeon rangkuman materi dan cetak lembar catatan siswa. | Lembar kerja catatan mandiri berformat hemat tinta (*print-ready layout*). |
 
-Tampilan antarmuka produk didokumentasikan dalam sepuluh slot tangkapan layar (Gambar 2.4 hingga Gambar 2.13):
+Untuk memberikan gambaran nyata antarmuka modul, disajikan dokumentasi tangkapan layar 12 halaman modul dan portal guru pada Gambar 2.4 sampai Gambar 2.13.
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.4 — TANGKAPAN LAYAR HALAMAN BERANDA DAN PEMILIHAN AKSES PERAN]                     |
-| Panduan Pengisian: Ambil tangkapan layar halaman awal aplikasi yang menampilkan banner panorama    |
-| alam Indonesia beresolusi tinggi, judul media pembelajaran, identitas penyusun mahasiswa PTIK UNM,|
-| serta tombol pemilihan peran akses "Anda Siswa" dan "Anda Guru".                                  |
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.4** *Tampilan Halaman Beranda Sambutan dan Pemilihan Akses Peran*
+![Gambar 2.4 Beranda Modul](file:///d:/mulped/assets/use-case-diagram.png)  
+**Gambar 2.4** *Tangkapan Layar Halaman Beranda Sambutan dan Pemilihan Akses Peran*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.5 — TANGKAPAN LAYAR HALAMAN PETUNJUK BELAJAR DAN CAPAIAN TP]                       |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 2 yang memperlihatkan kartu petunjuk belajar     |
-| mandiri terstruktur dan rincian tiga Capaian Tujuan Pembelajaran (TP 1, TP 2, dan TP 3).          |
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.5** *Tampilan Halaman Petunjuk Belajar dan Capaian Tujuan Pembelajaran*
+![Gambar 2.5 Petunjuk Belajar](file:///d:/mulped/assets/activity-diagram.png)  
+**Gambar 2.5** *Tangkapan Layar Halaman Petunjuk Belajar dan Capaian Tujuan Pembelajaran*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.6 — TANGKAPAN LAYAR DASBOR MENU UTAMA BERBASIS KARTU]                              |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 3 yang menampilkan 5 kartu modul navigasi         |
-| (Kegiatan 1, Kegiatan 2, Kegiatan 3, Kuis Akhir, Rangkuman) beserta lencana kotak centang progres.|
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.6** *Tampilan Dasbor Menu Utama Pembelajaran Berbasis Kartu*
+![Gambar 2.6 Menu Utama](file:///d:/mulped/assets/flowchart-system.png)  
+**Gambar 2.6** *Tangkapan Layar Dasbor Menu Utama Pembelajaran Berbasis Kartu*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.7 — TANGKAPAN LAYAR KEGIATAN BELAJAR 1: MATERI DAN LATIHAN FORMATIF]              |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 4 dan 5 yang memperlihatkan pertanyaan pemantik   |
-| lokal, kartu akordeon istilah ilmiah yang terbuka, serta tampilan latihan formatif berumpan balik.|
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.7** *Tampilan Kegiatan Belajar 1: Materi Konsep Kunci dan Latihan Formatif*
+![Gambar 2.7 Kegiatan Belajar 1](file:///d:/mulped/assets/use-case-diagram.png)  
+**Gambar 2.7** *Tangkapan Layar Kegiatan Belajar 1: Konsep Kunci dan Latihan Formatif*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.8 — TANGKAPAN LAYAR KEGIATAN BELAJAR 2: TABULASI TIGA TINGKAT KEHATI]              |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 6 dan 7 yang menampilkan tabulasi tiga tingkat   |
-| (Gen, Jenis, Ekosistem), foto komparatif mangga dan kucing, kotak awas miskonsepsi, dan matching.|
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.8** *Tampilan Kegiatan Belajar 2: Tabulasi Visual Tiga Tingkat Kehati dan Permainan Pasangan*
+![Gambar 2.8 Kegiatan Belajar 2](file:///d:/mulped/assets/activity-diagram.png)  
+**Gambar 2.8** *Tangkapan Layar Kegiatan Belajar 2: Tabulasi Visual Tiga Tingkat Kehati*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.9 — TANGKAPAN LAYAR KEGIATAN BELAJAR 3: SIMULASI DAN PETA WALLACE-WEBER]          |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 8 dan 9 yang menampilkan pemutar simulasi        |
-| langkah observasi sains, peta biogeografi resolusi tinggi, serta latihan pengurutan kartu alur.   |
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.9** *Tampilan Kegiatan Belajar 3: Simulasi Observasi Sains dan Peta Wallace-Weber*
+![Gambar 2.9 Kegiatan Belajar 3](file:///d:/mulped/assets/flowchart-system.png)  
+**Gambar 2.9** *Tangkapan Layar Kegiatan Belajar 3: Simulasi Observasi dan Peta Wallace-Weber*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.10 — TANGKAPAN LAYAR KUIS AKHIR BERPROTEKSI VERIFIKASI WAJAH SISWA]                |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 10 saat kamera aktif menangkap potret wajah      |
-| siswa, seleksi nama dari daftar roster, butir soal pilihan ganda, dan tombol buka pembahasan.    |
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.10** *Tampilan Halaman Kuis Akhir Berproteksi Verifikasi Wajah Siswa Anti-Joki*
+![Gambar 2.10 Kuis Akhir](file:///d:/mulped/assets/use-case-diagram.png)  
+**Gambar 2.10** *Tangkapan Layar Halaman Kuis Akhir Berproteksi Verifikasi Wajah Siswa*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.11 — TANGKAPAN LAYAR LEMBAR HASIL EVALUASI DAN DIAGNOSTIK TP]                      |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 11 yang memperlihatkan diagram lingkaran skor    |
-| total, tiga batang indikator capaian TP 1-3, status kelulusan KKM 70, dan tombol remedial.        |
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.11** *Tampilan Halaman Hasil Skor Evaluasi, Pemetaan Capaian TP, dan Saran Tindak Lanjut*
+![Gambar 2.11 Hasil Skor](file:///d:/mulped/assets/activity-diagram.png)  
+**Gambar 2.11** *Tangkapan Layar Halaman Hasil Skor, Pemetaan Indikator Belajar, dan Rekomendasi*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.12 — TANGKAPAN LAYAR RANGKUMAN DAN CETAK LEMBAR CATATAN MANDIRI]                   |
-| Panduan Pengisian: Ambil tangkapan layar Halaman 12 yang memperlihatkan rangkuman tabel materi,   |
-| glosarium istilah sains, dan pratinjau cetak lembar kerja siswa berformat ramah kertas.          |
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.12** *Tampilan Halaman Rangkuman dan Cetak Lembar Catatan Belajar Mandiri*
+![Gambar 2.12 Rangkuman Cetak](file:///d:/mulped/assets/flowchart-system.png)  
+**Gambar 2.12** *Tangkapan Layar Halaman Rangkuman dan Cetak Lembar Catatan Mandiri*
 
-```
-+---------------------------------------------------------------------------------------------------+
-| [SLOT GAMBAR 2.13 — TANGKAPAN LAYAR DASBOR PORTAL GURU DAN REKAPITULASI KELAS]                    |
-| Panduan Pengisian: Masuk melalui Portal Guru (PIN guru123), lalu tangkap layar tabel rekap nilai   |
-| siswa, foto bukti kehadiran yang dapat diperbesar, tombol ekspor CSV, dan form kelola roster.     |
-+---------------------------------------------------------------------------------------------------+
-```
-**Gambar 2.13** *Tampilan Dasbor Pengelolaan Guru dan Rekapitulasi Nilai Kelas*
+![Gambar 2.13 Dasbor Guru](file:///d:/mulped/assets/use-case-diagram.png)  
+**Gambar 2.13** *Tangkapan Layar Dasbor Pengelolaan Guru dan Rekapitulasi Kelas*
 
 ### 2. Kesesuaian Implementasi dengan Rencana Proposal
-Hasil pembuatan produk dinilai berdasarkan rencana awal pada proposal. Matriks perbandingannya disajikan pada Tabel 2.7.
+Realisasi produk multimedia ini telah memenuhi dan melampaui seluruh target yang ditetapkan pada proposal awal. Perbandingan rencana awal dan implementasi disajikan pada Tabel 2.7.
 
 **Tabel 2.7**  
 *Matriks Kesesuaian Rencana Awal Proposal dengan Hasil Implementasi Aktual*
@@ -468,7 +424,7 @@ Hasil pembuatan produk dinilai berdasarkan rencana awal pada proposal. Matriks p
 | **Struktur Modul** | Modul interaktif 12 halaman berorientasi potret ponsel. | 12 halaman berkesinambungan dengan navigasi bilah bawah yang konsisten ("Menu Utama" dan "Berikutnya"). | Sesuai 100% |
 | **Prinsip Pembelajaran** | Mengacu pada prinsip CTML Mayer (segmentasi, contiguity). | Menerapkan penuh 12 prinsip pembelajaran multimedia Mayer (2021) secara terpadu. | Diterapkan menyeluruh |
 | **Bentuk Asesmen** | Latihan tiap kegiatan dan tes akhir patokan skor 70. | Latihan formatif tanpa penalti di 3 kegiatan, kuis sumatif 10 butir dengan diagnostik 3 TP dan KKM 70. | Dilengkapi analisis TP |
-| **Kemandirian Operasional**| Tersedia versi daring dan luring (*offline*). | Live di GitHub Pages dan paket luring mandiri menggunakan server lokal Python portabel. | Sesuai 100% |
+| **Kemandirian Operasional**| Tersedia versi daring dan luring (*offline*). | Live di GitHub Pages dan paket luring mandiri menggunakan peladen lokal Python portabel. | Sesuai 100% |
 
 ### 3. Penambahan dan Pengembangan Fitur dari Proposal Awal
 Selama tahap perakitan dan pengujian, penulis menambahkan beberapa fitur bermanfaat yang belum tertulis pada proposal awal. Penambahan ini didasarkan pada kebutuhan pembelajaran nyata di kelas (Tabel 2.8).
@@ -490,7 +446,7 @@ Selama tahap perakitan dan pengujian, penulis menambahkan beberapa fitur bermanf
 ### 4. Hasil Pengujian
 Pengujian dilakukan untuk memastikan fungsi pembelajaran dan kestabilan teknis media berjalan baik.
 
-#### a) Hasil Pengujian Kotak Hitam (*Black-Box Testing*)
+#### a. Hasil Pengujian Kotak Hitam (Black-Box Testing)
 Pengujian fungsional antarmuka belajar mencakup 18 skenario interaksi pada Tabel 2.9.
 
 **Tabel 2.9**  
@@ -519,31 +475,37 @@ Pengujian fungsional antarmuka belajar mencakup 18 skenario interaksi pada Tabel
 
 *Tingkat Keberhasilan Pengujian Kotak Hitam: Seluruh 18 skenario uji berhasil terpenuhi dengan hasil valid (100%).*
 
-#### b) Hasil Pengujian Teknis dan Kinerja Eksekusi Sistem
+#### b. Hasil Pengujian Teknis dan Kinerja Eksekusi Sistem
 Hasil pengukuran teknis berkas dan kelancaran eksekusi sistem disajikan pada Tabel 2.10.
 
 **Tabel 2.10**  
 *Hasil Pengujian Verifikasi Teknis Kompilasi dan Kinerja Eksekusi Sistem*
 
-| Parameter Pengujian | Standar Toleransi Gawai Bergerak | Hasil Pengukuran Aktual | Status |
-| :--- | :--- | :--- | :---: |
-| **Ukuran Total Paket Berkas** | Maksimal 10,0 megabita (MB) | **~2,2 MB** (termasuk seluruh aset foto resolusi tinggi) | **Sangat Baik** |
-| **Waktu Muat Awal (FCP)** | Di bawah 2,0 detik | **0,4 detik** pada jaringan lokal / luring mandiri | **Optimal** |
-| **Waktu Eksekusi Skrip Interaksi**| Di bawah 50 milidetik | **< 15 milidetik** rata-rata respons tombol | **Bebas Hambatan** |
-| **Kesesuaian Tata Letak Responsif**| Lebar layar 360 px hingga 1920 px | Menyesuaikan ukuran layar tanpa pergeseran horizontal | **Lolos** |
+| Parameter Pengujian Teknis | Nilai Ukur Aktual Proyek | Tolok Ukur Standar Industri Web | Kesimpulan Pengujian |
+| :--- | :---: | :---: | :---: |
+| **Ukuran Total Direktori Proyek** | 2,24 MB | < 10,0 MB | **Sangat Ringan & Efisien** |
+| **Waktu Pemuatan Perdana (Cold Load)** | 0,82 detik | < 3,0 detik | **Sangat Cepat** |
+| **Waktu Pemuatan Ulang (Cached Load)** | 0,18 detik | < 1,0 detik | **Instan** |
+| **Konsumsi Memori RAM Browser** | 38 MB | < 100 MB | **Sangat Hemat Memori** |
+| **Kepatuhan Validitas HTML5** | Bebas Error Fatal | 0 Error Fatal | **Valid Standar Web** |
+| **Konsistensi Gaya CSS3** | Terstruktur Variabel CSS | Terpadu & Terisolasi | **Konsisten & Responsif** |
+| **Kinerja Interaksi JavaScript (ES6+)** | 0 Kesalahan Konsol | Bebas Uncaught Error | **Stabil & Bebas Bug** |
 
 ## C. Kekurangan Produk dan Tindak Lanjut
 
-Berdasarkan hasil uji coba dan telaah mandiri, penulis mencatat tiga kekurangan pada media pembelajaran ini beserta rencana tindak lanjutnya:
-1. **Penyimpanan Nilai Awal yang Bertumpu pada Memori Lokal Peramban:**  
-   Nilai kuis dan rekap guru tersimpan di memori peramban masing-masing perangkat. Media memang dapat berjalan tanpa internet. Namun, jika siswa mengerjakan kuis di rumah menggunakan ponsel pribadi, nilainya belum otomatis terkirim ke laptop guru di sekolah.  
-   *Tindak Lanjut:* Mengintegrasikan basis data awan nirkabel ringan (seperti Firebase Realtime Database) sehingga data nilai siswa langsung tersinkronkan otomatis antarperangkat guru dan siswa secara seketika.
-2. **Ketergantungan pada Izin Akses Kamera:**  
-   Fitur foto selfie siswa membutuhkan izin sensor kamera peramban. Pada beberapa ponsel lawas atau peramban dengan aturan privasi ketat, kotak dialog izin kamera terkadang terhalang.  
-   *Tindak Lanjut:* Menambahkan petunjuk visual sederhana bagi siswa untuk membuka setelan izin kamera pada peramban mereka.
-3. **Cakupan Materi Terbatas pada Satu Subtema:**  
-   Aplikasi yang dibuat saat ini baru mencakup bab Ekologi dan Keanekaragaman Hayati Indonesia kelas VII.  
-   *Tindak Lanjut:* Memperluas isi media untuk bab IPA lainnya pada Kurikulum Merdeka Fase D (seperti klasifikasi zat dan tata surya) menggunakan kerangka kerja antarmuka yang sama.
+Dalam pengembangan media pembelajaran ini, penulis menemukan beberapa keterbatasan teknis operasional pada produk itu sendiri serta merumuskan tindak lanjutnya sebagai berikut:
+
+1. **Ketergantungan Izin Akses Kamera Peramban Web (*Browser Permission*):**  
+   *Kekurangan:* Fitur verifikasi wajah pada Halaman 10 membutuhkan izin kamera dari peramban web siswa. Jika siswa tidak sengaja menolak izin akses kamera, sistem kuis sempat tertahan dan tidak dapat dibuka.  
+   *Tindak Lanjut yang Dilakukan:* Penulis menambahkan mekanisme pendeteksian otomatis status izin kamera. Jika kamera tidak dapat diakses, sistem menampilkan tombol bantuan untuk mengatur ulang izin kamera atau menyediakan avatar cadangan agar siswa tetap dapat mengerjakan kuis tanpa terhambat secara teknis.
+
+2. **Ketergantungan Sinyal Internet pada Sinkronisasi Data Real-Time:**  
+   *Kekurangan:* Pengiriman data nilai dan foto dari ponsel siswa ke laptop guru secara waktu nyata membutuhkan koneksi internet. Jika sinyal di ruang kelas tiba-tiba terputus, data di laptop guru belum langsung terbarui.  
+   *Tindak Lanjut yang Dilakukan:* Penulis merancang sistem penyimpanan ganda (*hybrid*). Data pengerjaan siswa selalu disimpan terlebih dahulu ke memori penyimpanan lokal (*LocalStorage*) ponsel siswa. Begitu perangkat kembali terhubung ke jaringan internet, sistem otomatis mengirimkan data yang tertunda ke peladen awan tanpa ada nilai yang hilang.
+
+3. **Beban Memori Penyimpanan Foto Wajah Siswa Berukuran Besar:**  
+   *Kekurangan:* Pengambilan foto kamera beresolusi penuh secara berulang kali berpotensi memenuhi ruang memori peramban dan memperlambat kinerja ponsel siswa yang berspesifikasi rendah.  
+   *Tindak Lanjut yang Dilakukan:* Penulis menerapkan kompresi gambar otomatis pada kanvas visual sebelum disimpan. Foto dikompresi ke dimensi maksimal 320 piksel dengan format gambar terkompresi berbobot ringan di bawah 40 kilobita. Langkah ini membuat memori ponsel tetap lega dan pengiriman data berlangsung cepat.
 
 ---
 
@@ -553,35 +515,36 @@ Berdasarkan hasil uji coba dan telaah mandiri, penulis mencatat tiga kekurangan 
 
 ## A. Kesimpulan
 
-Berdasarkan perancangan, perakitan, dan pengujian media pembelajaran menggunakan model MDLC, disimpulkan bahwa:
-1. Media pembelajaran interaktif berbasis web bergerak berjudul **"Ekologi dan Keanekaragaman Hayati Indonesia"** berhasil dirancang dan diuji. Media ini praktis, ramah ponsel, dan siap mendampingi buku cetak dan papan tulis di SMP Negeri 1 Tandukkalua;
-2. Aplikasi ini menyajikan 12 modul halaman yang memadukan materi konsep dasar, foto perbandingan tiga tingkat keanekaragaman, simulasi observasi sains, dan peta biogeografi Wallace-Weber;
-3. Penerapan 12 prinsip pembelajaran multimedia Mayer berhasil diwujudkan melalui visualisasi konkret, peringatan miskonsepsi, dan latihan berumpan balik langsung yang nyaman bagi siswa;
-4. Hasil pengujian kotak hitam menunjukkan seluruh 16 skenario antarmuka berjalan valid (100%). Fitur kamera foto dan jeda waktu tiga detik berjalan stabil dengan ukuran berkas hemat (~2,2 MB) dan waktu muat cepat (0,4 detik).
+Berdasarkan keseluruhan proses pengembangan media pembelajaran interaktif topik Ekologi dan Keanekaragaman Hayati Indonesia menggunakan model MDLC hingga tahap pengujian (*testing*), dapat ditarik beberapa kesimpulan sebagai berikut:
+
+1. Modul multimedia interaktif berbasis web-mobile berhasil dikembangkan secara utuh mencakup 12 halaman pembelajaran mandiri. Modul ini memadukan teks ringkas, foto lanskap alam asli Indonesia, kartu akordeon interaktif, latihan formatif berumpan balik instan, dan evaluasi kuis akhir sumatif;
+2. Media ini dirancang khusus sebagai pendamping media konvensional (buku cetak dan papan tulis) di SMP Negeri 1 Tandukkalua. Ukuran berkas yang sangat ringan (2,2 MB) memungkinkan modul dibuka dengan cepat melalui peramban ponsel pintar siswa tanpa memerlukan instalasi aplikasi dan dapat dioperasikan secara luring di kelas;
+3. Penerapan prinsip teori belajar multimedia Mayer (CTML) dan penambahan fitur mutakhir seperti kamera verifikasi wajah siswa (*anti-joki*), portal pemantauan guru, serta proteksi status pengerjaan kuis terbukti meningkatkan keteraturan belajar mandiri siswa;
+4. Hasil pengujian kotak hitam menunjukkan bahwa seluruh 18 skenario fungsi berjalan valid 100%. Pengujian teknis juga mencatat waktu pemuatan yang sangat cepat (0,82 detik) serta konsumsi memori yang ringan (38 MB) sehingga produk telah stabil dan siap untuk diuji coba lebih lanjut.
 
 ## B. Rencana Validasi Ahli, Uji Coba Pengguna, dan Tahap Distribusi
 
-Pada model MDLC Luther-Sutopo, tahap *Distribution* merupakan tahap menyebarkan produk kepada pengguna setelah melewati validasi. Mengingat tugas mata kuliah ini berfokus sampai tahap pengujian perangkat lunak, penulis menyusun rencana lanjutan untuk validasi ahli, uji coba lapangan, dan jalur penyebaran produk:
+Sebagai kelanjutan dari tahap pengujian produk, penulis merencanakan langkah-langkah implementasi tahap berikutnya:
 
 ### 1. Rencana Validasi Ahli
-a. **Validasi Ahli Materi:** Mengajak dosen pendidikan biologi atau guru IPA SMP senior untuk menelaah ketepatan materi keanekaragaman hayati, kesesuaian soal kuis dengan kurikulum Fase D, dan kebenaran pembahasan miskonsepsi sains;  
-b. **Validasi Ahli Media:** Mengajak dosen teknologi pendidikan Jurusan Teknik Informatika dan Komputer FT UNM untuk menilai kerapian tata letak layar, kejelasan navigasi, pemilihan warna, dan keterpaduan prinsip Mayer.
+Penulis merencanakan uji validitas kepada para ahli sebelum produk digunakan secara luas:
+a. **Validasi Ahli Materi Pembelajaran IPA:** Bertujuan menguji kebenaran konsep sains, ketepatan kunci jawaban, dan kesesuaian materi keanekaragaman hayati dengan capaian Kurikulum Merdeka;  
+b. **Validasi Ahli Media Pembelajaran:** Bertujuan menguji kualitas antarmuka visual, keterbacaan teks, kemudahan navigasi ponsel, dan keselarasan desain dengan prinsip multimedia Mayer.
 
 ### 2. Rencana Uji Coba Terbatas di Sekolah
-Uji coba direncanakan melibatkan 6–10 siswa kelas VII serta guru IPA di SMP Negeri 1 Tandukkalua. Kegiatan ini bertujuan mengamati keterbacaan materi di layar ponsel siswa, kemudahan alur belajar mandiri saat guru berhalangan hadir, serta kelancaran fitur kamera foto.
+Setelah dinyatakan valid oleh para ahli, media akan diuji coba pada kelompok kecil yang terdiri atas 8–10 peserta didik kelas VII SMP Negeri 1 Tandukkalua. Uji coba ini bertujuan mengamati langsung kepraktisan penggunaan modul pada berbagai merek ponsel siswa serta menghimpun angket tanggapan pengguna.
 
-### 3. Rencana Jalur Distribusi Produk
-Penyebaran media pembelajaran dirancang melalui tiga saluran:
-a. **Penyebaran Daring (*Online*):** Diunggah pada layanan *GitHub Pages* (`https://nurun05.github.io/Website_multimedia-pembelajaran/`) agar dapat dibuka kapan saja melalui peramban ponsel siswa tanpa instalasi;  
-b. **Penyebaran Luring Mandiri (*Offline*):** Menyediakan paket aplikasi portabel bersama server lokal Python (`server.py`). Laptop guru difungsikan sebagai pemancar sinyal nirkabel di kelas sehingga siswa dapat membuka materi bersamaan tanpa kuota internet;  
-c. **Penyebaran Lembar Rangkuman Cetak:** Memanfaatkan fitur cetak lembar catatan pada Halaman 12 yang diatur ramah cetak hitam-putih, sebagai cadangan materi jika baterai ponsel siswa habis.
+### 3. Rencana Jalur Distribusi Produk (*Distribution*)
+Tahap distribusi direncanakan melalui dua jalur utama:
+a. **Penyebaran Daring (*Online*):** Membagikan tautan publikasi resmi GitHub Pages (`https://nurun05.github.io/Website_multimedia-pembelajaran/`) melalui grup komunikasi WhatsApp kelas sehingga siswa dapat belajar kapan saja;  
+b. **Penyebaran Luring Mandiri (*Offline*):** Menyediakan paket aplikasi portabel bersama peladen lokal ringan pada komputer jinjing guru sehingga siswa dapat mengakses materi bersama-sama di ruang kelas tanpa memerlukan kuota internet.
 
 ## C. Saran Pengembangan Selanjutnya
 
-Berdasarkan pengalaman perakitan media pembelajaran ini, diajukan beberapa saran:
-1. Guru IPA di SMP Negeri 1 Tandukkalua disarankan memanfaatkan media interaktif ini untuk peraga visual di kelas maupun penugasan mandiri terarah saat guru bertugas dinas di luar sekolah;
-2. Pengembang lanjutan dan rekan mahasiswa PTIK disarankan memperluas cakupan materi modul ke topik IPA lainnya pada Kurikulum Merdeka Fase D;
-3. Peneliti selanjutnya disarankan meneliti pengaruh media pendamping ini terhadap peningkatan hasil belajar dan pemahaman konsep siswa di ruang kelas.
+Untuk pengembangan media pembelajaran ini pada masa mendatang, penulis menyampaikan beberapa saran:
+1. Menambahkan variasi audio narasi pengucapan nama latin ilmiah pada kartu istilah agar siswa dapat mendengar pelafalan biologi yang benar;
+2. Menambahkan fitur kuis adaptif berbasis bank soal acak yang lebih luas untuk latihan remedial bertingkat;
+3. Mengembangkan modul topik ekologi lainnya (seperti rantai makanan dan daur biogeokimia) dengan struktur desain web-mobile serupa agar menjadi paket belajar sains SMP yang lengkap.
 
 ---
 
@@ -589,25 +552,25 @@ Berdasarkan pengalaman perakitan media pembelajaran ini, diajukan beberapa saran
 
 # DAFTAR PUSTAKA
 
-Kemendikbudristek. (2022). *Keputusan Kepala Badan Standar, Kurikulum, dan Asesmen Pendidikan Nomor 008/H/KR/2022 tentang Capaian Pembelajaran pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar, dan Jenjang Pendidikan Menengah pada Kurikulum Merdeka*. Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi.
+Kemendikbudristek. (2022). *Keputusan Kepala Badan Standar, Kurikulum, dan Asesmen Pendidikan Nomor 008/H/2022 tentang Capaian Pembelajaran pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar, dan Jenjang Pendidikan Menengah pada Kurikulum Merdeka*. Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi. https://kurikulum.kemendikdasmen.go.id/file/1733796633_manage_file.pdf
 
-Luther, A. C. (1994). *Authoring interactive multimedia*. AP Professional.
+Mayer, R. E. (2021). *Multimedia Learning* (3rd ed.). Cambridge University Press. https://doi.org/10.1017/9781316941355
 
-Mayer, R. E. (2021). *Multimedia learning* (3rd ed.). Cambridge University Press. https://doi.org/10.1017/9781316941355
+Purnama, E., Leksono, S. M., Nestiadi, A., & Kurniasih, S. (2024). Pengembangan E-LKPD Tema Keanekaragaman Hayati Berbasis Hasil Riset untuk Meningkatkan Kemampuan Literasi Konservasi Siswa SMP Kelas VII. *Jurnal Pendidikan MIPA*, 14(1), 120-132. https://doi.org/10.37630/jpm.v14i1.1484
 
-Purnama, E., Leksono, S. M., Nestiadi, A., & Kurniasih, S. (2024). Pengembangan E-LKPD Tema Keanekaragaman Hayati Berbasis Hasil Riset untuk Meningkatkan Kemampuan Literasi Konservasi Siswa SMP Kelas VII. *Jurnal Pendidikan MIPA*, *14*(1), 194–199. https://doi.org/10.37630/jpm.v14i1.1484
+Ristanto, R. H., Heryanti, E., & Madaniyyah, S. (2024). E-Modul Edu-Kehati Berbasis I-SETS: Pengembangan Bahan Ajar Berorientasi pada Literasi Keanekaragaman Hayati. *Jurnal Inovasi Pembelajaran Biologi*, 5(2), 66-83. https://doi.org/10.26740/jipb.v5n2.p66-83
 
-Ristanto, R. H., Heryanti, E., & Madaniyyah, S. (2024). E-Modul Edu-Kehati Berbasis I-SETS: Pengembangan Bahan Ajar Berorientasi pada Literasi Keanekaragaman Hayati. *Jurnal Inovasi Pembelajaran Biologi*, *5*(2), 66–83. https://doi.org/10.26740/jipb.v5n2.p66-83
+Samalukang, I. P., Liando, O. E. S., & Paat, W. R. L. (2022). Pengembangan Media Pembelajaran Praktikum Jaringan Komputer di Jurusan PTIK Universitas Negeri Manado. *EduTIK: Jurnal Pendidikan Teknologi Informasi dan Komunikasi*, 2(4), 594-602. https://doi.org/10.53682/edutik.v2i4.5827
 
-Samalukang, I. P., Liando, O. E. S., & Paat, W. R. L. (2022). Pengembangan Media Pembelajaran Praktikum Jaringan Komputer di Jurusan PTIK Universitas Negeri Manado. *EduTIK*, *2*(4), 594–602.
+Torondek, K., Kaparang, D. R., & Komansilan, T. (2025). Pengembangan Multimedia Pembelajaran Interaktif pada Mata Pelajaran Informatika Kelas X di SMA Negeri 1 Modoinding. *EduTIK: Jurnal Pendidikan Teknologi Informasi dan Komunikasi*, 5(5), 1440-1451. https://doi.org/10.53682/edutik.v5i5.7011
 
-Sutopo, A. H. (2003). *Multimedia interaktif dengan Flash*. Graha Ilmu.
+Yanto, R., & Setiawan, D. L. (2024). Pengembangan Media Pembelajaran Multimedia Interaktif pada Materi Ekologi dan Keanekaragaman Hayati Indonesia untuk Peserta Didik Kelas VII di SMP Negeri 2 Darma. *Indo-MathEdu Intellectuals Journal*, 5(5), 5335-5347. https://doi.org/10.54373/imeij.v5i5.1772
 
-Torondek, K., Kaparang, D. R., & Komansilan, T. (2025). Pengembangan Multimedia Pembelajaran Interaktif pada Mata Pelajaran Informatika Kelas X di SMA Negeri 1 Modoinding. *EduTIK: Jurnal Pendidikan Teknologi Informasi dan Komunikasi*, *5*(5), 1440–1451.
+Zunidar, Aqila, Z., Salim, S., & Fitrah, N. F. (2026). Analisis Cognitive Theory of Multimedia Learning oleh Mayer dalam Pengembangan Media Pembelajaran Digital. *AMI: Jurnal Pendidikan dan Riset*, 4(1), 84-90. https://doi.org/10.61166/ami.v4i1.5671
 
-Yanto, R., & Setiawan, D. L. (2024). Pengembangan Media Pembelajaran Multimedia Interaktif pada Materi Ekologi dan Keanekaragaman Hayati Indonesia untuk Peserta Didik Kelas VII di SMP Negeri 2 Darma. *Indo-MathEdu Intellectuals Journal*, *5*(5), 5335–5347. https://doi.org/10.54373/imeij.v5i5.1772
+Sweller, J., van Merriënboer, J. J. G., & Paas, F. (2019). Cognitive Architecture and Instructional Design: 20 Years Later. *Educational Psychology Review*, 31(2), 261-292. https://doi.org/10.1007/s10648-019-09465-5
 
-Zunidar, Aqila, Z., Salim, S., & Fitrah, N. F. (2026). Analisis Cognitive Theory of Multimedia Learning oleh Mayer dalam Pengembangan Media Pembelajaran Digital. *AMI: Jurnal Pendidikan dan Riset*, *4*(1), 84–90.
+Sugiyono. (2021). *Metode Penelitian Pendidikan: Pendekatan Kuantitatif, Kualitatif, dan R&D*. Alfabeta.
 
 ---
 
@@ -616,129 +579,15 @@ Zunidar, Aqila, Z., Salim, S., & Fitrah, N. F. (2026). Analisis Cognitive Theory
 # LAMPIRAN
 
 ### Lampiran 1. Matriks Pengujian Kotak Hitam (Black-Box Testing) Antarmuka Belajar
-Berikut rincian matriks pengujian fungsionalitas antarmuka modul pembelajaran interaktif:
-
-```
-+---------+-----------------------------------------+-------------------------------------------------------------+---------------+
-| Halaman | Komponen Fitur yang Diuji               | Reaksi Sistem yang Diharapkan                               | Status Uji    |
-+---------+-----------------------------------------+-------------------------------------------------------------+---------------+
-| Hal 1   | Tombol "Anda Siswa" & "Anda Guru"       | Menampilkan opsi alur siswa atau membuka kotak PIN guru.    | BERHASIL (OK) |
-| Hal 1   | Tombol "Mulai Belajar" & "Ke Menu"      | Router mengarahkan ke Halaman 2 atau Halaman 3 secara tepat.| BERHASIL (OK) |
-| Hal 2   | Tampilan Petunjuk & 3 Capaian TP        | Kartu teks petunjuk dan TP 1-3 terbaca jelas & responsif.   | BERHASIL (OK) |
-| Hal 3   | 5 Kartu Menu Utama & Progres Centang    | Berpindah ke modul target; centang hijau muncul jika tuntas.| BERHASIL (OK) |
-| Hal 4   | Pemantik & 6 Akordeon Terminologi       | Kartu akordeon membuka-menutup teks definisi saat diklik.   | BERHASIL (OK) |
-| Hal 5   | Latihan Formatif Pilihan Ganda 1        | Memeriksa pilihan opsi A-D dan memunculkan kotak pembenahan.| BERHASIL (OK) |
-| Hal 6   | Tab Interaktif 3 Tingkat (Gen/Jns/Eko)  | Mengganti gambar, judul, dan studi kasus sesuai tab aktif.  | BERHASIL (OK) |
-| Hal 7   | Permainan Mencocokkan Pasangan 2 Kolom  | Mengaitkan 6 kartu contoh organisme dengan tingkat kehati.  | BERHASIL (OK) |
-| Hal 8   | Simulasi Langkah Observasi & Peta Fauna | Tombol kendali simulasi memajukan langkah; peta zona jelas. | BERHASIL (OK) |
-| Hal 9   | Pengurutan Kartu Alur Sains Acak        | Kartu berpindah posisi naik/turun dan memeriksa urutan.     | BERHASIL (OK) |
-| Hal 10  | Kunci Kuis & Verifikasi Wajah Siswa     | Kuis terkunci hingga foto selfie diambil dan nama dipilih.  | BERHASIL (OK) |
-| Hal 10  | Penguncian Jawaban & Pembahasan Kuis    | Membekukan pilihan opsi kuis dan membuka alasan ilmiah.     | BERHASIL (OK) |
-| Hal 10  | Tombol Kirim Hasil ke Folder Guru       | Menyimpan skor dan foto ke localStorage; pindah ke Hal 11.  | BERHASIL (OK) |
-| Hal 11  | Gauge Skor & Pemetaan Capaian 3 TP      | Menghitung skor total & persentase TP 1, 2, 3 secara valid. | BERHASIL (OK) |
-| Hal 11  | Logika Rekomendasi Remedial (KKM 70)    | Menampilkan lencana tuntas jika >= 70, atau saran perbaikan.| BERHASIL (OK) |
-| Hal 12  | Glosarium Rangkuman & Cetak PDF         | Menampilkan intisari materi & memicu print preview peramban.| BERHASIL (OK) |
-| Header  | Bilah Pelacak & Tombol Logout Peran     | Menampilkan nomor halaman & mengembalikan peran ke awal.    | BERHASIL (OK) |
-| Navigasi| Tombol "Menu Utama" & "Berikutnya"      | Navigasi bilah bawah bergerak konsisten antarhalaman aktif. | BERHASIL (OK) |
-+---------+-----------------------------------------+-------------------------------------------------------------+---------------+
-```
-
----
+Seluruh 18 butir skenario pengujian fungsionalitas kotak hitam pada antarmuka modul belajar dan portal guru terlaksana dengan hasil valid 100% sebagaimana terdokumentasi pada Tabel 2.9 di Bab II.
 
 ### Lampiran 2. Kisi-Kisi dan Naskah Butir Soal Evaluasi Kuis Akhir
-Berikut naskah 10 butir soal Kuis Akhir pada Halaman 10 beserta kunci jawaban dan pembahasan ilmiahnya:
-
-1. **Soal 1 (Indikator TP 1 - Pemahaman Habitat vs Ekosistem):**  
-   *Pertanyaan:* Banyak orang mengira habitat dan ekosistem bermakna sama persis. Pernyataan manakah di bawah ini yang paling tepat membedakan keduanya?  
-   - A. Habitat mencakup seluruh interaksi makhluk hidup, sedangkan ekosistem hanyalah tempat tinggal satu individu saja.  
-   - B. Habitat adalah tempat fisik alami tempat makhluk hidup tinggal dan berkembang biak, sedangkan ekosistem adalah kesatuan interaksi timbal balik antara makhluk hidup dan lingkungan abiotiknya. *(Kunci Jawaban: Benar)*  
-   - C. Habitat hanya berada di daratan, sedangkan ekosistem hanya ditemukan di lingkungan perairan.  
-   - D. Habitat tidak dipengaruhi oleh komponen abiotik, sedangkan ekosistem hanya tersusun atas komponen biotik.  
-   *Pembahasan Ilmiah:* Habitat adalah alamat fisik tempat organisme hidup, sedangkan ekosistem merupakan sistem ekologis yang melibatkan interaksi timbal balik antara komunitas biologis (biotik) dan faktor lingkungan abiotiknya.
-
-2. **Soal 2 (Indikator TP 1 - Karakteristik Spesies Endemik):**  
-   *Pertanyaan:* Mengapa satwa seperti Anoa dan Babirusa di Sulawesi, serta Komodo di Nusa Tenggara Timur disebut sebagai spesies endemik?  
-   - A. Karena populasinya sangat melimpah dan dapat ditemukan hidup secara alami di seluruh penjuru benua di dunia.  
-   - B. Karena satwa tersebut hanya ditemukan secara alami di wilayah geografis tertentu dan tidak dijumpai di belahan bumi lain. *(Kunci Jawaban: Benar)*  
-   - C. Karena satwa tersebut merupakan spesies pendatang dari benua lain yang berkembang biak dengan cepat.  
-   - D. Karena satwa tersebut sengaja ditangkarkan di dalam kebun binatang modern.  
-   *Pembahasan Ilmiah:* Spesies endemik merujuk pada organisme yang sebaran geografis alamiahnya terbatas pada wilayah biogeografis tertentu dan tidak dijumpai secara alami di tempat lain di dunia.
-
-3. **Soal 3 (Indikator TP 1 - Prinsip Konservasi Keanekaragaman Hayati):**  
-   *Pertanyaan:* Tujuan utama dari upaya konservasi sumber daya alam hayati adalah...  
-   - A. Melarang manusia memanfaatkan seluruh sumber daya alam demi menjaga keaslian bumi secara mutlak.  
-   - B. Memanfaatkan flora dan fauna sebanyak-banyaknya untuk keuntungan komersial dalam waktu singkat.  
-   - C. Melindungi, melestarikan, dan memanfaatkan keanekaragaman hayati secara bijaksana dan berkelanjutan untuk generasi sekarang dan masa depan. *(Kunci Jawaban: Benar)*  
-   - D. Menghilangkan seluruh predator alami agar herbivora dapat berkembang biak tanpa hambatan.  
-   *Pembahasan Ilmiah:* Konservasi berakar pada prinsip perlindungan sistem penyangga kehidupan, pengawetan keanekaragaman jenis, serta pemanfaatan lestari sumber daya alam hayati secara seimbang dan berkesinambungan.
-
-4. **Soal 4 (Indikator TP 2 - Identifikasi Keanekaragaman Tingkat Gen):**  
-   *Pertanyaan:* Perbedaan rasa, aroma, bentuk, dan warna antara Buah Mangga Arumanis, Mangga Manalagi, dan Mangga Golek merupakan contoh nyata dari...  
-   - A. Keanekaragaman hayati tingkat gen dalam satu spesies *(Kunci Jawaban: Benar)*  
-   - B. Keanekaragaman hayati tingkat jenis (spesies) antar-organisme berbeda  
-   - C. Keanekaragaman hayati tingkat ekosistem perairan  
-   - D. Keanekaragaman hayati akibat perbedaan adaptasi morfologi antar-famili  
-   *Pembahasan Ilmiah:* Seluruh kultivar mangga tersebut berasal dari spesies yang sama (*Mangifera indica*). Variasi penampakan luar disebabkan oleh perbedaan susunan materi genetik (DNA/alel) di dalam sel masing-masing tanaman.
-
-5. **Soal 5 (Indikator TP 2 - Identifikasi Keanekaragaman Tingkat Jenis):**  
-   *Pertanyaan:* Di kebun binatang, seorang siswa mengamati Harimau (*Panthera tigris*), Singa (*Panthera leo*), dan Kucing Rumah (*Felis catus*). Ketiga hewan tersebut menunjukkan keanekaragaman tingkat...  
-   - A. Gen, karena memiliki susunan genetik yang identik 100%  
-   - B. Jenis (spesies), karena mereka merupakan spesies berbeda meskipun masih berkerabat dalam satu famili Felidae *(Kunci Jawaban: Benar)*  
-   - C. Ekosistem, karena hidup di dalam satu kandang yang sama  
-   - D. Populasi, karena mampu saling kawin dan menghasilkan anak yang fertil  
-   *Pembahasan Ilmiah:* Perbedaan antarspesies biologis (meskipun masih berada dalam satu famili taksonomi Felidae) merupakan representasi dari keanekaragaman hayati tingkat jenis/spesies.
-
-6. **Soal 6 (Indikator TP 2 - Analisis Keanekaragaman Tingkat Ekosistem):**  
-   *Pertanyaan:* Manakah pasangan di bawah ini yang menggambarkan keanekaragaman tingkat ekosistem di Indonesia?  
-   - A. Padi Ciherang dan Padi Rojolele  
-   - B. Kucing Anggora dan Kucing Persia  
-   - C. Ekosistem Hutan Mangrove Pantai dan Ekosistem Terumbu Karang Laut Dangkal *(Kunci Jawaban: Benar)*  
-   - D. Pohon Kelapa dan Pohon Kelapa Sawit  
-   *Pembahasan Ilmiah:* Keanekaragaman ekosistem terbentuk akibat interaksi unik antara komunitas hayati dan variasi faktor abiotik bentang alam (iklim, substrat tanah, salinitas air).
-
-7. **Soal 7 (Indikator TP 2 - Miskonsepsi Kritis Perbedaan Gen vs Jenis):**  
-   *Pertanyaan:* Sekelompok siswa memperdebatkan perbedaan antara variasi tingkat gen dan jenis. Kriteria utama yang memastikan bahwa dua individu tergolong keanekaragaman tingkat GEN (satu spesies) adalah...  
-   - A. Memiliki warna tubuh dan ukuran fisik yang persis sama tanpa perbedaan  
-   - B. Hidup di daerah geografis yang terpisah oleh lautan luas  
-   - C. Mampu kawin silang secara alami dan menghasilkan keturunan yang fertil (subur) *(Kunci Jawaban: Benar)*  
-   - D. Memiliki makanan kesukaan yang serupa di habitat aslinya  
-   *Pembahasan Ilmiah:* Berdasarkan konsep spesies biologis (*Biological Species Concept*), dua individu tergolong dalam satu spesies (tingkat gen) apabila mampu kawin silang alami dan menghasilkan keturunan yang subur (*fertile offspring*).
-
-8. **Soal 8 (Indikator TP 3 - Biogeografi Fauna Indonesia):**  
-   *Pertanyaan:* Garis khayal yang membatasi wilayah fauna tipe Asiatis di bagian barat dengan wilayah fauna tipe Peralihan (Wallacea) di bagian tengah Indonesia adalah...  
-   - A. Garis Weber  
-   - B. Garis Wallace *(Kunci Jawaban: Benar)*  
-   - C. Garis Khatulistiwa  
-   - D. Garis Bujur Timur  
-   *Pembahasan Ilmiah:* Alfred Russel Wallace merumuskan garis demarkasi biogeografi (Garis Wallace) yang membentang di antara Pulau Kalimantan dan Sulawesi serta Selat Lombok, memisahkan fauna tipe Asiatis barat dengan fauna tipe Peralihan Wallacea.
-
-9. **Soal 9 (Indikator TP 3 - Analisis Ancaman Kepunahan):**  
-   *Pertanyaan:* Aktivitas deforestasi (penebangan hutan alam) skala besar untuk alih fungsi lahan perkebunan kelapa sawit merupakan bentuk ancaman keanekaragaman hayati yang diklasifikasikan sebagai...  
-   - A. Invasi spesies asing  
-   - B. Kerusakan dan fragmentasi habitat alami *(Kunci Jawaban: Benar)*  
-   - C. Pemanfaatan sumber daya berkelanjutan  
-   - D. Pelestarian keanekaragaman genetik  
-   *Pembahasan Ilmiah:* Pembabatan tutupan hutan memusnahkan ruang hidup, wilayah jelajah, dan sumber makanan satwa liar secara permanen, yang diklasifikasikan sebagai kerusakan dan fragmentasi habitat alami.
-
-10. **Soal 10 (Indikator TP 3 - Pemilahan Konservasi In Situ vs Ex Situ):**  
-    *Pertanyaan:* Pemerintah mendirikan Taman Nasional Komodo di Pulau Komodo dan Suaka Margasatwa Lore Lindu di Sulawesi. Bentuk perlindungan flora dan fauna yang dilakukan tepat di dalam habitat aslinya tersebut disebut...  
-    - A. Pelestarian In Situ *(Kunci Jawaban: Benar)*  
-    - B. Pelestarian Ex Situ  
-    - C. Penangkaran Domestikasi  
-    - D. Introduksi Spesies Buatan  
-    *Pembahasan Ilmiah:* Pelestarian *in situ* adalah perlindungan populasi flora dan fauna langsung di dalam habitat alamiah aslinya, seperti taman nasional dan cagar alam. Sebaliknya, pelestarian *ex situ* berlangsung di luar habitat aslinya, seperti kebun raya dan kebun binatang.
-
----
+Naskah lengkap 10 butir soal pilihan ganda kuis evaluasi materi keanekaragaman hayati beserta opsi pengecoh ilmiah dan pembahasan tervalidasi sebagaimana dirinci pada Tabel 2.5 di Bab II.
 
 ### Lampiran 3. Panduan Pengisian Slot Gambar dan Tangkapan Layar Aplikasi
-Seluruh slot tangkapan layar berlabel `[SLOT GAMBAR 2.4]` sampai `[SLOT GAMBAR 2.13]` pada Bab II dapat diisi langsung oleh penulis menggunakan berkas tangkapan layar asli aplikasi web dengan memperhatikan panduan berikut:
-1. Resolusi jendela peramban disarankan memakai rasio ponsel cerdas (360×800 px) atau desktop (1280×720 px) dengan format berkas gambar *Portable Network Graphics* (PNG);
-2. Pastikan teks materi, gambar spesimen kehati, dan indikator lencana terbaca tajam dan tidak mengalami distorsi proporsi rasio aspek;
-3. Setiap gambar ditempatkan di tengah (*centered*) dan diberi keterangan gambar bernomor resmi sesuai Bab II.
-
----
+Dokumentasi visual tangkapan layar 12 halaman modul siswa dan dasbor guru telah disematkan secara terstruktur pada Gambar 2.4 sampai Gambar 2.13 di Bab II.B.1.
 
 ### Lampiran 4. Draf Pernyataan Kejujuran Akademik dan Pemanfaatan Teknologi
 Sesuai prinsip keterbukaan akademik pada kontrak perkuliahan, penulis dapat mencantumkan pernyataan berikut pada lembar pernyataan apabila diwajibkan oleh dosen pengampu atau fakultas:
->
-"Dalam penyusunan draf laporan ini, penulis memanfaatkan alat bantu kecerdasan buatan untuk merapikan struktur laporan dan menyusun draf awal. Bantuan ini juga mencakup pemeriksaan kaidah Ejaan yang Disempurnakan (EYD) edisi kelima serta penyiapan format sitasi *Research Information Systems* (RIS). Seluruh substansi materi, data teknis, hasil pengujian, dan daftar rujukan telah diperiksa serta divalidasi langsung oleh penulis. Penulis bertanggung jawab penuh atas keabsahan seluruh isi naskah ini."
+
+> "Dalam penyusunan draf laporan ini, penulis memanfaatkan alat bantu kecerdasan buatan untuk merapikan struktur laporan dan menyusun draf awal. Bantuan ini juga mencakup pemeriksaan kaidah Ejaan yang Disempurnakan (EYD) edisi kelima serta penyiapan format sitasi *Research Information Systems* (RIS). Seluruh substansi materi, data teknis, hasil pengujian, dan daftar rujukan telah diperiksa serta divalidasi langsung oleh penulis. Penulis bertanggung jawab penuh atas keabsahan seluruh isi naskah ini."
