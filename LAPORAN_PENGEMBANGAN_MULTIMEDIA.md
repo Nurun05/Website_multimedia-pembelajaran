@@ -339,9 +339,10 @@ c. **Pemasangan Modul Kamera dan Portal Guru:** Penulis mengintegrasikan kamera 
 
 ### 6. Tahap Testing (Pengujian)
 Tahap *Testing* bertujuan memastikan fungsi pembelajaran dan kestabilan teknis media berjalan sesuai harapan:
-a. **Pengujian Kotak Hitam (*Black-Box Testing*):** Memastikan seluruh tombol navigasi, tabulasi, latihan, kamera foto, perhitungan nilai, dan fitur cetak bekerja tepat sesuai masukan dan keluaran yang diharapkan;
-b. **Pengujian Operasional Luring (*Offline-First Verification*):** Memastikan media dapat berjalan lancar tanpa jaringan internet menggunakan server mini lokal Python dan paket berkas portabel;
-c. **Pengujian Responsivitas Layar:** Menguji kenyamanan tampilan pada layar ponsel pintar (lebar 360–430 px) hingga layar monitor komputer.
+a. **Pengujian Kotak Hitam (*Black-Box Testing*):** Memastikan seluruh tombol navigasi, latihan interaktif, kamera foto, perhitungan nilai, dan fitur cetak bekerja tepat sesuai masukan dan keluaran yang diharapkan;
+b. **Pengujian Sinkronisasi Lintas Perangkat:** Menguji ketepatan pengiriman data nilai dan foto dari ponsel siswa ke laptop guru secara waktu nyata;
+c. **Pengujian Operasional Luring (*Offline-First Verification*):** Memastikan media dapat berjalan lancar tanpa jaringan internet menggunakan peladen mini lokal Python dan paket berkas portabel;
+d. **Pengujian Responsivitas Layar Ponsel:** Menguji kenyamanan tampilan adaptif pada berbagai resolusi layar ponsel pintar (lebar 360–430 piksel) hingga komputer jinjing.
 
 ---
 
@@ -478,16 +479,19 @@ Selama tahap perakitan dan pengujian, penulis menambahkan beberapa fitur bermanf
 | Komponen Fitur | Kondisi pada Proposal Awal | Penambahan dan Implementasi Aktual | Rasional dan Nilai Tambah Pedagogis |
 | :--- | :--- | :--- | :--- |
 | **Citra Visual Beranda & Materi** | Menggunakan ilustrasi vektor kartun pemandangan gunung. | Menggunakan foto pemandangan alam asli Indonesia resolusi tinggi. | Memberikan gambaran biologis nyata agar siswa mengenali alam nusantara yang sesungguhnya. |
-| **Verifikasi Kamera Wajah Siswa** | Kuis akhir dikerjakan bebas tanpa pengawasan fisik. | Modul kamera selfie pada Halaman 10 untuk membuka kuis. | Membiasakan kejujuran belajar dan akuntabilitas mandiri saat guru tidak hadir di kelas. |
-| **Pengelolaan Daftar Siswa** | Daftar nama siswa direncanakan statis di dalam sistem. | Pengelolaan daftar nama mandiri oleh guru di Portal Guru (tambah, tempel banyak nama, hapus). | Memudahkan guru mengubah dan memperbarui daftar nama siswa kapan saja. |
-| **Proteksi Nilai & Jeda Cooldown** | Skor kuis terbuka bebas dan dapat diulang tanpa batas. | Nama terkunci "Sudah Selesai", nilai terlindungi, dan jeda hitung mundur 3 detik. | Mencegah siswa menebak-nebak kunci jawaban dan menjaga kerahasiaan nilai dari teman sekelas. |
-| **Dasbor Pemantauan Guru** | Belum direncanakan pada proposal awal. | Portal Guru dengan PIN khusus, rekap nilai per tujuan pembelajaran, foto siswa, dan ekspor CSV. | Membantu guru mengetahui materi yang belum dipahami siswa untuk bahan bimbingan ulang. |
+| **Verifikasi Kamera Wajah Siswa** | Kuis akhir dikerjakan bebas tanpa pengawasan fisik. | Modul kamera swafoto pada Halaman 10 untuk membuka kuis. | Membiasakan kejujuran belajar dan akuntabilitas mandiri saat guru tidak hadir di kelas. |
+| **Pengelolaan Daftar Siswa Mandiri** | Daftar nama siswa direncanakan statis di dalam kode sistem. | Pengelolaan daftar nama mandiri oleh guru (tambah satuan, tempel massal, hapus semua). | Memudahkan guru memperbarui data rombongan belajar tanpa mengubah kode program. |
+| **Proteksi Nilai & Jeda Pengalihan** | Skor kuis terbuka bebas dan dapat diulang tanpa batas. | Nama terkunci berstatus "Sudah Selesai", nilai terlindungi, dan jeda hitung mundur 3 detik. | Mencegah siswa menebak kunci jawaban dan menjaga kerahasiaan nilai dari teman sekelas. |
+| **Portal & Dasbor Guru** | Belum direncanakan pada dokumen proposal awal. | Portal Guru berbasis sandi rahasia, rekap nilai per indikator, foto siswa, dan ekspor CSV. | Membantu guru mendiagnosis materi yang belum tuntas untuk bahan bimbingan remedial. |
+| **Sinkronisasi Data Real-Time** | Penyimpanan data direncanakan murni lokal per peramban. | Arsitektur sinkronisasi awan waktu nyata dengan mekanisme cadangan lokal otomatis. | Memungkinkan guru memantau kemajuan belajar siswa seketika dan menyelaraskan daftar kelas antargawai. |
+| **Tata Letak Adaptif Ponsel** | Didesain web-mobile standar tanpa tata letak khusus ponsel. | Desain ramah ponsel cerdas dengan tombol navigasi bertumpuk dan area sentuh proporsional. | Mengurangi beban kognitif luar akibat kendala antarmuka dan memudahkan operasi satu tangan. |
+| **Antarmuka Bersih Bebas Label Teknis** | Belum ada pengaturan label status penyimpanan sistem. | Seluruh lencana teknis status sistem disembunyikan dari pandangan guru dan siswa. | Menjaga konsentrasi pengguna agar terpusat pada materi ajar tanpa distraksi istilah teknis basis data. |
 
 ### 4. Hasil Pengujian
 Pengujian dilakukan untuk memastikan fungsi pembelajaran dan kestabilan teknis media berjalan baik.
 
 #### a) Hasil Pengujian Kotak Hitam (*Black-Box Testing*)
-Pengujian fungsional antarmuka belajar mencakup 16 skenario interaksi pada Tabel 2.9.
+Pengujian fungsional antarmuka belajar mencakup 18 skenario interaksi pada Tabel 2.9.
 
 **Tabel 2.9**  
 *Hasil Pengujian Fungsionalitas Kotak Hitam (Black-Box Testing) Antarmuka Belajar*
@@ -510,8 +514,10 @@ Pengujian fungsional antarmuka belajar mencakup 16 skenario interaksi pada Tabel
 | **TC-14** | Kalkulasi Skor & Diagnostik 3 TP | Skor total dan persentase TP 1, 2, 3 terhitung akurat. | Nilai terdistribusi benar; rekomendasi remedial tampil jika < 70. | **VALID** |
 | **TC-15** | Pencetakan Rangkuman Mandiri | Tombol cetak memicu dialog print dengan tata letak bersih. | Aturan CSS @media print menyembunyikan navigasi dengan rapi. | **VALID** |
 | **TC-16** | Persistensi Data Penyimpanan Lokal | Status belajar tetap tersimpan saat tab peramban ditutup. | Data dipulihkan secara utuh saat aplikasi dibuka kembali. | **VALID** |
+| **TC-17** | Sinkronisasi Data Lintas Perangkat | Data nama siswa dan skor kuis tersinkronisasi lintas gawai. | Data terbarui seketika antargawai melalui jalur sinkronisasi. | **VALID** |
+| **TC-18** | Penyesuaian Tata Letak Responsif Ponsel | Tampilan menyesuaikan layar ponsel tanpa elemen bertumpuk. | Navigasi tersusun bertumpuk rapi dan tombol nyaman disentuh. | **VALID** |
 
-*Tingkat Keberhasilan Pengujian Kotak Hitam: Seluruh 16 skenario uji berhasil terpenuhi dengan hasil valid (100%).*
+*Tingkat Keberhasilan Pengujian Kotak Hitam: Seluruh 18 skenario uji berhasil terpenuhi dengan hasil valid (100%).*
 
 #### b) Hasil Pengujian Teknis dan Kinerja Eksekusi Sistem
 Hasil pengukuran teknis berkas dan kelancaran eksekusi sistem disajikan pada Tabel 2.10.
