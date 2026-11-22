@@ -21,13 +21,8 @@ const APP_DATA = {
     passingScore: 70
   },
 
-  // Daftar Nama Siswa Kelas VII SMP Negeri 1 Tandukkalua (4 Nama Sesuai Roster Resmi)
-  studentRoster: [
-    "Shakira Maitsa Salsabila Nasrupi",
-    "Elsa Listiani",
-    "Vergiawan Listianto",
-    "Nurunnisa"
-  ],
+  // Daftar Nama Siswa (Dikelola Mandiri oleh Guru melalui Portal Guru - Nilai Awal Kosong)
+  studentRoster: [],
 
   learningObjectives: [
     {

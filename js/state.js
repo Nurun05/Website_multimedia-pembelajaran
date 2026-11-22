@@ -11,8 +11,9 @@ const AppState = {
   userRole: 'siswa',
   teacherPin: 'guru123',
 
-  // Daftar Nama Siswa yang Dimasukkan Manual oleh Guru
-  teacherRoster: null,
+  // Daftar Nama Siswa (Dikelola Mandiri oleh Guru - Nilai Awal Kosong)
+  teacherRoster: [],
+  daftarSiswa: [],
 
   // Folder Guru: Menyimpan Rekapan Hasil Kuis & Foto Wajah Siswa
   teacherFolder: [],
@@ -72,18 +73,15 @@ const AppState = {
     }
   },
 
-  // Metode Pengelolaan Roster Guru (Daftar Nama Siswa)
+  // Metode Pengelolaan Roster Guru (Daftar Nama Siswa Mandiri)
   getRoster() {
-    const defaultRoster = (window.APP_DATA && APP_DATA.studentRoster) || [
-      "Shakira Maitsa Salsabila Nasrupi",
-      "Elsa Listiani",
-      "Vergiawan Listianto",
-      "Nurunnisa"
-    ];
-    if (Array.isArray(this.teacherRoster) && this.teacherRoster.length === 4 && this.teacherRoster.includes("Shakira Maitsa Salsabila Nasrupi")) {
+    if (Array.isArray(this.daftarSiswa) && this.daftarSiswa.length > 0) {
+      return this.daftarSiswa;
+    }
+    if (Array.isArray(this.teacherRoster) && this.teacherRoster.length > 0) {
       return this.teacherRoster;
     }
-    return [...defaultRoster];
+    return [];
   },
 
   setRoster(namesList) {
@@ -92,6 +90,7 @@ const AppState = {
       .filter(n => n.length > 0)
       .sort((a, b) => a.localeCompare('id'));
     this.teacherRoster = cleanList;
+    this.daftarSiswa = cleanList;
     this.save();
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
   },
@@ -99,13 +98,14 @@ const AppState = {
   addRosterStudent(name) {
     const trimmed = name.trim();
     if (!trimmed) return false;
-    const current = this.getRoster();
+    const current = [...this.getRoster()];
     if (current.some(n => n.toLowerCase() === trimmed.toLowerCase())) {
       return false; // Sudah ada
     }
     current.push(trimmed);
     current.sort((a, b) => a.localeCompare('id'));
     this.teacherRoster = current;
+    this.daftarSiswa = current;
     this.save();
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
     return true;
@@ -114,19 +114,20 @@ const AppState = {
   removeRosterStudent(name) {
     const current = this.getRoster().filter(n => n !== name);
     this.teacherRoster = current;
+    this.daftarSiswa = current;
+    this.save();
+    if (window.StudentVerifier) StudentVerifier.syncAllCards();
+  },
+
+  clearAllRoster() {
+    this.teacherRoster = [];
+    this.daftarSiswa = [];
     this.save();
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
   },
 
   resetRosterToDefault() {
-    this.teacherRoster = [
-      "Shakira Maitsa Salsabila Nasrupi",
-      "Elsa Listiani",
-      "Vergiawan Listianto",
-      "Nurunnisa"
-    ];
-    this.save();
-    if (window.StudentVerifier) StudentVerifier.syncAllCards();
+    this.clearAllRoster();
   },
 
   // Metode Folder Guru (Penyimpanan Rekap Hasil & Foto Wajah Siswa)
@@ -365,7 +366,8 @@ const AppState = {
         student: this.student,
         userRole: this.userRole,
         teacherPin: this.teacherPin,
-        teacherRoster: this.teacherRoster,
+        teacherRoster: this.getRoster(),
+        daftarSiswa: this.getRoster(),
         teacherFolder: this.teacherFolder,
         retakeRequests: this.retakeRequests,
         deviceLock: this.deviceLock
@@ -381,20 +383,21 @@ const AppState = {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (parsed.teacherPin) this.teacherPin = parsed.teacherPin;
-        if (parsed.teacherRoster) this.teacherRoster = parsed.teacherRoster;
         if (parsed.teacherFolder) this.teacherFolder = parsed.teacherFolder;
         if (parsed.retakeRequests) this.retakeRequests = parsed.retakeRequests;
         if (parsed.deviceLock) this.deviceLock = parsed.deviceLock;
         if (parsed.userRole) this.userRole = parsed.userRole;
 
-        const officialRoster = [
-          "Shakira Maitsa Salsabila Nasrupi",
-          "Elsa Listiani",
-          "Vergiawan Listianto",
-          "Nurunnisa"
-        ];
-        if (!this.teacherRoster || this.teacherRoster.length !== 4 || !this.teacherRoster.includes("Shakira Maitsa Salsabila Nasrupi")) {
-          this.teacherRoster = [...officialRoster];
+        // Kelola daftar siswa (daftarSiswa / teacherRoster): Nilai awal kosong []
+        if (Array.isArray(parsed.daftarSiswa)) {
+          this.daftarSiswa = parsed.daftarSiswa;
+          this.teacherRoster = parsed.daftarSiswa;
+        } else if (Array.isArray(parsed.teacherRoster)) {
+          this.daftarSiswa = parsed.teacherRoster;
+          this.teacherRoster = parsed.teacherRoster;
+        } else {
+          this.daftarSiswa = [];
+          this.teacherRoster = [];
         }
 
         // Pembersihan Sesi & Isolasi Privasi Perangkat:

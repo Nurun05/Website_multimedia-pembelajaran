@@ -166,22 +166,35 @@ const StudentVerifier = {
         <!-- 1. Pemilihan Nama Siswa -->
         <div class="verifier-field-group">
           <label class="verifier-label" for="${contextId}-select-name">
-            👤 1. Pilih Nama Lengkap Siswa (Dari Daftar Guru):
+            👤 1. Pilih Nama Lengkap Siswa:
           </label>
-          <select id="${contextId}-select-name" class="verifier-select" onchange="StudentVerifier.handleNameChange('${contextId}', this.value)">
-            <option value="">-- Pilih Nama Siswa (4 Siswa Resmi) --</option>
-            ${roster.map(name => {
-              const isRetake = AppState.isRetakeInstructed(name);
-              const isDone = AppState.isStudentCompleted(name);
-              if (isRetake) {
-                return `<option value="${name}" ${savedName === name ? 'selected' : ''} style="color:#b45309; font-weight:700; background:#fef3c7;">🔄 ${name} (⚠️ Diperintahkan Ujian Ulang oleh Guru)</option>`;
-              } else if (isDone) {
-                return `<option value="${name}" disabled style="color:#94a3b8; background:#f8fafc;">${name} (Sudah Selesai)</option>`;
-              } else {
-                return `<option value="${name}" ${savedName === name ? 'selected' : ''}>${name}</option>`;
-              }
-            }).join('')}
-          </select>
+          ${roster.length === 0 ? `
+            <div style="background:#fffbeb; border:1.5px solid #fcd34d; border-radius:var(--radius-md); padding:14px; text-align:center; margin-bottom:8px;">
+              <span style="font-size:26px; display:block; margin-bottom:4px;">📋ℹ️</span>
+              <strong style="color:#92400e; font-size:13px; display:block; margin-bottom:4px;">Belum Ada Nama Siswa yang Terdaftar</strong>
+              <div style="font-size:11.5px; color:#78350f; line-height:1.5;">
+                Belum ada nama siswa yang terdaftar. Silakan minta guru untuk mendaftarkan nama melalui <strong>Portal Guru</strong>.
+              </div>
+            </div>
+            <select id="${contextId}-select-name" class="verifier-select" disabled>
+              <option value="">-- Belum ada nama siswa terdaftar (Hubungi Guru) --</option>
+            </select>
+          ` : `
+            <select id="${contextId}-select-name" class="verifier-select" onchange="StudentVerifier.handleNameChange('${contextId}', this.value)">
+              <option value="">-- Pilih Nama Siswa Terdaftar (${roster.length} Siswa) --</option>
+              ${roster.map(name => {
+                const isRetake = AppState.isRetakeInstructed(name);
+                const isDone = AppState.isStudentCompleted(name);
+                if (isRetake) {
+                  return `<option value="${name}" ${savedName === name ? 'selected' : ''} style="color:#b45309; font-weight:700; background:#fef3c7;">🔄 ${name} (⚠️ Diperintahkan Ujian Ulang oleh Guru)</option>`;
+                } else if (isDone) {
+                  return `<option value="${name}" disabled style="color:#94a3b8; background:#f8fafc;">${name} (Sudah Selesai)</option>`;
+                } else {
+                  return `<option value="${name}" ${savedName === name ? 'selected' : ''}>${name}</option>`;
+                }
+              }).join('')}
+            </select>
+          `}
         </div>
 
         <!-- 2. Kamera & Foto Dokumentasi Wajah (Muncul Setelah Nama Dipilih) -->

@@ -187,7 +187,7 @@ const TeacherPanel = {
                   <div style="font-size:11.5px; color:var(--text-muted); margin-bottom:6px;">
                     Salin (copy) daftar nama siswa dari Microsoft Word, Excel, atau buku absen lalu tempel (paste) di bawah ini (satu nama per baris):
                   </div>
-                  <textarea id="textarea-bulk-roster" class="teacher-textarea" placeholder="Contoh:&#10;Shakira Maitsa Salsabila Nasrupi&#10;Elsa Listiani&#10;Vergiawan Listianto&#10;Nurunnisa"></textarea>
+                  <textarea id="textarea-bulk-roster" class="teacher-textarea" placeholder="Ketik atau tempel nama siswa di sini (satu nama per baris)..."></textarea>
                   <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:8px;">
                     <button type="button" class="btn btn-outline" style="font-size:11.5px; padding:6px 12px;" onclick="TeacherPanel.appendBulkStudents()">
                       ➕ Gabungkan ke Daftar
@@ -202,11 +202,8 @@ const TeacherPanel = {
                   <div class="teacher-card-title">
                     <span>📋 Daftar Siswa Aktif (<span id="roster-active-count">0</span> Siswa)</span>
                     <div style="display:flex; gap:6px;">
-                      <button type="button" class="btn btn-outline" style="font-size:10.5px; padding:4px 8px;" onclick="TeacherPanel.resetRosterToDefault()">
-                        🔄 Muat Ulang Default (4 Siswa)
-                      </button>
-                      <button type="button" class="btn btn-outline" style="font-size:10.5px; padding:4px 8px; color:#dc2626;" onclick="TeacherPanel.clearAllRoster()">
-                        🗑️ Kosongkan
+                      <button type="button" class="btn btn-outline" style="font-size:10.5px; padding:4px 10px; color:#dc2626; border-color:#fca5a5;" onclick="TeacherPanel.clearAllRoster()">
+                        🗑️ Hapus Semua Data Siswa
                       </button>
                     </div>
                   </div>
@@ -630,7 +627,7 @@ const TeacherPanel = {
       tbody.innerHTML = `
         <tr>
           <td colspan="4" style="text-align:center; padding:18px; color:var(--text-muted);">
-            Daftar siswa masih kosong. Silakan tambahkan nama siswa di atas atau klik "Muat Ulang Default".
+            Daftar nama siswa masih kosong. Silakan tambahkan nama siswa melalui formulir di atas.
           </td>
         </tr>
       `;
@@ -723,17 +720,9 @@ const TeacherPanel = {
     }
   },
 
-  resetRosterToDefault() {
-    if (confirm('Muat ulang 32 daftar nama siswa default Kelas VII SMPN 1 Tandukkalua?')) {
-      AppState.resetRosterToDefault();
-      this.renderRosterTab();
-      this.renderSubmissionsTab();
-    }
-  },
-
   clearAllRoster() {
     if (confirm('Apakah Anda yakin ingin mengosongkan seluruh daftar nama siswa?')) {
-      AppState.setRoster([]);
+      AppState.clearAllRoster();
       this.renderRosterTab();
       this.renderSubmissionsTab();
     }
