@@ -62,7 +62,7 @@ const ViewKuis = {
         </div>
 
         <!-- Navigasi Soal Prev / Next -->
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <div class="quiz-nav-row" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
           <button type="button" id="btn-quiz-prev" class="btn btn-outline" style="padding:8px 14px;" onclick="ViewKuis.prevQuestion()">
             ◀ Sebelumnya
           </button>

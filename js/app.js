@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Muat status tersimpan dari LocalStorage
   AppState.load();
 
+  // 1a. Inisialisasi Cloud Database Real-Time (Firebase / Supabase)
+  if (window.CloudSync) {
+    CloudSync.init();
+  }
+
   // 1b. Inisialisasi Panel Guru & Login
   if (window.TeacherPanel) {
     TeacherPanel.init();

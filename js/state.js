@@ -92,6 +92,9 @@ const AppState = {
     this.teacherRoster = cleanList;
     this.daftarSiswa = cleanList;
     this.save();
+    if (window.CloudSync && typeof CloudSync.syncRoster === 'function') {
+      CloudSync.syncRoster(cleanList);
+    }
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
   },
 
@@ -107,6 +110,9 @@ const AppState = {
     this.teacherRoster = current;
     this.daftarSiswa = current;
     this.save();
+    if (window.CloudSync && typeof CloudSync.syncRoster === 'function') {
+      CloudSync.syncRoster(current);
+    }
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
     return true;
   },
@@ -116,6 +122,9 @@ const AppState = {
     this.teacherRoster = current;
     this.daftarSiswa = current;
     this.save();
+    if (window.CloudSync && typeof CloudSync.syncRoster === 'function') {
+      CloudSync.syncRoster(current);
+    }
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
   },
 
@@ -123,6 +132,9 @@ const AppState = {
     this.teacherRoster = [];
     this.daftarSiswa = [];
     this.save();
+    if (window.CloudSync && typeof CloudSync.syncRoster === 'function') {
+      CloudSync.syncRoster([]);
+    }
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
   },
 
@@ -142,6 +154,9 @@ const AppState = {
     // Jika siswa telah selesai mengerjakan kuis (termasuk kuis ulang), hapus perintah ujian ulang aktif
     this.clearRetakeInstruction(submission.studentName);
     this.save();
+    if (window.CloudSync && typeof CloudSync.syncSubmission === 'function') {
+      CloudSync.syncSubmission(submission);
+    }
   },
 
   // Fitur Penghapusan Permanen Foto Siswa & Sinkronisasi Real-Time ke Portal Guru
@@ -256,6 +271,9 @@ const AppState = {
     }
 
     this.save();
+    if (window.CloudSync && typeof CloudSync.syncRetakeInstruction === 'function') {
+      CloudSync.syncRetakeInstruction(studentName, this.retakeRequests[nameLower]);
+    }
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
   },
 
@@ -281,6 +299,9 @@ const AppState = {
       }
     }
     this.save();
+    if (window.CloudSync && typeof CloudSync.clearRetakeInstruction === 'function') {
+      CloudSync.clearRetakeInstruction(studentName);
+    }
   },
 
   allowStudentRetake(studentName) {
@@ -292,12 +313,18 @@ const AppState = {
     this.teacherFolder = this.teacherFolder.filter(s => s.studentName.toLowerCase() !== studentName.toLowerCase());
     this.clearRetakeInstruction(studentName);
     this.save();
+    if (window.CloudSync && typeof CloudSync.deleteSubmission === 'function') {
+      CloudSync.deleteSubmission(studentName);
+    }
   },
 
   clearAllSubmissions() {
     this.teacherFolder = [];
     this.retakeRequests = {};
     this.save();
+    if (window.CloudSync && typeof CloudSync.clearAllSubmissions === 'function') {
+      CloudSync.clearAllSubmissions();
+    }
   },
 
   // Manajemen Kunci Keamanan Perangkat Kuis (Submissions Lock)

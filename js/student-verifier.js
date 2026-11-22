@@ -155,6 +155,7 @@ const StudentVerifier = {
           <span style="font-size:18px;">🛡️</span>
           <span class="verifier-title">Identitas Peserta &amp; Dokumentasi Foto Wajah</span>
           <span class="verifier-badge-anti-joki">DOKUMENTASI GURU</span>
+          <span class="cloud-sync-status-badge local" style="margin-left:auto;">💾 Lokal</span>
         </div>
         
         ${retakeBannerHTML}
@@ -709,6 +710,9 @@ const StudentVerifier = {
     });
 
     this.updatePrintableHeader();
+    if (window.CloudSync && typeof CloudSync.updateStatusBadge === 'function') {
+      CloudSync.updateStatusBadge();
+    }
   },
 
   syncPage(pageNum) {

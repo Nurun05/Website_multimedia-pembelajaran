@@ -1,0 +1,413 @@
+/* ====================================================================
+   RESPONSIVE-MOBILE.CSS - TATA LETAK RESPONSIF MOBILE-FIRST & STACKING
+   Memastikan aplikasi berjalan sempurna di HP, Tablet, & Desktop
+   SMP Negeri 1 Tandukkalua - IPA Kelas VII Fase D
+   Pengembang: Nurun Nisa Ahmad (NIM: 240209501049) - PTIK E 2024
+   ==================================================================== */
+
+/* Status Badge Cloud Synchronization */
+.cloud-sync-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full, 9999px);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cloud-sync-status-badge.connected {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.cloud-sync-status-badge.offline {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.cloud-sync-status-badge.local {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+/* ====================================================================
+   PENYESUAIAN LAYAR KECIL / HP (@media max-width: 768px)
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Kontainer & Body */
+  body {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    align-items: flex-start !important;
+  }
+
+  .device-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .app-content {
+    padding: 14px 12px !important;
+  }
+
+  /* 2. Bilah Header Atas */
+  .app-header {
+    padding: 10px 14px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+  }
+
+  .header-left {
+    gap: 8px !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .header-badge {
+    font-size: 9px !important;
+    padding: 1px 7px !important;
+  }
+
+  .header-title-text {
+    font-size: 14px !important;
+    line-height: 1.25 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  .header-subtitle-text {
+    font-size: 10px !important;
+  }
+
+  .header-right-group {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .header-role-btn {
+    padding: 5px 9px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 3. Bilah Navigasi Bawah */
+  .app-bottom-nav {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .app-bottom-nav .btn {
+    flex: 1 1 120px !important;
+    min-width: 100px !important;
+    font-size: 12px !important;
+    padding: 9px 8px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* 4. Menu Utama (Page 3 - Kartu Materi & Kuis Tersusun Rapi ke Bawah) */
+  .menu-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .menu-card {
+    width: 100% !important;
+    padding: 12px 14px !important;
+    gap: 12px !important;
+  }
+
+  .menu-icon-circle {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 18px !important;
+  }
+
+  .menu-card-title {
+    font-size: 13.5px !important;
+  }
+
+  .menu-card-sub {
+    font-size: 10.5px !important;
+  }
+
+  /* 5. Modal Pilih Akses Pengguna (Siswa / Guru Stacking Vertikal) */
+  .role-modal-card {
+    width: 95% !important;
+    max-width: 380px !important;
+    padding: 20px 14px !important;
+    margin: 10px auto !important;
+  }
+
+  .role-options-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .role-choice-card {
+    padding: 14px 12px !important;
+    width: 100% !important;
+  }
+
+  .guru-pin-box .input-row-group {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .guru-pin-box .input-row-group .teacher-input-text,
+  .guru-pin-box .input-row-group .btn {
+    width: 100% !important;
+  }
+
+  /* 6. Portal Guru (Dashboard Lengkap Responsif Mobile) */
+  .teacher-dashboard-modal {
+    width: 96% !important;
+    max-height: 94vh !important;
+    padding: 12px !important;
+    border-radius: var(--radius-md, 12px) !important;
+  }
+
+  .teacher-modal-topbar {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+  }
+
+  .teacher-modal-title {
+    font-size: 13px !important;
+  }
+
+  .teacher-tabs-nav {
+    display: flex !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 6px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .teacher-tab-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    padding: 7px 10px !important;
+  }
+
+  .stats-summary-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .stat-metric-card {
+    padding: 8px 10px !important;
+  }
+
+  .stat-metric-value {
+    font-size: 18px !important;
+  }
+
+  .stat-metric-label {
+    font-size: 10px !important;
+  }
+
+  /* Form Input Nama Siswa di Portal Guru: Stack Rapi ke Bawah */
+  .input-row-group {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .input-row-group .teacher-input-text {
+    width: 100% !important;
+  }
+
+  .input-row-group .btn {
+    width: 100% !important;
+  }
+
+  /* Kartu Rekap Hasil & Foto Siswa di Portal Guru */
+  .submission-card-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+
+  .sub-info-col {
+    width: 100% !important;
+  }
+
+  .sub-score-col {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-top: 1px dashed #e2e8f0 !important;
+    padding-top: 8px !important;
+  }
+
+  .sub-actions {
+    width: 100% !important;
+    display: flex !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .sub-actions .btn {
+    flex: 1 1 auto !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* 7. Modul Verifier & Pilihan Nama Siswa di Halaman Kuis */
+  .verifier-card {
+    padding: 12px !important;
+    width: 100% !important;
+  }
+
+  .verifier-title-bar {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .verifier-select {
+    width: 100% !important;
+    font-size: 12px !important;
+    padding: 9px 10px !important;
+  }
+
+  .camera-viewport {
+    width: 100% !important;
+    max-width: 290px !important;
+    height: auto !important;
+    aspect-ratio: 4/3 !important;
+  }
+
+  .camera-btn-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .camera-btn-group .btn {
+    width: 100% !important;
+  }
+
+  .verifier-verified-box {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+  }
+
+  .btn-reverify {
+    width: 100% !important;
+  }
+
+  /* 8. Tombol Navigasi Soal Kuis (Sebelumnya / Kunci / Berikutnya) */
+  .quiz-nav-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+  }
+
+  .quiz-nav-row .btn {
+    flex: 1 1 110px !important;
+    font-size: 12px !important;
+    padding: 8px 6px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* 9. Tab 3 Tingkat Kehati (Kegiatan 2) */
+  .level-tabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .level-tab-btn {
+    flex: 1 1 90px !important;
+    font-size: 11px !important;
+    padding: 8px 4px !important;
+  }
+
+  /* 10. Elemen Latihan & Kotak Pemantik */
+  .spark-box {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+
+  .accordion-header {
+    font-size: 12.5px !important;
+    padding: 10px 12px !important;
+  }
+
+  .option-btn {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+
+  .quiz-option-item {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+
+  .quiz-q-text {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .score-circle-gauge {
+    width: 96px !important;
+    height: 96px !important;
+  }
+
+  .score-circle-gauge::after {
+    width: 74px !important;
+    height: 74px !important;
+  }
+
+  .score-value-text {
+    font-size: 24px !important;
+  }
+}
+
+/* Penyesuaian Ekstra untuk Layar Sangat Kecil (@media max-width: 380px) */
+@media (max-width: 380px) {
+  .app-header {
+    padding: 8px 10px !important;
+  }
+
+  .header-title-text {
+    font-size: 13px !important;
+  }
+
+  .app-bottom-nav .btn {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+
+  .stats-summary-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
