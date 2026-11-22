@@ -4,7 +4,23 @@
  */
 
 const ViewKuis = {
+  lockInterval: null,
+
   render(container) {
+    if (!container) container = document.querySelector('#page-10');
+    if (!container) return;
+
+    // 4. KUNCI OTOMATIS SETELAH PENGIRIMAN (Submissions Lock)
+    // Jika perangkat dalam periode kunci submisi, tampilkan layar proteksi perangkat
+    if (typeof AppState.isDeviceQuizLocked === 'function' && AppState.isDeviceQuizLocked()) {
+      this.renderDeviceLockScreen(container);
+      return;
+    }
+    if (this.lockInterval) {
+      clearInterval(this.lockInterval);
+      this.lockInterval = null;
+    }
+
     const student = AppState.student || {};
     const isRetake = student.name && AppState.isRetakeInstructed(student.name);
     const isCompleted = student.name && AppState.isStudentCompleted(student.name) && !isRetake;
@@ -267,14 +283,87 @@ const ViewKuis = {
     };
 
     AppState.addStudentSubmission(submission);
+
+    // KUNCI OTOMATIS SETELAH PENGIRIMAN (Submissions Lock):
+    // Kunci kuis pada perangkat ini selama 5 menit
+    if (typeof AppState.setDeviceQuizLock === 'function') {
+      AppState.setDeviceQuizLock(AppState.student.name, 5);
+    }
     AppState.save();
 
     if (window.StudentVerifier) StudentVerifier.syncAllCards();
     if (window.TeacherPanel) TeacherPanel.renderDashboard();
+    if (window.ViewMenu) ViewMenu.updateProgress();
 
-    alert(`🎉 Kuis Akhir Selesai!\n\nNama Siswa: ${AppState.student.name}\nNilai Kuis: ${finalScore} / 100 (${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'})\n\nHasil dan foto dokumentasi wajah Anda telah otomatis tersimpan ke Folder Guru SMP Negeri 1 Tandukkalua.`);
+    alert(`🎉 Kuis Akhir Selesai!\n\nNama Siswa: ${AppState.student.name}\nNilai Kuis: ${finalScore} / 100 (${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'})\n\nHasil dan foto dokumentasi wajah Anda telah otomatis tersimpan ke Folder Guru SMP Negeri 1 Tandukkalua.\n\n🔒 Akses kuis pada perangkat ini kini otomatis terkunci selama 5 menit untuk menjaga integritas data.`);
 
     AppRouter.goToPage(11);
+  },
+
+  renderDeviceLockScreen(container) {
+    if (this.lockInterval) {
+      clearInterval(this.lockInterval);
+      this.lockInterval = null;
+    }
+    const lockInfo = AppState.deviceLock || {};
+    const studentName = lockInfo.studentName || 'Siswa Sebelumnya';
+
+    container.innerHTML = `
+      <div class="card" style="text-align:center; padding:32px 20px; background:#fffbeb; border:2px solid #f59e0b; border-radius:12px; margin:16px 0; box-shadow:0 4px 16px rgba(245,158,11,0.15);">
+        <div style="font-size:46px; margin-bottom:8px;">🔒⏱️</div>
+        <h3 style="font-size:16px; font-weight:700; color:#92400e; margin-bottom:6px;">
+          Kuis Akhir Terkunci Sementara (Keamanan Pengiriman)
+        </h3>
+        <p style="font-size:12.5px; color:#78350f; line-height:1.6; max-width:440px; margin:0 auto 14px;">
+          Kuis baru saja selesai dikerjakan dan dikirim ke Folder Guru oleh <strong>${studentName}</strong>. 
+          Untuk mencegah manipulasi nilai atau pengerjaan ganda di perangkat yang sama, akses pengerjaan kuis <strong>terkunci otomatis</strong>.
+        </p>
+
+        <div style="margin:14px 0;">
+          <div id="device-lock-countdown" style="font-size:13.5px; font-weight:700; color:#b45309; background:#fef3c7; border:1px solid #fcd34d; padding:8px 18px; border-radius:20px; display:inline-block;">
+            ⏱️ Sisa waktu kunci: <span id="countdown-timer-text">...</span>
+          </div>
+        </div>
+
+        <div style="font-size:11.5px; color:#64748b; margin-bottom:16px;">
+          Guru dapat membuka kunci ini secara langsung untuk siswa berikutnya melalui tombol di bawah:
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-primary" style="font-size:12px; padding:9px 18px; font-weight:700;" onclick="TeacherPanel.promptUnlockByGuru()">
+            👨‍🏫 Buka Kunci oleh Guru (Input PIN)
+          </button>
+          <button type="button" class="btn btn-outline" style="font-size:12px; padding:9px 18px;" onclick="AppRouter.goToPage(3)">
+            🏠 Kembali ke Menu Utama
+          </button>
+        </div>
+      </div>
+    `;
+
+    this.startLockCountdown(container);
+  },
+
+  startLockCountdown(container) {
+    const update = () => {
+      const remainingSecs = typeof AppState.getDeviceLockRemainingSeconds === 'function' ? AppState.getDeviceLockRemainingSeconds() : 0;
+      const el = document.querySelector('#countdown-timer-text');
+      if (remainingSecs <= 0) {
+        if (this.lockInterval) {
+          clearInterval(this.lockInterval);
+          this.lockInterval = null;
+        }
+        AppState.unlockDeviceQuiz();
+        this.render(container);
+        return;
+      }
+      const mins = Math.floor(remainingSecs / 60);
+      const secs = remainingSecs % 60;
+      if (el) {
+        el.textContent = `${mins} menit ${secs < 10 ? '0' : ''}${secs} detik`;
+      }
+    };
+    update();
+    this.lockInterval = setInterval(update, 1000);
   }
 };
 

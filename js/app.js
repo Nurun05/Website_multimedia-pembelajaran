@@ -57,9 +57,10 @@ function initViews() {
         .then(html => {
           if (html && html.trim().length > 0) {
             el.innerHTML = html;
+            if (cfg.num === 3 && window.ViewMenu) ViewMenu.updateProgress();
             if (cfg.num === 9) ViewKegiatan3.initSortableDOM();
-            if (cfg.num === 10) ViewKuis.renderQuestion(AppState.quiz.currentQuestionIndex);
-            if (cfg.num === 11) ViewHasil.renderResult();
+            if (cfg.num === 10 && window.ViewKuis) ViewKuis.render(el);
+            if (cfg.num === 11 && window.ViewHasil) ViewHasil.render(el);
             if (window.StudentVerifier) StudentVerifier.syncPage(cfg.num);
           }
         })

@@ -59,7 +59,7 @@ const StudentVerifier = {
                    alt="Foto Dokumentasi Siswa" 
                    class="verified-avatar-img" 
                    style="width:58px; height:58px; border:2.5px solid #16a34a; cursor:pointer;"
-                   onclick="TeacherPanel.viewPhoto('${sub ? sub.studentName.replace(/'/g, "\\'") : ''}', '${subPhoto}', ${sub ? sub.score : 0}, ${isPass}, '${sub ? sub.submittedAt : '-'}')">
+                   onclick="TeacherPanel.viewPhoto('${sub ? sub.studentName.replace(/'/g, "\\'") : ''}', '${subPhoto}', 0, false, '${sub ? sub.submittedAt : '-'}')">
             ` : `
               <div style="width:58px; height:58px; border-radius:50%; border:2px dashed #ef4444; background:#fef2f2; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#dc2626; flex-shrink:0;" title="Foto dokumentasi telah dihapus oleh siswa">
                 <span style="font-size:18px; line-height:1;">📷❌</span>
@@ -71,14 +71,14 @@ const StudentVerifier = {
               <div style="font-size:14px; font-weight:700; color:#166534;">
                 ${sub ? sub.studentName : savedName}
               </div>
-              <div style="font-size:12px; color:#15803d; margin-top:2px;">
-                Nilai Kuis: <strong>${sub ? sub.score : '-'} / 100</strong> — 
-                <span style="font-weight:700; color:${isPass ? '#16a34a' : '#dc2626'};">
-                  ${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'}
-                </span>
+              <div style="font-size:12px; color:#15803d; margin-top:2px; font-weight:700;">
+                Status Kuis: ✓ Selesai
               </div>
               <div style="font-size:11px; color:#475569; margin-top:2px;">
-                🕒 Dokumentasi &amp; Nilai tercatat di Folder Guru: ${sub ? sub.submittedAt : '-'}
+                🕒 Terkirim resmi ke Folder Guru: ${sub ? sub.submittedAt : '-'}
+              </div>
+              <div style="font-size:11px; color:#1e40af; background:#eff6ff; border:1px solid #bfdbfe; padding:4px 8px; border-radius:6px; margin-top:6px;">
+                🔒 <em>Privasi Nilai:</em> Nilai evaluasi bersifat rahasia dan hanya dapat diakses secara resmi di Portal Guru.
               </div>
               ${!subPhoto ? `
                 <div style="font-size:11px; color:#dc2626; font-weight:700; margin-top:3px;">
@@ -95,9 +95,11 @@ const StudentVerifier = {
             <button type="button" class="btn btn-outline" style="font-size:12px; flex:1;" onclick="StudentVerifier.resetActiveStudent()">
               👤 Pilih Siswa Lain (Belum Mengisi)
             </button>
-            <button type="button" class="btn btn-primary" style="font-size:12px; flex:1;" onclick="AppRouter.goToPage(11)">
-              🏆 Buka Lembar Hasil Kuis
-            </button>
+            ${(AppState.student && AppState.student.name === savedName && AppState.student.isVerified && AppState.progress.quizCompleted) ? `
+              <button type="button" class="btn btn-primary" style="font-size:12px; flex:1;" onclick="AppRouter.goToPage(11)">
+                🏆 Buka Lembar Hasil Kuis
+              </button>
+            ` : ''}
           </div>
         </div>
       `;
@@ -250,8 +252,7 @@ const StudentVerifier = {
 
   handleNameChange(contextId, value) {
     if (value && value !== '__custom__' && AppState.isStudentCompleted(value) && !AppState.isRetakeInstructed(value)) {
-      const sub = AppState.getStudentSubmission(value);
-      this.showAlert(contextId, `⛔ Nama "${value}" SUDAH MENGERJAKAN Kuis Akhir (Nilai: ${sub ? sub.score : '-'}). Kuis tidak boleh diulang oleh nama yang sama kecuali ada instruksi ujian ulang dari Guru!`);
+      this.showAlert(contextId, `⛔ Nama "${value}" sudah menyelesaikan Kuis Akhir (Status: Selesai). Kuis hanya dapat dikerjakan 1 kali dan tidak dapat diulang oleh nama yang sama kecuali ada instruksi ujian ulang dari Guru!`);
       const select = document.querySelector(`#${contextId}-select-name`);
       if (select) select.value = '';
       this.tempNames[contextId] = '';

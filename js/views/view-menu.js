@@ -49,7 +49,7 @@ const ViewMenu = {
             <div class="menu-card-title">Kuis Akhir Evaluasi</div>
             <div class="menu-card-sub">10 Soal Pilihan Ganda dengan Pembahasan Ilmiah</div>
           </div>
-          <span id="status-kuis" class="menu-status-badge status-pending">Belum Ujian</span>
+          <span id="status-kuis" class="menu-status-badge status-pending">Belum</span>
         </div>
 
         <!-- Kartu 5: Rangkuman -->
@@ -86,10 +86,21 @@ const ViewMenu = {
       k3.className = `menu-status-badge ${AppState.progress.kegiatan3Done ? 'status-done' : 'status-pending'}`;
     }
     if (qz) {
-      qz.textContent = AppState.progress.quizCompleted
-        ? `Skor: ${AppState.progress.quizScore}`
-        : 'Belum Ujian';
-      qz.className = `menu-status-badge ${AppState.progress.quizCompleted ? 'status-done' : 'status-pending'}`;
+      // 1. Penghapusan Skor Publik di Menu Utama & Privasi Nilai
+      // Menu hanya menampilkan status umum netral ("✓ Selesai" atau "Belum"), tanpa angka skor!
+      const isCompleted = Boolean(AppState.progress.quizCompleted && AppState.student && AppState.student.isVerified);
+      const isLocked = typeof AppState.isDeviceQuizLocked === 'function' && AppState.isDeviceQuizLocked();
+
+      if (isCompleted) {
+        qz.textContent = '✓ Selesai';
+        qz.className = 'menu-status-badge status-done';
+      } else if (isLocked) {
+        qz.textContent = '🔒 Terkunci';
+        qz.className = 'menu-status-badge status-pending';
+      } else {
+        qz.textContent = 'Belum';
+        qz.className = 'menu-status-badge status-pending';
+      }
     }
   }
 };

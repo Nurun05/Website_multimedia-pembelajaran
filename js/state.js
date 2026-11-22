@@ -29,6 +29,9 @@ const AppState = {
     isVerified: false
   },
 
+  // Kunci Keamanan Perangkat Setelah Pengiriman Kuis (Submissions Lock)
+  deviceLock: null, // { lockedUntil: number, studentName: string, submittedAt: number, durationMinutes: number }
+
   progress: {
     kegiatan1Done: false,
     kegiatan2Done: false,
@@ -292,6 +295,41 @@ const AppState = {
     this.save();
   },
 
+  // Manajemen Kunci Keamanan Perangkat Kuis (Submissions Lock)
+  setDeviceQuizLock(studentName, durationMinutes = 5) {
+    const now = Date.now();
+    this.deviceLock = {
+      studentName: studentName || 'Siswa',
+      lockedUntil: now + (durationMinutes * 60 * 1000),
+      durationMinutes: durationMinutes,
+      submittedAt: now
+    };
+    this.save();
+  },
+
+  isDeviceQuizLocked() {
+    if (!this.deviceLock || !this.deviceLock.lockedUntil) return false;
+    if (Date.now() >= this.deviceLock.lockedUntil) {
+      this.deviceLock = null;
+      this.save();
+      return false;
+    }
+    return true;
+  },
+
+  getDeviceLockRemainingSeconds() {
+    if (!this.isDeviceQuizLocked()) return 0;
+    return Math.max(0, Math.ceil((this.deviceLock.lockedUntil - Date.now()) / 1000));
+  },
+
+  unlockDeviceQuiz() {
+    this.deviceLock = null;
+    this.resetActiveStudent();
+    this.save();
+    if (window.StudentVerifier) StudentVerifier.syncAllCards();
+    if (window.ViewMenu) ViewMenu.updateProgress();
+  },
+
   resetActiveStudent() {
     this.student = {
       name: '',
@@ -301,14 +339,24 @@ const AppState = {
       isVerified: false
     };
     this.progress.quizCompleted = false;
+    this.progress.quizScore = 0;
     this.quiz.userAnswers = {};
     this.quiz.isLocked = {};
     this.quiz.currentQuestionIndex = 0;
+    this.quiz.calculatedScores = {
+      total: 0,
+      tp1Pct: 0, tp1Correct: 0, tp1Total: 3,
+      tp2Pct: 0, tp2Correct: 0, tp2Total: 4,
+      tp3Pct: 0, tp3Correct: 0, tp3Total: 3
+    };
     this.save();
     if (window.StudentVerifier) {
       StudentVerifier.tempPhotos = {};
       StudentVerifier.tempNames = {};
       StudentVerifier.syncAllCards();
+    }
+    if (window.ViewMenu) {
+      ViewMenu.updateProgress();
     }
   },
 
@@ -322,7 +370,8 @@ const AppState = {
         teacherPin: this.teacherPin,
         teacherRoster: this.teacherRoster,
         teacherFolder: this.teacherFolder,
-        retakeRequests: this.retakeRequests
+        retakeRequests: this.retakeRequests,
+        deviceLock: this.deviceLock
       }));
     } catch (e) {
       console.warn('LocalStorage tidak tersedia', e);
@@ -334,14 +383,39 @@ const AppState = {
       const saved = localStorage.getItem('kehati_media_state');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.progress) this.progress = { ...this.progress, ...parsed.progress };
-        if (parsed.quizScores) this.quiz.calculatedScores = parsed.quizScores;
-        if (parsed.student) this.student = { ...this.student, ...parsed.student };
-        if (parsed.userRole) this.userRole = parsed.userRole;
         if (parsed.teacherPin) this.teacherPin = parsed.teacherPin;
         if (parsed.teacherRoster) this.teacherRoster = parsed.teacherRoster;
         if (parsed.teacherFolder) this.teacherFolder = parsed.teacherFolder;
         if (parsed.retakeRequests) this.retakeRequests = parsed.retakeRequests;
+        if (parsed.deviceLock) this.deviceLock = parsed.deviceLock;
+        if (parsed.userRole) this.userRole = parsed.userRole;
+
+        // Pembersihan Sesi & Isolasi Privasi Perangkat:
+        // Jika kuis telah selesai pada data tersimpan atau siswa belum terverifikasi resmi,
+        // bersihkan sesi aktif agar data dan nilai pengguna sebelumnya tidak mencampuradukkan perangkat siswa baru.
+        if (parsed.progress && parsed.progress.quizCompleted) {
+          this.student = {
+            name: '',
+            customName: '',
+            photo: '',
+            verifiedAt: '',
+            isVerified: false
+          };
+          this.progress.quizCompleted = false;
+          this.progress.quizScore = 0;
+          this.quiz.userAnswers = {};
+          this.quiz.isLocked = {};
+          this.quiz.calculatedScores = {
+            total: 0,
+            tp1Pct: 0, tp1Correct: 0, tp1Total: 3,
+            tp2Pct: 0, tp2Correct: 0, tp2Total: 4,
+            tp3Pct: 0, tp3Correct: 0, tp3Total: 3
+          };
+        } else {
+          if (parsed.progress) this.progress = { ...this.progress, ...parsed.progress };
+          if (parsed.quizScores) this.quiz.calculatedScores = parsed.quizScores;
+          if (parsed.student) this.student = { ...this.student, ...parsed.student };
+        }
       }
     } catch (e) {
       console.warn('Gagal memuat state lokal', e);

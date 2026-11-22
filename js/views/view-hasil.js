@@ -5,6 +5,38 @@
 
 const ViewHasil = {
   render(container) {
+    if (!container) container = document.querySelector('#page-11');
+    if (!container) return;
+
+    // 2. ISOLASI PRIVASI NILAI SISWA & MANAJEMEN SESI PERANGKAT
+    // Lembar hasil hanya dapat dilihat oleh siswa yang sedang aktif terverifikasi & menyelesaikan kuis
+    const student = AppState.student || {};
+    const isVerifiedActive = Boolean(student.isVerified && student.name);
+    const hasCompletedQuiz = Boolean(AppState.progress.quizCompleted);
+
+    if (!isVerifiedActive || !hasCompletedQuiz) {
+      container.innerHTML = `
+        <div class="card" style="text-align:center; padding:36px 20px; background:#f8fafc; border:1.5px dashed #cbd5e1; border-radius:12px; margin:20px 0;">
+          <span style="font-size:44px; display:block; margin-bottom:10px;">🔒</span>
+          <h3 style="font-size:16px; font-weight:700; color:var(--primary-sky-deep); margin-bottom:8px;">
+            Lembar Hasil Kuis Bersifat Pribadi
+          </h3>
+          <p style="font-size:12.5px; color:#64748b; max-width:380px; margin:0 auto 16px; line-height:1.55;">
+            Nilai kuis akhir siswa bersifat rahasia dan terlindungi. Halaman ini hanya dapat diakses secara langsung oleh siswa bersangkutan setelah menyelesaikan kuis atau oleh Guru di Portal Guru.
+          </p>
+          <div style="display:flex; justify-content:center; gap:10px;">
+            <button type="button" class="btn btn-primary" onclick="AppRouter.goToPage(10)">
+              📝 Menuju Kuis Akhir
+            </button>
+            <button type="button" class="btn btn-outline" onclick="AppRouter.goToPage(3)">
+              🏠 Menu Utama
+            </button>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
     const verifierHTML = window.StudentVerifier ? StudentVerifier.getResultBadgeHTML() : '';
 
     container.innerHTML = `
@@ -167,6 +199,10 @@ const ViewHasil = {
   nextStudent() {
     AppState.resetActiveStudent();
     AppRouter.goToPage(10);
+  },
+
+  retakeQuiz() {
+    this.nextStudent();
   },
 
   reviewMaterial() {

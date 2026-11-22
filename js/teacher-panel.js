@@ -487,8 +487,23 @@ const TeacherPanel = {
     const listContainer = document.querySelector('#submissions-list-container');
     if (!listContainer) return;
 
+    const isLocked = typeof AppState.isDeviceQuizLocked === 'function' && AppState.isDeviceQuizLocked();
+    const lockBannerHTML = isLocked ? `
+      <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:8px; padding:10px 14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+        <div>
+          <strong style="color:#92400e; font-size:12.5px;">🔒 Perangkat Kuis Sedang Terkunci Otomatis (Submissions Lock)</strong>
+          <div style="font-size:11.5px; color:#78350f;">
+            Siswa: <strong>${AppState.deviceLock ? AppState.deviceLock.studentName : 'Siswa'}</strong> • Sisa waktu kunci: <strong>${Math.ceil(AppState.getDeviceLockRemainingSeconds() / 60)} menit</strong>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" style="font-size:11px; padding:6px 14px; font-weight:700;" onclick="TeacherPanel.unlockDeviceFromDashboard()">
+          🔓 Buka Kunci Perangkat Sekarang
+        </button>
+      </div>
+    ` : '';
+
     if (submissions.length === 0) {
-      listContainer.innerHTML = `
+      listContainer.innerHTML = lockBannerHTML + `
         <div class="card" style="text-align:center; padding:24px; color:var(--text-muted);">
           <span style="font-size:36px; display:block; margin-bottom:6px;">📭</span>
           <strong>Folder Kuis Masih Kosong</strong>
@@ -498,7 +513,7 @@ const TeacherPanel = {
         </div>
       `;
     } else {
-      listContainer.innerHTML = submissions.map((sub, idx) => {
+      listContainer.innerHTML = lockBannerHTML + submissions.map((sub, idx) => {
         const isPass = sub.score >= passScore;
         const tp1Pct = sub.tpScores && sub.tpScores.tp1 ? sub.tpScores.tp1.pct : '-';
         const tp2Pct = sub.tpScores && sub.tpScores.tp2 ? sub.tpScores.tp2.pct : '-';
@@ -739,6 +754,30 @@ const TeacherPanel = {
     }
   },
 
+  promptUnlockByGuru() {
+    const pin = prompt('🔑 Masukkan PIN Guru untuk membuka kunci kuis pada perangkat ini:');
+    if (pin === null) return; // Batal
+    const validPin = AppState.teacherPin || 'guru123';
+    if (pin.trim() === validPin) {
+      AppState.unlockDeviceQuiz();
+      alert('✅ Kunci kuis perangkat berhasil dibuka oleh Guru. Siswa berikutnya dapat memilih nama dan mulai mengerjakan.');
+      if (window.ViewKuis) ViewKuis.render(document.querySelector('#page-10'));
+      if (window.ViewMenu) ViewMenu.updateProgress();
+    } else {
+      alert('❌ PIN Guru salah. Kunci perangkat kuis tetap aktif.');
+    }
+  },
+
+  unlockDeviceFromDashboard() {
+    if (confirm('Buka kunci kuis pada perangkat ini sekarang agar siswa berikutnya dapat mulai mengerjakan?')) {
+      AppState.unlockDeviceQuiz();
+      alert('✅ Kunci perangkat berhasil dibuka.');
+      this.renderSubmissionsTab();
+      if (window.ViewKuis) ViewKuis.render(document.querySelector('#page-10'));
+      if (window.ViewMenu) ViewMenu.updateProgress();
+    }
+  },
+
   viewPhoto(studentName, photoUrl, score, isPass, submittedAt) {
     if (!photoUrl || !photoUrl.startsWith('data:image')) {
       alert(`⚠️ Foto Dokumentasi Wajah Kosong / Dihapus\n\nNama Siswa: ${studentName}\nStatus: Siswa telah menghapus foto dokumentasi wajah atau belum melakukan pengambilan selfie resmi.`);
@@ -755,7 +794,14 @@ const TeacherPanel = {
     if (img) img.src = photoUrl;
     if (nameEl) nameEl.textContent = studentName;
     if (statusEl) {
-      statusEl.innerHTML = `Nilai Kuis: <strong>${score} / 100</strong> — <span style="color:${isPass ? '#16a34a' : '#dc2626'}; font-weight:bold;">${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'}</span>`;
+      // 2. ISOLASI PRIVASI NILAI SISWA
+      // Hanya Guru atau Siswa pemilik data yang dapat melihat rincian skor
+      const isAuthorized = (AppState.userRole === 'guru') || (AppState.student && AppState.student.name && AppState.student.name.toLowerCase() === studentName.toLowerCase());
+      if (isAuthorized && score !== undefined && score !== null && score > 0) {
+        statusEl.innerHTML = `Nilai Kuis: <strong>${score} / 100</strong> — <span style="color:${isPass ? '#16a34a' : '#dc2626'}; font-weight:bold;">${isPass ? '✓ Lolos KKM' : '✗ Belum Lolos KKM'}</span>`;
+      } else {
+        statusEl.innerHTML = `<span style="color:#166534; font-weight:bold;">✓ Foto Terverifikasi Resmi di Folder Guru</span>`;
+      }
     }
     if (timeEl) timeEl.textContent = `Waktu Pengambilan Dokumentasi: ${submittedAt || '-'}`;
     if (downloadBtn) {
