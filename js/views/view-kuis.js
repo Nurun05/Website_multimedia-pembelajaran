@@ -269,12 +269,17 @@ const ViewKuis = {
     const studentName = (AppState.student && AppState.student.name) || 'Siswa';
     const studentPhoto = (AppState.student && AppState.student.photo) || '';
 
+    // Lacak riwayat percobaan siswa
+    const prevSub = AppState.getStudentSubmission(studentName);
+    const attempts = (prevSub && prevSub.attempts) ? prevSub.attempts + 1 : 1;
+
     const submission = {
-      id: 'sub-' + Date.now(),
+      id: (prevSub && prevSub.id) || ('sub-' + Date.now()),
       studentName: studentName,
       studentPhoto: studentPhoto,
       score: finalScore,
       isPass: isPass,
+      attempts: attempts,
       tpScores: {
         tp1: { correct: tp1Correct, total: tp1Total, pct: tp1Pct },
         tp2: { correct: tp2Correct, total: tp2Total, pct: tp2Pct },
@@ -291,8 +296,10 @@ const ViewKuis = {
     if (window.TeacherPanel) TeacherPanel.renderDashboard();
     if (window.ViewMenu) ViewMenu.updateProgress();
 
-    // Jeda waktu (cooldown) 3 detik lalu reset otomatis ke tampilan awal
-    this.showQuizSuccessCooldown(studentName);
+    // Arahkan langsung ke Halaman 11 (Lembar Hasil & Evaluasi KKM)
+    if (window.AppRouter) {
+      AppRouter.goToPage(11);
+    }
   },
 
   showQuizSuccessCooldown(studentName) {

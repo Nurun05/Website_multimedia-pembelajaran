@@ -183,12 +183,17 @@ const StudentVerifier = {
             <select id="${contextId}-select-name" class="verifier-select" onchange="StudentVerifier.handleNameChange('${contextId}', this.value)">
               <option value="">-- Pilih Nama Siswa Terdaftar (${roster.length} Siswa) --</option>
               ${roster.map(name => {
-                const isRetake = AppState.isRetakeInstructed(name);
                 const isDone = AppState.isStudentCompleted(name);
-                if (isRetake) {
-                  return `<option value="${name}" ${savedName === name ? 'selected' : ''} style="color:#b45309; font-weight:700; background:#fef3c7;">🔄 ${name} (⚠️ Diperintahkan Ujian Ulang oleh Guru)</option>`;
-                } else if (isDone) {
-                  return `<option value="${name}" disabled style="color:#94a3b8; background:#f8fafc;">${name} (Sudah Selesai)</option>`;
+                const needsRetake = AppState.isStudentNeedsRetake(name);
+                const isRetake = AppState.isRetakeInstructed(name);
+                if (isDone) {
+                  return `<option value="${name}" disabled style="color:#94a3b8; background:#f8fafc;">${name} (Sudah Selesai - Lolos KKM)</option>`;
+                } else if (needsRetake) {
+                  const sub = AppState.getStudentSubmission(name);
+                  const sc = sub ? sub.score : 0;
+                  return `<option value="${name}" ${savedName === name ? 'selected' : ''} style="color:#b91c1c; font-weight:700; background:#fef2f2;">🔄 ${name} (Nilai: ${sc} - Wajib Mengulang KKM)</option>`;
+                } else if (isRetake) {
+                  return `<option value="${name}" ${savedName === name ? 'selected' : ''} style="color:#b45309; font-weight:700; background:#fef3c7;">🔄 ${name} (Ujian Ulang Aktif)</option>`;
                 } else {
                   return `<option value="${name}" ${savedName === name ? 'selected' : ''}>${name}</option>`;
                 }
@@ -258,13 +263,22 @@ const StudentVerifier = {
 
   handleNameChange(contextId, value) {
     if (value && value !== '__custom__' && AppState.isStudentCompleted(value) && !AppState.isRetakeInstructed(value)) {
-      this.showAlert(contextId, `⛔ Nama "${value}" sudah menyelesaikan Kuis Akhir (Status: Selesai). Kuis hanya dapat dikerjakan 1 kali dan tidak dapat diulang oleh nama yang sama kecuali ada instruksi ujian ulang dari Guru!`);
+      this.showAlert(contextId, `⛔ Nama "${value}" sudah menyelesaikan Kuis Akhir dan mencapai KKM (Status: Tuntas). Kuis hanya dapat dikerjakan 1 kali oleh siswa yang sudah tuntas KKM!`);
       const select = document.querySelector(`#${contextId}-select-name`);
       if (select) select.value = '';
       this.tempNames[contextId] = '';
       const photoSection = document.querySelector(`#${contextId}-photo-section`);
       if (photoSection) photoSection.style.display = 'none';
       return;
+    }
+
+    if (value && value !== '__custom__' && AppState.isStudentNeedsRetake(value)) {
+      const sub = AppState.getStudentSubmission(value);
+      const sc = sub ? sub.score : 0;
+      const passThreshold = (window.APP_DATA && APP_DATA.info && APP_DATA.info.passingScore) || 70;
+      this.showAlert(contextId, `ℹ️ Halo ${value}! Nilai kuis Anda sebelumnya (${sc}) belum mencapai KKM (${passThreshold}). Akses kuis terbuka untuk mengulang hingga mencapai KKM!`);
+    } else {
+      this.hideAlert(contextId);
     }
 
     const customInput = document.querySelector(`#${contextId}-custom-name`);

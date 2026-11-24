@@ -230,7 +230,30 @@ const AppState = {
 
   isStudentCompleted(studentName) {
     if (!studentName || !Array.isArray(this.teacherFolder)) return false;
-    return this.teacherFolder.some(s => s.studentName.toLowerCase() === studentName.trim().toLowerCase());
+    const sub = this.teacherFolder.find(s => s.studentName.toLowerCase() === studentName.trim().toLowerCase());
+    if (!sub) return false;
+    const passThreshold = (window.APP_DATA && APP_DATA.info && APP_DATA.info.passingScore) || 70;
+    const isPass = (typeof sub.isPass === 'boolean') ? sub.isPass : (sub.score >= passThreshold);
+    // Siswa hanya terkunci selesai jika sudah mencapai KKM (isPass) atau ditandai selesai
+    return Boolean(isPass || sub.completed);
+  },
+
+  isStudentNeedsRetake(studentName) {
+    if (!studentName || !Array.isArray(this.teacherFolder)) return false;
+    const sub = this.teacherFolder.find(s => s.studentName.toLowerCase() === studentName.trim().toLowerCase());
+    if (!sub) return false;
+    const passThreshold = (window.APP_DATA && APP_DATA.info && APP_DATA.info.passingScore) || 70;
+    const isPass = (typeof sub.isPass === 'boolean') ? sub.isPass : (sub.score >= passThreshold);
+    return !isPass;
+  },
+
+  resetQuizAnswers() {
+    this.quiz.userAnswers = {};
+    this.quiz.isLocked = {};
+    this.quiz.currentQuestionIndex = 0;
+    this.progress.quizCompleted = false;
+    this.progress.quizScore = 0;
+    this.save();
   },
 
   getStudentSubmission(studentName) {

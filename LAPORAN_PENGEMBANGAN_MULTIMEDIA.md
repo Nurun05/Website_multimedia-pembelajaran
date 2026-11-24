@@ -196,7 +196,7 @@ Aplikasi ini memiliki keunggulan operasional berupa ukuran berkas yang sangat ri
 11. **Halaman 11 (Hasil Nilai & Diagnostik):** Menampilkan diagram lingkaran perolehan skor total, patokan Kriteria Ketuntasan Minimal (KKM) bernilai 70, capaian per indikator tujuan pembelajaran, dan rekomendasi tindak lanjut;
 12. **Halaman 12 (Rangkuman & Lembar Catatan):** Ringkasan materi lengkap, glosarium sains, dan tombol cetak lembar kerja mandiri (*print-ready layout*).
 
-Selain halaman modul siswa, media ini dilengkapi **Portal Guru** yang dilindungi sandi rahasia (*personal identification number* atau PIN). Pada portal ini, guru dapat memantau rekapitulasi nilai kelas dan memeriksa foto pengerjaan siswa. Guru juga dapat mengelola daftar nama kelas, memberi izin ujian ulang, serta mengunduh berkas nilai berformat *comma-separated values* (CSV). Aplikasi ini dapat diakses secara daring melalui GitHub Pages serta tersedia dalam paket luring mandiri menggunakan peladen lokal mini.
+Selain halaman modul siswa, media ini dilengkapi **Portal Guru** yang dilindungi sandi rahasia (*personal identification number* atau PIN). Pada portal ini, guru dapat memantau rekapitulasi nilai kelas dan memeriksa foto pengerjaan siswa. Guru juga dapat mengelola daftar nama kelas serta mengunduh berkas nilai berformat *comma-separated values* (CSV). Pengulangan kuis dikendalikan secara otomatis oleh sistem evaluasi berbasis batas Kriteria Ketuntasan Minimal (KKM). Aplikasi ini dapat diakses secara daring melalui GitHub Pages serta tersedia dalam paket luring mandiri menggunakan peladen lokal mini.
 
 ---
 
@@ -264,7 +264,7 @@ Perancangan antarmuka visual mengutamakan orientasi potret (*portrait layout*) y
 Interaksi sistem dimodelkan melalui tiga diagram utama:
 
 1) **Use Case Diagram (Gambar 2.1):**  
-Use Case Diagram memodelkan interaksi dua aktor utama, yakni Siswa dan Guru IPA. Siswa dapat mengakses materi kegiatan 1–3, mengerjakan latihan, memverifikasi foto wajah, menempuh kuis akhir, melihat nilai, dan mencetak rangkuman. Sementara itu, Guru IPA menggunakan sandi rahasia PIN untuk memantau nilai kuis dan memeriksa foto siswa. Guru juga dapat mengelola daftar nama kelas, mengunduh rekapitulasi data berformat CSV, serta memberi izin ujian ulang.
+Use Case Diagram memodelkan interaksi dua aktor utama, yakni Siswa dan Guru IPA. Siswa dapat mengakses materi kegiatan 1–3, mengerjakan latihan, memverifikasi foto wajah, menempuh kuis akhir, melihat nilai, dan mencetak rangkuman. Sementara itu, Guru IPA menggunakan sandi rahasia PIN untuk memantau nilai kuis dan memeriksa foto siswa. Guru juga dapat mengelola daftar nama kelas serta mengunduh rekapitulasi data berformat CSV, sementara pengulangan kuis diarahkan otomatis oleh ambang kelulusan KKM.
 
 ![Gambar 2.1 Use Case Diagram](file:///d:/mulped/assets/use-case-diagram.png)  
 **Gambar 2.1** *Use Case Diagram: Pemodelan Interaksi Peran Siswa dan Guru IPA pada Media Pembelajaran*

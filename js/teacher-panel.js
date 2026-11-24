@@ -540,9 +540,18 @@ const TeacherPanel = {
                     ⚠️ Foto Kosong / Dihapus Siswa
                   </span>
                 `}
-                ${isRetakeActive ? `
-                  <span style="background:#fffbeb; color:#b45309; border:1px solid #fcd34d; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700;">
-                    🔄 Diperintahkan Ujian Ulang
+                ${!isPass ? `
+                  <span style="background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700;">
+                    ⚠️ Belum Tuntas KKM (${sub.score}) — Mengulang
+                  </span>
+                ` : `
+                  <span style="background:#dcfce7; color:#15803d; border:1px solid #86efac; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700;">
+                    ✓ Lolos KKM (${sub.score})
+                  </span>
+                `}
+                ${sub.attempts && sub.attempts > 1 ? `
+                  <span style="background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; padding:2px 6px; border-radius:8px; font-size:9.5px; font-weight:600;">
+                    Percobaan ke-${sub.attempts}
                   </span>
                 ` : ''}
               </div>
@@ -576,12 +585,6 @@ const TeacherPanel = {
                     🚫 Tanpa Foto
                   </button>
                 `}
-                <button type="button" class="btn-sub-action" 
-                        style="${isRetakeActive ? 'color:#b45309; background:#fef3c7; border:1px solid #fde68a;' : 'color:#d97706;'}" 
-                        title="${isRetakeActive ? 'Instruksi ujian ulang aktif untuk siswa ini. Klik untuk memperbarui.' : 'Perintahkan siswa ini untuk mengerjakan ulang Kuis Akhir'}" 
-                        onclick="TeacherPanel.instructRetake('${sub.studentName.replace(/'/g, "\\'")}')">
-                  ${isRetakeActive ? '🔄 Ujian Ulang (Aktif)' : '🔄 Ujian Ulang'}
-                </button>
                 <button type="button" class="btn-sub-action" style="color:#dc2626;" title="Hapus riwayat siswa ini" onclick="TeacherPanel.deleteSubmission('${sub.studentName.replace(/'/g, "\\'")}')">
                   🗑️
                 </button>
